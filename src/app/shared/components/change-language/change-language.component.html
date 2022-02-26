@@ -1,0 +1,13 @@
+<div class="d-flex mr-2">
+  <div class="flex-grow-1"></div>
+
+  <span [ngClass]="this.isActiveLang(supportedLanguages.fr)  ? 'currentActiveLanguage' : 'notActiveLanguage'"
+    (click)="proceedInFrench()">FR</span>
+  <span> / </span>
+  <span [ngClass]="this.isActiveLang(supportedLanguages.nl)  ? 'currentActiveLanguage' : 'notActiveLanguage'"
+    (click)="proceedInDutch()">NL</span>
+  <span> / </span>
+  <span [ngClass]="this.isActiveLang(supportedLanguages.en)  ? 'currentActiveLanguage' : 'notActiveLanguage'"
+    (click)="proceedInEnglish()">EN</span>
+
+</div>
