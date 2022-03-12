@@ -18,17 +18,16 @@
     "target": "es2015",
     "module": "es2020",
     "lib": ["es2018", "dom"]
+    /*     "paths": {
+      "@variables": ["./src/styles/_variables.scss"]
+    } */
   },
   "angularCompilerOptions": {
-    /*     "enableI18nLegacyMessageIdFormat": false,
-    "strictInjectionParameters": true,
-    "strictInputAccessModifiers": true,
-    "strictTemplates": true */
-    /*     "enableI18nLegacyMessageIdFormat": false,
-    "strictInjectionParameters": false,
+    /*
+    "enableI18nLegacyMessageIdFormat": false,
     "strictInputAccessModifiers": false,
-    "strictTemplates": false,
-    "strictDomEventTypes": false */
+    "strictDomEventTypes": false 
+    */
 
     "fullTemplateTypeCheck": true,
     "strictTemplates": false,

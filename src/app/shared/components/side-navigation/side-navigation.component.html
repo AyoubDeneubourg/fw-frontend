@@ -1,0 +1,35 @@
+<ng-container *ngFor="let page of allPages; let i = index">
+
+
+  <div (click)="goToPage.emit(i + 1)" class="flex" [class.cursor-pointer]="true">
+
+
+
+    <ng-container *ngIf="page.currentStatus === 'Valid'">
+      <i class="fa-solid fa-check p-2 bg-white rounded-sm border-2 border-white"></i>
+    </ng-container>
+
+    <ng-container *ngIf="page.currentStatus === 'Active'">
+      <i class="fa-solid fa-square text-{{ color }} p-2 bg-white rounded-sm border-2 border-white"></i>
+    </ng-container>
+
+    <ng-container *ngIf="page.currentStatus === 'Future'">
+      <i class="fa-solid fa-square text-white p-2 bg-{{ color }} rounded-sm border-2 border-white"></i>
+    </ng-container>
+
+
+
+    <p class="my-auto ml-2 text-white" [class.font-semibold]="page.currentStatus === 'Active'">
+      {{ page.title | transloco }}
+    </p>
+
+  </div>
+
+
+  <div *ngIf="allPages.length - 1 > i" class="flex flex-row my-2">
+    <div class="vl"></div>
+    <div class="flex-1"></div>
+  </div>
+
+
+</ng-container>

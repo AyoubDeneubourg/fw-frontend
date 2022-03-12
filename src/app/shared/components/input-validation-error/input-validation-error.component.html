@@ -1,0 +1,20 @@
+<ng-container *transloco="let t; read: 'validations'">
+
+  <ul class="mb-1">
+    <ng-container *ngIf="control.invalid && (control.dirty || control.touched); else space">
+      <li *ngFor="let errorLabel of errorLabels" class="text-red-600">
+
+        {{ t(errorLabel.key, errorLabel.parameters) }}
+
+      </li>
+    </ng-container>
+    <ng-template #space>
+      <li>&nbsp;</li>
+    </ng-template>
+    <li *ngIf="control.pending">
+      <i aria-hidden="true" class="fas fa-cog fa-spin"></i>
+      {{ t('pending') }}
+    </li>
+  </ul>
+
+</ng-container>

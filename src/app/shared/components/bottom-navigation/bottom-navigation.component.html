@@ -1,0 +1,12 @@
+<div class="flex flex-row">
+
+  <ng-container *ngFor="let item of allPages">
+    <div [ngClass]="['flex-auto my-2 mx-1 rounded-full p-1', 
+      item.currentStatus !== 'Active' ? 'bg-light-' + color   : '',
+      item.currentStatus === 'Active' ? 'bg-' + color + ' anim-' + color : ''
+      ]">
+    </div>
+
+  </ng-container>
+
+</div>

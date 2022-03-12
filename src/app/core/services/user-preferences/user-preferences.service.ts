@@ -13,20 +13,17 @@ export class UserPreferencesService {
 
     @Optional() @Inject(DOCUMENT) private injectedDocument: Document) {
 
-    console.log([DOCUMENT, injectedDocument, injectedDocument.defaultView]);
-
     let preferences: UserPreferences;
 
     if (this.injectedDocument && injectedDocument.defaultView) {
       const localStorageContent = injectedDocument.defaultView.localStorage.getItem(this.SESSION_STORAGE_KEY);
       if (localStorageContent) {
         preferences = JSON.parse(localStorageContent);
-        console.log('Preferences found in localStorage', localStorageContent);
       } else {
-        console.log('No user preferences found, defaults will be used');
+        // console.log('No user preferences found, defaults will be used');
       }
     } else {
-      console.log('No access to document object, preferences won\'t be stored');
+      // console.log('No access to document object, preferences won\'t be stored');
     }
 
     this._preferencesTemp = Object.assign(this.defaultPreferences(), preferences || {});
@@ -64,11 +61,6 @@ export class UserPreferencesService {
 }
 
 
-
-
-/**
- * Preferences that can be set by the user.
- */
 export interface UserPreferences {
   language: string;
 }

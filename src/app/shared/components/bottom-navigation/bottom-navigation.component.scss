@@ -1,0 +1,43 @@
+@import "../../../../styles/variables";
+
+.anim-blue {
+  animation: anim-blue 0.2s 1;
+}
+
+.anim-gray {
+  animation: anim-gray 0.2s 1;
+}
+
+.anim-orange {
+  animation: anim-orange 0.2s 1;
+}
+
+@keyframes anim-orange {
+  0% {
+    background-color: $light-orange;
+  }
+
+  100% {
+    background-color: $orange;
+  }
+}
+
+@keyframes anim-gray {
+  0% {
+    background-color: $light-gray;
+  }
+
+  100% {
+    background-color: $gray;
+  }
+}
+
+@keyframes anim-blue {
+  0% {
+    background-color: $light-blue;
+  }
+
+  100% {
+    background-color: $blue;
+  }
+}

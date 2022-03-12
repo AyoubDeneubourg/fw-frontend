@@ -1,0 +1,89 @@
+<div class="flex flex-row h-screen">
+  <div class="w-2/3 bg-white flex items-center">
+    <div class="m-auto items-center">
+
+
+
+      <form class="m-auto w-max" [formGroup]="loginFormGroup" (ngSubmit)="onSubmit()">
+        <div formGroupName="p1" class="flex flex-col w-500">
+
+          <div class="mb-5">
+            <h2 class="flex flex-col text-4xl font-semibold">Welcome</h2>
+          </div>
+
+
+
+          <label for="email" class="font-semibold mb-1">Email</label>
+          <input id="email" class="border py-1 px-3 outline-none rounded-sm shadow-md" placeholder="johndoe@gmail.com"
+            formControlName="email" type="text" />
+
+
+          <ng-container>
+
+            <app-input-validation-error [control]="email"></app-input-validation-error>
+
+          </ng-container>
+
+
+          <label for="password" class="font-semibold mb-1">Password</label>
+          <input id="password" class="border  py-1 px-4 outline-none rounded-sm shadow-md" placeholder="••••••••••••"
+            formControlName="password" type="password" />
+
+
+          <ng-container>
+
+            <app-input-validation-error [control]="password"></app-input-validation-error>
+
+          </ng-container>
+
+
+
+          <div class="flex my-2">
+            <button type="submit"
+              class="shadow-md cursor-pointer py-2  px-12 rounded-md text-white bg-gray-800">Login</button>
+            <div class="flex-1"></div>
+            <div class="m-auto cursor-pointer  font-bold hover:border-b border-black ">Forgot password?</div>
+          </div>
+
+
+
+        </div>
+
+      </form>
+
+
+      <hr class="border-black my-8">
+
+
+
+      <p>Don't have an account?
+        <span class="font-bold cursor-pointer hover:border-b border-black" [routerLink]="['/register']">
+          Open a account
+        </span>
+      </p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+
+
+  <div class="bg-gray-800 w-1/3 flex items-center">
+    <div class="flex flex-col ml-14">
+
+
+    </div>
+  </div>
+
+
+</div>

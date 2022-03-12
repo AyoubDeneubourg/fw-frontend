@@ -1,0 +1,258 @@
+<div class="flex flex-row h-screen">
+  <div class="w-1/3 flex items-center" [class.bg-gray]="actualPage === 1"
+    [class.bg-blue]="actualPage !== 1 && accountType.value === 'Influencer'"
+    [class.bg-orange]="actualPage !== 1 && accountType.value === 'Brand'">
+    <div class="flex flex-col ml-14">
+
+
+      <app-side-navigation (goToPage)='goToPage($event)' [allPages]="allPages" [color]="actualPage === 1 ? 'gray' 
+        : accountType.value === 'Influencer' ? 'blue' 
+        : accountType.value === 'Brand' ? 'orange' : 'gray'">
+
+
+
+
+      </app-side-navigation>
+
+    </div>
+  </div>
+
+  <div class="flex m-auto items-center">
+
+
+    <form class="m-auto w-max" [formGroup]="registerFormGroup" (ngSubmit)="onSubmit()">
+      <div formGroupName="p1" class="flex flex-col w-500" [class.d-none]="actualPage !== 1">
+
+        <div class="mb-5">
+          <h2 class="flex flex-col text-4xl font-semibold">Select account type</h2>
+          <h3 class="flex flex-col text-lg">
+            Brand or influencer? Depending on the account type, you will have access to
+            different tools specially designed for you.</h3>
+        </div>
+
+        <div (click)="selectType('Influencer')" class="cursor-pointer flex shadow-md flex-row p-5 rounded-md my-2">
+
+          <span class="m-auto mx-2">LOGO HERE</span>
+          <span class="flex-1 mx-5 w-1/3">
+            <h4 class="text-lg font-semibold"> I am an influencer</h4>
+            <p class="text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate eaque repre</p>
+          </span>
+          <span class="mx-5 my-auto text-2xl ml-10"> <i class="fa-solid fa-angle-right my-auto"></i></span>
+        </div>
+
+
+
+
+        <div (click)="selectType('Brand')" class="cursor-pointer flex shadow-md flex-row p-5 rounded-md my-2">
+
+          <span class="m-auto mx-2">LOGO HERE</span>
+          <span class="flex-1 mx-5 w-1/3">
+            <h4 class="text-lg font-semibold"> I am a Brand</h4>
+            <p class="text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate eaque repre</p>
+          </span>
+          <span class="mx-5 my-auto text-2xl ml-10"> <i class="fa-solid fa-angle-right my-auto"></i></span>
+        </div>
+
+
+
+
+
+      </div>
+
+
+
+
+
+
+      <div formGroupName="p2" class="flex flex-col w-500" [class.d-none]="actualPage !== 2">
+
+
+
+
+        <div class="mb-5">
+          <h2 class="flex flex-col text-4xl font-semibold">Tell us where you are.</h2>
+          <h3 class="flex flex-col text-lg">Tell us where you live to have better performance
+            with our algorithm.</h3>
+        </div>
+
+
+
+        <select formControlName="country" class="px-2 py-3 shadow-md outline-none">
+
+
+
+          <ng-container *ngFor="let item of countries | keyvalue">
+            <option value="{{ item.key }}"
+              selected="{{ item.value.key == 'BE' ? 'selected' : '' }}">
+              {{ item.value.name }}</option>
+          </ng-container>
+
+        </select>
+
+
+
+
+        <button type="button" (click)="goToPage(3)" class="mt-5 text-white py-1 font-semibold px-3 rounded-sm shadow-sm"
+          [class.bg-blue]="actualPage !== 1 && accountType.value === 'Influencer'"
+          [class.bg-orange]="actualPage !== 1 && accountType.value === 'Brand'">Continue</button>
+        <div (click)="goToPage(1)" class="mx-auto mt-2 flex">
+          <i class="fa-solid fa-arrow-left-long my-auto cursor-pointer"></i>
+          <p class="inline-block ml-2 my-auto cursor-pointer">Back</p>
+        </div>
+
+
+      </div>
+
+
+      <div formGroupName="p3" class="flex flex-col w-500" [class.d-none]="actualPage !== 3">
+
+        <div class="mb-5">
+          <h2 class="flex flex-col text-4xl font-semibold">Tell us who you are.</h2>
+          <h3 class="flex flex-col text-lg">
+            We need a little more information from you.
+            You would need your email to login.</h3>
+        </div>
+
+
+
+
+        <label for="firstName" class="font-semibold mb-1">First Name</label>
+        <input id="firstName" class="py-1 px-3 outline-none rounded-sm shadow-md" formControlName="firstName"
+          type="text" />
+
+        <app-input-validation-error [control]="firstName"></app-input-validation-error>
+
+
+        <label for="lastName" class="font-semibold mb-1">Last Name</label>
+        <input id="lastName" class="py-1 px-3 outline-none rounded-sm shadow-md" formControlName="lastName"
+          type="text" />
+
+
+        <app-input-validation-error [control]="lastName"></app-input-validation-error>
+
+
+        <label for="email" class="font-semibold mb-1">Email</label>
+        <input id="email" class="py-1 px-3 outline-none rounded-sm shadow-md" formControlName="email" type="text" />
+
+
+        <app-input-validation-error [control]="email"></app-input-validation-error>
+
+
+        <button type="button" (click)="goToPage(4)" class="mt-5 text-white py-1 font-semibold px-3 rounded-sm shadow-sm"
+          [class.bg-blue]="actualPage !== 1 && accountType.value === 'Influencer'"
+          [class.bg-orange]="actualPage !== 1 && accountType.value === 'Brand'">Continue</button>
+        <div (click)="goToPage(2)" class="mx-auto mt-2 flex">
+          <i class="fa-solid fa-arrow-left-long my-auto"></i>
+          <p class="inline-block ml-2 my-auto cursor-pointer">Back</p>
+        </div>
+
+
+      </div>
+
+
+
+
+
+
+      <div formGroupName="p4" class="flex flex-col w-500" [class.d-none]="actualPage !== 4">
+
+
+        <div class="mb-5">
+          <h2 class="flex flex-col text-4xl font-semibold">Tell us who you are.</h2>
+          <h3 class="flex flex-col text-lg">
+            We need a little more information from you.
+            You would need your email to login.</h3>
+        </div>
+
+
+
+        <label for="password" class="font-semibold mb-1">Password</label>
+        <input id="password" class="py-1 px-3 outline-none rounded-sm shadow-md" formControlName="password"
+          type="password" />
+
+
+        <app-input-validation-error [control]="password"></app-input-validation-error>
+
+
+
+
+        <label for="repeatPassword" class="font-semibold mb-1">Repeat Password</label>
+        <input id="repeatPassword" class="py-1 px-3 outline-none rounded-sm shadow-md" formControlName="repeatPassword"
+          type="password" />
+
+
+        <app-input-validation-error [control]="repeatPassword"></app-input-validation-error>
+
+
+
+        <button type="button" (click)="goToPage(5)" class="mt-5 text-white py-1 font-semibold px-3 rounded-sm shadow-sm"
+          [class.bg-blue]="actualPage !== 1 && accountType.value === 'Influencer'"
+          [class.bg-orange]="actualPage !== 1 && accountType.value === 'Brand'">Continue</button>
+        <div (click)="goToPage(3)" class="mx-auto mt-2 flex">
+          <i class="fa-solid fa-arrow-left-long my-auto"></i>
+          <p class="inline-block ml-2 my-auto cursor-pointer">Back</p>
+        </div>
+
+
+      </div>
+
+
+      <div formGroupName="p5" class="flex flex-col w-500" [class.d-none]="actualPage !== 5">
+
+
+
+        <div class="mb-5">
+          <h2 class="flex flex-col text-4xl font-semibold">Last step!</h2>
+          <h3 class="flex flex-col text-lg">
+            Please enter your phone number. After this, you'll be all set.</h3>
+        </div>
+
+
+
+        <label for="phone" class="font-semibold mb-1">Phone number</label>
+        <div class="flex">
+
+
+
+
+
+
+          <div class="flex shadow-md rounded-l px-4 py-2 bg-gray-200 w-fit">
+
+            <img src="../../../../assets/countries/flags/mini/{{ country.value.toLowerCase() }}.webp" alt="">
+            <p class="ml-2 my-auto">{{ countries[country.value].number }}</p>
+
+          </div>
+          <input id="phoneNumber" class="flex-1 py-1 px-3 outline-none rounded-sm shadow-md" placeholder="489 33 28 64"
+            formControlName="phoneNumber" type="tel" />
+
+
+        </div>
+
+
+
+        <app-input-validation-error [control]="phoneNumber"></app-input-validation-error>
+
+
+
+        <button type="submit" class="mt-5  text-white py-1 font-semibold px-3 rounded-sm shadow-sm"
+          [class.bg-blue]="actualPage !== 1 && accountType.value === 'Influencer'"
+          [class.bg-orange]="actualPage !== 1 && accountType.value === 'Brand'">Register</button>
+        <div (click)="goToPage(4)" class="mx-auto mt-2 flex">
+          <i class="fa-solid fa-arrow-left-long my-auto"></i>
+          <p class="inline-block ml-2 my-auto cursor-pointer">Back</p>
+        </div>
+
+
+
+
+      </div>
+    </form>
+    <div class="absolute bottom-10 w-500">
+
+      <app-bottom-navigation [allPages]="allPages" [color]="actualPage === 1 ? 'gray' 
+        : accountType.value === 'Influencer' ? 'blue' 
+        : accountType.value === 'Brand' ? 'orange' : 'gray'"></app-bottom-navigation>
+    </div>
+  </div>
+</div>

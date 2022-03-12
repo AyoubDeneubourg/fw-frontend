@@ -12,7 +12,7 @@ import { MockComponent } from 'ng-mocks';
 import {
   TranslocoRootModule,
   SUPPORTED_LANGUAGES,
-} from '../../translation/transloco-root.module';
+} from './../../translation/transloco-root.module';
 
 describe('input validation component', () => {
   let spectator: Spectator<ChangeLanguageComponent>;
