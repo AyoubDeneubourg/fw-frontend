@@ -5,14 +5,14 @@
     <div class="flex flex-col ml-14">
 
 
-      <app-side-navigation (goToPage)='goToPage($event)' [allPages]="allPages" [color]="actualPage === 1 ? 'gray' 
+      <app-pages-side-navigation (goToPage)='goToPage($event)' [allPages]="allPages" [color]="actualPage === 1 ? 'gray' 
         : accountType.value === 'Influencer' ? 'blue' 
         : accountType.value === 'Brand' ? 'orange' : 'gray'">
 
 
 
 
-      </app-side-navigation>
+      </app-pages-side-navigation>
 
     </div>
   </div>
@@ -250,9 +250,9 @@
     </form>
     <div class="absolute bottom-10 w-500">
 
-      <app-bottom-navigation [allPages]="allPages" [color]="actualPage === 1 ? 'gray' 
+      <app-pages-bottom-navigation [allPages]="allPages" [color]="actualPage === 1 ? 'gray' 
         : accountType.value === 'Influencer' ? 'blue' 
-        : accountType.value === 'Brand' ? 'orange' : 'gray'"></app-bottom-navigation>
+        : accountType.value === 'Brand' ? 'orange' : 'gray'"></app-pages-bottom-navigation>
     </div>
   </div>
 </div>

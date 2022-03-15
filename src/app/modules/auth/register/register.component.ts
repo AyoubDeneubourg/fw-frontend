@@ -168,13 +168,11 @@ export class RegisterComponent implements OnInit {
   public selectType(type: "Brand" | "Influencer"): void {
 
     this.accountType.setValue(type);
-    this.goToPage(2);
-
+    this.onSubmit();
   }
 
 
   onSubmit(): void {
-
 
     if (this.registerFormGroup.invalid) {
 

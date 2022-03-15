@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { of } from 'rxjs';
+import { catchError, take } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 import { AuthService } from 'src/app/core/services/auth-service/auth.service';
 import { LoginData } from 'src/app/shared/models/common';
 
@@ -13,7 +16,7 @@ export class LoginComponent implements OnInit {
 
 
   public loginFormGroup: FormGroup;
-
+  public invalidCredentials: boolean = false;
 
   constructor(private formBuilder: FormBuilder, private authService: AuthService) { }
 
@@ -32,6 +35,8 @@ export class LoginComponent implements OnInit {
 
   public onSubmit(): void {
 
+    this.invalidCredentials = false;
+
 
     if (this.loginFormGroup.invalid) {
       this.loginFormGroup.markAllAsTouched()
@@ -39,15 +44,20 @@ export class LoginComponent implements OnInit {
     } else {
 
       const LOGINDATA: LoginData = {
-        email: this.email.value,
+        username: this.email.value,
         password: this.password.value,
       }
 
 
-      this.authService.login(LOGINDATA)
-        .subscribe((response) => {
-          console.log(response);
-        });
+      this.authService.login(LOGINDATA).pipe(
+        take(1),
+        tap((data) => {
+          // redirect home
+        }),
+        catchError(err => {
+          this.invalidCredentials = true;
+          return of(err)
+        })).subscribe();
 
     }
   }

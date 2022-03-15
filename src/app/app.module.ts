@@ -11,14 +11,15 @@ import { AppComponent } from './app.component';
 import { Observable } from 'rxjs';
 import { TranslocoRootModule } from './shared/translations/transloco-root.module';
 import { ChangeLanguageComponent } from './shared/components/change-language/change-language.component';
-import { SideNavigationComponent } from './shared/components/side-navigation/side-navigation.component';
+import { PagesSideNavigationComponent } from './shared/components/pages-side-navigation/pages-side-navigation.component';
 import { InputValidationErrorComponent } from './shared/components/input-validation-error/input-validation-error.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { RegisterComponent } from './modules/auth/register/register.component';
 import { LoginComponent } from './modules/auth/login/login.component';
 import { HomeComponent } from './modules/home/home.component';
 import { HeaderComponent } from './modules/home/header/header.component';
-import { BottomNavigationComponent } from './shared/components/bottom-navigation/bottom-navigation.component';
+import { PagesBottomNavigationComponent } from './shared/components/pages-bottom-navigation/pages-bottom-navigation.component';
+import { LeftNavigationComponent } from './shared/components/left-navigation/left-navigation.component';
 
 
 @NgModule({
@@ -26,12 +27,13 @@ import { BottomNavigationComponent } from './shared/components/bottom-navigation
     AppComponent,
     RegisterComponent,
     ChangeLanguageComponent,
-    SideNavigationComponent,
+    PagesSideNavigationComponent,
     InputValidationErrorComponent,
     LoginComponent,
     HomeComponent,
     HeaderComponent,
-    BottomNavigationComponent
+    PagesBottomNavigationComponent,
+    LeftNavigationComponent
   ],
 
   imports: [

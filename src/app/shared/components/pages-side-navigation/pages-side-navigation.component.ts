@@ -2,11 +2,11 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { PageNavigation } from 'src/app/shared/models/pagination';
 
 @Component({
-  selector: 'app-side-navigation',
-  templateUrl: './side-navigation.component.html',
-  styleUrls: ['./side-navigation.component.scss']
+  selector: 'app-pages-side-navigation',
+  templateUrl: './pages-side-navigation.component.html',
+  styleUrls: ['./pages-side-navigation.component.scss']
 })
-export class SideNavigationComponent implements OnInit {
+export class PagesSideNavigationComponent implements OnInit {
 
 
 

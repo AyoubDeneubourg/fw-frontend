@@ -2,11 +2,11 @@ import { Component, Input, OnInit } from '@angular/core';
 import { PageNavigation } from '../../models/pagination';
 
 @Component({
-  selector: 'app-bottom-navigation',
-  templateUrl: './bottom-navigation.component.html',
-  styleUrls: ['./bottom-navigation.component.scss']
+  selector: 'app-pages-bottom-navigation',
+  templateUrl: './pages-bottom-navigation.component.html',
+  styleUrls: ['./pages-bottom-navigation.component.scss']
 })
-export class BottomNavigationComponent implements OnInit {
+export class PagesBottomNavigationComponent implements OnInit {
 
   constructor() { }
 

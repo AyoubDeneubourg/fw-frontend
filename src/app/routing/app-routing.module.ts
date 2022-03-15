@@ -4,12 +4,13 @@ import { LoginComponent } from '../modules/auth/login/login.component';
 import { RegisterComponent } from '../modules/auth/register/register.component';
 import { HomeComponent } from '../modules/home/home.component';
 import { ChangeLanguageComponent } from '../shared/components/change-language/change-language.component';
+import { AuthenticatedGuard } from './guards/authenticated.guard';
 
 const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
-    canActivate: [],
+    canActivate: [AuthenticatedGuard],
   },
   {
     path: 'register',

@@ -1,0 +1,27 @@
+@import "../../../../styles/variables";
+
+.container {
+  height: 100vh;
+  width: 80px;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+}
+
+i {
+  color: $gray;
+  font-size: 1.3rem;
+}
+
+.active {
+  border-right: 5px solid $blue;
+}
+.active2 {
+  position: relative;
+  left: 0;
+  border-right: 5px solid $blue;
+}
+
+.inactive {
+  border-right: 5px solid white;
+}
