@@ -28,6 +28,8 @@ export class RegisterComponent implements OnInit {
   public actualPage: number = 1;
   public allowToGo: number = 1;
 
+  public emailAlreadyExists: boolean = false;
+
   public allPages: PageNavigation[] = [
     {
       title: 'Account type',
@@ -68,9 +70,16 @@ export class RegisterComponent implements OnInit {
       p3: this.formBuilder.group({
         firstName: ['', [Validators.required]],
         lastName: ['', [Validators.required]],
-        email: ['', [Validators.required]],
-      }),
+        email: ['', [Validators.required,]],
 
+
+
+
+
+
+
+
+      }),
       p4: this.formBuilder.group({
         password: ['', [Validators.required, Validators.minLength(6)]],
         repeatPassword: ['', [Validators.required, matchValues('password')]],
@@ -112,7 +121,14 @@ export class RegisterComponent implements OnInit {
 
     if (page === 3) {
       if (this.page1.valid && this.page2.valid) {
+
+
+
+
         this.setCurrentPages(3);
+
+
+
       } else {
 
         this.goToPage(2);
@@ -123,7 +139,12 @@ export class RegisterComponent implements OnInit {
 
     if (page === 4) {
       if (this.page1.valid && this.page2.valid && this.page3.valid) {
-        this.setCurrentPages(4);
+
+        this.authService.checkIfEmailAvailable(this.email.value)
+          .subscribe((response) => {
+            if (!response) this.setCurrentPages(4);
+            else this.emailAlreadyExists = true;
+          });
       } else {
 
         this.goToPage(3);
@@ -168,7 +189,8 @@ export class RegisterComponent implements OnInit {
   public selectType(type: "Brand" | "Influencer"): void {
 
     this.accountType.setValue(type);
-    this.onSubmit();
+    this.goToPage(2)
+
   }
 
 
@@ -176,7 +198,7 @@ export class RegisterComponent implements OnInit {
 
     if (this.registerFormGroup.invalid) {
 
-      this.goToPage(5)
+      // this.goToPage(5)
       this.registerFormGroup.markAllAsTouched()
 
     } else {

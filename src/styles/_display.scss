@@ -1,0 +1,31 @@
+.main-grid {
+  display: grid;
+  grid-template-columns: 80px 100%;
+  grid-template-rows: 500px 100%;
+}
+
+.col-1 {
+}
+
+.main-grid {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  grid-template-rows: 80px 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "left top"
+    "left content";
+}
+
+.main-grid-left-item {
+  grid-area: left;
+}
+
+.main-grid-top-item {
+  grid-area: top;
+}
+
+.main-grid-content {
+  grid-area: content;
+}

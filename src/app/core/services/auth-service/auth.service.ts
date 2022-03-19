@@ -1,11 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { error } from 'console';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
-import { Brand } from 'src/app/shared/models/brand';
-import { LoginData, RegistrationData } from 'src/app/shared/models/common';
-import { isNotNullOrUndefined } from 'src/app/shared/static/utils/is-null-or-undefined';
+import { LoginData, RegistrationData, User } from 'src/app/shared/models/common';
+
 
 @Injectable({
   providedIn: 'root'
@@ -14,12 +12,14 @@ export class AuthService {
 
   readonly apiUrl = "https://fw-auth-service.herokuapp.com";
 
-  private subject = new BehaviorSubject<any>(null);
-  isLoggedIn$: Observable<boolean>;
-
 
   constructor(private http: HttpClient) {
 
+    const hours: number = 2;
+
+    setInterval(() => {
+      this.loggedInUser = undefined;
+    }, 1000 * 60 * hours);
 
 
 
@@ -35,21 +35,24 @@ export class AuthService {
   }
 
 
+
+  public checkIfEmailAvailable(email: string): Observable<boolean> {
+    return this.http.post<boolean>(`${this.apiUrl}/api/user/email/${email}`, null);
+  }
+
+
+
   public login(loginData: LoginData): Observable<any> {
 
     return this.http.post<LoginData>(`${this.apiUrl}/login`, loginData, { observe: 'response' })
       .pipe(
         tap((response) => {
-
           if (response.headers.get('Authorization')) {
             this.setToken(response.headers.get('Authorization'));
           } else {
-            throw new Error('No valid token returned');
+            throw new Error('No valid token available');
           }
-
         })
-
-
       );
   }
 
@@ -60,15 +63,11 @@ export class AuthService {
 
 
 
-  public user(): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/api/user`, this.getHeaders());
-  }
-
-
-
   public isLoggedIn(): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/api/user`, this.getHeaders());
+    return this.http.get<any>(`${this.apiUrl}/api/user/current`, this.getHeaders());
   }
+
+
 
 
 
@@ -85,8 +84,10 @@ export class AuthService {
     localStorage.removeItem('token')
   }
 
-  private getHeaders(options?: any): any {
-    let authorization = this.getToken() ? { 'Authorization': this.getToken() } : null
+
+
+  private getHeaders(options?: any): HttpOptions {
+    const authorization = this.getToken() ? { 'Authorization': this.getToken() } : null
 
     const httpOptions = {
       headers: new HttpHeaders({
@@ -98,6 +99,42 @@ export class AuthService {
     return httpOptions;
   }
 
+
+
+
+
+
+  public loggedInUser: User;
+  public loggedInUser$: Observable<User> = of();
+
+
+  public getCurrentLoggedInUser(): Observable<User> {
+
+    if (this.loggedInUser) {
+
+      return this.loggedInUser$ as Observable<User>;
+
+    } else {
+      console.log('http call')
+      return this.http
+        .get<User>(`${this.apiUrl}/api/user/current`, this.getHeaders())
+        .pipe(
+          tap((loggedInUser) => {
+            this.loggedInUser = loggedInUser;
+            this.loggedInUser$ = of(loggedInUser);
+
+          })
+        );
+
+    }
+
+  }
+
+
 }
 
-type Token = string;
+export type Token = string;
+
+export type HttpOptions = {
+  headers: HttpHeaders
+}

@@ -1,5 +1,19 @@
 export type User = {
 
+    id?: number
+    active?: string
+    address?: string
+    birthdate?: string
+    email?: string
+    firstName?: string
+    lastName?: string
+    password?: string
+    phoneNumber?: number
+    profilePicture?: string
+    rating?: number
+    roles?: string
+    userName?: string
+    userType?: string
 
 };
 
@@ -14,7 +28,6 @@ export type RegistrationData = {
     'country': string,
     'accountType': 'Influencer' | 'Brand';
 };
-
 
 
 

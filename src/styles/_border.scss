@@ -1,4 +1,4 @@
-.border-blue {
+/* .border-blue {
   border: 1px solid $blue;
 }
 .border-light-blue {
@@ -9,4 +9,17 @@
 }
 .border-light-orange {
   border: 1px solid $light-orange;
+} */
+
+.border-blue {
+  border-color: $blue;
+}
+.border-light-blue {
+  border-color: $light-blue;
+}
+.border-orange {
+  border-color: $orange;
+}
+.border-light-orange {
+  border-color: $light-orange;
 }

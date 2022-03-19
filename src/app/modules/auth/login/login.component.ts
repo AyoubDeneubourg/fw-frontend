@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { of } from 'rxjs';
 import { catchError, take } from 'rxjs/operators';
 import { tap } from 'rxjs/operators';
@@ -18,7 +19,7 @@ export class LoginComponent implements OnInit {
   public loginFormGroup: FormGroup;
   public invalidCredentials: boolean = false;
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthService) { }
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
 
@@ -52,7 +53,8 @@ export class LoginComponent implements OnInit {
       this.authService.login(LOGINDATA).pipe(
         take(1),
         tap((data) => {
-          // redirect home
+          console.log(data)
+          this.router.navigate(['/dashboard']);
         }),
         catchError(err => {
           this.invalidCredentials = true;

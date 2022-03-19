@@ -2,9 +2,9 @@
 
   <ul class="mb-1">
     <ng-container *ngIf="control.invalid && (control.dirty || control.touched); else space">
-      <li *ngFor="let errorLabel of errorLabels" class="text-red-600">
+      <li *ngFor="let inputError of getInputErrors" class="text-red-600">
 
-        {{ t(errorLabel.key, errorLabel.parameters) }}
+        {{ t(inputError.key, inputError.parameters) }}
 
       </li>
     </ng-container>

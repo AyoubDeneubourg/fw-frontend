@@ -20,6 +20,16 @@ import { HomeComponent } from './modules/home/home.component';
 import { HeaderComponent } from './modules/home/header/header.component';
 import { PagesBottomNavigationComponent } from './shared/components/pages-bottom-navigation/pages-bottom-navigation.component';
 import { LeftNavigationComponent } from './shared/components/left-navigation/left-navigation.component';
+import { DashboardComponent } from './modules/dashboard/dashboard.component';
+import { CardComponent } from './shared/components/card/card.component';
+import { TopNavigationComponent } from './shared/components/top-navigation/top-navigation.component';
+import { SearchComponent } from './modules/search/search.component';
+import { OverviewComponent } from './modules/dashboard/overview/overview.component';
+import { UpcomingEventsComponent } from './modules/dashboard/overview/upcoming-events/upcoming-events.component';
+import { RequestComponent } from './modules/dashboard/overview/request/request.component';
+import { ProfileComponent } from './modules/profile/profile.component';
+import { OffersComponent } from './modules/offers/offers.component';
+import { MainNavbarsComponent } from './shared/views/main-navbars/main-navbars.component';
 
 
 @NgModule({
@@ -33,7 +43,17 @@ import { LeftNavigationComponent } from './shared/components/left-navigation/lef
     HomeComponent,
     HeaderComponent,
     PagesBottomNavigationComponent,
-    LeftNavigationComponent
+    LeftNavigationComponent,
+    DashboardComponent,
+    CardComponent,
+    TopNavigationComponent,
+    SearchComponent,
+    OverviewComponent,
+    UpcomingEventsComponent,
+    RequestComponent,
+    ProfileComponent,
+    OffersComponent,
+    MainNavbarsComponent
   ],
 
   imports: [

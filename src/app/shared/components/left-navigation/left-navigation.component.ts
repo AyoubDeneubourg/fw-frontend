@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Event, NavigationEnd, Route, Router } from '@angular/router';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-left-navigation',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LeftNavigationComponent implements OnInit {
 
-  constructor() { }
+
+
+
+  constructor() {
+
+  }
 
   ngOnInit(): void {
+
+
   }
 
 }

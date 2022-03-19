@@ -18,7 +18,7 @@ export class InputValidationErrorComponent implements OnInit {
   constructor() {
   }
 
-  get errorLabels(): ErrorLabel[] {
+  get getInputErrors(): InputError[] {
     if (this.control.invalid && this.control.errors) {
       return Object.keys(this.control.errors).map(key => {
         this.readableParams(this.control.errors[key]);
@@ -48,7 +48,7 @@ export class InputValidationErrorComponent implements OnInit {
   }
 }
 
-interface ErrorLabel {
+interface InputError {
   key: string;
   parameters?: any;
 }

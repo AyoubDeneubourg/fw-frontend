@@ -1,0 +1,32 @@
+<div class="shadow-md border">
+
+  <div class="flex p-5  border-blue">
+    <p class="m-2 text-xl flex-1">Overview</p>
+
+    <p class="my-auto mx-2" (click)="changeActiveTab('Upcoming')" [class.active]="active === 'Upcoming'">
+      Upcoming Events
+    </p>
+
+    <p class="my-auto mx-2" (click)="changeActiveTab('Request')" [class.active]="active === 'Request'">
+      Request
+    </p>
+
+    <i class="my-auto mx-2 fa-solid fa-filter"></i>
+  </div>
+
+  <hr class="m-2 mx-5">
+
+
+
+  <div class="p-5">
+    <ng-container *ngIf="active === 'Upcoming'">
+      <app-upcoming-events></app-upcoming-events>
+    </ng-container>
+
+
+    <ng-container *ngIf="active === 'Request'">
+      <app-request></app-request>
+    </ng-container>
+
+  </div>
+</div>

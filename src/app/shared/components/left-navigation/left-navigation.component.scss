@@ -14,12 +14,7 @@ i {
 }
 
 .active {
-  border-right: 5px solid $blue;
-}
-.active2 {
-  position: relative;
-  left: 0;
-  border-right: 5px solid $blue;
+  border-right: 5px solid $blue !important;
 }
 
 .inactive {

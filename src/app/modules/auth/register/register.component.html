@@ -136,7 +136,9 @@
 
 
         <app-input-validation-error [control]="email"></app-input-validation-error>
-
+        <ng-container *ngIf="this.emailAlreadyExists">
+          <p class="text-red-600">This email already exists</p>
+        </ng-container>
 
         <button type="button" (click)="goToPage(4)" class="mt-5 text-white py-1 font-semibold px-3 rounded-sm shadow-sm"
           [class.bg-blue]="actualPage !== 1 && accountType.value === 'Influencer'"
