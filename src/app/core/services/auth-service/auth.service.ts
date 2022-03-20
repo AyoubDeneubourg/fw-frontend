@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { LoginData, RegistrationData, User } from 'src/app/shared/models/common';
@@ -13,7 +14,7 @@ export class AuthService {
   readonly apiUrl = "https://fw-auth-service.herokuapp.com";
 
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
 
     const hours: number = 2;
 
@@ -59,6 +60,7 @@ export class AuthService {
 
   public logout(): void {
     this.removeToken();
+    this.router.navigateByUrl('/')
   }
 
 
@@ -81,7 +83,7 @@ export class AuthService {
   }
 
   private removeToken() {
-    localStorage.removeItem('token')
+    localStorage.removeItem('token');
   }
 
 

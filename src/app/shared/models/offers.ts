@@ -6,7 +6,7 @@ export type Offer = {
     dates: OfferDates,
     files: OfferFiles,
     isAccepted: OfferStatus,
-    client?: OfferClient // ?
+    client?: OfferClient
 }
 
 export type SocialMedia = {
