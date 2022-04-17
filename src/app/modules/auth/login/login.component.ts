@@ -44,13 +44,13 @@ export class LoginComponent implements OnInit {
 
     } else {
 
-      const LOGINDATA: LoginData = {
+      const LOGIN_DATA: LoginData = {
         username: this.email.value,
         password: this.password.value,
       }
 
 
-      this.authService.login(LOGINDATA).pipe(
+      this.authService.login(LOGIN_DATA).pipe(
         take(1),
         tap((data) => {
           console.log(data)

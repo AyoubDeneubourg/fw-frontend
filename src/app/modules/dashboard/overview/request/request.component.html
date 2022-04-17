@@ -1,4 +1,62 @@
 <ng-container *transloco="let t; read: 'z'">
+
+  <form class="flex" [formGroup]="sortingFormGroup">
+    <div class="flex-1" formGroupName="sortGroup">
+
+
+
+      <label for="accepted" class=" px-3 py-2 rounded-md mr-2" [class.bg-light-gray]="!accepted.value"
+        [class.bg-blue]="accepted.value">
+        <input formControlName="accepted" id="accepted" class="p-0 outline-none rounded-sm shadow-md" type="checkbox" />
+        <p class="ml-2 text-white inline-block">
+          Accepted
+        </p>
+      </label>
+
+
+      <label for="pending" class=" px-3 py-2 rounded-md bg-blue mr-2" [class.bg-light-gray]="!pending.value"
+        [class.bg-blue]="pending.value">
+        <input formControlName="pending" id="pending" class="p-0 outline-none rounded-sm shadow-md" type="checkbox" />
+        <p class="ml-2 text-white inline-block">
+          Pending
+        </p>
+      </label>
+
+
+
+      <label for="cancelled" class=" px-3 py-2 rounded-md bg-blue mr-2" [class.bg-light-gray]="!cancelled.value"
+        [class.bg-blue]="cancelled.value">
+        <input formControlName="cancelled" id="cancelled" class="p-0 outline-none rounded-sm shadow-md"
+          type="checkbox" />
+        <p class="ml-2 text-white inline-block">
+          Cancelled
+        </p>
+      </label>
+
+      <!--       <ng-multiselect-dropdown [placeholder]="'custom placeholder'" [settings]="dropdownSettings" [data]="dropdownList"
+        [(ngModel)]="selectedItems" (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)">
+
+
+      </ng-multiselect-dropdown> -->
+    </div>
+
+    <div>
+
+      <select class="border px-2 py-1 rounded mr-2">
+        <option value="new">Newest</option>
+        <option value="time">Time</option>
+        <option value="client">Client</option>
+      </select>
+
+
+      <select class="border px-2 py-1 rounded mr-2">
+        <option value="ascending">Ascending</option>
+        <option value="descending">Descending</option>
+      </select>
+
+    </div>
+  </form>
+
   <table class="w-100">
     <thead>
       <tr class="font-semibold">

@@ -18,9 +18,9 @@ export class AuthService {
 
     const hours: number = 2;
 
-    setInterval(() => {
-      this.loggedInUser = undefined;
-    }, 1000 * 60 * hours);
+    /*     setInterval(() => {
+          this.loggedInUser = undefined;
+        }, 1000 * 60 * hours); */
 
 
 

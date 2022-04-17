@@ -3,6 +3,11 @@
 
   <div (click)="goToPage.emit(i + 1)" class="flex" [class.cursor-pointer]="true">
 
+    <ng-container *ngIf="direction === 'Right'">
+      <p class="my-auto mr-2 text-white text-right flex-1" [class.font-semibold]="page.currentStatus === 'Active'">
+        {{ page.title | transloco }}
+      </p>
+    </ng-container>
 
 
     <ng-container *ngIf="page.currentStatus === 'Valid'">
@@ -17,18 +22,21 @@
       <i class="fa-solid fa-square text-white p-2 bg-{{ color }} rounded-sm border-2 border-white"></i>
     </ng-container>
 
+    <ng-container *ngIf="direction === 'Left'">
+      <p class="my-auto ml-2 text-white" [class.font-semibold]="page.currentStatus === 'Active'">
+        {{ page.title | transloco }}
+      </p>
+    </ng-container>
 
-
-    <p class="my-auto ml-2 text-white" [class.font-semibold]="page.currentStatus === 'Active'">
-      {{ page.title | transloco }}
-    </p>
 
   </div>
 
 
   <div *ngIf="allPages.length - 1 > i" class="flex flex-row my-2">
-    <div class="vl"></div>
-    <div class="flex-1"></div>
+    <div *ngIf="direction === 'Right'" class="flex-1"></div>
+    <div [class.border-right-2]="direction === 'Left'" [class.border-left-2]="direction === 'Right'"
+      class="vertical-line"></div>
+    <div *ngIf="direction === 'Left'" class="flex-1"></div>
   </div>
 
 

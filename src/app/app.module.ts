@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
@@ -30,6 +30,9 @@ import { RequestComponent } from './modules/dashboard/overview/request/request.c
 import { ProfileComponent } from './modules/profile/profile.component';
 import { OffersComponent } from './modules/offers/offers.component';
 import { MainNavbarsComponent } from './shared/views/main-navbars/main-navbars.component';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { SocialMediaDetailsComponent } from './modules/offers/social-media-details/social-media-details.component';
+import { WizardComponent } from './modules/search/wizard/wizard.component';
 
 
 @NgModule({
@@ -53,7 +56,9 @@ import { MainNavbarsComponent } from './shared/views/main-navbars/main-navbars.c
     RequestComponent,
     ProfileComponent,
     OffersComponent,
-    MainNavbarsComponent
+    MainNavbarsComponent,
+    SocialMediaDetailsComponent,
+    WizardComponent
   ],
 
   imports: [
@@ -61,8 +66,10 @@ import { MainNavbarsComponent } from './shared/views/main-navbars/main-navbars.c
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    FormsModule,
     TranslocoRootModule,
-    NoopAnimationsModule
+    NoopAnimationsModule,
+    NgMultiSelectDropDownModule.forRoot()
 
   ],
   providers: [CookieService, FormBuilder],

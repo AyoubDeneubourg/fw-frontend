@@ -21,7 +21,8 @@ export class PagesSideNavigationComponent implements OnInit {
 
 
 
-
+  @Input()
+  public direction: 'Left' | 'Right' = "Left";
 
   @Output()
   goToPage: EventEmitter<any> = new EventEmitter();

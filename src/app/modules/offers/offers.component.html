@@ -1,1 +1,329 @@
-<p>offers works!</p>
+<div class="flex flex-row h-screen">
+
+
+  <div class="flex m-auto items-center">
+
+
+    <form class="m-auto w-max" [formGroup]="offerFormGroup" (ngSubmit)="onSubmit()">
+      <div formGroupName="p1" class="flex flex-col w-500" [class.hidden]="actualPage !== 1">
+
+        <div class="mb-5">
+          <h2 class="flex flex-col text-4xl font-semibold">Select account type</h2>
+          <h3 class="flex flex-col text-lg">
+            Brand or influencer? Depending on the account type, you will have access to
+            different tools specially designed for you.</h3>
+        </div>
+
+
+        <label for="socialMediaFacebook" class="font-semibold mb-1 p-6 rounded-md"
+          [class.bg-light-gray]="!socialMedia.controls[0].value" [class.bg-blue]="socialMedia.controls[0].value">
+          <input id="socialMediaFacebook" class="py-1 px-3 outline-none rounded-sm shadow-md"
+            [formControl]="socialMedia.controls[0]" type="checkbox" />
+          <p class="ml-2 text-white inline-block">
+            Facebook
+          </p>
+        </label>
+
+
+
+        <label for="socialMediaTwitter" class="font-semibold mb-1 p-6 rounded-md"
+          [class.bg-light-gray]="!socialMedia.controls[1].value" [class.bg-blue]="socialMedia.controls[1].value">
+          <input id="socialMediaTwitter" class="py-1 px-3 outline-none rounded-sm shadow-md"
+            [formControl]="socialMedia.controls[1]" type="checkbox" />
+          <p class="ml-2 text-white inline-block">
+            Twitter
+          </p>
+        </label>
+
+        <app-input-validation-error [control]="socialMedia"></app-input-validation-error>
+
+
+        <button type="button" (click)="goToPage(2)"
+          class="mt-5 text-white py-1 font-semibold px-3 rounded-sm shadow-sm bg-blue">Continue</button>
+
+
+
+      </div>
+
+
+
+
+      <div formGroupName="p2" class="flex flex-col w-500" [class.hidden]="actualPage !== 2">
+
+
+        <div class="mb-5">
+          <h2 class="flex flex-col text-4xl font-semibold">Tell us where you are.</h2>
+          <h3 class="flex flex-col text-lg">Tell us where you live to have better performance
+            with our algorithm.</h3>
+        </div>
+
+
+        <ng-container *ngFor="let item of socialMediaDetails | keyvalue">
+
+          <app-social-media-details [socialMedia]="item.key"
+            (addOrRemoveSocialMediaDetails)='addOrRemoveSocialMediaDetails($event)'
+            [socialMediaDetails]='socialMediaDetails'>
+          </app-social-media-details>
+
+        </ng-container>
+
+
+
+        <ng-container *ngIf="!socialMediaDetailsValid; else space">
+          <p class="text-red-600"> {{ 'validations.socialMediaRequired' | transloco }} </p>
+        </ng-container>
+        <ng-template #space>&nbsp;</ng-template>
+
+
+
+
+
+        <button type="button" (click)="goToPage(3)"
+          class="mt-5 text-white py-1 font-semibold px-3 rounded-sm shadow-sm bg-blue">Continue</button>
+        <div (click)="goToPage(1)" class="mx-auto mt-2 flex">
+          <i class="fa-solid fa-arrow-left-long my-auto cursor-pointer"></i>
+          <p class="inline-block ml-2 my-auto cursor-pointer">Back</p>
+        </div>
+
+
+      </div>
+
+      <div formGroupName="p3" class="flex flex-col w-500" [class.hidden]="actualPage !== 3">
+
+        <div class="mb-5">
+          <h2 class="flex flex-col text-4xl font-semibold">Tell us who you are.</h2>
+          <h3 class="flex flex-col text-lg">
+            We need a little more information from you.
+            You would need your email to login.</h3>
+        </div>
+
+
+
+
+
+
+        <label for="startDate" class="font-semibold mb-1">Start date</label>
+
+        <input id="startDate" type="date" class="py-1 px-3 outline-none rounded-sm shadow-md border"
+          formControlName="startDate">
+        <app-input-validation-error [control]="startDate"></app-input-validation-error>
+
+        <label for="endDate" class="font-semibold mb-1">End date</label>
+
+        <input id="endDate" type="date" class="py-1 px-3 outline-none rounded-sm shadow-md border"
+          formControlName="endDate">
+
+        <app-input-validation-error [control]="endDate"></app-input-validation-error>
+
+
+
+        <button type="button" (click)="goToPage(4)"
+          class="mt-5 text-white py-1 font-semibold px-3 rounded-sm shadow-sm bg-blue ">Continue</button>
+        <div (click)="goToPage(2)" class="mx-auto mt-2 flex">
+          <i class="fa-solid fa-arrow-left-long my-auto cursor-pointer"></i>
+          <p class="inline-block ml-2 my-auto cursor-pointer">Back</p>
+        </div>
+
+
+      </div>
+
+
+
+      <div formGroupName="p4" class="flex flex-col w-500" [class.hidden]="actualPage !== 4">
+
+
+        <div class="mb-5">
+          <h2 class="flex flex-col text-4xl font-semibold">Tell us who you are.</h2>
+          <h3 class="flex flex-col text-lg">
+            We need a little more information from you.
+            You would need your email to login.</h3>
+        </div>
+
+
+
+
+
+        <label for="description" class="font-semibold mb-1">Description</label>
+        <textarea name="description" id="description" cols="30" rows="10"
+          class="py-1 px-3 outline-none rounded-sm shadow-md border" formControlName="description">
+        </textarea>
+
+
+
+        <app-input-validation-error [control]="description"></app-input-validation-error>
+
+
+
+        <button type="button" (click)="goToPage(5)"
+          class="mt-5 text-white py-1 font-semibold px-3 rounded-sm shadow-sm bg-blue ">Continue</button>
+        <div (click)="goToPage(3)" class="mx-auto mt-2 flex">
+          <i class="fa-solid fa-arrow-left-long my-auto cursor-pointer"></i>
+          <p class="inline-block ml-2 my-auto cursor-pointer">Back</p>
+        </div>
+
+
+      </div>
+
+
+      <div formGroupName="p5" class="flex flex-col w-500" [class.hidden]="actualPage !== 5">
+
+
+
+        <div class="mb-5">
+          <h2 class="flex flex-col text-4xl font-semibold">Tell us who you are.</h2>
+          <h3 class="flex flex-col text-lg">
+            We need a little more information from you.
+            You would need your email to login.</h3>
+        </div>
+
+
+        <label for="uploadFile" class="font-semibold mb-1">Upload</label>
+        <textarea name="uploadFile" id="uploadFile" cols="30" rows="10"
+          class="py-1 px-3 outline-none rounded-sm shadow-md border" formControlName="uploadFile"></textarea>
+
+
+
+        <app-input-validation-error [control]="uploadFile"></app-input-validation-error>
+
+
+
+
+        <button type="button" (click)="goToPage(6)"
+          class="mt-5 text-white py-1 font-semibold px-3 rounded-sm shadow-sm bg-blue ">Continue</button>
+        <div (click)="goToPage(4)" class="mx-auto mt-2 flex">
+          <i class="fa-solid fa-arrow-left-long my-auto cursor-pointer"></i>
+          <p class="inline-block ml-2 my-auto cursor-pointer">Back</p>
+        </div>
+
+
+
+
+      </div>
+
+
+
+      <div formGroupName="p6" class="flex flex-col w-800 m-auto" [class.hidden]="actualPage !== 6">
+
+
+
+        <div class="mb-5">
+          <h2 class="flex flex-col text-4xl font-semibold">Offer Summary</h2>
+          <h3 class="flex flex-col text-lg">
+            We need a little more information from you.
+            You would need your email to login.</h3>
+        </div>
+
+        <div class="flex">
+
+          <div class="flex-1 flex flex-col mr-2">
+
+
+            <div class="flex-1">
+              <h4 class="text-lg">Order</h4>
+
+
+              <ng-container *ngFor="let item of socialMediaDetails | keyvalue">
+
+                <div class="flex bg-light-blue p-2 mb-2 rounded flex-col">
+                  <p class="capitalize">{{ item.key }}</p>
+                  <div class="flex">
+                    <p class="flex-1">Posts</p>
+                    <p>{{ item.value.posts }}</p>
+                  </div>
+                  <div class="flex">
+                    <p class="flex-1">Stories</p>
+                    <pre>{{ item.value.stories }}</pre>
+                  </div>
+                  <div class="flex">
+                    <p class="flex-1">Highlights</p>
+                    <p>{{ item.value.highlights }}</p>
+                  </div>
+                </div>
+
+
+              </ng-container>
+            </div>
+
+
+
+            <div>
+              <h4 class="text-lg">Dates</h4>
+              <div class="flex bg-light-blue p-3 rounded mb-2">
+                <i class="fa-solid fa-calendar text-2xl my-auto align-middle text-gray mr-3"></i>
+                <div class="flex flex-col">
+                  <h4 class="text-sm">Start date</h4>
+                  <h4 class="font-semibold">{{ startDate.value }}</h4>
+                </div>
+              </div>
+              <div class="flex bg-light-blue p-3 rounded mt-2">
+                <i class="fa-solid fa-calendar text-2xl my-auto align-middle text-gray mr-3"></i>
+                <div class="flex flex-col">
+                  <h4 class="text-sm">End date</h4>
+                  <h4 class="font-semibold">{{ endDate.value }}</h4>
+                </div>
+              </div>
+            </div>
+
+
+
+          </div>
+
+
+          <div class="flex-1 flex flex-col ml-2">
+
+
+            <div class="flex-1">
+              <h4 class="text-lg">Description</h4>
+              <p class="bg-light-blue p-3 rounded">
+                {{ description.value }}
+              </p>
+            </div>
+
+
+
+
+            <div>
+              Download
+            </div>
+
+
+
+          </div>
+
+        </div>
+
+
+
+
+
+        <button type="button" (click)="goToPage(6)"
+          class="mt-5 text-white py-1 font-semibold px-3 rounded-sm shadow-sm bg-blue ">Continue</button>
+        <div (click)="goToPage(5)" class="mx-auto mt-2 flex">
+          <i class="fa-solid fa-arrow-left-long my-auto cursor-pointer"></i>
+          <p class="inline-block ml-2 my-auto cursor-pointer">Back</p>
+        </div>
+
+
+
+
+      </div>
+    </form>
+    <div class="absolute bottom-10 w-800">
+
+      <app-pages-bottom-navigation [allPages]="allPages" [color]="'blue'"></app-pages-bottom-navigation>
+    </div>
+  </div>
+
+ 
+
+  <div class="w-1/3 flex items-center bg-blue justify-end">
+    <div class="flex flex-col mr-14 ">
+
+
+      <app-pages-side-navigation (goToPage)='goToPage($event)' [allPages]="allPages" [color]="'blue'"
+        [direction]="'Right'">
+      </app-pages-side-navigation>
+
+    </div>
+  </div>
+</div>

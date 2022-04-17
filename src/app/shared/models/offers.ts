@@ -11,14 +11,19 @@ export type Offer = {
 
 export type SocialMedia = {
 
-    facebook?: SocialMediaInformation,
-    twitter?: SocialMediaInformation,
-    instagram?: SocialMediaInformation,
+    facebook?: SocialMediaInformation, // 0 
+    twitter?: SocialMediaInformation, // 1
+    instagram?: SocialMediaInformation, // ...
     tiktok?: SocialMediaInformation,
     snapchat?: SocialMediaInformation,
     youtube?: SocialMediaInformation,
     telegram?: SocialMediaInformation,
 };
+
+
+export const SocialMediaArray = ['facebook', 'twitter', 'instagram', 'tiktok', 'snapchat', 'youtube', 'telegram']
+
+
 
 export type SocialMediaInformation = {
     posts: number,

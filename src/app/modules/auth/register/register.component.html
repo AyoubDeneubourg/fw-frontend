@@ -21,7 +21,7 @@
 
 
     <form class="m-auto w-max" [formGroup]="registerFormGroup" (ngSubmit)="onSubmit()">
-      <div formGroupName="p1" class="flex flex-col w-500" [class.d-none]="actualPage !== 1">
+      <div formGroupName="p1" class="flex flex-col w-500" [class.hidden]="actualPage !== 1">
 
         <div class="mb-5">
           <h2 class="flex flex-col text-4xl font-semibold">Select account type</h2>
@@ -64,7 +64,7 @@
 
 
 
-      <div formGroupName="p2" class="flex flex-col w-500" [class.d-none]="actualPage !== 2">
+      <div formGroupName="p2" class="flex flex-col w-500" [class.hidden]="actualPage !== 2">
 
 
 
@@ -104,7 +104,7 @@
       </div>
 
 
-      <div formGroupName="p3" class="flex flex-col w-500" [class.d-none]="actualPage !== 3">
+      <div formGroupName="p3" class="flex flex-col w-500" [class.hidden]="actualPage !== 3">
 
         <div class="mb-5">
           <h2 class="flex flex-col text-4xl font-semibold">Tell us who you are.</h2>
@@ -156,7 +156,7 @@
 
 
 
-      <div formGroupName="p4" class="flex flex-col w-500" [class.d-none]="actualPage !== 4">
+      <div formGroupName="p4" class="flex flex-col w-500" [class.hidden]="actualPage !== 4">
 
 
         <div class="mb-5">
@@ -199,7 +199,7 @@
       </div>
 
 
-      <div formGroupName="p5" class="flex flex-col w-500" [class.d-none]="actualPage !== 5">
+      <div formGroupName="p5" class="flex flex-col w-500" [class.hidden]="actualPage !== 5">
 
 
 

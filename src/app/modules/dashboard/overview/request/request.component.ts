@@ -1,5 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Offer } from 'src/app/shared/models/offers';
+import { IDropdownSettings } from 'ng-multiselect-dropdown';
+import { TranslocoService } from '@ngneat/transloco';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-request',
@@ -8,13 +12,16 @@ import { Offer } from 'src/app/shared/models/offers';
 })
 export class RequestComponent implements OnInit {
 
-  @Input() public events: Offer[];
-  @Input() public newEvents: Offer[];
+
+  public sortingFormGroup: FormGroup;
+
+  constructor(private translocoService: TranslocoService, private formBuilder: FormBuilder) { }
 
 
-  constructor() { }
+  ngOnInit() {
 
-  ngOnInit(): void {
+    this.buildForm();
+
     this.events = [
       {
         orderId: 1,
@@ -97,8 +104,54 @@ export class RequestComponent implements OnInit {
         isAccepted: "Candeled",
         files: "0"
       }
-    ]
+    ];
+
   }
+  onItemSelect(item: any) {
+    console.log(item);
+
+  }
+  onSelectAll(items: any) {
+    console.log(items);
+  }
+
+  @Input() public events: Offer[];
+  @Input() public newEvents: Offer[];
+
+
+  public buildForm() {
+
+
+    this.sortingFormGroup = this.formBuilder.group({
+      sortGroup: this.formBuilder.group({
+        accepted: new FormControl(true),
+        pending: new FormControl(true),
+        cancelled: new FormControl(true),
+      }),
+    })
+
+
+  }
+
+  get sortGroup(): AbstractControl {
+    return this.sortingFormGroup.controls.sortGroup;
+  }
+
+
+  get accepted(): any {
+    return this.sortingFormGroup.get('sortGroup.accepted');
+  }
+
+  get pending(): any {
+    return this.sortingFormGroup.get('sortGroup.pending');
+  }
+
+  get cancelled(): any {
+    return this.sortingFormGroup.get('sortGroup.cancelled');
+  }
+
+
+
 
 
 
@@ -110,6 +163,9 @@ export class RequestComponent implements OnInit {
           return 0;
         });
      */
+
+    // create filter: show events when isAccepted is equals to Accepted, Candeled or Pending
+
 
 
 

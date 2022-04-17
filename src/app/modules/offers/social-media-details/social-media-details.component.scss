@@ -1,0 +1,29 @@
+.collapseItem {
+  animation: collapseItem 0.3s forwards;
+}
+
+.collapseItemReverse {
+  animation: collapseItemReverse 0.3s forwards;
+}
+
+@keyframes collapseItem {
+  0% {
+    height: 90px;
+  }
+
+  100% {
+    height: 0px;
+    opacity: 0;
+  }
+}
+
+@keyframes collapseItemReverse {
+  0% {
+    height: 0px;
+    opacity: 0;
+  }
+
+  100% {
+    height: 90px;
+  }
+}

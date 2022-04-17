@@ -1,0 +1,44 @@
+<div class="bg-blue p-4 rounded-md mb-2 overflow-hidden">
+  <div (click)="changeCollapsed()" class="flex overflow-hidden z-50">
+    <h4 class="text-xl mb-3 text-white flex-1 capitalize">{{ socialMedia }}</h4>
+    <i *ngIf="collapsed" class="fa-solid fa-angle-down"></i>
+    <i *ngIf="!collapsed" class="fa-solid fa-angle-up"></i>
+  </div>
+
+  <div class="z-0" [class.collapseItem]="collapsed" [class.collapseItemReverse]="!collapsed">
+    <div class="flex">
+      <p class="flex-1 text-white">Posts</p>
+      <div>
+        <span (click)="addOrRemoveSocialMediaDetails.emit({socialMedia: socialMedia, type: 'posts', action: '-'})"
+          class="bg-light-blue m-auto justify-center px-2 rounded-sm font-bold text-sm">-</span>
+        <span class="mx-2 text-white">{{ socialMediaDetails[socialMedia]?.posts }}</span>
+        <span (click)="addOrRemoveSocialMediaDetails.emit({socialMedia: socialMedia, type: 'posts', action: '+'})"
+          class="bg-light-blue m-auto justify-center px-2 rounded-sm font-bold text-sm">+</span>
+      </div>
+    </div>
+
+
+    <div class="flex my-3">
+      <p class="flex-1 text-white">Stories</p>
+      <div>
+        <span (click)="addOrRemoveSocialMediaDetails.emit({socialMedia: socialMedia, type: 'stories', action: '-'})"
+          class="bg-light-blue m-auto justify-center px-2 rounded-sm font-bold text-sm">-</span>
+        <span class="mx-2 text-white">{{ socialMediaDetails[socialMedia]?.stories }}</span>
+        <span (click)="addOrRemoveSocialMediaDetails.emit({socialMedia: socialMedia, type: 'stories', action: '+'})"
+          class="bg-light-blue m-auto justify-center px-2 rounded-sm font-bold text-sm">+</span>
+      </div>
+    </div>
+
+    <div class="flex">
+      <p class="flex-1 text-white">Highlights</p>
+      <div>
+        <span (click)="addOrRemoveSocialMediaDetails.emit({socialMedia: socialMedia, type: 'highlights', action: '-'})"
+          class="bg-light-blue m-auto justify-center px-2 rounded-sm font-bold text-sm">-</span>
+        <span class="mx-2 text-white">{{ socialMediaDetails[socialMedia]?.highlights }}</span>
+        <span (click)="addOrRemoveSocialMediaDetails.emit({socialMedia: socialMedia, type: 'highlights', action: '+'})"
+          class="bg-light-blue m-auto justify-center px-2 rounded-sm font-bold text-sm">+</span>
+      </div>
+    </div>
+  </div>
+
+</div>

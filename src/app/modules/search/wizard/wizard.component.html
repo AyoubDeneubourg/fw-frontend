@@ -1,0 +1,275 @@
+<ng-container *transloco="let t; read: 'wizard'">
+  <div class="flex flex-row h-screen">
+    <div class="w-1/3 flex items-center bg-blue">
+      <div class="flex flex-col ml-14">
+
+
+        <app-pages-side-navigation (goToPage)='goToPage($event)' [allPages]="allPages" [color]="'blue'">
+
+
+
+
+        </app-pages-side-navigation>
+
+      </div>
+    </div>
+
+    <div class="flex m-auto items-center">
+
+
+      <form class="m-auto w-max" [formGroup]="wizardFormGroup" (ngSubmit)="onSubmit()">
+        <div formGroupName="p1" class="flex flex-col w-500" [class.hidden]="actualPage !== 1">
+
+          <div class="mb-5">
+            <h2 class="flex flex-col text-4xl font-semibold">{{ t('1.title') }}</h2>
+            <h3 class="flex flex-col text-lg">{{ t('1.description') }}</h3>
+          </div>
+
+
+          <div class="flex">
+            <div>
+              <label for="firstName" class="font-semibold ">Minimum</label>
+              <input id="firstName" class="mt-2 py-1 px-3 outline-none rounded-sm shadow-md border"
+                formControlName="minimumBudget" placeholder="200€" type="number" />
+              <app-input-validation-error [control]="minimumBudget"></app-input-validation-error>
+            </div>
+
+
+            <div>
+
+              <label for="firstName" class="font-semibold">Maximum</label>
+              <input id="firstName" class="mt-2 py-1 px-3 outline-none rounded-sm shadow-md border"
+                formControlName="maximumBudget" placeholder="800€" type="number" />
+              <app-input-validation-error [control]="maximumBudget"></app-input-validation-error>
+            </div>
+
+          </div>
+
+          <button type="button" (click)="goToPage(2)"
+            class="mt-5 text-white py-1 font-semibold px-3 rounded-sm shadow-sm bg-blue">Continue</button>
+
+
+
+          <div class="flex">
+            <div class="flex-1"></div>
+            <div (click)="goToPage(2)" class="mx-auto mt-2 flex">
+              <p class="inline-block mr-2 my-auto cursor-pointer">Skip</p>
+              <i class="fa-solid fa-arrow-right-long my-auto"></i>
+            </div>
+          </div>
+
+        </div>
+
+
+
+
+
+
+        <div formGroupName="p2" class="flex flex-col w-500" [class.hidden]="actualPage !== 2">
+
+
+
+
+          <div class="mb-5">
+            <h2 class="flex flex-col text-4xl font-semibold">Tell us where you are.</h2>
+            <h3 class="flex flex-col text-lg">Tell us where you live to have better performance
+              with our algorithm.</h3>
+          </div>
+
+
+          <div class="grid grid-cols-2 gap-3">
+
+            <ng-container *ngFor="let item of socialMediaArray; let i = index">
+
+
+              <label for="socialMedia{{ item }}" class="font-semibold p-6 rounded-md "
+                [class.bg-light-gray]="!socialMedia.controls[i].value" [class.bg-blue]="socialMedia.controls[i].value">
+                <input id="socialMedia{{ item }}" class="py-1 px-3 outline-none rounded-sm shadow-md"
+                  [formControl]="socialMedia.controls[i]" type="checkbox" />
+                <p class="ml-2 text-white inline-block capitalize">
+                  {{ item }}
+                </p>
+              </label>
+
+
+            </ng-container>
+
+
+          </div>
+
+
+
+
+          <button type="button" (click)="goToPage(3)"
+            class="mt-5 text-white py-1 font-semibold px-3 rounded-sm shadow-sm bg-blue">Continue</button>
+
+          <div class="flex">
+            <div (click)="goToPage(1)" class="flex-1 mt-2 flex">
+              <i class="fa-solid fa-arrow-left-long my-auto"></i>
+              <p class="inline-block ml-2 my-auto cursor-pointer">Back</p>
+            </div>
+            <div (click)="goToPage(3)" class="mx-auto mt-2 flex">
+              <p class="inline-block mr-2 my-auto cursor-pointer">Skip</p>
+              <i class="fa-solid fa-arrow-right-long my-auto"></i>
+            </div>
+          </div>
+
+
+        </div>
+
+
+        <div formGroupName="p3" class="flex flex-col w-500" [class.hidden]="actualPage !== 3">
+
+          <div class="mb-5">
+            <h2 class="flex flex-col text-4xl font-semibold">{{ t('3.title') }}</h2>
+            <h3 class="flex flex-col text-lg">{{ t('3.description') }}</h3>
+          </div>
+
+
+          <div class="flex">
+            <div>
+              <label for="firstName" class="font-semibold ">Minimum</label>
+              <input id="firstName" class="mt-2 py-1 px-3 outline-none rounded-sm shadow-md border"
+                formControlName="minimumFollowers" placeholder="10.000" type="number" />
+              <app-input-validation-error [control]="minimumFollowers"></app-input-validation-error>
+            </div>
+
+
+            <div>
+
+              <label for="firstName" class="font-semibold">Maximum</label>
+              <input id="firstName" class="mt-2 py-1 px-3 outline-none rounded-sm shadow-md border"
+                formControlName="maximumFollowers" placeholder="25.000" type="number" />
+              <app-input-validation-error [control]="maximumFollowers"></app-input-validation-error>
+            </div>
+
+          </div>
+
+          <button type="button" (click)="goToPage(4)"
+            class="mt-5 text-white py-1 font-semibold px-3 rounded-sm shadow-sm bg-blue">Continue</button>
+
+
+
+          <div class="flex">
+            <div (click)="goToPage(2)" class="flex-1 mt-2 flex">
+              <i class="fa-solid fa-arrow-left-long my-auto"></i>
+              <p class="inline-block ml-2 my-auto cursor-pointer">Back</p>
+            </div>
+            <div (click)="goToPage(4)" class="mx-auto mt-2 flex">
+              <p class="inline-block mr-2 my-auto cursor-pointer">Skip</p>
+              <i class="fa-solid fa-arrow-right-long my-auto"></i>
+            </div>
+          </div>
+
+
+        </div>
+
+
+
+
+
+
+        <div formGroupName="p4" class="flex flex-col w-500" [class.hidden]="actualPage !== 4">
+
+
+          <div class="mb-5">
+            <h2 class="flex flex-col text-4xl font-semibold">{{ t('4.title') }}</h2>
+            <h3 class="flex flex-col text-lg">{{ t('4.description') }}</h3>
+          </div>
+
+
+          <div class="flex">
+            <div>
+              <label for="firstName" class="font-semibold ">Minimum</label>
+              <input id="firstName" class="mt-2 py-1 px-3 outline-none rounded-sm shadow-md border"
+                formControlName="minimumViewers" placeholder="10.000" type="number" />
+              <app-input-validation-error [control]="minimumViewers"></app-input-validation-error>
+            </div>
+
+
+            <div>
+
+              <label for="firstName" class="font-semibold">Maximum</label>
+              <input id="firstName" class="mt-2 py-1 px-3 outline-none rounded-sm shadow-md border"
+                formControlName="maximumViewers" placeholder="25.000" type="number" />
+              <app-input-validation-error [control]="maximumViewers"></app-input-validation-error>
+            </div>
+
+          </div>
+
+          <button type="button" (click)="goToPage(5)"
+            class="mt-5 text-white py-1 font-semibold px-3 rounded-sm shadow-sm bg-blue">Continue</button>
+
+
+
+          <div class="flex">
+            <div (click)="goToPage(1)" class="flex-1 mt-2 flex">
+              <i class="fa-solid fa-arrow-left-long my-auto"></i>
+              <p class="inline-block ml-2 my-auto cursor-pointer">Back</p>
+            </div>
+            <div (click)="goToPage(5)" class="mx-auto mt-2 flex">
+              <p class="inline-block mr-2 my-auto cursor-pointer">Skip</p>
+              <i class="fa-solid fa-arrow-right-long my-auto"></i>
+            </div>
+          </div>
+
+
+        </div>
+
+
+        <div formGroupName="p5" class="flex flex-col w-500" [class.hidden]="actualPage !== 5">
+
+
+
+          <div class="mb-5">
+            <h2 class="flex flex-col text-4xl font-semibold">Last step!</h2>
+            <h3 class="flex flex-col text-lg">
+              Please enter your phone number. After this, you'll be all set.</h3>
+          </div>
+
+
+
+          <label for="phone" class="font-semibold mb-1">Phone number</label>
+          <div class="flex">
+
+
+
+
+
+
+            <div class="flex shadow-md rounded-l px-4 py-2 bg-gray-200 w-fit">
+
+
+
+            </div>
+            <input id="phoneNumber" class="flex-1 py-1 px-3 outline-none rounded-sm shadow-md"
+              placeholder="489 33 28 64" formControlName="phoneNumber" type="tel" />
+
+
+          </div>
+
+
+
+          <app-input-validation-error [control]="phoneNumber"></app-input-validation-error>
+
+
+
+          <button type="submit"
+            class="mt-5  text-white py-1 font-semibold px-3 rounded-sm shadow-sm bg-blue">Register</button>
+          <div (click)="goToPage(4)" class="mx-auto mt-2 flex">
+            <i class="fa-solid fa-arrow-left-long my-auto"></i>
+            <p class="inline-block ml-2 my-auto cursor-pointer">Back</p>
+          </div>
+
+
+
+
+        </div>
+      </form>
+      <div class="absolute bottom-10 w-500">
+
+        <app-pages-bottom-navigation [allPages]="allPages" [color]="'blue'"></app-pages-bottom-navigation>
+      </div>
+    </div>
+  </div>
+</ng-container>

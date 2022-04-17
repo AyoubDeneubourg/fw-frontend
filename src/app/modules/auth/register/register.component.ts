@@ -72,13 +72,6 @@ export class RegisterComponent implements OnInit {
         lastName: ['', [Validators.required]],
         email: ['', [Validators.required,]],
 
-
-
-
-
-
-
-
       }),
       p4: this.formBuilder.group({
         password: ['', [Validators.required, Validators.minLength(6)]],
