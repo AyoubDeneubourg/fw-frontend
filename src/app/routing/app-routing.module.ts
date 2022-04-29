@@ -35,7 +35,7 @@ const routes: Routes = [
   {
     path: 'profile', // profile
     component: ProfileComponent,
-    canActivate: [],
+    canActivate: [AuthenticatedGuard],
   },
   {
     path: 'profiles/:id', // profile

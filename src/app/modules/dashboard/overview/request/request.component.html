@@ -1,7 +1,7 @@
 <ng-container *transloco="let t; read: 'z'">
 
   <form class="flex" [formGroup]="sortingFormGroup">
-    <div class="flex-1" formGroupName="sortGroup">
+    <div class="flex-1" formGroupName="status">
 
 
 
@@ -40,16 +40,17 @@
       </ng-multiselect-dropdown> -->
     </div>
 
-    <div>
+    <div formGroupName="sortTypes">
 
-      <select class="border px-2 py-1 rounded mr-2">
+      <select formControlName="type" class="border px-2 py-1 rounded mr-2">
         <option value="new">Newest</option>
         <option value="time">Time</option>
         <option value="client">Client</option>
+        <option value="amount">Amounts</option>
       </select>
 
 
-      <select class="border px-2 py-1 rounded mr-2">
+      <select formControlName="order" class="border px-2 py-1 rounded mr-2">
         <option value="ascending">Ascending</option>
         <option value="descending">Descending</option>
       </select>
@@ -89,4 +90,4 @@
     </tbody>
   </table>
 </ng-container>
-<div (click)="this.sort()">hihi</div>
+<div (click)="this.filterAndSort()">hihi</div>

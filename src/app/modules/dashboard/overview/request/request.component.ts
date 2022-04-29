@@ -44,14 +44,14 @@ export class RequestComponent implements OnInit {
         },
         description: "string",
         dates: {
-          startDate: "2020/02/25",
+          startDate: "2025/02/25",
           endDate: "2020/02/30"
         },
         isAccepted: "Pending",
         files: "0"
       },
       {
-        orderId: 1,
+        orderId: 2,
         socialMedia: {
           facebook: {
             posts: 7,
@@ -71,14 +71,14 @@ export class RequestComponent implements OnInit {
         },
         description: "string",
         dates: {
-          startDate: "2022/02/25",
+          startDate: "1999/02/25",
           endDate: "2022/02/30"
         },
         isAccepted: "Accepted",
         files: "0"
       },
       {
-        orderId: 1,
+        orderId: 5,
         socialMedia: {
           facebook: {
             posts: 6,
@@ -101,7 +101,7 @@ export class RequestComponent implements OnInit {
           startDate: "2020/03/25",
           endDate: "2020/03/30"
         },
-        isAccepted: "Candeled",
+        isAccepted: "Cancelled",
         files: "0"
       }
     ];
@@ -123,58 +123,123 @@ export class RequestComponent implements OnInit {
 
 
     this.sortingFormGroup = this.formBuilder.group({
-      sortGroup: this.formBuilder.group({
+      status: this.formBuilder.group({
         accepted: new FormControl(true),
         pending: new FormControl(true),
         cancelled: new FormControl(true),
+
+      }),
+      sortTypes: this.formBuilder.group({
+        type: ['new', [Validators.required]],
+        order: ["ascending", [Validators.required]],
       }),
     })
 
 
   }
 
-  get sortGroup(): AbstractControl {
-    return this.sortingFormGroup.controls.sortGroup;
+  get status(): AbstractControl {
+    return this.sortingFormGroup.controls.status;
   }
 
 
   get accepted(): any {
-    return this.sortingFormGroup.get('sortGroup.accepted');
+    return this.sortingFormGroup.get('status.accepted');
   }
 
   get pending(): any {
-    return this.sortingFormGroup.get('sortGroup.pending');
+    return this.sortingFormGroup.get('status.pending');
   }
-
+  
   get cancelled(): any {
-    return this.sortingFormGroup.get('sortGroup.cancelled');
+    return this.sortingFormGroup.get('status.cancelled');
+  }
+
+  get order(): any {
+    return this.sortingFormGroup.get('sortTypes.order');
+  }
+
+  get type(): any {
+    return this.sortingFormGroup.get('sortTypes.type');
   }
 
 
 
 
 
-
-  sort() {
-
-    /*     this.events.sort((a, b) => {
-          if (b.socialMedia.facebook.posts < a.socialMedia.facebook.posts) return 1;
-          if (b.socialMedia.facebook.posts > a.socialMedia.facebook.posts) return -1;
-          return 0;
-        });
-     */
-
-    // create filter: show events when isAccepted is equals to Accepted, Candeled or Pending
+  public filterAndSort() {
 
 
+    this.newEvents = this.events.filter(event => {
+      if (this.accepted.value && event.isAccepted === "Accepted") {
+        return event;
+      }
+      if (this.pending.value && event.isAccepted === "Pending") {
+        return event;
+      }
+      if (this.cancelled.value && event.isAccepted === "Cancelled") {
+        return event;
+      }
+    });
 
 
 
 
-    this.newEvents = this.events.filter(e => {
-      return e.isAccepted === 'Accepted' || e.isAccepted === 'Candeled'
+    this.newEvents.sort((a, b) => {
+      if (this.order.value === 'ascending') {
+        return this.sort(a, b, 'ascending');
+
+      } else if (this.order.value === 'descending') {
+        return this.sort(a, b, 'descending');
+
+      }
 
     });
+
+
   }
 
+
+  private sort(a: Offer | any, b: Offer | any, order: 'ascending' | 'descending'): number {
+
+
+    if (this.type.value === 'new') {
+      a = a.orderId;
+      b = b.orderId;
+
+    } else if (this.type.value === 'time') {
+      a = a.dates.startDate;
+      b = b.dates.startDate;
+
+    } else if (this.type.value === 'client') {
+      a = a.description;
+      b = b.description;
+
+    } else if (this.type.value === 'amount') {
+      let amountA = 0;
+      let amountB = 0;
+
+
+      for (const [key, socialMedia] of Object.entries(a.socialMedia)) {
+        for (const [key, entries] of Object.entries(socialMedia)) {
+          amountA += entries;
+        }
+      }
+
+      for (const [key, socialMedia] of Object.entries(b.socialMedia)) {
+        for (const [key, entries] of Object.entries(socialMedia)) {
+          amountB += entries;
+        }
+      }
+
+      a = amountA;
+      b = amountB;
+    }
+
+    if (b < a) return order === 'ascending' ? 1 : -1;
+    if (b > a) return order === 'ascending' ? -1 : 1;
+    return 0;
+
+
+  }
 }

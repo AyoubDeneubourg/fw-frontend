@@ -5,7 +5,7 @@ export type Offer = {
     description: string,
     dates: OfferDates,
     files: OfferFiles,
-    isAccepted: OfferStatus,
+    isAccepted: OfferStatus, // change to status
     client?: OfferClient
 }
 
@@ -41,7 +41,7 @@ export type OfferFiles = string;
 export type OfferClient = {};
 
 
-export type OfferStatus = 'Accepted' | 'Pending' | 'Candeled'
+export type OfferStatus = 'Accepted' | 'Pending' | 'Cancelled'
 
 // Il fais une demande, prix change ??
 
