@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { DecoSquarePosition } from '../deco/squares/squares.component';
 
 @Component({
   selector: 'app-card',
@@ -6,8 +7,8 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./card.component.scss']
 })
 export class CardComponent implements OnInit {
-  @Input() data;
 
+  @Input() data: CardData;
 
   constructor() { }
 
@@ -15,3 +16,12 @@ export class CardComponent implements OnInit {
   }
 
 }
+
+export type CardData = {
+
+  title: string,
+  subtitle?: string,
+  content: string,
+  position?: DecoSquarePosition;
+}
+

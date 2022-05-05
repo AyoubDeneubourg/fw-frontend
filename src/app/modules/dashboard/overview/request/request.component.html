@@ -1,11 +1,11 @@
-<ng-container *transloco="let t; read: 'z'">
+<ng-container *transloco="let t; read: 'dashboard.overview.request'">
 
-  <form class="flex" [formGroup]="sortingFormGroup">
+  <form class="flex mb-2" [formGroup]="sortingFormGroup">
     <div class="flex-1" formGroupName="status">
 
 
 
-      <label for="accepted" class=" px-3 py-2 rounded-md mr-2" [class.bg-light-gray]="!accepted.value"
+      <label (change)="this.filterAndSort()" for="accepted" class="inline-block px-3 text-sm py-2 rounded-md mr-2" [class.bg-light-gray]="!accepted.value"
         [class.bg-blue]="accepted.value">
         <input formControlName="accepted" id="accepted" class="p-0 outline-none rounded-sm shadow-md" type="checkbox" />
         <p class="ml-2 text-white inline-block">
@@ -14,7 +14,7 @@
       </label>
 
 
-      <label for="pending" class=" px-3 py-2 rounded-md bg-blue mr-2" [class.bg-light-gray]="!pending.value"
+      <label (change)="this.filterAndSort()" for="pending" class="inline-block px-3 text-sm py-2 rounded-md bg-blue mr-2" [class.bg-light-gray]="!pending.value"
         [class.bg-blue]="pending.value">
         <input formControlName="pending" id="pending" class="p-0 outline-none rounded-sm shadow-md" type="checkbox" />
         <p class="ml-2 text-white inline-block">
@@ -24,7 +24,7 @@
 
 
 
-      <label for="cancelled" class=" px-3 py-2 rounded-md bg-blue mr-2" [class.bg-light-gray]="!cancelled.value"
+      <label (change)="this.filterAndSort()" for="cancelled" class="inline-block px-3 text-sm py-2 rounded-md bg-blue mr-2" [class.bg-light-gray]="!cancelled.value"
         [class.bg-blue]="cancelled.value">
         <input formControlName="cancelled" id="cancelled" class="p-0 outline-none rounded-sm shadow-md"
           type="checkbox" />
@@ -42,7 +42,7 @@
 
     <div formGroupName="sortTypes">
 
-      <select formControlName="type" class="border px-2 py-1 rounded mr-2">
+      <select (change)="this.filterAndSort()" formControlName="type" class="border px-2 py-1 rounded mr-2">
         <option value="new">Newest</option>
         <option value="time">Time</option>
         <option value="client">Client</option>
@@ -50,7 +50,7 @@
       </select>
 
 
-      <select formControlName="order" class="border px-2 py-1 rounded mr-2">
+      <select (change)="this.filterAndSort()" formControlName="order" class="border px-2 py-1 rounded mr-2">
         <option value="ascending">Ascending</option>
         <option value="descending">Descending</option>
       </select>
@@ -58,7 +58,10 @@
     </div>
   </form>
 
-  <table class="w-100">
+
+ 
+
+  <table class="w-100 mt-10">
     <thead>
       <tr class="font-semibold">
         <td>{{ t('orderNumber') }}</td>
@@ -84,10 +87,10 @@
         <td>{{ item.orderId }}</td>
         <td>{{ item.orderId }}</td>
         <td>{{ item.orderId }}</td>
+        <td>{{ item.orderId }}</td>
 
       </tr>
 
     </tbody>
   </table>
 </ng-container>
-<div (click)="this.filterAndSort()">hihi</div>

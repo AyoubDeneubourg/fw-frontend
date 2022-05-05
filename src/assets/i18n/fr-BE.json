@@ -1,6 +1,46 @@
 {
   "title": "Bonjour",
 
+
+  "dashboard": {
+    "title:": "Dashboard",
+
+    "overview": {
+      "title": "Overview",
+
+      "request": {
+        "title": "Request",
+        "orderNumber": "Order Number",
+        "client": "Client",
+        "socialMedia": "Social Media",
+        "posts": "Posts",
+        "stories": "Stories",
+        "highlights": "Highlights",
+        "dates": "Dates",
+        "files": "Files"
+      },
+
+
+      "upcoming": {
+        "title": "Upcoming Events",
+        "orderNumber": "Order Number",
+        "status": "Status",
+        "client": "Client",
+        "price": "Price",
+        "promotionalCode": "Promotional Code",
+        "deadline": "Deadline"
+      }
+    }
+  },
+
+
+
+  "statistics": {
+  
+    "title": "Statistics"
+  },
+
+
   "register": {
     "p1": {
       "title": "Select account type",

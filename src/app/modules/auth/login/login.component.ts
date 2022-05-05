@@ -57,6 +57,7 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/dashboard']);
         }),
         catchError(err => {
+          console.log(err)
           this.invalidCredentials = true;
           return of(err)
         })).subscribe();

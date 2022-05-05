@@ -1,0 +1,91 @@
+$size: 37px;
+$light-orange: #ffb992;
+$light-blue: #bfe7ff;
+
+
+.background {
+
+    position: absolute;
+    width: $size;
+    height: calc(100% + 15px + 5px);
+    height: $size;
+    
+    z-index: 1;
+
+    
+    border: 3px solid $light-blue;
+
+}
+
+
+.square {
+    border-radius: 5px;
+}
+
+.square-1-top-left {
+    top:5px;
+    left:5px;
+}
+
+.square-2-top-left {
+    top: $size / 2 + 5px;
+    left: $size / 2 + 5px;
+}
+
+.square-3-top-left {
+    top: $size + 5px;
+    left:$size + 5px;
+}
+
+
+.square-1-top-right {
+    top:5px;
+    right:5px;
+}
+
+
+.square-2-top-right {
+    top: $size / 2 + 5px;
+    right: $size / 2 + 5px;
+}
+
+.square-3-top-right {
+    top: $size + 5px;
+    right:$size + 5px;
+}
+
+
+
+
+.square-1-bottom-left {
+    bottom:5px;
+    left:5px;
+}
+
+.square-2-bottom-left {
+    bottom: $size / 2 + 5px;
+    left: $size / 2 + 5px;
+}
+
+.square-3-bottom-left {
+    bottom: $size + 5px;
+    left:$size + 5px;
+}
+
+
+
+.square-1-bottom-right {
+    bottom:5px;
+    right:5px;
+}
+
+
+.square-2-bottom-right {
+    bottom: $size / 2 + 5px;
+    right: $size / 2 + 5px;
+}
+
+.square-3-bottom-right {
+    bottom: $size + 5px;
+    right:$size + 5px;
+}

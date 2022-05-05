@@ -7,7 +7,9 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "heroku-postbuild": "ng build --prod"
+
   },
   "private": true,
   "dependencies": {
@@ -20,6 +22,8 @@
     "@angular/platform-browser-dynamic": "~13.2.0",
     "@angular/router": "~13.2.0",
     "@ngneat/transloco": "^3.1.4",
+    "@swimlane/ngx-charts": "^20.1.0",
+    "express": "^4.17.1",
     "ng-multiselect-dropdown": "^0.3.8",
     "ngx-cookie-service": "^13.1.2",
     "rxjs": "~6.6.0",

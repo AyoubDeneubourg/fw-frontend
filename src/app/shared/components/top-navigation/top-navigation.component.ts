@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { tap } from 'rxjs/operators';
 import { AuthService } from 'src/app/core/services/auth-service/auth.service';
 import { User } from '../../models/common';
@@ -11,6 +11,9 @@ import { User } from '../../models/common';
 export class TopNavigationComponent implements OnInit {
 
   @Input() title: string;
+
+  
+  @Output() dropdownToggle = new EventEmitter<string>();
 
 
   public user: User;

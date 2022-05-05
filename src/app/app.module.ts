@@ -33,6 +33,12 @@ import { MainNavbarsComponent } from './shared/views/main-navbars/main-navbars.c
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { SocialMediaDetailsComponent } from './modules/offers/social-media-details/social-media-details.component';
 import { WizardComponent } from './modules/search/wizard/wizard.component';
+import { StatisticsComponent } from './modules/statistics/statistics.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { MostUsedSocialmediaComponent } from './modules/statistics/most-used-socialmedia/most-used-socialmedia.component';
+import { TopCountriesComponent } from './modules/statistics/top-countries/top-countries.component';
+import { LineChartComponent } from './modules/statistics/line-chart/line-chart.component';
+import { SquaresComponent } from './shared/components/deco/squares/squares.component';
 
 
 @NgModule({
@@ -58,7 +64,12 @@ import { WizardComponent } from './modules/search/wizard/wizard.component';
     OffersComponent,
     MainNavbarsComponent,
     SocialMediaDetailsComponent,
-    WizardComponent
+    WizardComponent,
+    StatisticsComponent,
+    MostUsedSocialmediaComponent,
+    TopCountriesComponent,
+    LineChartComponent,
+    SquaresComponent
   ],
 
   imports: [
@@ -69,7 +80,8 @@ import { WizardComponent } from './modules/search/wizard/wizard.component';
     FormsModule,
     TranslocoRootModule,
     NoopAnimationsModule,
-    NgMultiSelectDropDownModule.forRoot()
+    NgMultiSelectDropDownModule.forRoot(),
+    NgxChartsModule
 
   ],
   providers: [CookieService, FormBuilder],

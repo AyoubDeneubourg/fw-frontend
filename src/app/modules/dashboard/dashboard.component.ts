@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CardData } from 'src/app/shared/components/card/card.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,14 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  public data1 = {
-    'title': 'titleee',
-    'content': 'content',
+  public data1: CardData = {
+    title: 'Alexander Doe',
+    content: 'Brussels,',
   }
 
-  public data2 = {
-    'title': 'titleee 2',
-    'content': 'content 2',
+  public data2: CardData = {
+    title: '0',
+    content: 'Partnerships',
+    position: 'top-right'
+  }
+
+  public data3: CardData = {
+    title: '0€',
+    content: 'Earned money this week',
+    position: 'bottom-right'
   }
   constructor() { }
 

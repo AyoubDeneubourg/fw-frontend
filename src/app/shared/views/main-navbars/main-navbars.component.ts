@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+
 
 @Component({
   selector: 'app-main-navbars',
@@ -9,6 +10,11 @@ export class MainNavbarsComponent {
 
   @Input() public title: string;
 
+  public dropdownActive: boolean = false;
 
+
+  public dropdownToggle() {
+    this.dropdownActive = !this.dropdownActive;
+  }
 
 }

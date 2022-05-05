@@ -1,8 +1,24 @@
 <app-main-navbars [title]="'dashboard'">
 
-  <div class="flex">
-    <app-card [data]="data1"></app-card>
-    <app-card [data]="data2"></app-card>
+  <div class="m-6">
+
+  <div class="flex flex-wrap justify-between">
+    <div class="flex-1 mr-2">
+      <app-card [data]="data1"></app-card>
+    </div>
+    <div class="flex-1 ml-2 mr-2">
+      <app-card [data]="data2"></app-card>
+    </div>
+
+    <div class="flex-1 ml-2 mr-2">
+      <app-card [data]="data3"></app-card>
+    </div>
+
+    
+    <div class="flex-1 ml-2">
+      <app-card [data]="data3"></app-card>
+    </div>
+  </div>
 
   </div>
 

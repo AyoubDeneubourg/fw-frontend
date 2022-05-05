@@ -1,0 +1,58 @@
+<app-main-navbars [title]="'statistics'">
+
+  <div class="m-2">
+
+
+    <div class="flex flex-row flex-wrap lg:flex-nowrap">
+
+
+    <div #container class="flex flex-col w-100 lg:w-2/3 lg:mr-2  flex-wrap ">
+
+      
+      <div class="flex flex-wrap justify-between">
+        <div class="flex-1 mr-1">
+          <app-card [data]="data1"></app-card>
+        </div>
+        <div class="flex-1 ml-1">
+          <app-card [data]="data2"></app-card>
+        </div>
+      </div>
+      
+      
+      <div class="my-12">
+    
+
+
+        
+    <app-line-chart ></app-line-chart>
+  </div>
+
+  </div>
+
+
+  <div class="bg-gray-50 p-6 flex flex-col">
+
+
+    <div class="flex-1">
+
+    <h2 class="mb-6 font-semibold text-blue">Most used Social Media</h2>
+    <app-most-used-socialmedia></app-most-used-socialmedia>
+    </div>
+
+    <div class="flex-1 mt-10">
+
+    <h2 class="font-semibold text-blue">Top countries</h2>
+
+      <app-top-countries></app-top-countries>
+    </div>
+
+</div>
+
+</div>
+
+
+
+</div>
+
+
+</app-main-navbars>

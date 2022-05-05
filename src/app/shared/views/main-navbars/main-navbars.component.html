@@ -1,14 +1,21 @@
-<div class="main-grid">
+<div class="main-grid relative">
   <div class="main-grid-left-item">
     <app-left-navigation></app-left-navigation>
   </div>
-  <div class="main-grid-top-item">
-    <app-top-navigation [title]="title"></app-top-navigation>
+  <div class="main-grid-top-item ">
+    <app-top-navigation (dropdownToggle)='dropdownToggle()' [title]="title"></app-top-navigation>
+
+    <div class="dropdown-menu w-40 p-2 z-10 bg-white rounded-sm shadow-md border" [class.hidden]="!dropdownActive">
+      <ul>
+        <li class="my-2">My account</li>
+        <li class="my-2">Settings</li>
+        <li class="my-2">Language</li>
+        <li class="my-2">Logout</li>
+      </ul>
+    </div>
   </div>
+  
   <div class="main-grid-content">
-
     <ng-content></ng-content>
-
-
   </div>
 </div>

@@ -1,7 +1,13 @@
-<div class="bg-blue flex p-2 rounded shadow-sm h-32 w-300 mx-2 flex-col text-white">
+<div class="bg-blue flex p-2 rounded shadow-sm h-40 max-w-full flex-col text-white overflow-hidden relative">
   <div class="flex-1"></div>
   <div class="text-2xl">{{ data.title }}</div>
   <div class="text-base">{{ data.content }}</div>
+<!--   <div class="background circle bottom right"></div> -->
+
+
+<ng-container *ngIf="data.position">
+  <app-deco-squares [position]="data.position"></app-deco-squares>
+</ng-container>
 
 
 </div>

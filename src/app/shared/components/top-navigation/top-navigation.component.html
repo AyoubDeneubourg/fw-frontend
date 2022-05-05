@@ -1,11 +1,12 @@
-<div class="flex p-3 shadow-sm">
+<header class="flex p-3 shadow-sm relative">
   <div class="logo py-2 flex-1 text-xl font-semibold">{{ title }}</div>
   <i class="fa-regular fa-bell text-2xl m-auto"></i>
 
   <div class="icon rounded-full bg-light-blue mx-6">
-    <img class="m-auto" src="../../../../assets/countries/flags/mini/ua.webp">
+    <img class="m-auto" src="../../../../assets/countries/flags/mini/ma.webp">
   </div>
-  <div class="my-auto mr-8">Youssef Sefiani</div>
+  <div class="my-auto mr-8" (click)="dropdownToggle.emit()"> parle bien</div>
 
 
-</div>
+
+</header>
