@@ -19,7 +19,9 @@
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
+          
           "options": {
+            
             "outputPath": "dist/final-work",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -40,6 +42,7 @@
               ],
               "optimization": false,
               "outputHashing": "all",
+              
               "sourceMap": false,
               "namedChunks": false,
               "extractLicenses": true,
@@ -74,15 +77,13 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "final-work:build:production",
-              "proxyConfig": "./proxy.conf.json"
+              "browserTarget": "final-work:build:production"
             },
             "development": {
-              "browserTarget": "final-work:build:development",
-              "proxyConfig": "./proxy.conf.json"
+              "browserTarget": "final-work:build:development"
             }
           },
-          "defaultConfiguration": "production"
+          "defaultConfiguration": "development"
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",

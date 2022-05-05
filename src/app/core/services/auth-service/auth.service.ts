@@ -11,7 +11,7 @@ import { LoginData, RegistrationData, User } from 'src/app/shared/models/common'
 })
 export class AuthService {
 
-  readonly apiUrl = "https://fw-front-end.herokuapp.com";
+  readonly apiUrl = "https://fw-api-gateway.herokuapp.com";
 
 
   constructor(private http: HttpClient, private router: Router) {
@@ -110,7 +110,9 @@ export class AuthService {
 
     const httpOptions = {
       headers: new HttpHeaders({
-        "Access-Control-Allow-Origin": "*",
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
         ...authorization,
         ...options
       })
@@ -136,7 +138,7 @@ export class AuthService {
     } else {
       console.log('http call')
       return this.http
-        .get<User>(`${this.apiUrl}/api/user/current`, this.getHeaders())
+        .get<User>(`${this.apiUrl}/api/user/1`, this.getHeaders())
         .pipe(
           tap((loggedInUser) => {
             this.loggedInUser = loggedInUser;
