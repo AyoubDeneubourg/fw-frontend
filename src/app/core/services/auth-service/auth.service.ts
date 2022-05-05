@@ -11,7 +11,7 @@ import { LoginData, RegistrationData, User } from 'src/app/shared/models/common'
 })
 export class AuthService {
 
-  readonly apiUrl = "https://fw-api-gateway.herokuapp.com";
+  readonly apiUrl = "https://fw-front-end.herokuapp.com";
 
 
   constructor(private http: HttpClient, private router: Router) {
@@ -110,9 +110,7 @@ export class AuthService {
 
     const httpOptions = {
       headers: new HttpHeaders({
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
+        "Access-Control-Allow-Origin": "*",
         ...authorization,
         ...options
       })
