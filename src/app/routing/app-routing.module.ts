@@ -9,7 +9,6 @@ import { ProfileComponent } from '../modules/profile/profile.component';
 import { SearchComponent } from '../modules/search/search.component';
 import { WizardComponent } from '../modules/search/wizard/wizard.component';
 import { StatisticsComponent } from '../modules/statistics/statistics.component';
-import { ChangeLanguageComponent } from '../shared/components/change-language/change-language.component';
 import { AuthenticatedGuard } from './guards/authenticated.guard';
 
 const routes: Routes = [
@@ -31,7 +30,7 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
-    canActivate: [],
+    canActivate: [AuthenticatedGuard],
   },
   {
     path: 'profile', // profile

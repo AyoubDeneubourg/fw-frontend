@@ -1,3 +1,4 @@
+<ng-container *transloco="let t; read: 'offers'">
 <div class="flex flex-row h-screen">
 
 
@@ -8,10 +9,8 @@
       <div formGroupName="p1" class="flex flex-col w-500" [class.hidden]="actualPage !== 1">
 
         <div class="mb-5">
-          <h2 class="flex flex-col text-4xl font-semibold">Select account type</h2>
-          <h3 class="flex flex-col text-lg">
-            Brand or influencer? Depending on the account type, you will have access to
-            different tools specially designed for you.</h3>
+          <h2 class="flex flex-col text-4xl font-semibold">{{ t('p1.title') }}</h2>
+          <h3 class="flex flex-col text-lg">{{ t('p1.description') }}</h3>
         </div>
 
 
@@ -52,19 +51,16 @@
 
 
         <div class="mb-5">
-          <h2 class="flex flex-col text-4xl font-semibold">Tell us where you are.</h2>
-          <h3 class="flex flex-col text-lg">Tell us where you live to have better performance
-            with our algorithm.</h3>
+          <h2 class="flex flex-col text-4xl font-semibold">{{ t('p2.title') }}</h2>
+          <h3 class="flex flex-col text-lg">{{ t('p2.description') }}</h3>
         </div>
 
 
-        <ng-container *ngFor="let item of socialMediaDetails | keyvalue">
-
-          <app-social-media-details [socialMedia]="item.key"
+        <ng-container *ngFor="let item of socialMediaDetails">
+          <app-social-media-details
             (addOrRemoveSocialMediaDetails)='addOrRemoveSocialMediaDetails($event)'
-            [socialMediaDetails]='socialMediaDetails'>
+            [socialMediaDetails]='item'>
           </app-social-media-details>
-
         </ng-container>
 
 
@@ -91,10 +87,8 @@
       <div formGroupName="p3" class="flex flex-col w-500" [class.hidden]="actualPage !== 3">
 
         <div class="mb-5">
-          <h2 class="flex flex-col text-4xl font-semibold">Tell us who you are.</h2>
-          <h3 class="flex flex-col text-lg">
-            We need a little more information from you.
-            You would need your email to login.</h3>
+          <h2 class="flex flex-col text-4xl font-semibold">{{ t('p3.title') }}</h2>
+          <h3 class="flex flex-col text-lg">{{ t('p3.description') }}</h3>
         </div>
 
 
@@ -133,10 +127,8 @@
 
 
         <div class="mb-5">
-          <h2 class="flex flex-col text-4xl font-semibold">Tell us who you are.</h2>
-          <h3 class="flex flex-col text-lg">
-            We need a little more information from you.
-            You would need your email to login.</h3>
+          <h2 class="flex flex-col text-4xl font-semibold">{{ t('p4.title') }}</h2>
+          <h3 class="flex flex-col text-lg">{{ t('p4.description') }}</h3>
         </div>
 
 
@@ -170,10 +162,8 @@
 
 
         <div class="mb-5">
-          <h2 class="flex flex-col text-4xl font-semibold">Tell us who you are.</h2>
-          <h3 class="flex flex-col text-lg">
-            We need a little more information from you.
-            You would need your email to login.</h3>
+          <h2 class="flex flex-col text-4xl font-semibold">{{ t('p5.title') }}</h2>
+          <h3 class="flex flex-col text-lg">{{ t('p5.description') }}</h3>
         </div>
 
 
@@ -202,15 +192,13 @@
 
 
 
-      <div formGroupName="p6" class="flex flex-col w-800 m-auto" [class.hidden]="actualPage !== 6">
+      <div formGroupName="p6" class="flex flex-col  w-800" [class.hidden]="actualPage !== 6">
 
 
 
         <div class="mb-5">
-          <h2 class="flex flex-col text-4xl font-semibold">Offer Summary</h2>
-          <h3 class="flex flex-col text-lg">
-            We need a little more information from you.
-            You would need your email to login.</h3>
+          <h2 class="flex flex-col text-4xl font-semibold">{{ t('p6.title') }}</h2>
+          <h3 class="flex flex-col text-lg"></h3>
         </div>
 
         <div class="flex">
@@ -222,25 +210,33 @@
               <h4 class="text-lg">Order</h4>
 
 
-              <ng-container *ngFor="let item of socialMediaDetails | keyvalue">
 
-                <div class="flex bg-light-blue p-2 mb-2 rounded flex-col">
-                  <p class="capitalize">{{ item.key }}</p>
-                  <div class="flex">
-                    <p class="flex-1">Posts</p>
-                    <p>{{ item.value.posts }}</p>
+
+              <ng-container *ngFor="let socialMedia of socialMediaDetails | keyvalue">
+           
+
+                <ng-container *ngFor="let item of socialMedia.value | keyvalue">
+                  <ng-container *ngIf="item.value">
+                <div class="flex shadow-md border rounded-md mb-2">
+                  <div class="img">
+                    <img src="https://via.placeholder.com/75" alt="">
                   </div>
-                  <div class="flex">
-                    <p class="flex-1">Stories</p>
-                    <pre>{{ item.value.stories }}</pre>
-                  </div>
-                  <div class="flex">
-                    <p class="flex-1">Highlights</p>
-                    <p>{{ item.value.highlights }}</p>
+  
+                  <div class="content flex flex-col flex-1 p-2">
+                    <div class="flex flex-1">
+                      <div class="flex-1 capitalize">{{socialMedia.key + " " + item.key }}</div>
+                      <div>X</div>
+                    </div>
+  
+  
+                    <div class="flex">
+                      <div class="flex-1">{{ item.value }}x</div>
+                      <div>200€</div>
+                    </div>
                   </div>
                 </div>
-
-
+              </ng-container>
+                </ng-container>
               </ng-container>
             </div>
 
@@ -295,9 +291,8 @@
 
 
 
-
-        <button type="button" (click)="goToPage(6)"
-          class="mt-5 text-white py-1 font-semibold px-3 rounded-sm shadow-sm bg-blue ">Continue</button>
+        <button type="submit" 
+          class="mt-5 text-white py-1 font-semibold px-3 rounded-sm shadow-sm bg-blue ">Submit</button>
         <div (click)="goToPage(5)" class="mx-auto mt-2 flex">
           <i class="fa-solid fa-arrow-left-long my-auto cursor-pointer"></i>
           <p class="inline-block ml-2 my-auto cursor-pointer">Back</p>
@@ -307,8 +302,9 @@
 
 
       </div>
+
     </form>
-    <div class="absolute bottom-10 w-500">
+    <div class="absolute bottom-10 w-800">
 
       <app-pages-bottom-navigation [allPages]="allPages" [color]="'blue'"></app-pages-bottom-navigation>
     </div>
@@ -327,3 +323,4 @@
     </div>
   </div>
 </div>
+</ng-container>

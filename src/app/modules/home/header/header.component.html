@@ -1,11 +1,18 @@
 <div class="flex p-3 shadow-md">
   <div class="logo py-2 flex-auto">LOGO</div>
-  <div class="tabs py-2 flex-1">TABS</div>
+  <ul class="tabs py-2 flex-auto ">
+    
+    <li class="float-left mx-2 font-semibold border-b-2 border-blue text-blue">{{ "home.home" | transloco }}</li>
+    <li class="float-left mx-2">{{ "home.services"  | transloco }}</li>
+    <li class="float-left mx-2">{{ "home.team"  | transloco }}</li>
+    <li class="float-left mx-2">{{ "home.blog"  | transloco }}</li>
+    <li class="float-left mx-2">{{ "home.about"  | transloco }}</li>
+  </ul>
 
-  <div [routerLink]="['/login']" class="cursor-pointer  mx-2 py-2  px-12 rounded-md text-white bg-blue">Portal</div>
+  <div [routerLink]="['/login']" class="cursor-pointer  mx-2 py-2  px-12 rounded-md text-white bg-blue"> {{"home.portal" | transloco }}</div>
   <div [routerLink]="['/register']"
     class="cursor-pointer  bg-white text-blue mx-2 py-2 px-12 rounded-md border border-blue">
-    Register</div>
+     {{"home.register" | transloco }}</div>
 
 
 </div>

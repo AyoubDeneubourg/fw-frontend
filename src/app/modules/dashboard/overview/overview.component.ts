@@ -21,4 +21,4 @@ export class OverviewComponent implements OnInit {
 
 }
 
-type ActiveTab = 'Upcoming' | 'Request';
+type ActiveTab = 'Upcoming' | 'Request' | 'History';

@@ -25,7 +25,8 @@ export class OffersComponent implements OnInit {
 
   public socialMediaDetailsValid: boolean = true;
 
-  public socialMediaDetails: SocialMedia = {};
+  public socialMediaDetails: SocialMediaInformation[] = [];
+
 
   public allPages: PageNavigation[] = [
     {
@@ -200,15 +201,19 @@ export class OffersComponent implements OnInit {
 
   onSubmit(): void {
 
+    // influencerId,
+    // brandId,
+
+    
     const OFFER: Offer = {
-      socialMedia: null,
+      influencerId: 1,
+      brandId: 1,
+      socialMediaDetails: this.socialMediaDetails,
       description: this.description.value,
-      dates: {
-        startDate: this.startDate.value,
-        endDate: this.endDate.value
-      },
-      files: this.uploadFile.value,
-      isAccepted: 'Pending'
+      startDate: "2022:05:29",
+      endDate: "2022:05:29",
+
+      file: this.uploadFile.value,
     };
 
 
@@ -237,24 +242,28 @@ export class OffersComponent implements OnInit {
 
 
   public setSocialMedia() {
+
     const tempSocialMediaDetails = this.socialMediaDetails;
-    this.socialMediaDetails = {};
 
-    this.socialMedia.controls.forEach((element, index) => {
+    this.socialMediaDetails = [];
 
-      if (element.value) {
+    this.socialMedia.controls.forEach((control, controlIndex) => {
+      if(control.value) {
 
-        if (tempSocialMediaDetails[this.socialMediaArray[index]]) {
-          this.socialMediaDetails[this.socialMediaArray[index]] = tempSocialMediaDetails[this.socialMediaArray[index]]
+        const tempSocialMedia = tempSocialMediaDetails.find(element => element.name == this.socialMediaArray[controlIndex]);
 
-        } else {
-          this.socialMediaDetails[this.socialMediaArray[index]] = {
+         if(tempSocialMedia) {
+            this.socialMediaDetails.push(tempSocialMedia);
+
+         } else {
+
+          this.socialMediaDetails.push({
+            name: this.socialMediaArray[controlIndex],
             posts: 0,
-            stories: 0,
-            highlights: 0
-          } as SocialMediaInformation
-        }
-
+            highlights: 0,
+            stories: 0
+          });
+         }
       }
     });
 
@@ -281,10 +290,9 @@ export class OffersComponent implements OnInit {
 
   public addOrRemoveSocialMediaDetails(data: { socialMedia: string, type: 'posts' | 'stories' | 'highlights', action: '+' | '-' }): void {
 
-    console.log(data)
 
-    if (data.action === '+') this.socialMediaDetails[data.socialMedia][data.type]++
-    if (data.action === '-' && this.socialMediaDetails[data.socialMedia]?.[data.type] !== 0) this.socialMediaDetails[data.socialMedia][data.type]--
+    if (data.action === '+') this.socialMediaDetails.find(element => element.name == data.socialMedia)[data.type]++
+    if (data.action === '-' && this.socialMediaDetails.find(element => element.name == data.socialMedia)?.[data.type] !== 0) this.socialMediaDetails.find(element => element.name == data.socialMedia)[data.type]--
   }
 
   /*   public addOrRemoveStories(data: { socialMedia: string, action: '+' | '-' }): void {
@@ -348,12 +356,6 @@ export class OffersComponent implements OnInit {
   get uploadFile(): any {
     return this.offerFormGroup.get('p5.uploadFile');
   }
-
-
-  // create a guard that checks if the user is logged in
-  // before navigating to the page
-
-
 
 }
 

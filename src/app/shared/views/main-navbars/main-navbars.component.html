@@ -7,7 +7,7 @@
 
     <div class="dropdown-menu w-40 p-2 z-10 bg-white rounded-sm shadow-md border" [class.hidden]="!dropdownActive">
       <ul>
-        <li class="my-2">My account</li>
+        <li [routerLink]="['/profile']" class="my-2">My account</li>
         <li class="my-2">Settings</li>
         <li class="my-2">Language</li>
         <li class="my-2">Logout</li>

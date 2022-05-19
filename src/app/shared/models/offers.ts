@@ -1,11 +1,14 @@
 
-export type Offer = {
+export type Offer = { // add influencer & brand id 
+    brandId? : number,
+    influencerId? : number,
     orderId?: null | number,
-    socialMedia: SocialMedia,
+    socialMediaDetails: SocialMediaInformation[],
     description: string,
-    dates: OfferDates,
-    files: OfferFiles,
-    isAccepted: OfferStatus, // change to status
+    startDate: string,
+    endDate: string,
+    file: OfferFiles,
+    status?: OfferStatus, // change to status
     client?: OfferClient
 }
 
@@ -21,14 +24,19 @@ export type SocialMedia = {
 };
 
 
-export const SocialMediaArray = ['facebook', 'twitter', 'instagram', 'tiktok', 'snapchat', 'youtube', 'telegram']
+export const SocialMediaArray = ['FACEBOOK', 'TWITTER', 'INSTAGRAM', 'TIKTOK', 'SNAPCHAT', 'YOUTUBE', 'TELEGRAM']
 
 
 
 export type SocialMediaInformation = {
-    posts: number,
-    stories: number,
-    highlights: number
+    name: string,
+    stories?: number,
+    storyPrice?: number,
+    posts?: number,
+    postPrice?: number,
+    highlights?: number,
+    highlightPrice?: number
+
 }
 
 export type OfferDates = {

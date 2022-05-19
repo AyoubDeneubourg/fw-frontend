@@ -11,6 +11,10 @@
       Request
     </p>
 
+    <p class="my-auto mx-2" (click)="changeActiveTab('History')" [class.active]="active === 'History'">
+      History
+    </p>
+
     <i class="my-auto mx-2 fa-solid fa-filter"></i>
   </div>
 
@@ -29,6 +33,9 @@
       <app-request></app-request>
     </ng-container>
 
+    <ng-container *ngIf="active === 'History'">
+      <app-history></app-history>
+    </ng-container>
   </div>
 
   

@@ -30,7 +30,6 @@ import { RequestComponent } from './modules/dashboard/overview/request/request.c
 import { ProfileComponent } from './modules/profile/profile.component';
 import { OffersComponent } from './modules/offers/offers.component';
 import { MainNavbarsComponent } from './shared/views/main-navbars/main-navbars.component';
-import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { SocialMediaDetailsComponent } from './modules/offers/social-media-details/social-media-details.component';
 import { WizardComponent } from './modules/search/wizard/wizard.component';
 import { StatisticsComponent } from './modules/statistics/statistics.component';
@@ -39,6 +38,7 @@ import { MostUsedSocialmediaComponent } from './modules/statistics/most-used-soc
 import { TopCountriesComponent } from './modules/statistics/top-countries/top-countries.component';
 import { LineChartComponent } from './modules/statistics/line-chart/line-chart.component';
 import { SquaresComponent } from './shared/components/deco/squares/squares.component';
+import { HistoryComponent } from './modules/dashboard/overview/history/history.component';
 
 
 @NgModule({
@@ -69,7 +69,8 @@ import { SquaresComponent } from './shared/components/deco/squares/squares.compo
     MostUsedSocialmediaComponent,
     TopCountriesComponent,
     LineChartComponent,
-    SquaresComponent
+    SquaresComponent,
+    HistoryComponent
   ],
 
   imports: [
@@ -80,7 +81,6 @@ import { SquaresComponent } from './shared/components/deco/squares/squares.compo
     FormsModule,
     TranslocoRootModule,
     NoopAnimationsModule,
-    NgMultiSelectDropDownModule.forRoot(),
     NgxChartsModule
 
   ],

@@ -1,9 +1,48 @@
 {
   "title": "Bonjour",
 
+  "home": {
+    "home": "Accueil",
+    "about": "À propos",
+    "services": "Services",
+    "blog": "Blog",
+    "team": "Équipe",
+    "portal": "Portail",
+    "register": "S'inscrire"
+  },
+
+  "offers": {
+
+    "p1": {
+      "title":"Social Media",
+      "description": "In which social media do you want the influencer to promote you?"
+    },
+    "p2": {
+      "title":"Social Media",
+      "description": "How many posts, stories and/or highlights do you want the influencer to do?"
+    },
+    "p3": {
+      "title":"Dates",
+      "description": "What is the date range you want the influence to advertise?"
+    },
+    "p4": {
+      "title":"Description",
+      "description": "Please give a description of what you expect from the the influencer."
+    },
+    "p5": {
+      "title":"Upload",
+      "description": "It is time to upload the file(s) the influencer will need to promote your product."
+    },
+    "p6": {
+      "title":"Offer Summary",
+      "description": ""
+    }
+    
+
+  },
 
   "dashboard": {
-    "title:": "Dashboard",
+    "title": "Dashboard",
 
     "overview": {
       "title": "Overview",
@@ -27,6 +66,7 @@
         "status": "Status",
         "client": "Client",
         "price": "Price",
+        "????": "????",
         "promotionalCode": "Promotional Code",
         "deadline": "Deadline"
       }

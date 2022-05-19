@@ -13,8 +13,7 @@ export class SocialMediaDetailsComponent implements OnInit {
   addOrRemoveSocialMediaDetails: EventEmitter<any> = new EventEmitter();
 
 
-  @Input()
-  public socialMedia: string;
+
 
 
   public collapsed: boolean = false;
@@ -25,7 +24,7 @@ export class SocialMediaDetailsComponent implements OnInit {
 
 
   @Input()
-  public socialMediaDetails: SocialMedia;
+  public socialMediaDetails: any;
 
   constructor() { }
 

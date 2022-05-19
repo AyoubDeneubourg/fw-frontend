@@ -1,3 +1,84 @@
 {
-  "title": "Hello"
+  "title": "Bonjour",
+
+  "home": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "blog": "Blog",
+    "team": "Team",
+    "portal": "Portal",
+    "register": "Register"
+  },
+
+  "dashboard": {
+    "title": "Dashboard",
+    
+    "overview": {
+      "title": "Overview",
+
+      "request": {
+        "title": "Request",
+        "orderNumber": "Order Number",
+        "client": "Client",
+        "socialMedia": "Social Media",
+        "posts": "Posts",
+        "stories": "Stories",
+        "highlights": "Highlights",
+        "dates": "Dates",
+        "files": "Files"
+      },
+
+
+      "upcoming": {
+        "title": "Upcoming Events",
+        "orderNumber": "Order Number",
+        "status": "Status",
+        "client": "Client",
+        "price": "Price",
+        "????": "????",
+        "promotionalCode": "Promotional Code",
+        "deadline": "Deadline"
+      }
+    }
+  },
+
+
+
+  "statistics": {
+  
+    "title": "Statistics"
+  },
+
+
+  "register": {
+    "p1": {
+      "title": "Select account type",
+      "description": "Brand or influencer? Depending on the account type, you will have access to different tools specially designed for you.",
+      "influencer": {
+        "title": "Influencer",
+        "description": "This is text bro"
+      },
+      "brand": {
+        "title": "Brand",
+        "description": "This is text bro"
+      }
+    },
+    "p2": {
+      "title": "Tell us where you are.",
+      "description": "Tell us where you live to have better performance with our algorithm."
+    },
+    "p3": {
+      "title": "Tell us where you are.",
+      "description": "We need a little more information from you. You would need your email to login."
+    },
+    "p4": {
+      "title": "Tell us where you are.",
+      "description": "We need a little more information from you. You would need your email to login."
+    },
+    "p5": {
+      "title": "Last step!",
+      "description": "Please enter your phone number. After this, you'll be all set."
+    }
+  }
 }

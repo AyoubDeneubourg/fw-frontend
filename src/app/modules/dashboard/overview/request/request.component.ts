@@ -25,84 +25,69 @@ export class RequestComponent implements OnInit {
     this.events = [
       {
         orderId: 1,
-        socialMedia: {
-          facebook: {
-            posts: 5,
-            stories: 1,
-            highlights: 0
-          },
-          twitter: {
+        socialMediaDetails: [
+          {
+            name: "facebook",
             posts: 1,
-            stories: 5,
-            highlights: 1
+            stories: 2,
+            highlights: 3,
           },
-          youtube: {
+          {
+            name: "instagram",
             posts: 1,
-            stories: 1,
-            highlights: 5
+            stories: 2,
+            highlights: 3,
           }
-        },
+        ],
         description: "string",
-        dates: {
-          startDate: "2025/02/25",
-          endDate: "2020/02/30"
-        },
-        isAccepted: "Pending",
-        files: "0"
+        startDate: "1999/02/25",
+        endDate: "2022/02/30",
+        status: "Accepted",
+        file: "0"
       },
       {
         orderId: 2,
-        socialMedia: {
-          facebook: {
-            posts: 7,
-            stories: 1,
-            highlights: 0
-          },
-          twitter: {
+        socialMediaDetails: [
+          {
+            name: "facebook",
             posts: 1,
-            stories: 7,
-            highlights: 1
+            stories: 2,
+            highlights: 3,
           },
-          youtube: {
+          {
+            name: "instagram",
             posts: 1,
-            stories: 1,
-            highlights: 7
+            stories: 2,
+            highlights: 3,
           }
-        },
+        ],
         description: "string",
-        dates: {
-          startDate: "1999/02/25",
-          endDate: "2022/02/30"
-        },
-        isAccepted: "Accepted",
-        files: "0"
+        startDate: "1999/02/25",
+        endDate: "2022/02/30",
+        status: "Pending",
+        file: "0"
       },
       {
         orderId: 5,
-        socialMedia: {
-          facebook: {
-            posts: 6,
-            stories: 1,
-            highlights: 0
-          },
-          twitter: {
+        socialMediaDetails: [
+          {
+            name: "facebook",
             posts: 1,
-            stories: 6,
-            highlights: 1
+            stories: 2,
+            highlights: 3,
           },
-          youtube: {
+          {
+            name: "instagram",
             posts: 1,
-            stories: 1,
-            highlights: 6
+            stories: 2,
+            highlights: 3,
           }
-        },
+        ],
         description: "string",
-        dates: {
-          startDate: "2020/03/25",
-          endDate: "2020/03/30"
-        },
-        isAccepted: "Cancelled",
-        files: "0"
+        startDate: "1999/02/25",
+        endDate: "2022/02/30",
+        status: "Accepted",
+        file: "0"
       }
     ];
 
@@ -171,13 +156,13 @@ export class RequestComponent implements OnInit {
 
 
     this.newEvents = this.events.filter(event => {
-      if (this.accepted.value && event.isAccepted === "Accepted") {
+      if (this.accepted.value && event.status === "Accepted") {
         return event;
       }
-      if (this.pending.value && event.isAccepted === "Pending") {
+      if (this.pending.value && event.status === "Pending") {
         return event;
       }
-      if (this.cancelled.value && event.isAccepted === "Cancelled") {
+      if (this.cancelled.value && event.status === "Cancelled") {
         return event;
       }
     });
