@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Offer } from 'src/app/shared/models/offers';
-import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { TranslocoService } from '@ngneat/transloco';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
