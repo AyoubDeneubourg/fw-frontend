@@ -2,28 +2,26 @@ import { ViewEncapsulation } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-top-countries',
-  templateUrl: './top-countries.component.html',
-  styleUrls: ['./top-countries.component.scss'],
+  selector: 'app-pie-chart',
+  templateUrl: './pie-chart.component.html',
+  styleUrls: ['./pie-chart.component.scss'],
   encapsulation: ViewEncapsulation.None
+
 })
-export class TopCountriesComponent {
+
+export class PieChartComponent  {
 
   single: any[] = [
     {
-      "name": "Germany",
-      "value": 2
-    },
-    {
-      "name": "USA",
+      "name": "Twitter",
       "value": 4
     },
     {
-      "name": "France",
-      "value": 1
+      "name": "YouTube",
+      "value": 2
     },
     {
-      "name": "Perro",
+      "name": "Instagram",
       "value": 1
     }
   ];
@@ -53,4 +51,5 @@ export class TopCountriesComponent {
   onDeactivate(data): void {
     console.log('Deactivate', JSON.parse(JSON.stringify(data)));
   }
+
 }

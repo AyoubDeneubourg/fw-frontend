@@ -14,7 +14,7 @@ export class LineChartComponent implements AfterViewInit{
 
   multi: any[] =  [
     {
-      "name": "€",
+      "name": "Total",
       "series": [
         {
           "name": "2009",
@@ -58,20 +58,20 @@ export class LineChartComponent implements AfterViewInit{
 
 
   public resizeChart(width: any): void {
-    this.view = [width, 625]
+    this.view = [width, 500]
   }
 
 
 
   constructor( private cdref: ChangeDetectorRef) {
-    Object.assign(this, this.multi );
   }
 
 
 
 
   ngAfterViewInit(): void {
-    this.view = [this.containerRef.nativeElement.offsetWidth, 625];
+    console.log("here");
+    this.view = [this.containerRef.nativeElement.offsetWidth, 500];
     this.cdref.detectChanges();
   }
 

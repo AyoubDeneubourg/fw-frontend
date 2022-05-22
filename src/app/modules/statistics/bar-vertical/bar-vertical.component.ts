@@ -2,13 +2,12 @@ import { ViewEncapsulation } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-most-used-socialmedia',
-  templateUrl: './most-used-socialmedia.component.html',
-  styleUrls: ['./most-used-socialmedia.component.scss'],
+  selector: 'app-bar-vertical',
+  templateUrl: './bar-vertical.component.html',
+  styleUrls: ['./bar-vertical.component.scss'],
   encapsulation: ViewEncapsulation.None
-
 })
-export class MostUsedSocialmediaComponent implements OnInit {
+export class BarVerticalComponent implements OnInit {
 
   single: any[];
   
@@ -45,20 +44,20 @@ export class MostUsedSocialmediaComponent implements OnInit {
           "value": "0"
         },
         {
-          "name": "Instagram",
-          "value": "5"
+          "name": "January",
+          "value": "1000"
         },
         {
-          "name": "Tik-Tok",
-          "value": "4"
+          "name": "March",
+          "value": "400"
         },
         {
-          "name": "Twitter",
-          "value": "3"
+          "name": "May",
+          "value": "325"
         },
         {
-          "name": "Facebook",
-          "value": "1"
+          "name": "April",
+          "value": "135"
         },
         {
           "name": "  ",
@@ -67,5 +66,4 @@ export class MostUsedSocialmediaComponent implements OnInit {
       ];
       
   }
-
 }

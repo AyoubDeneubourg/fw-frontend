@@ -1,0 +1,51 @@
+<div class="shadow-md border">
+
+    <div class="flex p-5  border-blue">
+      <p class="m-2 text-xl flex-1">Earnings</p>
+  
+      <p class="my-auto mx-2" (click)="changeActiveTab('Total')" [class.active]="active === 'Total'">
+        Total earnings
+      </p>
+  
+      <p class="my-auto mx-2" (click)="changeActiveTab('Month')" [class.active]="active === 'Month'">
+        This month
+      </p>
+  
+      <p class="my-auto mx-2" (click)="changeActiveTab('Week')" [class.active]="active === 'Week'">
+        This week
+      </p>
+  
+      <i class="my-auto mx-2 fa-solid fa-filter"></i>
+    </div>
+  
+    <hr class="p-5 mx-6">
+  
+    
+  
+    <div class="p-5 pt-0">
+  
+    <ng-container *ngIf="active === 'Total'">
+        <app-line-chart ></app-line-chart>
+
+    </ng-container>
+  
+
+
+
+  
+    <ng-container *ngIf="active === 'Month'">
+        <app-line-chart ></app-line-chart>
+
+    </ng-container>
+
+
+
+  
+      
+    <ng-container *ngIf="active === 'Week'">
+
+    </ng-container>
+  
+  
+  
+    </div>  

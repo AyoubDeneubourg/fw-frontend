@@ -11,8 +11,8 @@ export class StatisticsComponent  {
 
 
   public data1 = {
-    'title': 'titleee',
-    'content': 'content',
+    'title': '5 partnerships this month',
+    'content': '',
   }
 
   public data2 = {

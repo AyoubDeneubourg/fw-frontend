@@ -1,0 +1,20 @@
+
+
+
+<div class="max-w-full" #containerRef>
+
+  <ngx-charts-bar-vertical
+  [view]="view"
+  [results]="single"
+  [gradient]="gradient"
+  [xAxis]="showXAxis"
+  [yAxis]="showYAxis"
+  [legend]="showLegend"
+  [showXAxisLabel]="showXAxisLabel"
+  [showYAxisLabel]="showYAxisLabel"
+  [showGridLines]="false"
+  
+  [barPadding]="50"
+  (select)="onSelect($event)">
+  
+  </ngx-charts-bar-vertical>
