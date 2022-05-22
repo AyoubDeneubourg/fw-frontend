@@ -18,7 +18,7 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
 
-
+    
 
     if(this.route.snapshot.params.id) {
 

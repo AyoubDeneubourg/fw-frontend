@@ -1,12 +1,12 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
-import { TreeMapModule } from '@swimlane/ngx-charts';
+import { ActivatedRoute, Router } from '@angular/router';
+
 import { AuthService } from 'src/app/core/services/auth-service/auth.service';
 import { OffersService } from 'src/app/core/services/offers/offers.service';
 import { User } from 'src/app/shared/models/common';
-import { Offer, SocialMedia, SocialMediaArray, SocialMediaInformation } from 'src/app/shared/models/offers';
+import { Offer, SocialMediaArray, SocialMediaInformation } from 'src/app/shared/models/offers';
 import { PageNavigation } from 'src/app/shared/models/pagination';
 import { dateAfterNow } from 'src/app/shared/static/forms/date-after-now-validation';
 import { dateBeforeDate } from 'src/app/shared/static/forms/date-before-date-validation';
@@ -64,6 +64,7 @@ export class OffersComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, 
     private offerService: OffersService, 
     private route: ActivatedRoute,
+    private router: Router,
     private authService: AuthService) { }
 
   ngOnInit(): void {
@@ -80,7 +81,7 @@ export class OffersComponent implements OnInit {
 
       p1: this.formBuilder.group({
         socialMedia: new FormArray([
-          new FormControl(true),
+          new FormControl(false),
           new FormControl(false),
           new FormControl(false),
           new FormControl(false),
@@ -96,10 +97,10 @@ export class OffersComponent implements OnInit {
 
 
       p3: this.formBuilder.group({
-        startDate: ['2022-05-29', [Validators.required]],
-        endDate: ['2022-05-29', [Validators.required]],
-/*         startDate: ['', [Validators.required, dateAfterNow()]],
-        endDate: ['', [Validators.required, dateBeforeDate("startDate")]], */
+/*         startDate: ['2022-05-29', [Validators.required]],
+        endDate: ['2022-05-29', [Validators.required]], */
+        startDate: ['', [Validators.required, dateAfterNow()]],
+        endDate: ['', [Validators.required, dateBeforeDate("startDate")]], 
       }),
 
 
@@ -116,10 +117,10 @@ export class OffersComponent implements OnInit {
     });
 
 
-/*     this.startDate.valueChanges.subscribe(() => {
+    this.startDate.valueChanges.subscribe(() => {
       this.endDate.updateValueAndValidity();
     });
- */
+
 
 
   }
@@ -250,7 +251,7 @@ export class OffersComponent implements OnInit {
         (response: Offer) => {
           console.log(response);
 
-          // this.router.navigate(['/zzzzz']);
+         this.router.navigate(['/dashboard']);
         },
         (error: HttpErrorResponse) => {
           console.log(error);
