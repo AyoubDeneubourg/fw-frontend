@@ -34,12 +34,13 @@ import { SocialMediaDetailsComponent } from './modules/offers/social-media-detai
 import { WizardComponent } from './modules/search/wizard/wizard.component';
 import { StatisticsComponent } from './modules/statistics/statistics.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
-import { MostUsedSocialmediaComponent } from './modules/statistics/most-used-socialmedia/most-used-socialmedia.component';
-import { TopCountriesComponent } from './modules/statistics/top-countries/top-countries.component';
+import { PieChartComponent } from './modules/statistics/pie-chart/pie-chart.component';
+import { BarVerticalComponent } from './modules/statistics/bar-vertical/bar-vertical.component';
 import { LineChartComponent } from './modules/statistics/line-chart/line-chart.component';
 import { SquaresComponent } from './shared/components/deco/squares/squares.component';
 import { HistoryComponent } from './modules/dashboard/overview/history/history.component';
 import { SocialMediaCounterPipe } from './shared/pipes/social-media-counter.pipe';
+import { EarningsComponent } from './modules/statistics/earnings/earnings.component';
 
 
 @NgModule({
@@ -67,12 +68,13 @@ import { SocialMediaCounterPipe } from './shared/pipes/social-media-counter.pipe
     SocialMediaDetailsComponent,
     WizardComponent,
     StatisticsComponent,
-    MostUsedSocialmediaComponent,
-    TopCountriesComponent,
+    PieChartComponent,
+    BarVerticalComponent,
     LineChartComponent,
     SquaresComponent,
     HistoryComponent,
-    SocialMediaCounterPipe
+    SocialMediaCounterPipe,
+    EarningsComponent
   ],
 
   imports: [

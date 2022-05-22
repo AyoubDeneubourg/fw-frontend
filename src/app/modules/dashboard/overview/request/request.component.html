@@ -77,7 +77,7 @@
       <tr *ngFor="let item of newEvents ? newEvents : offers as Offer">
         <td>{{ item.id }}</td>
         <td>{{ item.brandId }}</td>
-        <td class="flex"><ng-container *ngFor="let socialMedia of item.socialMediaDetails"><img width="35px" src="assets/icons/socials/{{socialMedia.name}}.svg"></ng-container></td>
+        <td class="flex"><ng-container *ngFor="let socialMedia of item.socialMediaDetails"><img width="28px" src="assets/icons/socials/{{socialMedia.name}}.svg"></ng-container></td>
         <td>{{ item.socialMediaDetails | socialMediaCounter : 'posts' }}</td>
         <td>{{ item.socialMediaDetails | socialMediaCounter : 'stories' }}</td>
         <td>{{ item.socialMediaDetails | socialMediaCounter : 'highlights' }}</td>

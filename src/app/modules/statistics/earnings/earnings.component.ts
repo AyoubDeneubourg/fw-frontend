@@ -1,4 +1,5 @@
-import { AfterViewChecked, AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewChecked, AfterViewInit, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { StatsService } from 'src/app/core/services/stats-service/stats.service';
 
 @Component({
   selector: 'app-earnings',
@@ -17,13 +18,18 @@ export class EarningsComponent implements OnInit, AfterViewInit {
   }
 
 
-  constructor() { }
+  constructor(private cdref: ChangeDetectorRef, private statsService: StatsService) { }
 
   ngOnInit(): void {
+
+    this.statsService.getTotalEarnings(14).subscribe(data => {
+      console.log(data);
+    })
   }
 
   ngAfterViewInit(): void {
     this.active = "Total";
+    this.cdref.detectChanges();
 
   }
 

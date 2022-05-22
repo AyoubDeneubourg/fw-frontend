@@ -67,11 +67,6 @@ export class AuthService {
 
 
 
-
-
-
-
-
   public loggedInUser: User;
   public loggedInUser$: Observable<User> = of();
 

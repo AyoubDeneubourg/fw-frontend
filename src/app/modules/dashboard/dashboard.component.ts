@@ -14,13 +14,13 @@ export class DashboardComponent implements OnInit {
   }
 
   public data2: CardData = {
-    title: '0',
+    title: '5',
     content: 'Partnerships',
     position: 'top-right'
   }
 
   public data3: CardData = {
-    title: '0€',
+    title: '8235€',
     content: 'Earned money this week',
     position: 'bottom-right'
   }
