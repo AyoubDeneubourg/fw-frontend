@@ -304,7 +304,7 @@
       </div>
 
     </form>
-    <div class="absolute bottom-10 w-800">
+    <div class="absolute bottom-10" [class.w-500]="actualPage !== 6" [class.w-800]="actualPage === 6">
 
       <app-pages-bottom-navigation [allPages]="allPages" [color]="'blue'"></app-pages-bottom-navigation>
     </div>

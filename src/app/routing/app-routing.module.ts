@@ -38,14 +38,14 @@ const routes: Routes = [
     canActivate: [AuthenticatedGuard],
   },
   {
-    path: 'profiles/:id', // profile
+    path: 'profile/:id', // profile
     component: ProfileComponent,
     canActivate: [AuthenticatedGuard],
   },
   {
-    path: 'createOffer', // profile
+    path: 'offer/new/:id', // profile
     component: OffersComponent,
-    canActivate: [],
+    canActivate: [AuthenticatedGuard],
   },
 
   {
@@ -56,7 +56,7 @@ const routes: Routes = [
   {
     path: 'statistics',
     component: StatisticsComponent,
-    canActivate: [],
+    canActivate: [AuthenticatedGuard],
   },
   {
     path: 'wizard',

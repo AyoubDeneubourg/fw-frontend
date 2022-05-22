@@ -1,4 +1,116 @@
 <app-main-navbars [title]="'Search'">
 
+<div class="flex">
 
+
+<div class="search-tool w-300 bg-gray-50">
+
+    <div class="flex bg-blue px-6 py-8 text-white">
+        <p class=" font-bold m-auto">LAUNCH WIZARD</p>
+        <span>-></span>
+    </div>
+
+
+    <div class="m-2">
+
+        <div class="flex p-2">
+            <p class="flex-1 text-blue font-semibold">Filter by</p>
+            <p (click)="null" class="text-gray-600 font-semibold text-sm m-auto">Reset Filters</p>
+        </div>
+
+
+
+
+        <p class="text-gray-600 font-semibold text-sm">Social Media</p>
+
+
+
+        <div *ngFor="let socialMedia of socialMediaArray">
+            <input class="mr-2" type="checkbox" name="socials" value="{{socialMedia}}" id="{{socialMedia}}">
+            <label for="{{socialMedia}}">{{socialMedia}}</label>
+            
+        </div>
+        
+
+
+        <p class="text-gray-600 font-semibold text-sm mt-2">Type</p>
+
+
+        <div>
+            <input class="mr-2" type="checkbox" name="socials" value="snapchat" id="snapchat">
+            <label for="snapchat">Post</label>
+        </div>
+        <div>
+            <input class="mr-2" type="checkbox" name="socials" value="snapchat" id="snapchat">
+            <label for="snapchat">Story</label>
+        </div>
+        <div>
+            <input class="mr-2" type="checkbox" name="socials" value="snapchat" id="snapchat">
+            <label for="snapchat">Highlight</label>
+        </div>
+
+
+
+
+        
+        <p class="text-gray-600 font-semibold text-sm mt-2">Notes</p>
+
+
+        <div>
+        todo mon gars sur      
+        </div>
+
+
+
+        <p class="text-gray-600 font-semibold text-sm mt-2">Gender</p>
+        <select class="shadow-md" name="gender" id="gender">
+            <option value="noMatter">No Matter</option>
+            <option value="man">Man</option>
+            <option value="female">Female</option>
+        </select>
+
+
+        <p class="text-gray-600 font-semibold text-sm">Age</p>
+        <input class="mr-2 w-100 p-2 outline-none border rounded-md border-blue" type="number" name="age" value="18" id="age">
+            
+
+
+
+
+
+
+
+
+
+
+
+
+        <p class="text-gray-600 font-semibold text-sm">Sector</p>
+
+
+        // ngfor
+
+        <div>
+            <input class="mr-2" type="checkbox" name="socials" value="snapchat" id="snapchat">
+            <label for="snapchat">Snapchat</label>
+            
+        </div>
+
+
+
+
+
+
+
+
+
+
+    </div>
+</div>
+<div class="results">
+
+
+</div>
+
+</div>
 </app-main-navbars>

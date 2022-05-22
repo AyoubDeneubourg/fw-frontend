@@ -39,6 +39,7 @@ import { TopCountriesComponent } from './modules/statistics/top-countries/top-co
 import { LineChartComponent } from './modules/statistics/line-chart/line-chart.component';
 import { SquaresComponent } from './shared/components/deco/squares/squares.component';
 import { HistoryComponent } from './modules/dashboard/overview/history/history.component';
+import { SocialMediaCounterPipe } from './shared/pipes/social-media-counter.pipe';
 
 
 @NgModule({
@@ -70,7 +71,8 @@ import { HistoryComponent } from './modules/dashboard/overview/history/history.c
     TopCountriesComponent,
     LineChartComponent,
     SquaresComponent,
-    HistoryComponent
+    HistoryComponent,
+    SocialMediaCounterPipe
   ],
 
   imports: [

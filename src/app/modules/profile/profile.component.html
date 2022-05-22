@@ -24,11 +24,14 @@
 
       <div class="flex text-base">
         <i class="my-auto  fa-solid fa-envelope"></i>
-        <p class="ml-2 m-auto">aybdbr@gmail.com</p>
+        <p class="ml-2 m-auto">{{ this.user?.email }}</p>
       </div>
 
     </div>
 
+    <div *ngIf="isOther">
+      <div [routerLink]="['/offer/new', user.id]"  class="p-2 rounded-md bg-blue text-white font-semibold">Send Offer</div>
+    </div>
   </div>
 
   <div class="flex flex-wrap mt-5 pt-5 p-2 pl-4 bg-gray-100">

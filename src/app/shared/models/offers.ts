@@ -2,7 +2,7 @@
 export type Offer = { // add influencer & brand id 
     brandId? : number,
     influencerId? : number,
-    orderId?: null | number,
+    id?: null | number,
     socialMediaDetails: SocialMediaInformation[],
     description: string,
     startDate: string,
@@ -24,7 +24,8 @@ export type SocialMedia = {
 };
 
 
-export const SocialMediaArray = ['FACEBOOK', 'TWITTER', 'INSTAGRAM', 'TIKTOK', 'SNAPCHAT', 'YOUTUBE', 'TELEGRAM']
+export const SocialMediaArray = ['FACEBOOK', 'TWITTER', 'INSTAGRAM', 'TIKTOK', 'SNAPCHAT', 'YOUTUBE', 'TWITCH']
+export const SocialMediaArrayCapitalized = ['Facebook', 'Twitter', 'Instagram', 'Tik-Tok', 'Snapchat', 'YouTube', 'Twitch']
 
 
 
@@ -49,7 +50,7 @@ export type OfferFiles = string;
 export type OfferClient = {};
 
 
-export type OfferStatus = 'Accepted' | 'Pending' | 'Cancelled'
+export type OfferStatus = 'REQUESTED' | 'DECLINED' | 'DONE' | 'PENDING' | 'IN_PROGRESS'
 
 // Il fais une demande, prix change ??
 

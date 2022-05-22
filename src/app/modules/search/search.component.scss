@@ -1,0 +1,19 @@
+select {
+    background-color: #4cade6;
+    width: 100%;
+    padding:8px;
+    border-radius: 5px;
+    color: white;
+    font-weight: 500;
+    
+    &:focus {
+        border:none;
+        outline: none;
+    }
+}
+
+option {
+    background-color: white;
+    color:black;
+}
+

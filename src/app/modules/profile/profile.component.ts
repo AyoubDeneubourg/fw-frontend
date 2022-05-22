@@ -12,6 +12,8 @@ export class ProfileComponent implements OnInit {
 
   public user: User;
 
+  public isOther: boolean = false;
+
   constructor(private authService: AuthService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -21,6 +23,7 @@ export class ProfileComponent implements OnInit {
     if(this.route.snapshot.params.id) {
 
       this.authService.getUser(this.route.snapshot.params.id).subscribe(user => {
+        this.isOther = true;
         this.user = user;
 
         console.log(this.user);
@@ -34,6 +37,10 @@ export class ProfileComponent implements OnInit {
     }
 
 
+  }
+
+  public sendOffer() {
+    
   }
 
 }

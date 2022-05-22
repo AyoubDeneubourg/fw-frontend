@@ -1,8 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@angular/core';
 import { Offer } from 'src/app/shared/models/offers';
 import { TranslocoService } from '@ngneat/transloco';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-
+import { catchError, take, tap } from 'rxjs/operators';
+import { OffersService } from 'src/app/core/services/offers/offers.service';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-request',
@@ -12,113 +14,91 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from
 export class RequestComponent implements OnInit {
 
 
+  @Input()
+  public offers: Offer[];
+  
+
+  
+
+
+  @Output()
+  refreshData: EventEmitter<any> = new EventEmitter();
+  
+  public newEvents: Offer[];
+
+
   public sortingFormGroup: FormGroup;
 
-  constructor(private translocoService: TranslocoService, private formBuilder: FormBuilder) { }
+  constructor(private translocoService: TranslocoService, 
+    private formBuilder: FormBuilder, 
+    private offersService: OffersService) { 
+
+      this.buildForm();
+
+    }
 
 
   ngOnInit() {
 
-    this.buildForm();
-
-    this.events = [
-      {
-        orderId: 1,
-        socialMediaDetails: [
-          {
-            name: "facebook",
-            posts: 1,
-            stories: 2,
-            highlights: 3,
-          },
-          {
-            name: "instagram",
-            posts: 1,
-            stories: 2,
-            highlights: 3,
-          }
-        ],
-        description: "string",
-        startDate: "1999/02/25",
-        endDate: "2022/02/30",
-        status: "Accepted",
-        file: "0"
-      },
-      {
-        orderId: 2,
-        socialMediaDetails: [
-          {
-            name: "facebook",
-            posts: 1,
-            stories: 2,
-            highlights: 3,
-          },
-          {
-            name: "instagram",
-            posts: 1,
-            stories: 2,
-            highlights: 3,
-          }
-        ],
-        description: "string",
-        startDate: "1999/02/25",
-        endDate: "2022/02/30",
-        status: "Pending",
-        file: "0"
-      },
-      {
-        orderId: 5,
-        socialMediaDetails: [
-          {
-            name: "facebook",
-            posts: 1,
-            stories: 2,
-            highlights: 3,
-          },
-          {
-            name: "instagram",
-            posts: 1,
-            stories: 2,
-            highlights: 3,
-          }
-        ],
-        description: "string",
-        startDate: "1999/02/25",
-        endDate: "2022/02/30",
-        status: "Accepted",
-        file: "0"
-      }
-    ];
-
-  }
-  onItemSelect(item: any) {
-    console.log(item);
-
-  }
-  onSelectAll(items: any) {
-    console.log(items);
   }
 
-  @Input() public events: Offer[];
-  @Input() public newEvents: Offer[];
+   ngOnChanges(changes: SimpleChanges) {
+    this.filterAndSort();
+  } 
+
+  public acceptPartnership(id: number) {
+
+
+
+    this.offersService.acceptPartnership(id).pipe(
+      take(1),
+      tap((data) => {
+        this.refreshData.emit();
+
+      }),
+      catchError(err => {
+        console.log(err)
+        return of(err)
+      })).subscribe();
+
+
+
+
+  }
+
+
+  public declinePartnership(id: number) {
+    
+    this.offersService.declinePartnership(id).pipe(
+      take(1),
+      tap((data) => {
+        this.refreshData.emit();
+
+        console.log(data);
+      }),
+      catchError(err => {
+        console.log(err)
+        return of(err)
+      })).subscribe();
+
+
+  }
 
 
   public buildForm() {
-
 
     this.sortingFormGroup = this.formBuilder.group({
       status: this.formBuilder.group({
         accepted: new FormControl(true),
         pending: new FormControl(true),
         cancelled: new FormControl(true),
-
       }),
+
       sortTypes: this.formBuilder.group({
         type: ['new', [Validators.required]],
         order: ["ascending", [Validators.required]],
       }),
     })
-
 
   }
 
@@ -153,9 +133,13 @@ export class RequestComponent implements OnInit {
 
   public filterAndSort() {
 
+    this.newEvents = this.offers;
 
-    this.newEvents = this.events.filter(event => {
-      if (this.accepted.value && event.status === "Accepted") {
+    console.log(this.newEvents)
+    console.log(this.offers)
+
+/*     this.newEvents = this.offers.filter(event => {
+      if (this.accepted.value && event.status === "REQUESTED") {
         return event;
       }
       if (this.pending.value && event.status === "Pending") {
@@ -165,11 +149,13 @@ export class RequestComponent implements OnInit {
         return event;
       }
     });
+ */
 
 
+    console.log(this.order)
+    console.log(this.order.value)
 
-
-    this.newEvents.sort((a, b) => {
+    this.newEvents?.sort((a, b) => {
       if (this.order.value === 'ascending') {
         return this.sort(a, b, 'ascending');
 
@@ -180,37 +166,41 @@ export class RequestComponent implements OnInit {
 
     });
 
+    console.log(this.newEvents)
 
   }
 
 
   private sort(a: Offer | any, b: Offer | any, order: 'ascending' | 'descending'): number {
 
+    console.log(this.type.value)
 
     if (this.type.value === 'new') {
-      a = a.orderId;
-      b = b.orderId;
+      a = a.id;
+      b = b.id;
 
     } else if (this.type.value === 'time') {
-      a = a.dates.startDate;
-      b = b.dates.startDate;
+      a = a.startDate;
+      b = b.startDate;
 
     } else if (this.type.value === 'client') {
-      a = a.description;
-      b = b.description;
+      a = a.brandId;
+      b = b.brandId;
 
     } else if (this.type.value === 'amount') {
       let amountA = 0;
       let amountB = 0;
 
+      console.log(a.socialMediaDetails);
 
-      for (const [key, socialMedia] of Object.entries(a.socialMedia)) {
+
+      for (const [key, socialMedia] of Object.entries(a.socialMediaDetails)) {
         for (const [key, entries] of Object.entries(socialMedia)) {
           amountA += entries;
         }
       }
 
-      for (const [key, socialMedia] of Object.entries(b.socialMedia)) {
+      for (const [key, socialMedia] of Object.entries(b.socialMediaDetails)) {
         for (const [key, entries] of Object.entries(socialMedia)) {
           amountB += entries;
         }

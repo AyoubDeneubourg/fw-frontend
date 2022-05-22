@@ -66,6 +66,9 @@
         "status": "Status",
         "client": "Client",
         "price": "Price",
+        "posts": "Posts",
+        "stories": "Stories",
+        "highlights": "Highlights",
         "????": "????",
         "promotionalCode": "Promotional Code",
         "deadline": "Deadline"

@@ -25,17 +25,21 @@
   <div class="p-5 pt-0">
 
     <ng-container *ngIf="active === 'Upcoming'">
-      <app-upcoming-events></app-upcoming-events>
+      <app-upcoming-events [offers]="upcoming"></app-upcoming-events>
     </ng-container>
 
 
     <ng-container *ngIf="active === 'Request'">
-      <app-request></app-request>
+      <app-request [offers]="request" (refreshData)="refreshData()"></app-request>
     </ng-container>
 
+    
     <ng-container *ngIf="active === 'History'">
-      <app-history></app-history>
+      <app-history [offers]="history"></app-history>
     </ng-container>
+
+
+
   </div>
 
   

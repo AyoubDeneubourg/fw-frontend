@@ -1,7 +1,11 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { TreeMapModule } from '@swimlane/ngx-charts';
+import { AuthService } from 'src/app/core/services/auth-service/auth.service';
 import { OffersService } from 'src/app/core/services/offers/offers.service';
+import { User } from 'src/app/shared/models/common';
 import { Offer, SocialMedia, SocialMediaArray, SocialMediaInformation } from 'src/app/shared/models/offers';
 import { PageNavigation } from 'src/app/shared/models/pagination';
 import { dateAfterNow } from 'src/app/shared/static/forms/date-after-now-validation';
@@ -27,6 +31,8 @@ export class OffersComponent implements OnInit {
 
   public socialMediaDetails: SocialMediaInformation[] = [];
 
+
+  public brandId: number;
 
   public allPages: PageNavigation[] = [
     {
@@ -55,14 +61,26 @@ export class OffersComponent implements OnInit {
     }
   ];
 
-  constructor(private formBuilder: FormBuilder, private offerService: OffersService) { }
+  constructor(private formBuilder: FormBuilder, 
+    private offerService: OffersService, 
+    private route: ActivatedRoute,
+    private authService: AuthService) { }
 
   ngOnInit(): void {
+
+    this.brandId = this.route.snapshot.params.id;
+
+     this.authService.loggedInUser$.subscribe(data => {
+      console.log(data);
+    });
+
+
+
     this.offerFormGroup = this.formBuilder.group({
 
       p1: this.formBuilder.group({
         socialMedia: new FormArray([
-          new FormControl(false),
+          new FormControl(true),
           new FormControl(false),
           new FormControl(false),
           new FormControl(false),
@@ -78,17 +96,19 @@ export class OffersComponent implements OnInit {
 
 
       p3: this.formBuilder.group({
-        startDate: ['', [Validators.required, dateAfterNow()]],
-        endDate: ['', [Validators.required, dateBeforeDate("startDate")]],
+        startDate: ['2022-05-29', [Validators.required]],
+        endDate: ['2022-05-29', [Validators.required]],
+/*         startDate: ['', [Validators.required, dateAfterNow()]],
+        endDate: ['', [Validators.required, dateBeforeDate("startDate")]], */
       }),
 
 
       p4: this.formBuilder.group({
-        description: ['', [Validators.required]],
+        description: ['x', [Validators.required]],
       }),
 
       p5: this.formBuilder.group({
-        uploadFile: ['', [Validators.required]],
+        uploadFile: ['x', [Validators.required]],
       }),
 
       p6: this.formBuilder.group({
@@ -96,10 +116,10 @@ export class OffersComponent implements OnInit {
     });
 
 
-    this.startDate.valueChanges.subscribe(() => {
+/*     this.startDate.valueChanges.subscribe(() => {
       this.endDate.updateValueAndValidity();
     });
-
+ */
 
 
   }
@@ -204,15 +224,17 @@ export class OffersComponent implements OnInit {
     // influencerId,
     // brandId,
 
-    
+    let user: User = this.authService.loggedInUser;
+
+    console.log(user);
+
     const OFFER: Offer = {
-      influencerId: 1,
-      brandId: 1,
+      influencerId: user.id,
+      brandId: this.brandId,
       socialMediaDetails: this.socialMediaDetails,
       description: this.description.value,
-      startDate: "2022:05:29",
-      endDate: "2022:05:29",
-
+      startDate: this.startDate.value,
+      endDate: this.endDate.value,
       file: this.uploadFile.value,
     };
 

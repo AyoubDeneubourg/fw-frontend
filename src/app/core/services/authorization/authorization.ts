@@ -7,7 +7,8 @@ export function getHeaders(options?: any): HttpOptions {
       headers: new HttpHeaders({
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        
+
+        'Access-Control-Allow-Origin': '*',
         ...authorization,
         ...options
       })
