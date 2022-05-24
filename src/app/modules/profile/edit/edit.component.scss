@@ -1,0 +1,23 @@
+@import "../../../../styles/variables";
+
+.active {
+    font-weight: 500;
+    border-bottom: 2px solid $blue;
+  }
+  
+
+
+.grid {
+
+  grid-template-columns: 25% 75%;
+
+  p {
+    padding: 19px;
+
+  }
+
+ 
+}
+input {
+  box-sizing:border-box;
+}

@@ -1,5 +1,9 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { loadStripe } from '@stripe/stripe-js';
+import { StripeService } from 'src/app/core/services/stripe/stripe.service';
 import { CardData } from 'src/app/shared/components/card/card.component';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -24,9 +28,20 @@ export class DashboardComponent implements OnInit {
     content: 'Earned money this week',
     position: 'bottom-right'
   }
-  constructor() { }
+
 
   ngOnInit(): void {
   }
 
+
+
+
+  constructor(private stripeService: StripeService) {}
+
+  async pay(): Promise<void> {
+
+    this.stripeService.pay();
+   
+
+}
 }

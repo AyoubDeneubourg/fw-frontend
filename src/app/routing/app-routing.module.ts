@@ -5,6 +5,7 @@ import { RegisterComponent } from '../modules/auth/register/register.component';
 import { DashboardComponent } from '../modules/dashboard/dashboard.component';
 import { HomeComponent } from '../modules/home/home.component';
 import { OffersComponent } from '../modules/offers/offers.component';
+import { EditProfileComponent } from '../modules/profile/edit/edit.component';
 import { ProfileComponent } from '../modules/profile/profile.component';
 import { SearchComponent } from '../modules/search/search.component';
 import { WizardComponent } from '../modules/search/wizard/wizard.component';
@@ -35,6 +36,11 @@ const routes: Routes = [
   {
     path: 'profile', // profile
     component: ProfileComponent,
+    canActivate: [AuthenticatedGuard],
+  },
+  {
+    path: 'profile/edit', // profile
+    component: EditProfileComponent,
     canActivate: [AuthenticatedGuard],
   },
   {

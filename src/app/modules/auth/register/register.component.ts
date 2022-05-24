@@ -40,6 +40,10 @@ export class RegisterComponent implements OnInit {
       currentStatus: 'Future',
     },
     {
+      title: 'Address',
+      currentStatus: 'Future',
+    },
+    {
       title: 'Details',
       currentStatus: 'Future',
     },
@@ -67,18 +71,27 @@ export class RegisterComponent implements OnInit {
         country: ['BE', [Validators.required]],
       }),
 
+
+
       p3: this.formBuilder.group({
+        address: ['', [Validators.required]],
+        city: ['', [Validators.required]],
+        postalCode: ['', [Validators.required,]],
+      }),
+
+
+      p4: this.formBuilder.group({
         firstName: ['', [Validators.required]],
         lastName: ['', [Validators.required]],
         email: ['', [Validators.required,]],
 
       }),
-      p4: this.formBuilder.group({
+      p5: this.formBuilder.group({
         password: ['', [Validators.required, Validators.minLength(6)]],
         repeatPassword: ['', [Validators.required, matchValues('password')]],
       }),
 
-      p5: this.formBuilder.group({
+      p6: this.formBuilder.group({
         phoneNumber: ['', [Validators.required]],
       }),
 
@@ -233,13 +246,16 @@ export class RegisterComponent implements OnInit {
   get page3(): AbstractControl {
     return this.registerFormGroup.controls.p3;
   }
-
   get page4(): AbstractControl {
     return this.registerFormGroup.controls.p4;
   }
 
   get page5(): AbstractControl {
     return this.registerFormGroup.controls.p5;
+  }
+
+  get page6(): AbstractControl {
+    return this.registerFormGroup.controls.p6;
   }
 
 
@@ -253,28 +269,41 @@ export class RegisterComponent implements OnInit {
     return this.registerFormGroup.get('p2.country');
   }
 
+  get address(): AbstractControl {
+    return this.registerFormGroup.get('p3.address');
+  }
+
+  get city(): AbstractControl {
+    return this.registerFormGroup.get('p3.city');
+  }
+
+  get postalCode(): AbstractControl {
+    return this.registerFormGroup.get('p3.postalCode');
+  }
+
+
   get firstName(): AbstractControl {
-    return this.registerFormGroup.get('p3.firstName');
+    return this.registerFormGroup.get('p4.firstName');
   }
 
   get lastName(): AbstractControl {
-    return this.registerFormGroup.get('p3.lastName');
+    return this.registerFormGroup.get('p4.lastName');
   }
 
   get email(): AbstractControl {
-    return this.registerFormGroup.get('p3.email');
+    return this.registerFormGroup.get('p4.email');
   }
 
   get password(): AbstractControl {
-    return this.registerFormGroup.get('p4.password');
+    return this.registerFormGroup.get('p5.password');
   }
 
   get repeatPassword(): AbstractControl {
-    return this.registerFormGroup.get('p4.repeatPassword');
+    return this.registerFormGroup.get('p5.repeatPassword');
   }
 
   get phoneNumber(): AbstractControl {
-    return this.registerFormGroup.get('p5.phoneNumber');
+    return this.registerFormGroup.get('p6.phoneNumber');
   }
 
 }

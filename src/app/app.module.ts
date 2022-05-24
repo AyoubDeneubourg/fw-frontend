@@ -41,6 +41,10 @@ import { SquaresComponent } from './shared/components/deco/squares/squares.compo
 import { HistoryComponent } from './modules/dashboard/overview/history/history.component';
 import { SocialMediaCounterPipe } from './shared/pipes/social-media-counter.pipe';
 import { EarningsComponent } from './modules/statistics/earnings/earnings.component';
+import { EditProfileComponent } from './modules/profile/edit/edit.component';
+import { SuccessComponent } from './core/stripe/success/success.component';
+import { CancelComponent } from './core/stripe/cancel/cancel.component';
+import { CheckoutComponent } from './core/stripe/checkout/checkout.component';
 
 
 @NgModule({
@@ -74,7 +78,11 @@ import { EarningsComponent } from './modules/statistics/earnings/earnings.compon
     SquaresComponent,
     HistoryComponent,
     SocialMediaCounterPipe,
-    EarningsComponent
+    EarningsComponent,
+    EditProfileComponent,
+    SuccessComponent,
+    CancelComponent,
+    CheckoutComponent
   ],
 
   imports: [

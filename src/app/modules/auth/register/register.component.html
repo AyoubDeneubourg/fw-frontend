@@ -63,6 +63,12 @@
         </div>
 
 
+        
+
+
+
+
+
 
 
 
@@ -107,11 +113,68 @@
         </div>
 
 
+
+
         <div formGroupName="p3" class="flex flex-col w-500" [class.hidden]="actualPage !== 3">
 
           <div class="mb-5">
             <h2 class="flex flex-col text-4xl font-semibold">{{ t('p3.title') }}</h2>
             <h3 class="flex flex-col text-lg"> {{ t('p3.description') }}</h3>
+          </div>
+
+
+
+
+          <label for="address" class="font-semibold mb-1">Address</label>
+          <input id="address" class="py-1 px-3 outline-none rounded-sm shadow-md" formControlName="address"
+            type="text" />
+
+          <app-input-validation-error [control]="address"></app-input-validation-error>
+
+
+          <label for="city" class="font-semibold mb-1">City</label>
+          <input id="city" class="py-1 px-3 outline-none rounded-sm shadow-md" formControlName="city"
+            type="text" />
+
+
+          <app-input-validation-error [control]="city"></app-input-validation-error>
+
+
+          <label for="postalCode" class="font-semibold mb-1">Postal code</label>
+          <input id="postalCode" class="py-1 px-3 outline-none rounded-sm shadow-md" formControlName="postalCode" type="text" />
+
+
+          <app-input-validation-error [control]="postalCode"></app-input-validation-error>
+
+
+          <button type="button" (click)="goToPage(4)"
+            class="mt-5 text-white py-1 font-semibold px-3 rounded-sm shadow-sm"
+            [class.bg-blue]="actualPage !== 1 && accountType.value === 'Influencer'"
+            [class.bg-orange]="actualPage !== 1 && accountType.value === 'Brand'">Continue</button>
+          <div (click)="goToPage(2)" class="mx-auto mt-2 flex">
+            <i class="fa-solid fa-arrow-left-long my-auto"></i>
+            <p class="inline-block ml-2 my-auto cursor-pointer">Back</p>
+          </div>
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+        <div formGroupName="p4" class="flex flex-col w-500" [class.hidden]="actualPage !== 4">
+
+          <div class="mb-5">
+            <h2 class="flex flex-col text-4xl font-semibold">{{ t('p4.title') }}</h2>
+            <h3 class="flex flex-col text-lg"> {{ t('p4.description') }}</h3>
           </div>
 
 
@@ -158,12 +221,12 @@
 
 
 
-        <div formGroupName="p4" class="flex flex-col w-500" [class.hidden]="actualPage !== 4">
+        <div formGroupName="p5" class="flex flex-col w-500" [class.hidden]="actualPage !== 5">
 
 
           <div class="mb-5">
-            <h2 class="flex flex-col text-4xl font-semibold">{{ t('p4.title') }}</h2>
-            <h3 class="flex flex-col text-lg"> {{ t('p4.description') }}</h3>
+            <h2 class="flex flex-col text-4xl font-semibold">{{ t('p5.title') }}</h2>
+            <h3 class="flex flex-col text-lg"> {{ t('p5.description') }}</h3>
           </div>
 
 
@@ -200,13 +263,13 @@
         </div>
 
 
-        <div formGroupName="p5" class="flex flex-col w-500" [class.hidden]="actualPage !== 5">
+        <div formGroupName="p6" class="flex flex-col w-500" [class.hidden]="actualPage !== 6">
 
 
 
           <div class="mb-5">
-            <h2 class="flex flex-col text-4xl font-semibold">{{ t('p5.title') }}</h2>
-            <h3 class="flex flex-col text-lg"> {{ t('p5.description') }}</h3>
+            <h2 class="flex flex-col text-4xl font-semibold">{{ t('p6.title') }}</h2>
+            <h3 class="flex flex-col text-lg"> {{ t('p6.description') }}</h3>
           </div>
 
 

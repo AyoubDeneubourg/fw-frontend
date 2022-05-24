@@ -77,6 +77,41 @@
   },
 
 
+  "profile": {
+    "title": "Profile",
+
+    "edit": {
+      "title":"Edit profile",
+
+      "edit": "Edit",
+
+      "personalInformation": {
+        "title": "Personal Information",
+        "headtitle": "Headtitle",
+        "about": "About",
+        "homeDetails": "Home details",
+        "country": "Country",
+        "city": "City",
+        "address": "Address",
+        "postCode": "Post code",
+        "name": "Name",
+        "languages": "Languages",
+        "countries": "Countries",
+        "sectors": "Sectors"
+        
+      },
+
+      "partnershipInformation": {
+        "title": "Partnership Information",
+        "pricePerPost": "Price per post",
+        "pricePerStory": "Price per story",
+        "pricePerHighlight": "Price per highlight",
+        "paymentInformation": "Payment Information",
+        "IBANNumber": "IBAN number",
+        "bankName": "Bank name"
+      }
+    }
+  },
 
   "statistics": {
   

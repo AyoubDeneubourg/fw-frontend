@@ -1,0 +1,202 @@
+<app-main-navbars [title]="'profile.edit.title'">
+
+    <ng-container *transloco="let t; read: 'profile.edit'">
+
+
+    <div class="flex m-4 flex-wrap  shadow-sm ">
+
+
+        <div class="flex p-5 w-100">
+        
+            <p class="my-auto mx-2" (click)="changeActiveTab('Personal')" [class.active]="active === 'Personal'">
+                {{ t('personalInformation.title') }}
+            </p>
+        
+            <p class="my-auto mx-2" (click)="changeActiveTab('PartnershipDetails')" [class.active]="active === 'PartnershipDetails'">
+                {{ t('partnershipInformation.title') }}
+            </p>
+            
+        </div>
+        
+
+        
+        <div class="p-5  w-100">
+            
+            <ng-container
+            *ngIf="active == 'Personal'; then personal; else partnershipDetails">
+          </ng-container>
+          
+        </div>
+  
+  
+    </div>
+  
+    
+
+
+
+<ng-template #personal>
+    <div class="flex">
+        <h1 class="m-2 text-lg font-semibold flex-1">{{ t('personalInformation.title') }}</h1>
+        <h1 (click)="changeEditMode()" class="m-auto text-base font-semibold">{{ t('edit') }}</h1>
+    </div>
+
+
+    <div class="grid m-2">
+
+
+        <p class="font-medium border-b">{{ t('personalInformation.name') }}</p>
+        <p *ngIf="!editMode" class="font-medium border-b text-gray-600">Youssef Sefiani</p>
+        <p *ngIf="editMode" class="font-medium border-b text-gray-600">        
+            <input type="text" class="p-2 border " value="Youssef Sefiani">
+        </p>
+
+        <p class="font-medium border-b mt-2">{{ t('personalInformation.name') }}</p>
+        <p class="font-medium border-b mt-2 text-gray-600">Youssef Sefiani</p>
+
+
+        <p class="font-medium border-b ">{{ t('personalInformation.headtitle') }}</p>
+        <p class="font-medium border-b mt-2 text-gray-600">Influencer, Gym and Gaming</p>
+
+
+        <p class="font-medium border-b ">{{ t('personalInformation.about') }}</p>
+        <p class="font-medium border-b mt-2 text-gray-600">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Assumenda atque cum illum, nostrum ratione aspernatur natus. Autem, necessitatibus! Molestias omnis corporis, repellendus dolorem minima ipsum ipsa fugit vel, tenetur similique et, in vitae voluptas? Ea, repellat totam rerum temporibus nesciunt officia nulla pariatur ullam dolorum. A aliquam eaque non voluptates. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Assumenda atque cum illum, nostrum ratione aspernatur natus. Autem, necessitatibus! Molestias omnis corporis, repellendus dolorem minima ipsum ipsa fugit vel, tenetur similique et, in vitae voluptas? Ea, repellat totam rerum temporibus nesciunt officia nulla pariatur ullam dolorum. A aliquam eaque non voluptates.</p>
+
+        
+
+
+    </div>
+
+
+
+
+
+
+    <div class="flex mt-10">
+        <h1 class="m-2 text-lg font-semibold flex-1">{{ t('personalInformation.languages') }}</h1>
+        <h1 class="m-auto text-base font-semibold">{{ t('edit') }}</h1>
+    </div>
+
+
+    <div class="grid m-2">
+
+
+        <p class="font-medium border-b">{{ t('personalInformation.languages') }}</p>
+        <p class="font-medium border-b text-gray-600">French, Dutch</p>
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="flex mt-10">
+        <h1 class="m-2 text-lg font-semibold flex-1">{{ t('personalInformation.homeDetails') }}</h1>
+        <h1 class="m-auto text-base font-semibold">{{ t('edit') }}</h1>
+    </div>
+
+
+    <div class="grid m-2">
+
+
+        <p class="font-medium border-b">{{ t('personalInformation.country') }}</p>
+        <p class="font-medium border-b text-gray-600">Belgium</p>
+
+        <p class="font-medium border-b mt-2">{{ t('personalInformation.city') }}</p>
+        <p class="font-medium border-b mt-2 text-gray-600">Brussels</p>
+
+        <p class="font-medium border-b mt-2">{{ t('personalInformation.address') }}</p>
+        <p class="font-medium border-b mt-2 text-gray-600">Voorspoedstraat, 25</p>
+
+
+        <p class="font-medium border-b mt-2">{{ t('personalInformation.postCode') }}</p>
+        <p class="font-medium border-b mt-2 text-gray-600">1080</p>
+
+
+    </div>
+
+
+
+
+
+
+</ng-template>
+
+
+
+
+
+
+
+
+
+
+
+<ng-template #partnershipDetails>
+    <div class="flex">
+        <h1 class="m-2 text-lg font-semibold flex-1">{{ t('partnershipInformation.title') }}</h1>
+        <h1 class="m-auto text-base font-semibold">{{ t('edit') }}</h1>
+    </div>
+
+
+    <div class="grid m-2">
+
+
+        <p class="font-medium border-b">{{ t('partnershipInformation.pricePerPost') }}</p>
+        <p class="font-medium border-b text-gray-600">€0</p>
+
+        <p class="font-medium border-b mt-2">{{ t('partnershipInformation.pricePerStory') }}</p>
+        <p class="font-medium border-b mt-2 text-gray-600">€200</p>
+
+        <p class="font-medium border-b mt-2">{{ t('partnershipInformation.pricePerHighlight') }}</p>
+        <p class="font-medium border-b mt-2 text-gray-600">€200</p>
+
+
+    </div>
+
+
+
+    <div class="flex mt-10">
+        <h1 class="m-2 text-lg font-semibold flex-1">{{ t('partnershipInformation.paymentInformation') }}</h1>
+        <h1 class="m-auto text-base font-semibold">Edit</h1>
+    </div>
+
+
+    <div class="grid m-2">
+
+
+        <p class="font-medium border-b">{{ t('partnershipInformation.IBANNumber') }}</p>
+        <p class="font-medium border-b text-gray-600">BE77 7777 7777 7777</p>
+
+        <p class="font-medium border-b mt-2">{{ t('partnershipInformation.bankName') }}</p>
+        <p class="font-medium border-b mt-2 text-gray-600">KBC</p>
+
+
+
+
+    </div>
+
+
+</ng-template>
+
+</ng-container>
+
+
+
+  </app-main-navbars>
+  

@@ -1,4 +1,4 @@
-<app-main-navbars [title]="'profile'">
+<app-main-navbars [title]="'profile.title'">
 
 
   <div class="flex m-2 ml-4 flex-wrap">
@@ -7,7 +7,7 @@
     </div>
 
 
-    <div class="flex flex-col m-2">
+    <div class="flex flex-col m-2" [class.flex-1]="!isOther">
       <h3 class="text-3xl">{{ this.user?.firstName }} </h3>
       <h4 class="text-xl flex-1">Influencer, Gym and Gaming</h4>
 
@@ -32,6 +32,13 @@
     <div *ngIf="isOther">
       <div [routerLink]="['/offer/new', user.id]"  class="p-2 rounded-md bg-blue text-white font-semibold">Send Offer</div>
     </div>
+
+
+    <div *ngIf="!isOther">
+      <div [routerLink]="['/profile/edit']"  class="p-2 rounded-md bg-blue text-white font-semibold">Edit profile</div>
+    </div>
+
+
   </div>
 
   <div class="flex flex-wrap mt-5 pt-5 p-2 pl-4 bg-gray-100">
@@ -121,8 +128,7 @@
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Assumenda atque cum illum, nostrum ratione aspernatur
         natus. Autem, necessitatibus! Molestias omnis corporis, repellendus dolorem minima ipsum ipsa fugit vel, tenetur
         similique et, in vitae voluptas? Ea, repellat totam rerum temporibus nesciunt officia nulla pariatur ullam
-        dolorum. A aliquam eaque non
-        voluptates.zzzzzzzzzzz
+        dolorum. A aliquam eaque non voluptates.
       </p>
     </div>
 
