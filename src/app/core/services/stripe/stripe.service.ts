@@ -23,8 +23,8 @@ export class StripeService {
     currency: 'usd',
     amount: 99900,
     quantity: '1',
-    cancelUrl: 'http://localhost:4200/cancel',
-    successUrl: 'http://localhost:4200/success',
+    cancelUrl: environment.baseUrl + '/cancel',
+    successUrl: environment.baseUrl + '/success',
   };
 
 
