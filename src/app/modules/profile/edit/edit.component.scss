@@ -6,6 +6,9 @@
   }
   
 
+.language {
+  margin:10px;
+}
 
 .grid {
 
@@ -16,8 +19,53 @@
 
   }
 
+  input {
+    padding:10px;
+    margin:7px;
+    width:300px;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+
+
+
+  textarea {
+
+    padding:10px;
+    margin:7px;
+    min-height: fit-content;
+
+  }
+
  
 }
-input {
-  box-sizing:border-box;
+
+
+select {
+  background-color: #4cade6;
+
+  padding:7px;
+  margin:10px;
+  border-radius: 5px;
+  color: white;
+  font-weight: 500;
+  
+  &:focus {
+      border:none;
+      outline: none;
+  }
+}
+
+option {
+  background-color: white;
+  color:black;
+}
+
+
+.addBtn {
+  height:30px;
+  width:30px;
 }

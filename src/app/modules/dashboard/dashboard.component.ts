@@ -39,8 +39,8 @@ export class DashboardComponent implements OnInit {
   constructor(private stripeService: StripeService) {}
 
   async pay(): Promise<void> {
-
-    this.stripeService.pay();
+    // todo, add partnershipId
+    this.stripeService.pay(0);
    
 
 }

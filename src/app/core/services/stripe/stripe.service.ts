@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { loadStripe } from '@stripe/stripe-js';
+import { of } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { getHeaders } from '../authorization/authorization';
 
@@ -19,10 +21,11 @@ export class StripeService {
 
    // here we create a payment object
    public payment = {
+    partnershipId: 185,
     name: 'Iphone',
     currency: 'usd',
     amount: 99900,
-    quantity: '1',
+    quantity: 1,
     cancelUrl: environment.baseUrl + '/cancel',
     successUrl: environment.baseUrl + '/success',
   };
@@ -30,23 +33,27 @@ export class StripeService {
 
 
   
-  public async pay() {
+  public async pay(partnershipId: number | string) {
     
+    console.log(this.payment);
     const stripe = await this.stripePromise;
 
     this.http
     .post(`${this.apiUrl}/api/payment`, this.payment, getHeaders())
     .subscribe((data: any) => {
-      // I use stripe to redirect To Checkout page of Stripe platform
-      console.log(data);
+
       alert(data.id);
       stripe.redirectToCheckout({
         sessionId: data.id,
       });
 
-    });
+    }), catchError(err => {
+      console.log(err);
+      return of(err)
+    })}
 
-  }
+
+  
 
 
 }

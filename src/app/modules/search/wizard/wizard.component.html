@@ -181,6 +181,7 @@
           <div class="flex">
             <div>
               <label for="firstName" class="font-semibold ">Minimum</label>
+
               <input id="firstName" class="mt-2 py-1 px-3 outline-none rounded-sm shadow-md border"
                 formControlName="minimumViewers" placeholder="10.000" type="number" />
               <app-input-validation-error [control]="minimumViewers"></app-input-validation-error>
@@ -203,7 +204,7 @@
 
 
           <div class="flex">
-            <div (click)="goToPage(1)" class="flex-1 mt-2 flex">
+            <div (click)="goToPage(3)" class="flex-1 mt-2 flex">
               <i class="fa-solid fa-arrow-left-long my-auto"></i>
               <p class="inline-block ml-2 my-auto cursor-pointer">Back</p>
             </div>
@@ -222,49 +223,220 @@
 
 
           <div class="mb-5">
-            <h2 class="flex flex-col text-4xl font-semibold">Last step!</h2>
-            <h3 class="flex flex-col text-lg">
-              Please enter your phone number. After this, you'll be all set.</h3>
+            <h2 class="flex flex-col text-4xl font-semibold">{{ t('5.title') }}</h2>
+            <h3 class="flex flex-col text-lg">{{ t('5.description') }}</h3>
           </div>
 
 
 
-          <label for="phone" class="font-semibold mb-1">Phone number</label>
+
           <div class="flex">
 
+            <div class="flex-1">
+              <label for="gender" class="font-semibold ">{{ t('5.gender') }}</label>
 
+              <select formControlName="gender" class="mt-2 py-1 px-3 outline-none rounded-sm shadow-md">
+                  <option value="both">No matter</option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+              </select>
 
-
-
-
-            <div class="flex shadow-md rounded-l px-4 py-2 bg-gray-200 w-fit">
-
-
-
+              <app-input-validation-error [control]="gender"></app-input-validation-error>
             </div>
-            <input id="phoneNumber" class="flex-1 py-1 px-3 outline-none rounded-sm shadow-md"
-              placeholder="489 33 28 64" formControlName="phoneNumber" type="tel" />
+
+
+            <div class="flex-1">
+
+              <label for="age" class="font-semibold">{{ t('5.age') }}</label>
+              <input id="age" class="mt-2 py-1 px-3 outline-none rounded-sm shadow-md border"
+                formControlName="age" placeholder="18" type="number" />
+              <app-input-validation-error [control]="age"></app-input-validation-error>
+            </div>
+
+
 
 
           </div>
 
 
 
-          <app-input-validation-error [control]="phoneNumber"></app-input-validation-error>
+
+          <button type="button" (click)="goToPage(5)"
+            class="mt-5 text-white py-1 font-semibold px-3 rounded-sm shadow-sm bg-blue">Continue</button>
 
 
-
-          <button type="submit"
-            class="mt-5  text-white py-1 font-semibold px-3 rounded-sm shadow-sm bg-blue">Register</button>
-          <div (click)="goToPage(4)" class="mx-auto mt-2 flex">
-            <i class="fa-solid fa-arrow-left-long my-auto"></i>
-            <p class="inline-block ml-2 my-auto cursor-pointer">Back</p>
+          <div class="flex">
+            <div (click)="goToPage(4)" class="flex-1 mt-2 flex">
+              <i class="fa-solid fa-arrow-left-long my-auto"></i>
+              <p class="inline-block ml-2 my-auto cursor-pointer">Back</p>
+            </div>
+            <div (click)="goToPage(6)" class="mx-auto mt-2 flex">
+              <p class="inline-block mr-2 my-auto cursor-pointer">Skip</p>
+              <i class="fa-solid fa-arrow-right-long my-auto"></i>
+            </div>
           </div>
-
 
 
 
         </div>
+
+
+
+
+
+
+
+        <div formGroupName="p6" class="flex flex-col w-500" [class.hidden]="actualPage !== 6">
+
+
+
+          <div class="mb-5">
+            <h2 class="flex flex-col text-4xl font-semibold">{{ t('6.title') }}</h2>
+            <h3 class="flex flex-col text-lg">{{ t('6.description') }}</h3>
+          </div>
+
+
+
+
+          <div class="grid grid-cols-2 gap-3">
+
+            <ng-container *ngFor="let item of sectorsArray; let i = index">
+
+
+              <label for="sectors{{ item }}" class="font-semibold p-3 container rounded-md"
+                [class.bg-light-gray]="!sectors.controls[i].value" [class.bg-blue]="sectors.controls[i].value">
+                <input id="sectors{{ item }}" class="py-1 opacity-0 px-3 outline-none rounded-sm shadow-md"
+                  [formControl]="sectors.controls[i]" type="checkbox" />
+<!--                   <span class="checkmark"></span>
+ -->                <p class="ml-2 text-white inline-block capitalize">
+                  {{ item }}
+                </p>
+              </label>
+
+
+            </ng-container>
+
+
+          </div>
+
+
+
+          <button type="button" (click)="goToPage(7)"
+            class="mt-5 text-white py-1 font-semibold px-3 rounded-sm shadow-sm bg-blue">Continue</button>
+
+
+          <div class="flex">
+            <div (click)="goToPage(5)" class="flex-1 mt-2 flex">
+              <i class="fa-solid fa-arrow-left-long my-auto"></i>
+              <p class="inline-block ml-2 my-auto cursor-pointer">Back</p>
+            </div>
+            <div (click)="goToPage(7)" class="mx-auto mt-2 flex">
+              <p class="inline-block mr-2 my-auto cursor-pointer">Skip</p>
+              <i class="fa-solid fa-arrow-right-long my-auto"></i>
+            </div>
+          </div>
+
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div formGroupName="p7" class="flex flex-col w-500" [class.hidden]="actualPage !== 7">
+
+
+
+          <div class="mb-5">
+            <h2 class="flex flex-col text-4xl font-semibold">{{ t('7.title') }}</h2>
+            <h3 class="flex flex-col text-lg">{{ t('7.description') }}</h3>
+          </div>
+
+
+
+
+          <div class="flex flex-col">
+            
+            <label for="country" class="font-semibold">{{ t('7.country') }}</label>
+
+
+            <select formControlName="country" class="w-100 mt-2 py-1 px-3 outline-none rounded-sm shadow-md">
+
+              <ng-container *ngFor="let item of countries | keyvalue">
+                <option value="{{ item.key }}"
+                  selected="{{ item.value.key == 'BE' ? 'selected' : '' }}">
+                  {{ item.value.name }}</option>
+              </ng-container>
+
+            </select>
+            
+
+
+
+          </div>
+
+
+
+
+          <button type="button" (click)="goToPage(5)"
+            class="mt-5 text-white py-1 font-semibold px-3 rounded-sm shadow-sm bg-blue">Continue</button>
+
+
+          <div class="flex">
+            <div (click)="goToPage(4)" class="flex-1 mt-2 flex">
+              <i class="fa-solid fa-arrow-left-long my-auto"></i>
+              <p class="inline-block ml-2 my-auto cursor-pointer">Back</p>
+            </div>
+            <div (click)="goToPage(6)" class="mx-auto mt-2 flex">
+              <p class="inline-block mr-2 my-auto cursor-pointer">Skip</p>
+              <i class="fa-solid fa-arrow-right-long my-auto"></i>
+            </div>
+          </div>
+
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       </form>
       <div class="absolute bottom-10 w-500">
 

@@ -9,6 +9,7 @@ import { PageNavigation } from 'src/app/shared/models/pagination';
 import { tap } from 'rxjs/operators'
 import { COUNTRIES } from 'src/app/shared/data/countries';
 import { matchValues } from 'src/app/shared/static/forms/password-validation';
+import { sectors } from 'src/app/shared/models/common';
 
 @Component({
   selector: 'app-wizard',
@@ -18,10 +19,12 @@ import { matchValues } from 'src/app/shared/static/forms/password-validation';
 export class WizardComponent implements OnInit {
 
   public socialMediaArray = SocialMediaArray;
+  public countries = COUNTRIES;
+  public sectorsArray = sectors;
 
   public wizardFormGroup: FormGroup;
 
-  public actualPage: number = 1;
+  public actualPage: number = 6;
   public allowToGo: number = 1;
 
 
@@ -92,7 +95,31 @@ export class WizardComponent implements OnInit {
       }),
 
       p5: this.formBuilder.group({
-        phoneNumber: ['', [Validators.required]],
+        gender: ['both', [Validators.required]],
+        age: ['', [Validators.required]],
+      }),
+
+
+      p6: this.formBuilder.group({
+        sectors: new FormArray([
+          new FormControl(false),
+          new FormControl(false),
+          new FormControl(false),
+          new FormControl(false),
+          new FormControl(false),
+          new FormControl(false),
+          new FormControl(false),
+          new FormControl(false),
+          new FormControl(false),
+          new FormControl(false),
+          new FormControl(false),
+          new FormControl(false),
+          new FormControl(false),
+        ]),
+      }),
+
+      p7: this.formBuilder.group({
+        country: ['BE', [Validators.required]],
       }),
 
     });
@@ -164,6 +191,28 @@ export class WizardComponent implements OnInit {
       }
     }
 
+    if (page === 6) {
+      if (this.page1.valid && this.page2.valid && this.page3.valid && this.page4.valid) {
+        this.setCurrentPages(6);
+
+      } else {
+
+        this.goToPage(5);
+        this.wizardFormGroup.controls[`p${this.actualPage}`].markAllAsTouched();
+      }
+    }
+
+
+    if (page === 7) {
+      if (this.page1.valid && this.page2.valid && this.page3.valid && this.page4.valid) {
+        this.setCurrentPages(7);
+
+      } else {
+
+        this.goToPage(6);
+        this.wizardFormGroup.controls[`p${this.actualPage}`].markAllAsTouched();
+      }
+    }
 
   }
 
@@ -230,6 +279,9 @@ export class WizardComponent implements OnInit {
     return this.wizardFormGroup.controls.p5;
   }
 
+  get page6(): AbstractControl {
+    return this.wizardFormGroup.controls.p5;
+  }
 
 
 
@@ -264,17 +316,24 @@ export class WizardComponent implements OnInit {
   }
 
 
-
-  get lastName(): AbstractControl {
-    return this.wizardFormGroup.get('p3.lastName');
+  get gender(): AbstractControl {
+    return this.wizardFormGroup.get('p5.gender');
   }
 
-  get email(): AbstractControl {
-    return this.wizardFormGroup.get('p3.email');
+  get age(): AbstractControl {
+    return this.wizardFormGroup.get('p5.age');
   }
 
 
-  get phoneNumber(): AbstractControl {
-    return this.wizardFormGroup.get('p5.phoneNumber');
+  get sectors(): any {
+    return this.wizardFormGroup.get('p6.sectors');
   }
+
+
+  get country(): any {
+    return this.wizardFormGroup.get('p7.country');
+  }
+
+
+
 }

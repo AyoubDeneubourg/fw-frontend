@@ -45,6 +45,7 @@ import { EditProfileComponent } from './modules/profile/edit/edit.component';
 import { SuccessComponent } from './core/stripe/success/success.component';
 import { CancelComponent } from './core/stripe/cancel/cancel.component';
 import { CheckoutComponent } from './core/stripe/checkout/checkout.component';
+import { SearchCardComponent } from './modules/search/search-card/search-card.component';
 
 
 @NgModule({
@@ -82,7 +83,8 @@ import { CheckoutComponent } from './core/stripe/checkout/checkout.component';
     EditProfileComponent,
     SuccessComponent,
     CancelComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    SearchCardComponent
   ],
 
   imports: [

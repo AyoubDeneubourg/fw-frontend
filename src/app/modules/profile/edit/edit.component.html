@@ -38,7 +38,7 @@
 <ng-template #personal>
     <div class="flex">
         <h1 class="m-2 text-lg font-semibold flex-1">{{ t('personalInformation.title') }}</h1>
-        <h1 (click)="changeEditMode()" class="m-auto text-base font-semibold">{{ t('edit') }}</h1>
+        <h1 (click)="changeEditMode('personalInformationEditMode')" class="m-auto text-base font-semibold">{{ t('edit') }}</h1>
     </div>
 
 
@@ -46,21 +46,28 @@
 
 
         <p class="font-medium border-b">{{ t('personalInformation.name') }}</p>
-        <p *ngIf="!editMode" class="font-medium border-b text-gray-600">Youssef Sefiani</p>
-        <p *ngIf="editMode" class="font-medium border-b text-gray-600">        
-            <input type="text" class="p-2 border " value="Youssef Sefiani">
-        </p>
+        <p *ngIf="!personalInformationEditMode" class="font-medium border-b text-gray-600">Youssef Sefiani</p>
+        <span *ngIf="personalInformationEditMode" class="font-medium border-b text-gray-600">        
+            <input type="text" class="p-1  border-2 rounded-md border-blue " value="Youssef Sefiani">
+        </span>
 
         <p class="font-medium border-b mt-2">{{ t('personalInformation.name') }}</p>
-        <p class="font-medium border-b mt-2 text-gray-600">Youssef Sefiani</p>
-
+        <p *ngIf="!personalInformationEditMode" class="font-medium border-b text-gray-600">Youssef Sefiani</p>
+        <span *ngIf="personalInformationEditMode" class="font-medium border-b text-gray-600">        
+            <input type="text" class="p-1  border-2 rounded-md border-blue " value="Youssef Sefiani">
+        </span>
 
         <p class="font-medium border-b ">{{ t('personalInformation.headtitle') }}</p>
-        <p class="font-medium border-b mt-2 text-gray-600">Influencer, Gym and Gaming</p>
-
+        <p *ngIf="!personalInformationEditMode" class="font-medium border-b text-gray-600">Influencer, Gym and Gaming</p>
+        <span *ngIf="personalInformationEditMode" class="font-medium border-b text-gray-600">        
+            <input type="text" class="p-1  w-max border-2 rounded-md border-blue " value="Influencer, Gym and Gaming">
+        </span>
 
         <p class="font-medium border-b ">{{ t('personalInformation.about') }}</p>
-        <p class="font-medium border-b mt-2 text-gray-600">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Assumenda atque cum illum, nostrum ratione aspernatur natus. Autem, necessitatibus! Molestias omnis corporis, repellendus dolorem minima ipsum ipsa fugit vel, tenetur similique et, in vitae voluptas? Ea, repellat totam rerum temporibus nesciunt officia nulla pariatur ullam dolorum. A aliquam eaque non voluptates. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Assumenda atque cum illum, nostrum ratione aspernatur natus. Autem, necessitatibus! Molestias omnis corporis, repellendus dolorem minima ipsum ipsa fugit vel, tenetur similique et, in vitae voluptas? Ea, repellat totam rerum temporibus nesciunt officia nulla pariatur ullam dolorum. A aliquam eaque non voluptates.</p>
+        <p *ngIf="!personalInformationEditMode" class="font-medium border-b text-gray-600">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Assumenda atque cum illum, nostrum ratione aspernatur natus. Autem, necessitatibus! Molestias omnis corporis, repellendus dolorem minima ipsum ipsa fugit vel, tenetur similique et, in vitae voluptas? Ea, repellat totam rerum temporibus nesciunt officia nulla pariatur ullam dolorum. A aliquam eaque non voluptates. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Assumenda atque cum illum, nostrum ratione aspernatur natus. Autem, necessitatibus! Molestias omnis corporis, repellendus dolorem minima ipsum ipsa fugit vel, tenetur similique et, in vitae voluptas? Ea, repellat totam rerum temporibus nesciunt officia nulla pariatur ullam dolorum. A aliquam eaque non voluptates.</p>
+        <span *ngIf="personalInformationEditMode" class="font-medium border-b text-gray-600">       
+            <textarea rows="5" class="w-100 p-1 border-2 rounded-md border-blue ">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Assumenda atque cum illum, nostrum ratione aspernatur natus. Autem, necessitatibus! Molestias omnis corporis, repellendus dolorem minima ipsum ipsa fugit vel, tenetur similique et, in vitae voluptas? Ea, repellat totam rerum temporibus nesciunt officia nulla pariatur ullam dolorum. A aliquam eaque non voluptates. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Assumenda atque cum illum, nostrum ratione aspernatur natus. Autem, necessitatibus! Molestias omnis corporis, repellendus dolorem minima ipsum ipsa fugit vel, tenetur similique et, in vitae voluptas? Ea, repellat totam rerum temporibus nesciunt officia nulla pariatur ullam dolorum. A aliquam eaque non voluptates.</textarea> 
+        </span>
 
         
 
@@ -74,7 +81,7 @@
 
     <div class="flex mt-10">
         <h1 class="m-2 text-lg font-semibold flex-1">{{ t('personalInformation.languages') }}</h1>
-        <h1 class="m-auto text-base font-semibold">{{ t('edit') }}</h1>
+        <h1 (click)="changeEditMode('languagesEditMode')" class="m-auto text-base font-semibold">{{ t('edit') }}</h1>
     </div>
 
 
@@ -82,7 +89,29 @@
 
 
         <p class="font-medium border-b">{{ t('personalInformation.languages') }}</p>
-        <p class="font-medium border-b text-gray-600">French, Dutch</p>
+        <p *ngIf="!languagesEditMode" class="font-medium border-b text-gray-600">French, Dutch</p>
+        <span *ngIf="languagesEditMode" id="languages" class=" border-b text-gray-600 flex flex-col">
+     
+                <span class="flex my-auto mr-auto">
+                    <select class="shadow-md" name="languages" id="selectLanguages">
+                        <ng-container *ngFor="let availableLanguage of availableLanguages">
+                            <option value="{{availableLanguage}}">{{availableLanguage }}</option>
+                        </ng-container>
+                    </select>
+                    <span (click)="add()" class="ml-2 addBtn rounded-sm my-auto text-lg text-center bg-blue text-white font-semibold">+</span>
+                </span>
+
+                <span class="flex">
+                    <span *ngFor="let item of languageList" class="language border-2 mr-1 my-2 py-1 px-2 border-blue rounded-md">      
+                        <span class="my-auto">{{ item }}</span>
+                        <span (click)="remove(item)" class="my-auto ml-2">
+                            <i class="fa-solid fa-trash-can text-red-600"></i>
+                        </span> 
+                    </span>
+                </span>
+            </span>
+
+
 
 
 
@@ -107,7 +136,7 @@
 
     <div class="flex mt-10">
         <h1 class="m-2 text-lg font-semibold flex-1">{{ t('personalInformation.homeDetails') }}</h1>
-        <h1 class="m-auto text-base font-semibold">{{ t('edit') }}</h1>
+        <h1 (click)="changeEditMode('homeDetailsEditMode')" class="m-auto text-base  bg-blue text-white shadow-sm py-2 px-4 rounded-md">{{ t('edit') }}<i class="fa-solid fa-pen-to-square ml-2 "></i></h1>
     </div>
 
 
@@ -115,18 +144,36 @@
 
 
         <p class="font-medium border-b">{{ t('personalInformation.country') }}</p>
-        <p class="font-medium border-b text-gray-600">Belgium</p>
+        <p *ngIf="!homeDetailsEditMode" class="font-medium border-b text-gray-600">Belgium</p>
+
+ 
+
+        <span *ngIf="homeDetailsEditMode" class="flex my-auto border-b flex-col">
+
+            <select class="shadow-md border-b flex w-200" name="languages">
+                <ng-container *ngFor="let country of availableCountries | keyvalue">
+                    <option value="{{ country.key }}">{{ country.value.name }}</option>
+                </ng-container>
+            </select>
+        </span>
 
         <p class="font-medium border-b mt-2">{{ t('personalInformation.city') }}</p>
-        <p class="font-medium border-b mt-2 text-gray-600">Brussels</p>
+        <p *ngIf="!homeDetailsEditMode" class="font-medium border-b text-gray-600">Brussels</p>
+        <span *ngIf="homeDetailsEditMode" class="font-medium border-b text-gray-600">        
+            <input type="text" class="p-1  w-max border-2 rounded-md border-blue " value="Brussels">
+        </span>
 
-        <p class="font-medium border-b mt-2">{{ t('personalInformation.address') }}</p>
-        <p class="font-medium border-b mt-2 text-gray-600">Voorspoedstraat, 25</p>
+        <p class="font-medium border-b">{{ t('personalInformation.address') }}</p>
+        <p *ngIf="!homeDetailsEditMode" class="font-medium border-b text-gray-600">Voorspoedstraat, 25</p>
+        <span *ngIf="homeDetailsEditMode" class="font-medium border-b text-gray-600">        
+            <input type="text" class="p-1  w-max border-2 rounded-md border-blue " value="Voorspoedstraat, 25">
+        </span>
 
-
-        <p class="font-medium border-b mt-2">{{ t('personalInformation.postCode') }}</p>
-        <p class="font-medium border-b mt-2 text-gray-600">1080</p>
-
+        <p class="font-medium border-b">{{ t('personalInformation.postCode') }}</p>
+        <p *ngIf="!homeDetailsEditMode" class="font-medium border-b text-gray-600">1080</p>
+        <span *ngIf="homeDetailsEditMode" class="font-medium border-b text-gray-600">        
+            <input type="text" class="p-1  w-max border-2 rounded-md border-blue " value="1080">
+        </span>
 
     </div>
 
@@ -150,7 +197,7 @@
 <ng-template #partnershipDetails>
     <div class="flex">
         <h1 class="m-2 text-lg font-semibold flex-1">{{ t('partnershipInformation.title') }}</h1>
-        <h1 class="m-auto text-base font-semibold">{{ t('edit') }}</h1>
+        <h1 (click)="changeEditMode('personalInformationEditMode')" class="m-auto text-base font-semibold">{{ t('edit') }}</h1>
     </div>
 
 
