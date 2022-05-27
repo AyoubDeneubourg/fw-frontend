@@ -1,4 +1,6 @@
 import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, ChangeDetectorRef, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Statistics } from 'src/app/shared/models/common';
+import { socialMediaConverter } from 'src/app/shared/models/offers';
 
 @Component({
   selector: 'app-line-chart',
@@ -7,7 +9,38 @@ import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit,
 })
 export class LineChartComponent implements AfterViewInit{
 
+
   
+
+  constructor( private cdref: ChangeDetectorRef) {
+  }
+
+  
+  private _statistics: Statistics;
+    
+  @Input() set statistics(value: Statistics) {
+  
+    if(value) {
+
+      for (const key in value.totalEarningsGraphData) {
+    
+        this.multi[0].series.unshift({
+          name: key,
+          value: value.totalEarningsGraphData[key]
+        })
+        
+      }
+
+    }
+     this._statistics = value;
+  
+  }
+  
+  get statistics(): Statistics {
+      return this._statistics;
+  }
+
+
   @ViewChild('containerRef') containerRef : ElementRef;
 
 
@@ -15,29 +48,12 @@ export class LineChartComponent implements AfterViewInit{
   multi: any[] =  [
     {
       "name": "Total",
-      "series": [
-        {
-          "name": "2009",
-          "value": "15"
-        },
-        {
-          "name": "2010",
-          "value": "856"
-        },
-        {
-          "name": "2011",
-          "value": "156"
-        },
-        {
-          "name": "2012",
-          "value": "160"
-        }
-      ]
+      "series": []
     }
   ]
+
+
   view = null;
-
-
 
   // options
   legend: boolean = false;
@@ -63,14 +79,10 @@ export class LineChartComponent implements AfterViewInit{
 
 
 
-  constructor( private cdref: ChangeDetectorRef) {
-  }
-
 
 
 
   ngAfterViewInit(): void {
-    console.log("here");
     this.view = [this.containerRef.nativeElement.offsetWidth, 500];
     this.cdref.detectChanges();
   }

@@ -1,5 +1,7 @@
-import { ViewEncapsulation } from '@angular/core';
+import { Input, ViewEncapsulation } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
+import { Statistics } from 'src/app/shared/models/common';
+import { socialMediaConverter } from 'src/app/shared/models/offers';
 
 @Component({
   selector: 'app-pie-chart',
@@ -11,20 +13,41 @@ import { Component, OnInit } from '@angular/core';
 
 export class PieChartComponent  {
 
-  single: any[] = [
-    {
-      "name": "Twitter",
-      "value": 4
-    },
-    {
-      "name": "YouTube",
-      "value": 2
-    },
-    {
-      "name": "Instagram",
-      "value": 1
+
+
+  private _statistics: Statistics;
+    
+  @Input() set statistics(value: Statistics) {
+  
+    console.log(value);
+
+    if(value) {
+
+      for (const key in value.topSocialMedia) {
+    
+        this.single.push({
+          name: socialMediaConverter[key],
+          value: value.topSocialMedia[key]
+        })
+
+      }
+
+      console.log(this.single);
+
     }
-  ];
+     this._statistics = value;
+  
+  }
+  
+  get statistics(): Statistics {
+  
+      return this._statistics;
+  
+  }
+
+
+
+  single: any[] = [];
   view: any[] = [];
 
   // options
@@ -37,7 +60,7 @@ export class PieChartComponent  {
   };
 
   constructor() {
-    Object.assign(this, this.single );
+
   }
 
   onSelect(data): void {

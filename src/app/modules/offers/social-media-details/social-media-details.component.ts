@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
-import { SocialMedia, SocialMediaInformation } from 'src/app/shared/models/offers';
+import { SocialMediaInformation } from 'src/app/shared/models/offers';
 
 @Component({
   selector: 'app-social-media-details',

@@ -1,6 +1,24 @@
 {
   "title": "Bonjour",
 
+  "common": {
+
+    "continue": "Continue",
+    "back": "Back",
+    "skip": "Skip",
+    "search": "Search",
+    "minimum": "Minimum",
+    "maximum": "Maximum",
+    
+    "genders": {
+      "male": "Male",
+      "female" : "Female",
+      "both": "No matter"
+    }
+    
+
+  },
+
   "home": {
     "home": "Accueil",
     "about": "À propos",
@@ -94,7 +112,9 @@
         "city": "City",
         "address": "Address",
         "postCode": "Post code",
-        "name": "Name",
+        "firstName": "First name",
+        "lastName": "Last name",
+        "username": "Username",
         "languages": "Languages",
         "countries": "Countries",
         "sectors": "Sectors"
@@ -148,8 +168,42 @@
       "title": "Last step!",
       "description": "Please enter your phone number. After this, you'll be all set."
     }
-  }
+  },
 
 
  
+  "wizard": {
+
+    "1": {
+      "title": "What is your budget?",
+      "description": "The average budget is between 150$ and 400$"
+    },
+    "2": {
+      "title": "Choose the desired platforms.",
+      "description": " "
+    },
+    "3": {
+      "title": "Amount of followers you want to reach?",
+      "description": "The average followers is between 15k and 200k."
+    },
+    "4": {
+      "title": "Amount of viewers you want to reach?",
+      "description": "The average viewers is between 15k and 200k."
+    },
+    "5": {
+      "title": "Are you looking for a particular gender or age?",
+      "description": " ",
+      "gender": "Gender",
+      "age": "Age"
+    },
+    "6": {
+      "title": "Are you looking for a particular sector?",
+      "description": " "
+    },
+    "7": {
+      "title": "In which country are you looking to make yourself known?",
+      "description": " ",
+      "country": "Country"
+    }
+  }
 }

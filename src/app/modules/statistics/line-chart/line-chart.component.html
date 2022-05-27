@@ -1,7 +1,7 @@
 
 <div class="flex w-4/5 m-auto" #containerRef  >
 
-    <ngx-charts-line-chart
+    <ngx-charts-line-chart *ngIf="multi[0]?.series?.length" 
     (window:resize)="resizeChart(containerRef.offsetWidth)"
     [view]="view"
     [scheme]="colorScheme"

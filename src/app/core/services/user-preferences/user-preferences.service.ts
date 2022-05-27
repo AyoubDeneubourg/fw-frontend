@@ -1,5 +1,6 @@
 import { Inject, Injectable, Optional } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
+import { Filters } from 'src/app/shared/models/common';
 @Injectable({
   providedIn: 'root'
 })
@@ -44,6 +45,7 @@ export class UserPreferencesService {
   private defaultPreferences(): UserPreferences {
     return {
       language: null,
+      search: null
     };
   }
 
@@ -63,4 +65,5 @@ export class UserPreferencesService {
 
 export interface UserPreferences {
   language: string;
+  search: Filters
 }

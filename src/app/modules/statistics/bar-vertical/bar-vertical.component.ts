@@ -1,5 +1,6 @@
-import { ViewEncapsulation } from '@angular/core';
+import { Input, ViewEncapsulation } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
+import { Statistics } from 'src/app/shared/models/common';
 
 @Component({
   selector: 'app-bar-vertical',
@@ -9,7 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BarVerticalComponent implements OnInit {
 
-  single: any[];
+
+  @Input()
+  public statistics: Statistics;
+
+
+  public single: any[];
   
 
   view: any[] = [undefined, 200];

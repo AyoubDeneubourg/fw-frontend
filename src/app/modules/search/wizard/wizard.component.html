@@ -28,7 +28,7 @@
 
           <div class="flex">
             <div>
-              <label for="firstName" class="font-semibold ">Minimum</label>
+              <label for="firstName" class="font-semibold ">{{ 'common.minimum' | transloco }}</label>
               <input id="firstName" class="mt-2 py-1 px-3 outline-none rounded-sm shadow-md border"
                 formControlName="minimumBudget" placeholder="200€" type="number" />
               <app-input-validation-error [control]="minimumBudget"></app-input-validation-error>
@@ -37,7 +37,7 @@
 
             <div>
 
-              <label for="firstName" class="font-semibold">Maximum</label>
+              <label for="firstName" class="font-semibold">{{ 'common.maximum' | transloco }}</label>
               <input id="firstName" class="mt-2 py-1 px-3 outline-none rounded-sm shadow-md border"
                 formControlName="maximumBudget" placeholder="800€" type="number" />
               <app-input-validation-error [control]="maximumBudget"></app-input-validation-error>
@@ -46,14 +46,14 @@
           </div>
 
           <button type="button" (click)="goToPage(2)"
-            class="mt-5 text-white py-1 font-semibold px-3 rounded-sm shadow-sm bg-blue">Continue</button>
+            class="mt-5 text-white py-1 font-semibold px-3 rounded-sm shadow-sm bg-blue">{{ 'common.continue' | transloco }}</button>
 
 
 
           <div class="flex">
             <div class="flex-1"></div>
             <div (click)="goToPage(2)" class="mx-auto mt-2 flex">
-              <p class="inline-block mr-2 my-auto cursor-pointer">Skip</p>
+              <p class="inline-block mr-2 my-auto cursor-pointer">{{ 'common.skip' | transloco }}</p>
               <i class="fa-solid fa-arrow-right-long my-auto"></i>
             </div>
           </div>
@@ -71,9 +71,8 @@
 
 
           <div class="mb-5">
-            <h2 class="flex flex-col text-4xl font-semibold">Tell us where you are.</h2>
-            <h3 class="flex flex-col text-lg">Tell us where you live to have better performance
-              with our algorithm.</h3>
+            <h2 class="flex flex-col text-4xl font-semibold">{{ t('2.title') }}</h2>
+            <h3 class="flex flex-col text-lg">{{ t('2.description') }}</h3>
           </div>
 
 
@@ -82,11 +81,13 @@
             <ng-container *ngFor="let item of socialMediaArray; let i = index">
 
 
-              <label for="socialMedia{{ item }}" class="font-semibold p-6 rounded-md "
-                [class.bg-light-gray]="!socialMedia.controls[i].value" [class.bg-blue]="socialMedia.controls[i].value">
-                <input id="socialMedia{{ item }}" class="py-1 px-3 outline-none rounded-sm shadow-md"
+              <label for="socialMedia{{ item }}" class="font-semibold p-5 rounded-md text-white"
+              [class.bg-light-gray]="!socialMedia.controls[i].value" 
+              [class.btn-hover-animation]="!socialMedia.controls[i].value"
+              [class.btn-unselected-animation]="socialMedia.controls[i].value">
+                <input id="socialMedia{{ item }}" class="py-1 hidden px-3 outline-none rounded-sm shadow-md"
                   [formControl]="socialMedia.controls[i]" type="checkbox" />
-                <p class="ml-2 text-white inline-block capitalize">
+                <p class="ml-2 relative  inline-block capitalize z-50">
                   {{ item }}
                 </p>
               </label>
@@ -101,15 +102,15 @@
 
 
           <button type="button" (click)="goToPage(3)"
-            class="mt-5 text-white py-1 font-semibold px-3 rounded-sm shadow-sm bg-blue">Continue</button>
+            class="mt-5 text-white py-1 font-semibold px-3 rounded-sm shadow-sm bg-blue">{{ 'common.continue' | transloco }}</button>
 
           <div class="flex">
             <div (click)="goToPage(1)" class="flex-1 mt-2 flex">
               <i class="fa-solid fa-arrow-left-long my-auto"></i>
-              <p class="inline-block ml-2 my-auto cursor-pointer">Back</p>
+              <p class="inline-block ml-2 my-auto cursor-pointer">{{ 'common.back' | transloco }}</p>
             </div>
             <div (click)="goToPage(3)" class="mx-auto mt-2 flex">
-              <p class="inline-block mr-2 my-auto cursor-pointer">Skip</p>
+              <p class="inline-block mr-2 my-auto cursor-pointer">{{ 'common.skip' | transloco }}</p>
               <i class="fa-solid fa-arrow-right-long my-auto"></i>
             </div>
           </div>
@@ -128,7 +129,7 @@
 
           <div class="flex">
             <div>
-              <label for="firstName" class="font-semibold ">Minimum</label>
+              <label for="firstName" class="font-semibold ">{{ 'common.minimum' | transloco }}</label>
               <input id="firstName" class="mt-2 py-1 px-3 outline-none rounded-sm shadow-md border"
                 formControlName="minimumFollowers" placeholder="10.000" type="number" />
               <app-input-validation-error [control]="minimumFollowers"></app-input-validation-error>
@@ -137,7 +138,7 @@
 
             <div>
 
-              <label for="firstName" class="font-semibold">Maximum</label>
+              <label for="firstName" class="font-semibold">{{ 'common.maximum' | transloco }}</label>
               <input id="firstName" class="mt-2 py-1 px-3 outline-none rounded-sm shadow-md border"
                 formControlName="maximumFollowers" placeholder="25.000" type="number" />
               <app-input-validation-error [control]="maximumFollowers"></app-input-validation-error>
@@ -146,17 +147,17 @@
           </div>
 
           <button type="button" (click)="goToPage(4)"
-            class="mt-5 text-white py-1 font-semibold px-3 rounded-sm shadow-sm bg-blue">Continue</button>
+            class="mt-5 text-white py-1 font-semibold px-3 rounded-sm shadow-sm bg-blue">{{ 'common.continue' | transloco }}</button>
 
 
 
           <div class="flex">
             <div (click)="goToPage(2)" class="flex-1 mt-2 flex">
               <i class="fa-solid fa-arrow-left-long my-auto"></i>
-              <p class="inline-block ml-2 my-auto cursor-pointer">Back</p>
+              <p class="inline-block ml-2 my-auto cursor-pointer">{{ 'common.back' | transloco }}</p>
             </div>
             <div (click)="goToPage(4)" class="mx-auto mt-2 flex">
-              <p class="inline-block mr-2 my-auto cursor-pointer">Skip</p>
+              <p class="inline-block mr-2 my-auto cursor-pointer">{{ 'common.skip' | transloco }}</p>
               <i class="fa-solid fa-arrow-right-long my-auto"></i>
             </div>
           </div>
@@ -180,7 +181,7 @@
 
           <div class="flex">
             <div>
-              <label for="firstName" class="font-semibold ">Minimum</label>
+              <label for="firstName" class="font-semibold ">{{ 'common.minimum' | transloco }}</label>
 
               <input id="firstName" class="mt-2 py-1 px-3 outline-none rounded-sm shadow-md border"
                 formControlName="minimumViewers" placeholder="10.000" type="number" />
@@ -190,7 +191,7 @@
 
             <div>
 
-              <label for="firstName" class="font-semibold">Maximum</label>
+              <label for="firstName" class="font-semibold">{{ 'common.maximum' | transloco }}</label>
               <input id="firstName" class="mt-2 py-1 px-3 outline-none rounded-sm shadow-md border"
                 formControlName="maximumViewers" placeholder="25.000" type="number" />
               <app-input-validation-error [control]="maximumViewers"></app-input-validation-error>
@@ -199,17 +200,17 @@
           </div>
 
           <button type="button" (click)="goToPage(5)"
-            class="mt-5 text-white py-1 font-semibold px-3 rounded-sm shadow-sm bg-blue">Continue</button>
+            class="mt-5 text-white py-1 font-semibold px-3 rounded-sm shadow-sm bg-blue">{{ 'common.continue' | transloco }}</button>
 
 
 
           <div class="flex">
             <div (click)="goToPage(3)" class="flex-1 mt-2 flex">
               <i class="fa-solid fa-arrow-left-long my-auto"></i>
-              <p class="inline-block ml-2 my-auto cursor-pointer">Back</p>
+              <p class="inline-block ml-2 my-auto cursor-pointer">{{ 'common.back' | transloco }}</p>
             </div>
             <div (click)="goToPage(5)" class="mx-auto mt-2 flex">
-              <p class="inline-block mr-2 my-auto cursor-pointer">Skip</p>
+              <p class="inline-block mr-2 my-auto cursor-pointer">{{ 'common.skip' | transloco }}</p>
               <i class="fa-solid fa-arrow-right-long my-auto"></i>
             </div>
           </div>
@@ -235,10 +236,10 @@
             <div class="flex-1">
               <label for="gender" class="font-semibold ">{{ t('5.gender') }}</label>
 
-              <select formControlName="gender" class="mt-2 py-1 px-3 outline-none rounded-sm shadow-md">
-                  <option value="both">No matter</option>
-                  <option value="male">Male</option>
-                  <option value="female">Female</option>
+              <select formControlName="gender" class="w-228 mt-2 py-1 px-3 outline-none rounded-sm shadow-md">
+                  <option value="both">{{ 'common.genders.both' | transloco }}</option>
+                  <option value="male">{{ 'common.genders.male' | transloco }}</option>
+                  <option value="female">{{ 'common.genders.female' | transloco }}</option>
               </select>
 
               <app-input-validation-error [control]="gender"></app-input-validation-error>
@@ -261,17 +262,17 @@
 
 
 
-          <button type="button" (click)="goToPage(5)"
-            class="mt-5 text-white py-1 font-semibold px-3 rounded-sm shadow-sm bg-blue">Continue</button>
+          <button type="button" (click)="goToPage(6)"
+            class="mt-5 text-white py-1 font-semibold px-3 rounded-sm shadow-sm bg-blue">{{ 'common.continue' | transloco }}</button>
 
 
           <div class="flex">
             <div (click)="goToPage(4)" class="flex-1 mt-2 flex">
               <i class="fa-solid fa-arrow-left-long my-auto"></i>
-              <p class="inline-block ml-2 my-auto cursor-pointer">Back</p>
+              <p class="inline-block ml-2 my-auto cursor-pointer">{{ 'common.back' | transloco }}</p>
             </div>
             <div (click)="goToPage(6)" class="mx-auto mt-2 flex">
-              <p class="inline-block mr-2 my-auto cursor-pointer">Skip</p>
+              <p class="inline-block mr-2 my-auto cursor-pointer">{{ 'common.skip' | transloco }}</p>
               <i class="fa-solid fa-arrow-right-long my-auto"></i>
             </div>
           </div>
@@ -302,15 +303,20 @@
 
             <ng-container *ngFor="let item of sectorsArray; let i = index">
 
+    
 
-              <label for="sectors{{ item }}" class="font-semibold p-3 container rounded-md"
-                [class.bg-light-gray]="!sectors.controls[i].value" [class.bg-blue]="sectors.controls[i].value">
-                <input id="sectors{{ item }}" class="py-1 opacity-0 px-3 outline-none rounded-sm shadow-md"
+              <label for="sectors{{ item }}" class="font-semibold p-3 rounded-md text-white "
+                [class.bg-light-gray]="!sectors.controls[i].value" 
+                [class.btn-hover-animation]="!sectors.controls[i].value"
+                [class.btn-unselected-animation]="sectors.controls[i].value" 
+                
+
+                >
+                <input id="sectors{{ item }}" class="py-1 hidden px-3 outline-none rounded-sm shadow-md"
                   [formControl]="sectors.controls[i]" type="checkbox" />
-<!--                   <span class="checkmark"></span>
- -->                <p class="ml-2 text-white inline-block capitalize">
+                  <p class="ml-2 relative  inline-block capitalize z-50">
                   {{ item }}
-                </p>
+                  </p>
               </label>
 
 
@@ -322,16 +328,16 @@
 
 
           <button type="button" (click)="goToPage(7)"
-            class="mt-5 text-white py-1 font-semibold px-3 rounded-sm shadow-sm bg-blue">Continue</button>
+            class="mt-5 text-white py-1 font-semibold px-3 rounded-sm shadow-sm bg-blue">{{ 'common.continue' | transloco }}</button>
 
 
           <div class="flex">
             <div (click)="goToPage(5)" class="flex-1 mt-2 flex">
               <i class="fa-solid fa-arrow-left-long my-auto"></i>
-              <p class="inline-block ml-2 my-auto cursor-pointer">Back</p>
+              <p class="inline-block ml-2 my-auto cursor-pointer">{{ 'common.back' | transloco }}</p>
             </div>
             <div (click)="goToPage(7)" class="mx-auto mt-2 flex">
-              <p class="inline-block mr-2 my-auto cursor-pointer">Skip</p>
+              <p class="inline-block mr-2 my-auto cursor-pointer">{{ 'common.skip' | transloco }}</p>
               <i class="fa-solid fa-arrow-right-long my-auto"></i>
             </div>
           </div>
@@ -397,44 +403,18 @@
 
 
 
-          <button type="button" (click)="goToPage(5)"
-            class="mt-5 text-white py-1 font-semibold px-3 rounded-sm shadow-sm bg-blue">Continue</button>
+          <button type="submit"
+            class="mt-5 text-white py-1 font-semibold px-3 rounded-sm shadow-sm bg-blue">{{ 'common.search' | transloco }}</button>
 
 
           <div class="flex">
-            <div (click)="goToPage(4)" class="flex-1 mt-2 flex">
+            <div (click)="goToPage(6)" class="flex-1 mt-2 flex">
               <i class="fa-solid fa-arrow-left-long my-auto"></i>
-              <p class="inline-block ml-2 my-auto cursor-pointer">Back</p>
-            </div>
-            <div (click)="goToPage(6)" class="mx-auto mt-2 flex">
-              <p class="inline-block mr-2 my-auto cursor-pointer">Skip</p>
-              <i class="fa-solid fa-arrow-right-long my-auto"></i>
+              <p class="inline-block ml-2 my-auto cursor-pointer">{{ 'common.back' | transloco }}</p>
             </div>
           </div>
 
-
-
         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
       </form>

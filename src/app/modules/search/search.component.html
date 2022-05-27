@@ -3,15 +3,15 @@
 <div class="flex">
 
 
-<div [routerLink]="'/wizard'" class="search-tool w-300 bg-gray-50">
+<div class="search-tool w-300 bg-gray-50">
 
-    <div class="flex bg-blue px-6 py-8 text-white">
+    <div [routerLink]="'/wizard'" class="flex bg-blue px-6 py-8 text-white">
         <p class="font-bold m-auto">LAUNCH WIZARD</p>
         <span>-></span>
     </div>
 
 
-    <div class="m-2">
+    <form class="m-2" [formGroup]="searchFormGroup" >
 
         <div class="flex p-2">
             <p class="flex-1 text-blue font-semibold">Filter by</p>
@@ -21,95 +21,130 @@
 
 
 
-        <p class="text-gray-600 font-semibold text-sm">Social Media</p>
-
-
-
-        <div *ngFor="let socialMedia of socialMediaArray">
-            <input class="mr-2" type="checkbox" name="socials" value="{{socialMedia}}" id="{{socialMedia}}">
-            <label for="{{socialMedia}}">{{socialMedia}}</label>
-            
+        <div formGroupName="i1">    
+            <p class="text-gray-600 font-semibold text-sm">Social Media</p>
+            <div *ngFor="let item of socialMediaArray; let i = index">
+                <input [formControl]="socialMedia.controls[i]" class="mr-2" type="checkbox" name="socials" value="{{item}}" id="{{item}}">
+                <label for="{{item}}">{{item}}</label>
+            </div>
         </div>
+
+
+
+
+
+        <div formGroupName="i2">    
+
+            <p class="text-gray-600 font-semibold text-sm mt-2">Type</p>
+            <div>
+                <input [formControl]="type.controls[0]" class="mr-2" type="checkbox" name="type" value="type" id="type">
+                <label for="type">Post</label>
+            </div>
+            <div>
+                <input [formControl]="type.controls[1]" class="mr-2" type="checkbox" name="type" value="story" id="story">
+                <label for="story">Story</label>
+            </div>
+            <div>
+                <input [formControl]="type.controls[2]" class="mr-2" type="checkbox" name="type" value="highlight" id="highlight">
+                <label for="highlight">Highlight</label>
+            </div>
+
+        </div>
+
+
         
-
-
-        <p class="text-gray-600 font-semibold text-sm mt-2">Type</p>
-
-
-        <div>
-            <input class="mr-2" type="checkbox" name="socials" value="snapchat" id="snapchat">
-            <label for="snapchat">Post</label>
+        <div formGroupName="i3">    
+            <p class="text-gray-600 font-semibold text-sm mt-2">Notes</p>
+            <div>
+            todo
+            </div>
         </div>
-        <div>
-            <input class="mr-2" type="checkbox" name="socials" value="snapchat" id="snapchat">
-            <label for="snapchat">Story</label>
-        </div>
-        <div>
-            <input class="mr-2" type="checkbox" name="socials" value="snapchat" id="snapchat">
-            <label for="snapchat">Highlight</label>
+
+        <div>    
+            <p class="text-gray-600 font-semibold text-sm mt-2">Budget</p>
+            <div>
+                <ngx-slider [(value)]="minimumBudget" [(highValue)]="maximumBudget" [options]="budgetOptions"></ngx-slider>
+            </div>
         </div>
 
 
+        <div>    
+            <p class="text-gray-600 font-semibold text-sm mt-2">Amount of followers</p>
+            <div>
+                <ngx-slider [(value)]="minimumFollowers" [(highValue)]="maximumFollowers" [options]="followersOptions"></ngx-slider>
+            </div>
+        </div>
 
 
-        
-        <p class="text-gray-600 font-semibold text-sm mt-2">Notes</p>
+        <div >    
+            <p class="text-gray-600 font-semibold text-sm mt-2">Amount of viewers</p>
+            <div>
+                <ngx-slider [(value)]="minimumViewers" [(highValue)]="maximumViewers" [options]="viewersOptions"></ngx-slider>
+            </div>
+        </div>
 
-
-        <div>
-        todo
+        <div formGroupName="i7">    
+            <p class="text-gray-600 font-semibold text-sm mt-2">Gender</p>
+            <select formControlName="gender" class="shadow-md" name="gender" id="gender">
+                <option value="both">No Matter</option>
+                <option value="male">Man</option>
+                <option value="female">Female</option>
+            </select>
         </div>
 
 
 
-        <p class="text-gray-600 font-semibold text-sm mt-2">Gender</p>
-        <select class="shadow-md" name="gender" id="gender">
-            <option value="noMatter">No Matter</option>
-            <option value="man">Man</option>
-            <option value="female">Female</option>
-        </select>
-
-
-        <p class="text-gray-600 font-semibold text-sm">Age</p>
-        <input class="mr-2 w-100 p-2 outline-none border rounded-md border-blue" type="number" name="age" value="18" id="age">
-            
-
-
-
-
-
-
-
-
-
-
-
-
-        <p class="text-gray-600 font-semibold text-sm">Sector</p>
-
-
-        // ngfor
-
-        <div>
-            <input class="mr-2" type="checkbox" name="socials" value="snapchat" id="snapchat">
-            <label for="snapchat">Snapchat</label>
-            
+        <div formGroupName="i8">    
+            <p class="text-gray-600 font-semibold text-sm">Age</p>
+            <input [formControl]="age" class="mr-2 w-100 p-2 outline-none border rounded-md border-blue" type="number" name="age" id="age">
         </div>
 
 
 
 
 
+        <div formGroupName="i9">    
+            <p class="text-gray-600 font-semibold text-sm">Location</p>
+
+        <select formControlName="location" class="w-100 mt-2 py-1 px-3 outline-none rounded-sm shadow-md">
+
+            <ng-container *ngFor="let item of countries | keyvalue">
+              <option value="{{ item.key }}">
+                {{ item.value.name }}</option>
+            </ng-container>
+
+          </select>
+        </div>
 
 
 
 
 
-    </div>
+        <div formGroupName="i10">    
+
+        <p class="text-gray-600 font-semibold text-sm">Sectors</p>
+
+
+        <div *ngFor="let item of sectorsArray; let i = index">
+            <input [formControl]="sectors.controls[i]" id="sector-{{ item }}" name="sector-{{item}}" class="mr-2"  type="checkbox" />
+            <label for="sector-{{ item }}">{{item}}</label>
+        </div>
+
+        </div>
+
+
+
+
+
+
+
+
+
+    </form>
 </div>
 <div class="results">
 
-<div class="flex">
+<div class="flex flex-wrap">
     <app-search-card></app-search-card>
     <app-search-card></app-search-card>
 </div>

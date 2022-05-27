@@ -4,12 +4,13 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { AuthService } from 'src/app/core/services/auth-service/auth.service';
-import { SocialMediaArray } from 'src/app/shared/models/offers';
+import { SocialMediaArrayCapitalized } from 'src/app/shared/models/offers';
 import { PageNavigation } from 'src/app/shared/models/pagination';
 import { tap } from 'rxjs/operators'
 import { COUNTRIES } from 'src/app/shared/data/countries';
 import { matchValues } from 'src/app/shared/static/forms/password-validation';
-import { sectors } from 'src/app/shared/models/common';
+import { Filters, sectors } from 'src/app/shared/models/common';
+import { UserPreferences, UserPreferencesService } from 'src/app/core/services/user-preferences/user-preferences.service';
 
 @Component({
   selector: 'app-wizard',
@@ -18,13 +19,14 @@ import { sectors } from 'src/app/shared/models/common';
 })
 export class WizardComponent implements OnInit {
 
-  public socialMediaArray = SocialMediaArray;
+  public socialMediaArray = SocialMediaArrayCapitalized;
+  
   public countries = COUNTRIES;
   public sectorsArray = sectors;
 
   public wizardFormGroup: FormGroup;
 
-  public actualPage: number = 6;
+  public actualPage: number = 1;
   public allowToGo: number = 1;
 
 
@@ -59,7 +61,7 @@ export class WizardComponent implements OnInit {
     }
   ];
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthService) { }
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private userPreferencesService: UserPreferencesService) { }
 
   ngOnInit(): void {
 
@@ -115,6 +117,8 @@ export class WizardComponent implements OnInit {
           new FormControl(false),
           new FormControl(false),
           new FormControl(false),
+          new FormControl(false),
+          new FormControl(false),
         ]),
       }),
 
@@ -136,45 +140,30 @@ export class WizardComponent implements OnInit {
     }
 
 
-
     if (page === 2) {
       if (this.page1.valid) {
-        this.setCurrentPages(2);
+          this.setCurrentPages(2);
       } else {
-
-        this.goToPage(1);
-        this.wizardFormGroup.controls[Object.keys(this.wizardFormGroup.controls)[this.actualPage - 1]].markAllAsTouched();
+          this.goToPage(1);
+          this.wizardFormGroup.controls[Object.keys(this.wizardFormGroup.controls)[this.actualPage - 1]].markAllAsTouched();
       }
     }
 
 
-
     if (page === 3) {
       if (this.page1.valid && this.page2.valid) {
-
-
-
-
-        this.setCurrentPages(3);
-
-
-
+          this.setCurrentPages(3);
       } else {
-
-        this.goToPage(2);
-        this.wizardFormGroup.controls[`p${this.actualPage}`].markAllAsTouched();
+          this.goToPage(2);
+          this.wizardFormGroup.controls[`p${this.actualPage}`].markAllAsTouched();
       }
     }
 
 
     if (page === 4) {
       if (this.page1.valid && this.page2.valid && this.page3.valid) {
-
         this.setCurrentPages(4);
-
-
       } else {
-
         this.goToPage(3);
         this.wizardFormGroup.controls[`p${this.actualPage}`].markAllAsTouched();
       }
@@ -182,7 +171,7 @@ export class WizardComponent implements OnInit {
 
     if (page === 5) {
       if (this.page1.valid && this.page2.valid && this.page3.valid && this.page4.valid) {
-        this.setCurrentPages(5);
+          this.setCurrentPages(5);
 
       } else {
 
@@ -190,6 +179,7 @@ export class WizardComponent implements OnInit {
         this.wizardFormGroup.controls[`p${this.actualPage}`].markAllAsTouched();
       }
     }
+
 
     if (page === 6) {
       if (this.page1.valid && this.page2.valid && this.page3.valid && this.page4.valid) {
@@ -222,12 +212,10 @@ export class WizardComponent implements OnInit {
     if (this.actualPage !== newPage) {
       this.allPages[newPage - 1].currentStatus = 'Active';
 
-
-      //  if (this.wizardFormGroup.controls[`p${this.actualPage}`].valid) {
       if (this.wizardFormGroup.controls[Object.keys(this.wizardFormGroup.controls)[this.actualPage - 1]].valid) {
-        this.allPages[this.actualPage - 1].currentStatus = 'Valid';
+            this.allPages[this.actualPage - 1].currentStatus = 'Valid';
       } else {
-        this.allPages[this.actualPage - 1].currentStatus = 'Future';
+            this.allPages[this.actualPage - 1].currentStatus = 'Future';
       }
     }
 
@@ -240,6 +228,52 @@ export class WizardComponent implements OnInit {
 
   onSubmit(): void {
 
+
+    let sectors = [];
+    let socialMedia = [];
+
+     this.sectors.value.forEach((element: string, index: number) => {
+       if (element) {
+        sectors.push(this.sectorsArray[index])
+       }
+     });
+
+
+     this.socialMedia.value.forEach((element: string, index: number) => {
+      if(element) {
+        socialMedia.push(this.socialMediaArray[index]);
+      }
+     })
+
+     console.log(sectors);
+
+
+    const search: Filters = {
+
+        budget: {
+          min: this.minimumBudget.value,
+          max: this.maximumBudget.value
+        },
+        followers: {
+          min: this.minimumFollowers.value,
+          max: this.maximumFollowers.value
+        },
+        views: {
+          min: this.minimumViewers.value,
+          max: this.maximumViewers.value,
+  
+        },
+        gender: this.gender.value,
+        age: this.age.value,
+        location: this.country.value,
+        sectors: sectors,
+        socialMedia: socialMedia
+      
+    };
+
+    this.userPreferencesService.update({search})
+
+    
     if (this.wizardFormGroup.invalid) {
 
       // this.goToPage(5)
@@ -290,10 +324,10 @@ export class WizardComponent implements OnInit {
   }
 
   get maximumBudget(): AbstractControl {
-    return this.wizardFormGroup.get('p1.minimumBudget');
+    return this.wizardFormGroup.get('p1.maximumBudget');
   }
 
-
+  
   get socialMedia(): any {
     return this.wizardFormGroup.get('p2.socialMedia');
   }

@@ -45,16 +45,22 @@
     <div class="grid m-2">
 
 
-        <p class="font-medium border-b">{{ t('personalInformation.name') }}</p>
-        <p *ngIf="!personalInformationEditMode" class="font-medium border-b text-gray-600">Youssef Sefiani</p>
+        <p class="font-medium border-b">{{ t('personalInformation.firstName') }}</p>
+        <p *ngIf="!personalInformationEditMode" class="font-medium border-b text-gray-600">Youssef</p>
         <span *ngIf="personalInformationEditMode" class="font-medium border-b text-gray-600">        
-            <input type="text" class="p-1  border-2 rounded-md border-blue " value="Youssef Sefiani">
+            <input type="text" class="p-1  border-2 rounded-md border-blue " value="Youssef">
         </span>
 
-        <p class="font-medium border-b mt-2">{{ t('personalInformation.name') }}</p>
-        <p *ngIf="!personalInformationEditMode" class="font-medium border-b text-gray-600">Youssef Sefiani</p>
+        <p class="font-medium border-b">{{ t('personalInformation.lastName') }}</p>
+        <p *ngIf="!personalInformationEditMode" class="font-medium border-b text-gray-600">Sefiani</p>
         <span *ngIf="personalInformationEditMode" class="font-medium border-b text-gray-600">        
-            <input type="text" class="p-1  border-2 rounded-md border-blue " value="Youssef Sefiani">
+            <input type="text" class="p-1  border-2 rounded-md border-blue " value="Sefiani">
+        </span>
+
+        <p class="font-medium border-b mt-2">{{ t('personalInformation.username') }}</p>
+        <p *ngIf="!personalInformationEditMode" class="font-medium border-b text-gray-600">SniZe</p>
+        <span *ngIf="personalInformationEditMode" class="font-medium border-b text-gray-600">        
+            <input type="text" class="p-1  border-2 rounded-md border-blue " value="SniZe">
         </span>
 
         <p class="font-medium border-b ">{{ t('personalInformation.headtitle') }}</p>

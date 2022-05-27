@@ -42,7 +42,7 @@ export type LoginData = {
 
 export type Filters = {
 
-    socialMedia?: {
+/*     socialMedia?: {
         facebook: boolean,
         twitter: boolean,
         instagram: boolean,
@@ -50,13 +50,16 @@ export type Filters = {
         snapchat: boolean,
         youtube: boolean,
         telegram: boolean,
-    },
+    }, */
+
+    socialMedia?: string[]
+
     type?: {
         posts: boolean,
         stories: boolean,
         highlights: boolean
     },
-    notes: {
+    notes?: {
         '1': boolean,
         '2': boolean,
         '3': boolean,
@@ -80,8 +83,11 @@ export type Filters = {
 
 
     gender?: 'Both' | 'Male' | 'Female',
+    age?: number,
+    location?: string,
+    sectors?: string[]
 
-    sector?: {
+/*     sector?: {
         automotive: boolean,
         lifestyle: boolean,
         science: boolean,
@@ -95,9 +101,8 @@ export type Filters = {
         travel: boolean,
         beauty: boolean,
         art: boolean,
-    },
+    }, */
 
-    location?: string
 }
 
 export const sectors = [
@@ -114,6 +119,19 @@ export const sectors = [
     'Travel',
     'Beauty',
     'Art',
+    'IT',
+    'Finance',
+    
 ];
 
 
+export type Statistics =  {
+    "influencerId": number,
+    "totalPartnerships": number,
+    "totalMoneyEarned": number,
+    "topCountries": null,
+    "topSocialMedia": Object,
+    "totalEarningsGraphData": Object,
+    "totalMoneyEarnedMonth": number,
+    "totalPartnershipsMonth": number
+}

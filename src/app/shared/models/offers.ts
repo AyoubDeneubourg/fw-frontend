@@ -12,21 +12,21 @@ export type Offer = { // add influencer & brand id
     client?: OfferClient
 }
 
-export type SocialMedia = {
 
-    facebook?: SocialMediaInformation, // 0 
-    twitter?: SocialMediaInformation, // 1
-    instagram?: SocialMediaInformation, // ...
-    tiktok?: SocialMediaInformation,
-    snapchat?: SocialMediaInformation,
-    youtube?: SocialMediaInformation,
-    telegram?: SocialMediaInformation,
-};
 
 
 export const SocialMediaArray = ['FACEBOOK', 'TWITTER', 'INSTAGRAM', 'TIKTOK', 'SNAPCHAT', 'YOUTUBE', 'TWITCH']
 export const SocialMediaArrayCapitalized = ['Facebook', 'Twitter', 'Instagram', 'Tik-Tok', 'Snapchat', 'YouTube', 'Twitch']
+export const socialMediaConverter = {
 
+    'FACEBOOK' : 'Facebook',
+    'TWITTER' : 'Twitter',
+    'INSTAGRAM' : 'Instagram',
+    'TIKTOK' :'Tik-Tok',
+    'SNAPCHAT' :'Snapchat',
+    'YOUTUBE' :'YouTube',
+    'TWITCH' :'Twitch',
+}
 
 
 export type SocialMediaInformation = {

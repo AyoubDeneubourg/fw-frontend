@@ -1,0 +1,137 @@
+$blue: #4cade6;
+$light-blue: #bfe7ff;
+
+.btn-hover-animation {
+
+    z-index: 10;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+  
+   
+  /*   &:has(input:checked) {
+  
+      background-color: yellow;
+  
+    } */
+  }
+
+
+
+.btn-hover-animation:before, .btn-hover-animation:after {
+  position: absolute;
+  top: 50%;
+  z-index: 0;
+  content: "";
+  width: 20px;
+  height: 20px;
+  background-color: $light-blue;
+  border-radius: 50%;
+}
+.btn-hover-animation:before {
+  z-index: 0;
+  left: -20px;
+  transform: translate(-50%, -50%);
+
+}
+.btn-hover-animation:after {
+  right: -20px;
+  z-index: 0;
+  transform: translate(50%, -50%);
+
+}
+.btn-hover-animation:hover {
+transition: 1.2s color;
+/* color: #222222 !important; */
+ color: $blue !important;
+}
+.btn-hover-animation:hover:before {
+  -webkit-animation: criss-cross-left 0.8s both;
+          animation: criss-cross-left 0.8s both;
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate;
+}
+.btn-hover-animation:hover:after {
+  -webkit-animation: criss-cross-right 0.8s both;
+          animation: criss-cross-right 0.8s both;
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate;
+}
+
+
+@-webkit-keyframes criss-cross-left {
+  0% {
+    left: -20px;
+  }
+  50% {
+    left: 50%;
+    width: 20px;
+    height: 20px;
+  }
+  100% {
+    left: 50%;
+    width: 375px;
+    height: 375px;
+  }
+}
+
+@keyframes criss-cross-left {
+  0% {
+    left: -20px;
+  }
+  50% {
+    left: 50%;
+    width: 20px;
+    height: 20px;
+  }
+  100% {
+    left: 50%;
+    width: 375px;
+    height: 375px;
+  }
+}
+@-webkit-keyframes criss-cross-right {
+  0% {
+    right: -20px;
+  }
+  50% {
+    right: 50%;
+    width: 20px;
+    height: 20px;
+  }
+  100% {
+    right: 50%;
+    width: 375px;
+    height: 375px;
+  }
+}
+@keyframes criss-cross-right {
+  0% {
+    right: -20px;
+  }
+  50% {
+    right: 50%;
+    width: 20px;
+    height: 20px;
+  }
+  100% {
+    right: 50%;
+    width: 375px;
+    height: 375px;
+  }
+}
+ 
+
+.btn-unselected-animation {
+  animation: btn-unselected-anim 0.5s both;
+}
+
+@keyframes btn-unselected-anim {
+  0% {
+    background-color: $light-blue;
+  }
+  100% {
+    background-color: $blue;
+  }
+}
+

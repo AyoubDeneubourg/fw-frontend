@@ -1,4 +1,10 @@
+import { Options } from '@angular-slider/ngx-slider';
 import { Component, OnInit } from '@angular/core';
+import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/core/services/auth-service/auth.service';
+import { UserPreferencesService } from 'src/app/core/services/user-preferences/user-preferences.service';
+import { COUNTRIES } from 'src/app/shared/data/countries';
+import { Filters, sectors } from 'src/app/shared/models/common';
 import { SocialMediaArrayCapitalized } from 'src/app/shared/models/offers';
 
 @Component({
@@ -10,10 +16,211 @@ export class SearchComponent implements OnInit {
 
   public socialMediaArray = SocialMediaArrayCapitalized;
 
+  public searchFormGroup: FormGroup;
 
-  constructor() { }
+  public countries = COUNTRIES;
+
+  public sectorsArray = sectors;
+
+
+  minimumBudget: number = 100;
+  maximumBudget: number = 400;
+  budgetOptions: Options = {
+    getSelectionBarColor: (percentage: number) => {
+      return '#4cade6';
+    },
+    getTickColor: (percentage: number) => {
+      return '#4cade6';
+    },
+    getPointerColor: (percentage: number) => {
+      return '#4cade6';
+    },
+    floor: 0,
+    ceil: 1000,
+    step: 10,
+    translate: (value: number): string => {
+      return '$' + value;
+    }
+  };
+
+  minimumFollowers: number = 1000;
+  maximumFollowers: number = 10000;
+  followersOptions: Options = {
+    getSelectionBarColor: (percentage: number) => {
+      return '#4cade6';
+    },
+    getTickColor: (percentage: number) => {
+      return '#4cade6';
+    },
+    getPointerColor: (percentage: number) => {
+      return '#4cade6';
+    },
+    floor: 0,
+    ceil: 15000,
+    step: 100,
+  };
+
+
+  minimumViewers: number = 100;
+  maximumViewers: number = 400;
+  viewersOptions: Options = {
+    getSelectionBarColor: (percentage: number) => {
+      return '#4cade6';
+    },
+    getTickColor: (percentage: number) => {
+      return '#4cade6';
+    },
+    getPointerColor: (percentage: number) => {
+      return '#4cade6';
+    },
+    floor: 0,
+    ceil: 1500,
+
+  };
+
+
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private userPreferencesService: UserPreferencesService) { }
 
   ngOnInit(): void {
+    this.buildForm();
+    this.setPreferences();
   }
+
+
+  public buildForm(): void {
+
+    this.searchFormGroup = this.formBuilder.group({
+      i1: this.formBuilder.group({
+        socialMedia: new FormArray([
+          new FormControl(false),
+          new FormControl(false),
+          new FormControl(false),
+          new FormControl(false),
+          new FormControl(false),
+          new FormControl(false),
+          new FormControl(false)
+        ]),
+      }),
+      i2: this.formBuilder.group({
+        type: new FormArray([
+          new FormControl(false),
+          new FormControl(false),
+          new FormControl(false)
+        ]),
+      }),
+      i3: this.formBuilder.group({
+        notes: ['0', [Validators.required]],
+
+      }),
+      i7: this.formBuilder.group({
+        gender: ['both', [Validators.required]],
+      }),
+
+      i8: this.formBuilder.group({
+        age: ['', [Validators.required]],
+      }),
+
+      i9: this.formBuilder.group({
+        location: ['', [Validators.required]],
+      }),
+
+      i10: this.formBuilder.group({
+        sectors: new FormArray([
+          new FormControl(false),
+          new FormControl(false),
+          new FormControl(false),
+          new FormControl(false),
+          new FormControl(false),
+          new FormControl(false),
+          new FormControl(false),
+          new FormControl(false),
+          new FormControl(false),
+          new FormControl(false),
+          new FormControl(false),
+          new FormControl(false),
+          new FormControl(false),
+          new FormControl(false),
+          new FormControl(false),
+        ]),
+      }),
+
+
+    });
+  }
+
+
+  public setPreferences(): void {
+
+    const searchPreferences: Filters = this.userPreferencesService.currentPreferences.search;
+
+    console.log(searchPreferences);
+    this.age.setValue(searchPreferences.age);
+  
+    // budget
+    // followers
+    // views
+
+
+    this.gender.setValue(searchPreferences.gender);
+    this.location.setValue(searchPreferences.location);
+
+    searchPreferences.sectors.forEach((element, index) => {
+      this.sectorsArray.forEach((element2, index2) => {
+        if (element === element2) {
+          this.sectors.controls[index2].setValue(true);
+        }
+      }
+      );
+
+    });
+
+
+    searchPreferences.socialMedia.forEach((element, index) => {
+      this.socialMediaArray.forEach((element2, index2) => {
+        if (element === element2) {
+          this.socialMedia.controls[index2].setValue(true);
+        }
+      }
+      );
+    });
+
+  }
+
+
+  
+  get socialMedia(): any {
+    return this.searchFormGroup.get('i1.socialMedia');
+  }
+
+  get type(): any {
+    return this.searchFormGroup.get('i2.type');
+  }
+
+  get notes(): any {
+    return this.searchFormGroup.get('i3.notes');
+  }
+
+
+
+
+
+  get gender(): AbstractControl {
+    return this.searchFormGroup.get('i7.gender');
+  }
+
+
+  get age(): AbstractControl {
+    return this.searchFormGroup.get('i8.age');
+  }
+
+
+  get location(): AbstractControl {
+    return this.searchFormGroup.get('i9.location');
+  }
+
+  get sectors(): any {
+    return this.searchFormGroup.get('i10.sectors');
+  }
+
 
 }

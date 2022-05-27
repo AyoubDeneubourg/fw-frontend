@@ -64,6 +64,16 @@ export class AuthService {
 
 
 
+  public getInfluencer(id: number): Observable<any> {
+    id = 14;
+    return this.http.get<any>(`${this.apiUrl}/api/influencer/${id}`, getHeaders());
+  }
+
+
+
+
+
+
 
 
 

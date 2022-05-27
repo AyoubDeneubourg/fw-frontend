@@ -46,6 +46,7 @@ import { SuccessComponent } from './core/stripe/success/success.component';
 import { CancelComponent } from './core/stripe/cancel/cancel.component';
 import { CheckoutComponent } from './core/stripe/checkout/checkout.component';
 import { SearchCardComponent } from './modules/search/search-card/search-card.component';
+import { NgxSliderModule } from '@angular-slider/ngx-slider';
 
 
 @NgModule({
@@ -95,7 +96,8 @@ import { SearchCardComponent } from './modules/search/search-card/search-card.co
     FormsModule,
     TranslocoRootModule,
     NoopAnimationsModule,
-    NgxChartsModule
+    NgxChartsModule,
+    NgxSliderModule
 
   ],
   providers: [CookieService, FormBuilder],
