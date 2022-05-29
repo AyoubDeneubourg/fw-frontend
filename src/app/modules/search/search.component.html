@@ -7,7 +7,7 @@
 
     <div [routerLink]="'/wizard'" class="flex bg-blue px-6 py-8 text-white">
         <p class="font-bold m-auto">LAUNCH WIZARD</p>
-        <span>-></span>
+        <span><i class="fa-solid fa-arrow-right"></i></span>
     </div>
 
 
@@ -56,7 +56,11 @@
         <div formGroupName="i3">    
             <p class="text-gray-600 font-semibold text-sm mt-2">Notes</p>
             <div>
-            todo
+                <i (mouseleave)="unFillStar()" (click)="clickStars(1)" (mouseenter)="fillStar(1)" [class.fa-solid]='hoverStars > 0' class="fa-regular fa-star"></i>
+                <i (mouseleave)="unFillStar()" (click)="clickStars(2)" (mouseenter)="fillStar(2)" [class.fa-solid]='hoverStars > 1' class="fa-regular fa-star"></i>
+                <i (mouseleave)="unFillStar()" (click)="clickStars(3)" (mouseenter)="fillStar(3)" [class.fa-solid]='hoverStars > 2' class="fa-regular fa-star"></i>
+                <i (mouseleave)="unFillStar()" (click)="clickStars(4)" (mouseenter)="fillStar(4)" [class.fa-solid]='hoverStars > 3' class="fa-regular fa-star"></i>
+                <i (mouseleave)="unFillStar()" (click)="clickStars(5)" (mouseenter)="fillStar(5)" [class.fa-solid]='hoverStars > 4' class="fa-regular fa-star"></i>
             </div>
         </div>
 
@@ -103,20 +107,6 @@
 
 
 
-        <div formGroupName="i9">    
-            <p class="text-gray-600 font-semibold text-sm">Location</p>
-
-        <select formControlName="location" class="w-100 mt-2 py-1 px-3 outline-none rounded-sm shadow-md">
-
-            <ng-container *ngFor="let item of countries | keyvalue">
-              <option value="{{ item.key }}">
-                {{ item.value.name }}</option>
-            </ng-container>
-
-          </select>
-        </div>
-
-
 
 
 
@@ -142,11 +132,18 @@
 
     </form>
 </div>
-<div class="results">
+
+<div class="results flex-1">
+
+    <div class="search flex m-5">
+        <input type="text" class="border w-100 py-2 px-4" placeholder="Search for influencers or for posts">
+        <button class="py-4 px-8 bg-blue text-white font-semibold">Search</button>
+    </div>
+
+
+
 
 <div class="flex flex-wrap">
-    <app-search-card></app-search-card>
-    <app-search-card></app-search-card>
 </div>
 </div>
 

@@ -186,7 +186,32 @@ export class SearchComponent implements OnInit {
 
   }
 
+  public hoverStars = 0;
+  public clickedStars = 0;
 
+  public clickStars(amount: number) {
+    if(this.clickedStars == amount) {
+      this.clickedStars =0;
+      this.hoverStars = 0;
+
+    } else {
+
+      
+      this.clickedStars = amount;
+      this.hoverStars = amount;
+    }
+  }
+  public fillStar(amount: number) {
+    this.hoverStars = amount;
+  }
+
+  public unFillStar() {
+    if(!this.clickedStars) {
+      this.hoverStars = 0;
+    } else {
+      this.hoverStars = this.clickedStars;
+    }
+  }
   
   get socialMedia(): any {
     return this.searchFormGroup.get('i1.socialMedia');

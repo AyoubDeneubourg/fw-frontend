@@ -146,12 +146,8 @@ export class RegisterComponent implements OnInit {
     if (page === 4) {
       if (this.page1.valid && this.page2.valid && this.page3.valid) {
 
- 
-        this.authService.checkIfEmailAvailable(this.email.value)
-          .subscribe((response) => {
-            if (!response) this.setCurrentPages(4);
-            else this.emailAlreadyExists = true;
-          });
+        this.setCurrentPages(4);
+   
       } else {
 
         this.goToPage(3);
@@ -161,7 +157,13 @@ export class RegisterComponent implements OnInit {
 
     if (page === 5) {
       if (this.page1.valid && this.page2.valid && this.page3.valid && this.page4.valid) {
-        this.setCurrentPages(5);
+        
+        this.authService.checkIfEmailAvailable(this.email.value)
+        .subscribe((response) => {
+          if (!response) this.setCurrentPages(5);
+          else this.emailAlreadyExists = true;
+        });
+        
 
       } else {
 

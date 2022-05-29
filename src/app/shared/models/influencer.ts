@@ -1,7 +1,18 @@
-export class Influencer {
+export type Influencer = {
 
-    constructor() {
+    id: number,
+    userId: number,
+    ibanNumber: string,
+    headTitle: string,
+    description: string,
+    languages: object[],
+    countries: object[],
+    socialMedia: object[],
+    storyPrice: number,
+    postPrice: number,
+    highlightPrice: number,
+    address: string,
+    city: string,
+    postalCode: number
 
-    }
-};
-
+}

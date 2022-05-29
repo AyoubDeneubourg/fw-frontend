@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth-service/auth.service';
+import { Brand } from 'src/app/shared/models/brand';
 import { User } from 'src/app/shared/models/common';
+import { Influencer } from 'src/app/shared/models/influencer';
 
 @Component({
   selector: 'app-profile',
@@ -11,6 +13,11 @@ import { User } from 'src/app/shared/models/common';
 export class ProfileComponent implements OnInit {
 
   public user: User;
+
+  public influencer: Influencer;
+  public brand: Brand;
+
+  public type: ProfileType;
 
   public isOther: boolean = false;
 
@@ -34,6 +41,14 @@ export class ProfileComponent implements OnInit {
 
     } else {
       this.user = this.authService.loggedInUser;
+
+      if(this.user.userType == "BRAND") {
+        this.brand = this.authService.loggedInBrand;
+        this.type = 'BRAND';
+      } else {
+        this.influencer = this.authService.loggedInInfluencer;
+        this.type = "INFLUENCER"
+      }
     }
 
 
@@ -44,3 +59,5 @@ export class ProfileComponent implements OnInit {
   }
 
 }
+
+export type ProfileType = 'INFLUENCER' | 'BRAND';

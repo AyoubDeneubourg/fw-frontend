@@ -24,7 +24,8 @@ export class AuthenticatedGuard implements CanActivate {
           console.log(loggedIn)
           return true;
         }),
-        catchError(() => {
+        catchError((err) => {
+          console.log(err);
           return of(this.router.parseUrl('/login'))
         })
       )
