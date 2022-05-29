@@ -2,8 +2,10 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { switchMap, tap } from 'rxjs/operators';
+import { Brand } from 'src/app/shared/models/brand';
 import { LoginData, RegistrationData, User } from 'src/app/shared/models/common';
+import { Influencer } from 'src/app/shared/models/influencer';
 import { getHeaders, getToken, removeToken, setToken } from '../authorization/authorization';
 
 
@@ -64,12 +66,14 @@ export class AuthService {
 
 
 
-  public getInfluencer(id: number): Observable<any> {
-    id = 14;
-    return this.http.get<any>(`${this.apiUrl}/api/influencer/${id}`, getHeaders());
+  public getInfluencer(userId: number): Observable<any> {
+    console.log(userId)
+    return this.http.get<any>(`${this.apiUrl}/api/influencer/uuid/${userId}`, getHeaders());
   }
 
-
+  public getBrand(userId: number): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/api/brand/uuid/${userId}`, getHeaders());
+  }
 
 
 
@@ -79,6 +83,12 @@ export class AuthService {
 
   public loggedInUser: User;
   public loggedInUser$: Observable<User> = of();
+
+  public loggedInInfluencer: Influencer;
+  public loggedInInfluencer$: Observable<Influencer> = of();
+  
+  public loggedInBrand: Brand;
+  public loggedInBrand$: Observable<Brand> = of();
 
 
   public getCurrentLoggedInUser(): Observable<User> {
@@ -93,11 +103,38 @@ export class AuthService {
       return this.http
         .get<User>(`${this.apiUrl}/api/user/current `, getHeaders())
         .pipe(
-          tap((loggedInUser) => {
+          switchMap((loggedInUser) =>  {
+            console.log(loggedInUser.id);
             this.loggedInUser = loggedInUser;
             this.loggedInUser$ = of(loggedInUser);
+            
+            console.log(loggedInUser.userType);
+            if(this.loggedInUser.userType == "BRAND") return this.getBrand(this.loggedInUser.id);
+            if(this.loggedInUser.userType == "INFLUENCER") return this.getInfluencer(loggedInUser.id);
 
-          })
+            }),
+   
+          tap((loggedInUserOrInfluencer) => {
+
+            console.log(loggedInUserOrInfluencer)
+
+            if(this.loggedInUser.userType == "BRAND") {
+
+              this.loggedInBrand = loggedInUserOrInfluencer;
+              this.loggedInBrand$ = of(loggedInUserOrInfluencer);
+            } 
+            if(this.loggedInUser.userType == "INFLUENCER") {
+                
+                this.loggedInInfluencer = loggedInUserOrInfluencer;
+                this.loggedInInfluencer$ = of(loggedInUserOrInfluencer);
+            } 
+
+
+            console.log(loggedInUserOrInfluencer);
+
+  
+
+          }),
         );
 
     }
