@@ -76,8 +76,8 @@
           <td>{{ item.socialMediaDetails | socialMediaCounter : 'posts' }}</td>
           <td>{{ item.socialMediaDetails | socialMediaCounter : 'stories' }}</td>
           <td>{{ item.socialMediaDetails | socialMediaCounter : 'highlights' }}</td>
+          <td>{{ item.socialMediaDetails | socialMediaPriceCounter : 'total' }}</td>
           <td>{{ item.startDate }} - {{ item.endDate }}</td>
-          <td>{{ item.orderId }}</td>
           <td> <div (click)="null" class="border border-blue text-center rounded-md text-blue text-sm p-1 font-semibold">View Details</div></td>
         </tr>
   

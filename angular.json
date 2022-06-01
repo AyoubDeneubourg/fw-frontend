@@ -19,17 +19,20 @@
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
-          
           "options": {
-            
             "outputPath": "dist/final-work",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "aot": true,
-            "assets": ["src/favicon.ico", "src/assets"],
-            "styles": ["src/styles/styles.scss"],
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "src/styles/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -42,7 +45,6 @@
               ],
               "optimization": false,
               "outputHashing": "all",
-              
               "sourceMap": false,
               "namedChunks": false,
               "extractLicenses": true,
@@ -53,7 +55,7 @@
                   "type": "initial",
                   "maximumWarning": "8mb",
                   "maximumError": "10mb"
-               },
+                },
                 {
                   "type": "anyComponentStyle",
                   "maximumWarning": "2kb",
@@ -98,8 +100,13 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
-            "assets": ["src/favicon.ico", "src/assets"],
-            "styles": ["src/styles/styles.scss"],
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "src/styles/styles.scss"
+            ],
             "scripts": []
           }
         },
@@ -111,7 +118,9 @@
               "tsconfig.spec.json",
               "e2e/tsconfig.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         },
         "e2e": {
@@ -124,6 +133,16 @@
             "production": {
               "devServerTarget": "final-work:serve:production"
             }
+          }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "final-work:build:production",
+            "firebaseProject": "fw-plugger",
+            "firebaseHostingSite": "fw-plugger"
           }
         }
       }

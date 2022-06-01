@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-search-card',
@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchCardComponent implements OnInit {
 
+  @Input()
+  public data;
+
+
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.data);
   }
 
 }

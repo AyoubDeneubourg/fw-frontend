@@ -17,6 +17,7 @@
     "@angular/common": "~13.2.0",
     "@angular/compiler": "~13.2.0",
     "@angular/core": "~13.2.0",
+    "@angular/fire": "^7.3.0",
     "@angular/forms": "~13.2.0",
     "@angular/platform-browser": "~13.2.0",
     "@angular/platform-browser-dynamic": "~13.2.0",
@@ -25,8 +26,10 @@
     "@stripe/stripe-js": "^1.29.0",
     "@swimlane/ngx-charts": "^20.1.0",
     "express": "^4.17.1",
+    "firebase": "^9.8.2",
     "ngx-cookie-service": "^13.1.2",
     "rxjs": "~6.6.0",
+    "save": "^2.5.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.3"
   },

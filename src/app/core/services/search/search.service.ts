@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Router } from 'express';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { getHeaders } from '../authorization/authorization';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +17,9 @@ export class SearchService {
   }
 
 
-  public getInfluencers() {
-    
+  public getInfluencers(): Observable<any> {
+   return this.http.get<any>(`${this.apiUrl}/api/influencer/`, getHeaders());
+
+  
   }
 }

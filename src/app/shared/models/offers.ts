@@ -2,6 +2,7 @@
 export type Offer = { // add influencer & brand id 
     brandId? : number,
     influencerId? : number,
+    brandName?: string,
     id?: null | number,
     socialMediaDetails: SocialMediaInformation[],
     description: string,

@@ -29,7 +29,10 @@ export class ProfileComponent implements OnInit {
 
     if(this.route.snapshot.params.id) {
 
-      this.authService.getUser(this.route.snapshot.params.id).subscribe(user => {
+      this.authService.getProfile(this.route.snapshot.params.id).subscribe(user => {
+        console.error('nanani')
+        console.log("nananou", user);
+        console.error('nanana')
         this.isOther = true;
         this.user = user;
 
@@ -50,6 +53,8 @@ export class ProfileComponent implements OnInit {
         this.type = "INFLUENCER"
       }
     }
+
+
 
 
   }

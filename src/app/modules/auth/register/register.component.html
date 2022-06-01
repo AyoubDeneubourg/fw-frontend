@@ -204,11 +204,11 @@
             <p class="text-red-600">This email already exists</p>
           </ng-container>
 
-          <button type="button" (click)="goToPage(4)"
+          <button type="button" (click)="goToPage(5)"
             class="mt-5 text-white py-1 font-semibold px-3 rounded-sm shadow-sm"
             [class.bg-blue]="actualPage !== 1 && accountType.value === 'Influencer'"
             [class.bg-orange]="actualPage !== 1 && accountType.value === 'Brand'">Continue</button>
-          <div (click)="goToPage(2)" class="mx-auto mt-2 flex">
+          <div (click)="goToPage(3)" class="mx-auto mt-2 flex">
             <i class="fa-solid fa-arrow-left-long my-auto"></i>
             <p class="inline-block ml-2 my-auto cursor-pointer">Back</p>
           </div>
@@ -250,11 +250,11 @@
 
 
 
-          <button type="button" (click)="goToPage(5)"
+          <button type="button" (click)="goToPage(6)"
             class="mt-5 text-white py-1 font-semibold px-3 rounded-sm shadow-sm"
             [class.bg-blue]="actualPage !== 1 && accountType.value === 'Influencer'"
             [class.bg-orange]="actualPage !== 1 && accountType.value === 'Brand'">Continue</button>
-          <div (click)="goToPage(3)" class="mx-auto mt-2 flex">
+          <div (click)="goToPage(4)" class="mx-auto mt-2 flex">
             <i class="fa-solid fa-arrow-left-long my-auto"></i>
             <p class="inline-block ml-2 my-auto cursor-pointer">Back</p>
           </div>
@@ -303,7 +303,7 @@
           <button type="submit" class="mt-5  text-white py-1 font-semibold px-3 rounded-sm shadow-sm"
             [class.bg-blue]="actualPage !== 1 && accountType.value === 'Influencer'"
             [class.bg-orange]="actualPage !== 1 && accountType.value === 'Brand'">Register</button>
-          <div (click)="goToPage(4)" class="mx-auto mt-2 flex">
+          <div (click)="goToPage(5)" class="mx-auto mt-2 flex">
             <i class="fa-solid fa-arrow-left-long my-auto"></i>
             <p class="inline-block ml-2 my-auto cursor-pointer">Back</p>
           </div>

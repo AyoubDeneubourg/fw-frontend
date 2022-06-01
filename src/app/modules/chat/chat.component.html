@@ -1,0 +1,119 @@
+<app-main-navbars [title]="'chat.title'">
+
+  <div class="flex flex-row">
+
+    <div class="w-300 left-bar ">
+      <ng-container *ngFor="let user of chats">
+
+
+
+      <div routerLink="/chat/{{ authedUser.id == user.user_1 ? user.user_2 : user.user_1}}" 
+      class="flex bg-white m-2 shadow-md rounded-sm p-3 flex-1">
+
+        <div class="my-auto p-2 ">
+          <span class="bg-blue p-2 rounded-full">
+         
+
+          </span>
+        
+        
+        </div>
+        <div class="flex flex-1 flex-col overflow-hidden">
+          <span class="font-semibold"> {{ authedUser.id == user.user_1 ? user.user_2 : user.user_1}}</span>
+          <span>{{ user?.messages[user?.messages?.length - 1]?.message.slice(0,20)}}</span>
+        
+        </div>
+
+        <div class="flex text-sm text-gray-400 font-semibold flex-col">
+          <span>{{ user?.messages[user?.messages?.length - 1]?.timestamp | firebaseTimeToNormalTime}}</span>
+      
+        
+        </div>
+        
+      </div>
+
+
+              
+
+      </ng-container>
+    </div>
+
+
+
+    <div class="flex flex-1 bg-blue-50">
+      <div class="flex flex-1 flex-col">
+        
+
+
+<div class="flex flex-col   right-chat" #autoScroll>
+
+  <ng-container *ngFor="let item of bucketListArray['messages']; let i = index">
+   
+    <div class="text-center my-2" *ngIf="(bucketListArray.messages[i - 1]?.timestamp | firebaseTimeToNormalDate) != (item?.timestamp | firebaseTimeToNormalDate)">
+      <p class="font-semibold">{{ item?.timestamp | firebaseTimeToNormalDate}}</p>
+    </div>
+    <div class="flex">
+
+      <ng-container *ngIf="item.sender_id != authedUser.id">
+        <div class="flex flex-col">
+
+
+
+          <div *ngIf="bucketListArray['messages'][i - 1]?.sender_id != item.sender_id">
+
+            <span class="flex">
+              <img src="../../../assets/icons/socials/FACEBOOK.svg" alt="">
+              <span class="my-auto font-semibold text-sm">Youssef Sefiani</span>
+              
+            </span>
+          </div>
+
+
+        <div class="w-fit py-2 px-4 rounded-md m-2 bg-white break-all">
+          {{ item.message }}
+          <p class="text-xs mt-2 font-semibold text-gray-600">
+            {{ item.timestamp | firebaseTimeToNormalTime}}
+          </p>
+        </div>
+
+      </div>
+
+      </ng-container>
+
+
+      <ng-container *ngIf="item.sender_id == authedUser.id">
+        <div class="flex-1"></div>
+        <div class="py-2 px-4 rounded-md m-2 bg-blue text-white break-all">
+        {{ item.message }}
+        </div>
+      </ng-container>
+
+
+
+      
+    </div>
+    
+  </ng-container>
+</div>
+
+   
+<div class="flex bg-white rounded-lg mx-16 my-4 shadow-md p-2">
+
+  <input (keyup.enter)="sendMessage()" name="" placeholder="Type here your message..." class="outline-none p-2 w-100  rounded-md" id="textAreaId" cols="30" rows="10"/>
+  
+  
+  <i  (click)="sendMessage()"  class="mx-4 fa-solid my-auto text-2xl text-blue fa-circle-right"></i>
+</div>
+</div>
+
+
+   
+    </div>
+
+  </div>
+
+
+
+
+
+</app-main-navbars>  

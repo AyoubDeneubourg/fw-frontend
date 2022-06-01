@@ -144,6 +144,11 @@
 
 
 <div class="flex flex-wrap">
+    <ng-container *ngFor="let data of results">
+        
+        <app-search-card [data]="data"></app-search-card>
+
+    </ng-container>
 </div>
 </div>
 

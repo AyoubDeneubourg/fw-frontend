@@ -1,0 +1,52 @@
+.left-bar {
+
+    height: calc(100vh - 68px);
+    overflow-y: scroll;
+
+    /* ===== Scrollbar CSS ===== */
+  /* Firefox */
+ 
+    scrollbar-width: auto;
+    scrollbar-color: #7b7b7b #ffffff;
+
+
+  /* Chrome, Edge, and Safari */
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #ffffff;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #7b7b7b;
+    border-radius: 12px;
+    border: 2px solid #ffffff;
+  }
+}
+
+.right-chat {
+
+    height: calc(100vh - 68px - 100px);
+    overflow-y: scroll;
+
+    scrollbar-width: auto;
+    scrollbar-color: #7b7b7b #ffffff;
+
+
+  /* Chrome, Edge, and Safari */
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #ffffff;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #7b7b7b;
+    border-radius: 12px;
+    border: 2px solid #ffffff;
+  }
+}

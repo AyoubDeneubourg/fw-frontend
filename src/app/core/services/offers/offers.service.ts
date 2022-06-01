@@ -35,7 +35,10 @@ export class OffersService {
 
 
 
-
+  public getAllPartnerships(): Observable<Offer[]> {    
+    const userID = this.authService.loggedInUser.id;
+    return this.http.get<Offer[]>(`${this.apiUrl}/api/partnership/${userID}`, getHeaders());
+  }
 
   public getHistory(): Observable<Offer[]> {
     const userID = this.authService.loggedInUser.id;

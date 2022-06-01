@@ -29,6 +29,12 @@ export class DashboardComponent implements OnInit {
     position: 'bottom-right'
   }
 
+  public data4: CardData = {
+    title: '2',
+    content: 'Partnership to do the next 7 days',
+    position: 'bottom-right'
+  }
+
 
   ngOnInit(): void {
   }

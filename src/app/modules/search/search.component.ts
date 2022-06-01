@@ -2,6 +2,7 @@ import { Options } from '@angular-slider/ngx-slider';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/core/services/auth-service/auth.service';
+import { SearchService } from 'src/app/core/services/search/search.service';
 import { UserPreferencesService } from 'src/app/core/services/user-preferences/user-preferences.service';
 import { COUNTRIES } from 'src/app/shared/data/countries';
 import { Filters, sectors } from 'src/app/shared/models/common';
@@ -79,11 +80,28 @@ export class SearchComponent implements OnInit {
   };
 
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthService, private userPreferencesService: UserPreferencesService) { }
+
+  public results;
+
+  constructor(private formBuilder: FormBuilder, 
+    private authService: AuthService, 
+    private userPreferencesService: UserPreferencesService,
+    private searchService: SearchService) { }
 
   ngOnInit(): void {
     this.buildForm();
     this.setPreferences();
+    this.getInfluencers();
+  }
+
+  public getInfluencers(): void {
+
+
+    this.searchService.getInfluencers().subscribe(
+      (data) => {
+        this.results = data;
+      }
+    );
   }
 
 

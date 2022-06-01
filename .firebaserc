@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "fw-plugger"
+  },
+  "targets": {
+    "fw-plugger": {
+      "hosting": {
+        "final-work": [
+          "fw-plugger"
+        ]
+      }
+    }
+  }
+}

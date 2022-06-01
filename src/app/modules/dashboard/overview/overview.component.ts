@@ -13,9 +13,9 @@ export class OverviewComponent implements OnInit {
 
   public active: ActiveTab = 'Request';
 
-  public upcoming: Offer[];
-  public request: Offer[];
-  public history: Offer[];
+  public upcoming: Offer[] = [];
+  public request: Offer[] = [];
+  public history: Offer[] = [];
 
 
 
@@ -36,6 +36,39 @@ export class OverviewComponent implements OnInit {
 
   public refreshData(): void {
 
+
+    
+    this.offersService.getAllPartnerships().pipe(
+      take(1),
+      tap((data) => {
+ 
+        this.upcoming = [];
+        this.request = [];
+        this.history = [];
+
+
+        data.forEach(element => {
+          console.log(element.status)
+          if (element.status == 'IN_PROGRESS' || element.status == 'PENDING') {
+            this.upcoming.push(element);
+          } if (element.status == 'REQUESTED') {
+            this.request.push(element);
+          } if (element.status == 'DECLINED' || element.status == 'DONE') {
+            this.history.push(element);
+          }
+        });
+
+
+
+      }),
+      catchError(err => {
+        console.log(err);
+        return of(err)
+      })).subscribe();
+
+
+
+/* 
     this.offersService.getUpcoming().pipe(
       take(1),
       tap((data) => {
@@ -65,7 +98,7 @@ export class OverviewComponent implements OnInit {
       }),
       catchError(err => {
         return of(err)
-      })).subscribe();
+      })).subscribe(); */
   }
 
 }

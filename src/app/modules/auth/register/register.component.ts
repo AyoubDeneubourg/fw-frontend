@@ -157,7 +157,7 @@ export class RegisterComponent implements OnInit {
 
     if (page === 5) {
       if (this.page1.valid && this.page2.valid && this.page3.valid && this.page4.valid) {
-        
+        console.log("hehehe");
         this.authService.checkIfEmailAvailable(this.email.value)
         .subscribe((response) => {
           if (!response) this.setCurrentPages(5);

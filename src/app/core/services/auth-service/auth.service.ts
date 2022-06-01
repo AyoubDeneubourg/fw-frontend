@@ -45,6 +45,10 @@ export class AuthService {
     return this.http.get<User>(`${this.apiUrl}/api/user/${id}`, getHeaders());
   }
 
+  public getProfile(id: string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/api/profile/${id}`, getHeaders());
+  }
+
   
 
   public login(loginData: LoginData): Observable<any> {
@@ -68,11 +72,24 @@ export class AuthService {
 
   public getInfluencer(userId: number): Observable<any> {
     console.log(userId)
-    return this.http.get<any>(`${this.apiUrl}/api/influencer/uuid/${userId}`, getHeaders());
+    if (this.loggedInInfluencer) {
+
+      console.log('no http call')
+      return this.loggedInInfluencer$ as Observable<Influencer>;
+    } else {
+      return this.http.get<any>(`${this.apiUrl}/api/influencer/${userId}`, getHeaders());
+
+    }
   }
 
   public getBrand(userId: number): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/api/brand/uuid/${userId}`, getHeaders());
+    if (this.loggedInBrand) {
+
+      console.log('no http call')
+      return this.loggedInBrand$ as Observable<Brand>;
+    } else {
+    return this.http.get<any>(`${this.apiUrl}/api/brand/${userId}`, getHeaders());
+  }
   }
 
 
@@ -93,7 +110,7 @@ export class AuthService {
 
   public getCurrentLoggedInUser(): Observable<User> {
 
-    if (this.loggedInUser) {
+    if (this.loggedInUser && this.loggedInBrand || this.loggedInInfluencer) {
 
       console.log('no http call')
       return this.loggedInUser$ as Observable<User>;

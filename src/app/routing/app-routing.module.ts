@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from '../modules/auth/login/login.component';
 import { RegisterComponent } from '../modules/auth/register/register.component';
+import { ChatComponent } from '../modules/chat/chat.component';
 import { DashboardComponent } from '../modules/dashboard/dashboard.component';
 import { HomeComponent } from '../modules/home/home.component';
 import { OffersComponent } from '../modules/offers/offers.component';
@@ -62,6 +63,16 @@ const routes: Routes = [
   {
     path: 'statistics',
     component: StatisticsComponent,
+    canActivate: [AuthenticatedGuard],
+  },
+  {
+    path: 'chat',
+    component: ChatComponent,
+    canActivate: [AuthenticatedGuard],
+  },
+  {
+    path: 'chat/:id',
+    component: ChatComponent,
     canActivate: [AuthenticatedGuard],
   },
   {

@@ -52,15 +52,15 @@
       <tr class="font-semibold">
         <td>{{ t('orderNumber') }}</td>
         <td>{{ t('status') }}</td>
-        <td>{{ t('client') }}</td>
+        <td>{{ t('customer') }}</td>
+        <td>{{ t('socialMedia') }}</td>
         <td>{{ t('posts') }}</td>
         <td>{{ t('stories') }}</td>
         <td>{{ t('highlights') }}</td>
         <td>{{ t('price') }}</td>
         <td>{{ t('deadline') }}</td>
         <td></td>
-        <td></td>
-        <td></td>
+
       </tr>
     </thead>
     <tbody>
@@ -69,15 +69,20 @@
         <td>
           <div (click)="null" class=" flex w-2/3  bg-gray-200 rounded-md text-sm p-1 font-semibold">
             <span class="my-auto mx-2 rounded-full status status-{{item.status}}"> </span>
-            <span>{{ item.status }}</span>
+            <span>{{ item.status != "IN_PROGRESS" ? item.status  : "IN PROGRESS"  }}</span>
           </div>
         </td>        
+        <td>{{ item.brandName }}</td>
         <td class="flex"><ng-container *ngFor="let socialMedia of item.socialMediaDetails"><img width="28px" src="assets/icons/socials/{{socialMedia.name}}.svg"></ng-container></td>
         <td>{{ item.socialMediaDetails | socialMediaCounter : 'posts' }}</td>
         <td>{{ item.socialMediaDetails | socialMediaCounter : 'stories' }}</td>
         <td>{{ item.socialMediaDetails | socialMediaCounter : 'highlights' }}</td>
-        <td>{{ item.startDate }} - {{ item.endDate }}</td>
-        <td>{{ item.orderId }}</td>
+        <td>{{ item.socialMediaDetails | socialMediaPriceCounter : 'total' }}</td>
+        <td>
+          <div class=" w-fit  bg-gray-200 rounded-md text-sm p-1 px-3 font-semibold">
+            {{ item.startDate }} - {{ item.endDate }}
+          </div>
+        </td>
         <td> <div (click)="null" class="border border-blue text-center rounded-md text-blue text-sm p-1 font-semibold">View Details</div></td>
       </tr>
 

@@ -47,7 +47,22 @@ import { CancelComponent } from './core/stripe/cancel/cancel.component';
 import { CheckoutComponent } from './core/stripe/checkout/checkout.component';
 import { SearchCardComponent } from './modules/search/search-card/search-card.component';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
-
+import { FirebaseApp, initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideDatabase,getDatabase } from '@angular/fire/database';
+import { ChatComponent } from './modules/chat/chat.component';
+import { FirestoreModule, provideFirestore,getFirestore, Firestore } from '@angular/fire/firestore';
+import {
+  AngularFireDatabase,
+  AngularFireDatabaseModule,
+  AngularFireList,
+  AngularFireObject,
+} from '@angular/fire/compat/database';
+import { AngularFireModule } from '@angular/fire/compat';
+import { SocialMediaPriceCounterPipe } from './shared/pipes/social-media-price-counter.pipe';
+import { FirebaseTimeToNormalTimePipe } from './shared/pipes/firebase-time-to-normal-time.pipe';
+import { FirebaseTimeToNormalDatePipe } from './shared/pipes/firebase-time-to-normal-date.pipe';
+import { AveragePricePipe } from './shared/pipes/search/average-price.pipe';
 
 @NgModule({
   declarations: [
@@ -85,7 +100,12 @@ import { NgxSliderModule } from '@angular-slider/ngx-slider';
     SuccessComponent,
     CancelComponent,
     CheckoutComponent,
-    SearchCardComponent
+    SearchCardComponent,
+    ChatComponent,
+    SocialMediaPriceCounterPipe,
+    FirebaseTimeToNormalTimePipe,
+    FirebaseTimeToNormalDatePipe,
+    AveragePricePipe
   ],
 
   imports: [
@@ -97,7 +117,11 @@ import { NgxSliderModule } from '@angular-slider/ngx-slider';
     TranslocoRootModule,
     NoopAnimationsModule,
     NgxChartsModule,
-    NgxSliderModule
+    NgxSliderModule,
+    FirestoreModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+
 
   ],
   providers: [CookieService, FormBuilder],
