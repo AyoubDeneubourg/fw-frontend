@@ -9,10 +9,10 @@ import {
 import { AuthService } from 'src/app/core/services/auth-service/auth.service';
 import { RegistrationData } from 'src/app/shared/models/common';
 import { PageNavigation } from 'src/app/shared/models/pagination';
-import { tap } from 'rxjs/operators'
+import { catchError, tap } from 'rxjs/operators'
 import { COUNTRIES } from 'src/app/shared/data/countries';
 import { matchValues } from 'src/app/shared/static/forms/password-validation';
-import { zip } from 'rxjs';
+import { of, zip } from 'rxjs';
 
 
 @Component({
@@ -160,9 +160,14 @@ export class RegisterComponent implements OnInit {
         console.log("hehehe");
         this.authService.checkIfEmailAvailable(this.email.value)
         .subscribe((response) => {
-          if (!response) this.setCurrentPages(5);
+          if (response) this.setCurrentPages(5);
           else this.emailAlreadyExists = true;
+        }), catchError((error) => {
+          console.log(error);
+          this.emailAlreadyExists = true;
+          return of(error);
         });
+      ;
         
 
       } else {

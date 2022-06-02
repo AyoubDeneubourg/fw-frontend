@@ -3,7 +3,7 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from
 import { of } from 'rxjs';
 import { catchError, take, tap } from 'rxjs/operators';
 import { OffersService } from 'src/app/core/services/offers/offers.service';
-import { Offer } from 'src/app/shared/models/offers';
+import { Offer, SocialMediaInformation } from 'src/app/shared/models/offers';
 
 
 @Component({
@@ -69,33 +69,34 @@ export class HistoryComponent implements OnInit {
     
     
         if (this.type.value === 'new') {
-          a = a.orderId;
-          b = b.orderId;
+          a = a.id;
+          b = b.id;
     
         } else if (this.type.value === 'time') {
-          a = a.dates.startDate;
-          b = b.dates.startDate;
+          a = a.startDate;
+          b = b.startDate;
     
         } else if (this.type.value === 'client') {
-          a = a.description;
-          b = b.description;
+          a = a.brandId;
+          b = b.brandId;
+    
+        } else if (this.type.value === 'status') {
+          a = a.status;
+          b = b.status;
     
         } else if (this.type.value === 'amount') {
           let amountA = 0;
           let amountB = 0;
     
     
-          for (const [key, socialMedia] of Object.entries(a.socialMedia)) {
-            for (const [key, entries] of Object.entries(socialMedia)) {
-              amountA += entries;
-            }
-          }
+          a.socialMediaDetails.forEach((element: SocialMediaInformation) => {
+            amountA += element?.posts + element?.stories + element?.highlights;
+          });
     
-          for (const [key, socialMedia] of Object.entries(b.socialMedia)) {
-            for (const [key, entries] of Object.entries(socialMedia)) {
-              amountB += entries;
-            }
-          }
+          b.socialMediaDetails.forEach((element: SocialMediaInformation) => {
+            amountB += element?.posts + element?.stories + element?.highlights;
+          });
+    
     
           a = amountA;
           b = amountB;

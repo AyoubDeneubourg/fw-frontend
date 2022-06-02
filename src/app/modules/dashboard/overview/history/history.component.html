@@ -4,24 +4,33 @@
     <form class="flex mb-2" [formGroup]="sortingFormGroup">
       <div class="flex-1" formGroupName="status">
   
+        <div class="grid grid-cols-2 gap-3 w-fit">
+
+
+          <label (change)="this.filterAndSort()" for="done" class="text-center w-100 font-semibold p-2 px-3 rounded-md text-white "
+          [class.bg-light-gray]="!done.value" 
+          [class.btn-hover-animation]="!done.value"
+          [class.btn-unselected-animation]="done.value">
+            <input id="done" class="py-1 hidden px-3 outline-none rounded-sm shadow-md"
+              [formControl]="done" type="checkbox" />
+            <p class="relative text-sm inline-block capitalize z-50">Done</p>
+  
+          </label>
   
   
-        <label (change)="this.filterAndSort()" for="done" class="inline-block px-3 text-sm py-2 rounded-md mr-2" [class.bg-light-gray]="!done.value"
-          [class.bg-blue]="done.value">
-          <input formControlName="done" id="done" class="p-0 outline-none rounded-sm shadow-md" type="checkbox" />
-          <p class="ml-2 text-white inline-block">
-            Done
-          </p>
-        </label>
   
+          <label (change)="this.filterAndSort()" for="declined" class="text-center w-100 font-semibold p-2 rounded-md text-white "
+          [class.bg-light-gray]="!declined.value" 
+          [class.btn-hover-animation]="!declined.value"
+          [class.btn-unselected-animation]="declined.value">
   
-        <label (change)="this.filterAndSort()" for="declined" class="inline-block px-3 text-sm py-2 rounded-md bg-blue mr-2" [class.bg-light-gray]="!declined.value"
-          [class.bg-blue]="declined.value">
-          <input formControlName="declined" id="declined" class="p-0 outline-none rounded-sm shadow-md" type="checkbox" />
-          <p class="ml-2 text-white inline-block">
-            Declined
-          </p>
-        </label>
+            <input id="declined" class="py-1 hidden px-3 outline-none rounded-sm shadow-md"
+              [formControl]="declined" type="checkbox" />
+              <p class="relative text-sm inline-block capitalize z-50">Declined</p>
+            </label>
+  
+        </div>
+  
   
   
   
@@ -34,6 +43,7 @@
           <option value="time">Time</option>
           <option value="client">Client</option>
           <option value="amount">Amounts</option>
+          <option value="status">Status</option>
         </select>
   
   
@@ -52,7 +62,8 @@
         <tr class="font-semibold">
           <td>{{ t('orderNumber') }}</td>
           <td>{{ t('status') }}</td>
-          <td>{{ t('client') }}</td>
+          <td>{{ t('customer') }}</td>
+          <td>{{ t('socialMedia') }}</td>
           <td>{{ t('posts') }}</td>
           <td>{{ t('stories') }}</td>
           <td>{{ t('highlights') }}</td>
@@ -72,6 +83,8 @@
                   <span>{{ item.status }}</span>
                 </div>
           </td>
+          <td routerLink="/profile/{{item.brandId}}">{{ item.brandName }}</td>
+
           <td class="flex"><ng-container *ngFor="let socialMedia of item.socialMediaDetails"><img width="28px" src="assets/icons/socials/{{socialMedia.name}}.svg"></ng-container></td>
           <td>{{ item.socialMediaDetails | socialMediaCounter : 'posts' }}</td>
           <td>{{ item.socialMediaDetails | socialMediaCounter : 'stories' }}</td>

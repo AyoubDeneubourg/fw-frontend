@@ -8,7 +8,7 @@ import {
 } from '@angular/fire/compat/database';
 import { ChatService } from 'src/app/core/services/firebase/chat.service';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
-import { combineAll, map, mergeMap, switchMap } from 'rxjs/operators';
+import { combineAll, map, mergeMap, switchMap, take } from 'rxjs/operators';
 import { collection, getDocs } from 'firebase/firestore';
 import { Firestore } from '@angular/fire/firestore';
 
@@ -117,6 +117,23 @@ export class ChatComponent implements OnInit {
   }
 
 
+  public getUser2(): string {
+
+    console.log(this.getUser2())
+
+    //  return this.authService.getUser(id).pipe(take(1));
+    return "zzz";
+  
+    }
+
+  
+  public getUser(id): Observable<any> {
+
+
+  //  return this.authService.getUser(id).pipe(take(1));
+  return of("");
+
+  }
   public getFirebaseChat() {
 
     let id;

@@ -11,7 +11,7 @@ import { catchError, take, tap } from 'rxjs/operators';
 })
 export class OverviewComponent implements OnInit {
 
-  public active: ActiveTab = 'Request';
+  public active: ActiveTab = 'Upcoming';
 
   public upcoming: Offer[] = [];
   public request: Offer[] = [];
@@ -48,7 +48,6 @@ export class OverviewComponent implements OnInit {
 
 
         data.forEach(element => {
-          console.log(element.status)
           if (element.status == 'IN_PROGRESS' || element.status == 'PENDING') {
             this.upcoming.push(element);
           } if (element.status == 'REQUESTED') {

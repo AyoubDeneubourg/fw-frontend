@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@angular/core';
-import { Offer } from 'src/app/shared/models/offers';
+import { Offer, SocialMediaInformation } from 'src/app/shared/models/offers';
 import { TranslocoService } from '@ngneat/transloco';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { catchError, take, tap } from 'rxjs/operators';
@@ -173,8 +173,6 @@ export class RequestComponent implements OnInit {
 
   private sort(a: Offer | any, b: Offer | any, order: 'ascending' | 'descending'): number {
 
-    console.log(this.type.value)
-
     if (this.type.value === 'new') {
       a = a.id;
       b = b.id;
@@ -187,24 +185,23 @@ export class RequestComponent implements OnInit {
       a = a.brandId;
       b = b.brandId;
 
+    } else if (this.type.value === 'status') {
+      a = a.status;
+      b = b.status;
+
     } else if (this.type.value === 'amount') {
       let amountA = 0;
       let amountB = 0;
 
-      console.log(a.socialMediaDetails);
 
+      a.socialMediaDetails.forEach((element: SocialMediaInformation) => {
+        amountA += element?.posts + element?.stories + element?.highlights;
+      });
 
-      for (const [key, socialMedia] of Object.entries(a.socialMediaDetails)) {
-        for (const [key, entries] of Object.entries(socialMedia)) {
-          amountA += entries;
-        }
-      }
+      b.socialMediaDetails.forEach((element: SocialMediaInformation) => {
+        amountB += element?.posts + element?.stories + element?.highlights;
+      });
 
-      for (const [key, socialMedia] of Object.entries(b.socialMediaDetails)) {
-        for (const [key, entries] of Object.entries(socialMedia)) {
-          amountB += entries;
-        }
-      }
 
       a = amountA;
       b = amountB;
@@ -213,7 +210,6 @@ export class RequestComponent implements OnInit {
     if (b < a) return order === 'ascending' ? 1 : -1;
     if (b > a) return order === 'ascending' ? -1 : 1;
     return 0;
-
 
   }
 }

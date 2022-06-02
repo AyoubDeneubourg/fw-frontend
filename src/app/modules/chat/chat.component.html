@@ -19,7 +19,7 @@
         
         </div>
         <div class="flex flex-1 flex-col overflow-hidden">
-          <span class="font-semibold"> {{ authedUser.id == user.user_1 ? user.user_2 : user.user_1}}</span>
+          <span class="font-semibold">{{getUser2()}} {{ authedUser.id == user.user_1 ? user.user_2 : user.user_1 }}</span>
           <span>{{ user?.messages[user?.messages?.length - 1]?.message.slice(0,20)}}</span>
         
         </div>
@@ -99,7 +99,7 @@
    
 <div class="flex bg-white rounded-lg mx-16 my-4 shadow-md p-2">
 
-  <input (keyup.enter)="sendMessage()" name="" placeholder="Type here your message..." class="outline-none p-2 w-100  rounded-md" id="textAreaId" cols="30" rows="10"/>
+  <input (keyup.enter)="sendMessage()" name="" placeholder="Type your message here..." class="outline-none p-2 w-100  rounded-md" id="textAreaId" cols="30" rows="10"/>
   
   
   <i  (click)="sendMessage()"  class="mx-4 fa-solid my-auto text-2xl text-blue fa-circle-right"></i>

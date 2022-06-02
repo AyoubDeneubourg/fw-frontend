@@ -75,6 +75,10 @@ export class UpcomingEventsComponent implements OnInit {
           a = a.brandId;
           b = b.brandId;
     
+        } else if (this.type.value === 'status') {
+          a = a.status;
+          b = b.status;
+    
         } else if (this.type.value === 'amount') {
           let amountA = 0;
           let amountB = 0;

@@ -37,7 +37,7 @@ export class AuthService {
 
 
   public checkIfEmailAvailable(email: string): Observable<boolean> {
-    return this.http.post<boolean>(`${this.apiUrl}/api/user/email/${email}`, null);
+    return this.http.post<boolean>(`${this.apiUrl}/api/user/email/${email}`, {});
   }
 
 

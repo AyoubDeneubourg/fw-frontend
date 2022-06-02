@@ -97,6 +97,12 @@ export class ChatService {
 
 
 
+  getUserInformation(id: string) {
+
+    return this.authService.getUser(id);
+
+  }
+
 
   getMessages() {
 
