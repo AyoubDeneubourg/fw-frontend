@@ -18,7 +18,7 @@
 
 
       <form class="m-auto w-max" [formGroup]="wizardFormGroup" (ngSubmit)="onSubmit()">
-        <div formGroupName="p1" class="flex flex-col w-500" [class.hidden]="actualPage !== 1">
+        <div formGroupName="p1" class="flex flex-col w-500" *ngIf="actualPage === 1">
 
           <div class="mb-5">
             <h2 class="flex flex-col text-4xl font-semibold">{{ t('1.title') }}</h2>
@@ -65,7 +65,7 @@
 
 
 
-        <div formGroupName="p2" class="flex flex-col w-500" [class.hidden]="actualPage !== 2">
+        <div formGroupName="p2" class="flex flex-col w-500" *ngIf="actualPage === 2">
 
 
 
@@ -122,7 +122,7 @@
         </div>
 
 
-        <div formGroupName="p3" class="flex flex-col w-500" [class.hidden]="actualPage !== 3">
+        <div formGroupName="p3" class="flex flex-col w-500" *ngIf="actualPage === 3">
 
           <div class="mb-5">
             <h2 class="flex flex-col text-4xl font-semibold">{{ t('3.title') }}</h2>
@@ -173,7 +173,7 @@
 
 
 
-        <div formGroupName="p4" class="flex flex-col w-500" [class.hidden]="actualPage !== 4">
+        <div formGroupName="p4" class="flex flex-col w-500" *ngIf="actualPage === 4">
 
 
           <div class="mb-5">
@@ -222,7 +222,7 @@
         </div>
 
 
-        <div formGroupName="p5" class="flex flex-col w-500" [class.hidden]="actualPage !== 5">
+        <div formGroupName="p5" class="flex flex-col w-500" *ngIf="actualPage === 5">
 
 
 
@@ -290,7 +290,7 @@
 
 
 
-        <div formGroupName="p6" class="flex flex-col w-500" [class.hidden]="actualPage !== 6">
+        <div formGroupName="p6" class="flex flex-col w-500" *ngIf="actualPage === 6">
 
 
 
@@ -372,7 +372,7 @@
 
 
 
-        <div formGroupName="p7" class="flex flex-col w-500" [class.hidden]="actualPage !== 7">
+        <div formGroupName="p7" class="flex flex-col w-500" *ngIf="actualPage === 7">
 
 
 

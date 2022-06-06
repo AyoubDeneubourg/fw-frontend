@@ -30,14 +30,14 @@ export class AuthService {
   }
 
 
-  public register(registrationData?: RegistrationData | string): Observable<any> {
-    return this.http.post<RegistrationData>(`${this.apiUrl}/api/user`, registrationData);
+  public register(registrationData: RegistrationData): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/api/user`, registrationData);
   }
 
 
 
-  public checkIfEmailAvailable(email: string): Observable<boolean> {
-    return this.http.post<boolean>(`${this.apiUrl}/api/user/email/${email}`, {});
+  public checkCredentialsAvailability(data): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/api/user/available`, data);
   }
 
 

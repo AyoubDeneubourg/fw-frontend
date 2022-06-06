@@ -9,7 +9,10 @@ export type User = {
     birthdate?: string
     email?: string
     firstName?: string
+    postalCode: number
     lastName?: string
+    country: string
+    city?: string
     password?: string
     phoneNumber?: number
     profilePicture?: string
@@ -22,17 +25,18 @@ export type User = {
 
 
 export type RegistrationData = {
-    'firstName': string,
-    'lastName': string,
-    'address': string,
-    'city': string,
-    'postalCode': string,
-    'password': string,
-    'email': string,
-    'phoneNumber': string
-    'country': string,
-    'birthDate': string,
-    'accountType': 'Influencer' | 'Brand';
+    firstName: string,
+    lastName: string,
+    address: string,
+    city: string,
+    postalCode: number,
+    password: string,
+    email: string,
+    phoneNumber: string
+    country: string,
+    userName: string,
+    birthdate: string,
+    userType: 'INFLUENCER' | 'BRAND';
 };
 
 
@@ -143,4 +147,4 @@ export type Statistics =  {
 }
 
 
-export type Profile = User & (Influencer | Brand);
+export type Profile = User & Influencer & Brand;

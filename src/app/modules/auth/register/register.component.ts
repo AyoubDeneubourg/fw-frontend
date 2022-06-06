@@ -12,7 +12,10 @@ import { PageNavigation } from 'src/app/shared/models/pagination';
 import { catchError, tap } from 'rxjs/operators'
 import { COUNTRIES } from 'src/app/shared/data/countries';
 import { matchValues } from 'src/app/shared/static/forms/password-validation';
-import { of, zip } from 'rxjs';
+import { birthDate } from 'src/app/shared/static/forms/birthdate-validation';
+import { of } from 'rxjs';
+import { Router } from '@angular/router';
+import { databaseInstanceFactory } from '@angular/fire/database/database.module';
 
 
 @Component({
@@ -29,6 +32,7 @@ export class RegisterComponent implements OnInit {
   public allowToGo: number = 1;
 
   public emailAlreadyExists: boolean = false;
+  public usernameAlreadyExists: boolean = false;
 
   public allPages: PageNavigation[] = [
     {
@@ -57,10 +61,18 @@ export class RegisterComponent implements OnInit {
     }
   ];
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthService) { }
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
 
+    console.log(this.countries)
+    let x = "";
+   for (const zz in this.countries) {
+    x = x + zz + ', '
+    console.log(zz)
+   }
+
+   console.log(x);
 
     this.registerFormGroup = this.formBuilder.group({
       p1: this.formBuilder.group({
@@ -83,8 +95,9 @@ export class RegisterComponent implements OnInit {
       p4: this.formBuilder.group({
         firstName: ['', [Validators.required]],
         lastName: ['', [Validators.required]],
+        userName: ['', [Validators.required,]],
         email: ['', [Validators.required,]],
-        birthDate: ['', [Validators.required,]],
+        birthDate: ['', [Validators.required, birthDate()]],
 
       }),
       p5: this.formBuilder.group({
@@ -159,16 +172,34 @@ export class RegisterComponent implements OnInit {
     if (page === 5) {
       if (this.page1.valid && this.page2.valid && this.page3.valid && this.page4.valid) {
         console.log("hehehe");
-        this.authService.checkIfEmailAvailable(this.email.value)
-        .subscribe((response) => {
-          if (response) this.setCurrentPages(5);
-          else this.emailAlreadyExists = true;
-        }), catchError((error) => {
-          console.log(error);
-          this.emailAlreadyExists = true;
-          return of(error);
-        });
-      ;
+        this.emailAlreadyExists = false;
+        this.usernameAlreadyExists = false;
+
+        this.authService.checkCredentialsAvailability({ email: this.email.value, userName: this.userName.value, })
+        .pipe(
+          tap(data => {
+            console.log(data);
+            if(data) this.setCurrentPages(5);
+            }
+          ),
+          catchError((err) => {
+            console.log(err.error.message);
+            if(err.error.message == "email") {
+              this.emailAlreadyExists = true;
+              
+            } if(err.error.message == "username") { 
+              this.usernameAlreadyExists = true;
+
+            } if(err.error.message == "both") { 
+              this.emailAlreadyExists = true;
+              this.usernameAlreadyExists = true;
+            }
+     
+            return of(null);
+          }
+          )
+        )
+        .subscribe();
         
 
       } else {
@@ -213,7 +244,7 @@ export class RegisterComponent implements OnInit {
   }
 
 
-  public selectType(type: "Brand" | "Influencer"): void {
+  public selectType(type: "BRAND" | "INFLUENCER"): void {
 
     this.accountType.setValue(type);
     this.goToPage(2)
@@ -231,15 +262,16 @@ export class RegisterComponent implements OnInit {
     } else {
 
       const REGISTRATIONDATA: RegistrationData = {
-        accountType: this.accountType.value,
+        userType: this.accountType.value,
         country: this.country.value,
         firstName: this.firstName.value,
+        userName: this.userName.value,
         address: this.address.value,
         city: this.city.value,
-        postalCode: this.postalCode.value,
+        postalCode: parseInt(this.postalCode.value),
         lastName: this.lastName.value,
         email: this.email.value,
-        birthDate: this.birthDate.value,
+        birthdate: this.birthDate.value,
         password: this.password.value,
         phoneNumber: this.phoneNumber.value
       }
@@ -248,6 +280,16 @@ export class RegisterComponent implements OnInit {
       this.authService.register(REGISTRATIONDATA)
         .subscribe((response) => {
           console.log(response);
+          this.authService.login(
+            {
+              username: this.userName.value,
+              password: this.password.value
+            }
+          ).subscribe((response) => {
+            console.log(response);
+            
+            this.router.navigate(['/dashboard']);
+          })
         });
 
     }
@@ -313,6 +355,10 @@ export class RegisterComponent implements OnInit {
 
   get lastName(): AbstractControl {
     return this.registerFormGroup.get('p4.lastName');
+  }
+
+  get userName(): AbstractControl {
+    return this.registerFormGroup.get('p4.userName');
   }
 
   get email(): AbstractControl {

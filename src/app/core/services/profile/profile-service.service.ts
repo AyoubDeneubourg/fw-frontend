@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Profile } from 'src/app/shared/models/common';
 import { AuthService } from '../auth-service/auth.service';
 import { getHeaders } from '../authorization/authorization';
 
@@ -37,6 +38,19 @@ export class ProfileService {
     }
     console.log(...formData);
 
-    return this.http.post(`${this.apiUrl}/api/image/${userId}`, formData, getHeaders());
+    return this.http.put(`${this.apiUrl}/api/image/${userId}`, formData, getHeaders());
   }
+
+
+  public updateInfluencerProfile(user: any, userId: any): Observable<any> {
+    return this.http.put(`${this.apiUrl}/api/profile/influencer/${userId}`, user, getHeaders());
+  
+    }
+
+
+    public updateBrandProfile(user: Profile): Observable<any> {
+      return this.http.put(`${this.apiUrl}/api/profile/brand/${user.id}`, user, getHeaders());
+    
+      }
+
 }

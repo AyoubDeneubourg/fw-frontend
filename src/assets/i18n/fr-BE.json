@@ -114,7 +114,7 @@
         "country": "Country",
         "city": "City",
         "address": "Address",
-        "postCode": "Post code",
+        "postalCode": "Postal code",
         "firstName": "First name",
         "lastName": "Last name",
         "username": "Username",
@@ -126,6 +126,7 @@
 
       "partnershipInformation": {
         "title": "Partnership Information",
+        "socialMedia":"Social Media",
         "pricePerPost": "Price per post",
         "pricePerStory": "Price per story",
         "pricePerHighlight": "Price per highlight",

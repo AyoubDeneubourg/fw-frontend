@@ -59,9 +59,11 @@ export class ProfileComponent implements OnInit {
 
     this.color = this.authService.colors;
 
-
-
-    console.log(this.profile);
+/* 
+    if(!this.profile.headTitle && !this.profile.description ) {
+      this.router.navigateByUrl('/profile/edit');
+    }
+ */
 
 
   }
