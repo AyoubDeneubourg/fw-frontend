@@ -1,5 +1,7 @@
 $blue: #4cade6;
 $light-blue: #bfe7ff;
+$orange: #e5844c;
+$light-orange: #ffb992;
 
 .btn-hover-animation {
 
@@ -25,9 +27,17 @@ $light-blue: #bfe7ff;
   content: "";
   width: 20px;
   height: 20px;
-  background-color: $light-blue;
+  /////////background-color: $light-blue;
   border-radius: 50%;
 }
+.btn-hover-animation-orange:before, .btn-hover-animation-orange:after {
+  background-color: $light-orange;
+}
+.btn-hover-animation-blue:before, .btn-hover-animation-blue:after {
+  background-color: $light-blue;
+}
+
+
 .btn-hover-animation:before {
   z-index: 0;
   left: -20px;
@@ -43,8 +53,18 @@ $light-blue: #bfe7ff;
 .btn-hover-animation:hover {
 transition: 1.2s color;
 /* color: #222222 !important; */
- color: $blue !important;
+///////// color: $blue !important;
 }
+
+.btn-hover-animation-blue:hover {
+  color: $blue !important;
+}
+
+
+.btn-hover-animation-orange:hover {
+  color: $orange !important;
+}
+
 .btn-hover-animation:hover:before {
   -webkit-animation: criss-cross-left 0.8s both;
           animation: criss-cross-left 0.8s both;
@@ -122,11 +142,11 @@ transition: 1.2s color;
 }
  
 
-.btn-unselected-animation {
-  animation: btn-unselected-anim 0.5s both;
+.btn-unselected-animation-blue {
+  animation: btn-unselected-anim-blue 0.5s both;
 }
 
-@keyframes btn-unselected-anim {
+@keyframes btn-unselected-anim-blue {
   0% {
     background-color: $light-blue;
   }
@@ -135,3 +155,16 @@ transition: 1.2s color;
   }
 }
 
+
+.btn-unselected-animation-orange {
+  animation: btn-unselected-anim-orange 0.5s both;
+}
+
+@keyframes btn-unselected-anim-orange {
+  0% {
+    background-color: $light-orange;
+  }
+  100% {
+    background-color: $orange;
+  }
+}

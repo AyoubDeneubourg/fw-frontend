@@ -1,10 +1,10 @@
 <ng-container *transloco="let t; read: 'wizard'">
   <div class="flex flex-row h-screen">
-    <div class="w-1/3 flex items-center bg-blue">
+    <div class="w-1/3 flex items-center bg-{{color}}">
       <div class="flex flex-col ml-14">
 
 
-        <app-pages-side-navigation (goToPage)='goToPage($event)' [allPages]="allPages" [color]="'blue'">
+        <app-pages-side-navigation (goToPage)='goToPage($event)' [allPages]="allPages" [color]="color">
 
 
 
@@ -46,7 +46,7 @@
           </div>
 
           <button type="button" (click)="goToPage(2)"
-            class="mt-5 text-white py-1 font-semibold px-3 rounded-sm shadow-sm bg-blue">{{ 'common.continue' | transloco }}</button>
+            class="mt-5 text-white py-1 font-semibold px-3 rounded-sm shadow-sm bg-{{color}}">{{ 'common.continue' | transloco }}</button>
 
 
 
@@ -82,9 +82,12 @@
 
 
               <label for="socialMedia{{ item }}" class="font-semibold p-5 rounded-md text-white"
-              [class.bg-light-gray]="!socialMedia.controls[i].value" 
-              [class.btn-hover-animation]="!socialMedia.controls[i].value"
-              [class.btn-unselected-animation]="socialMedia.controls[i].value">
+              [ngClass]="!socialMedia.controls[i].value 
+              ? 'bg-light-gray btn-hover-animation btn-hover-animation-' + color 
+              : 'btn-unselected-animation-' + color">
+
+
+
                 <input id="socialMedia{{ item }}" class="py-1 hidden px-3 outline-none rounded-sm shadow-md"
                   [formControl]="socialMedia.controls[i]" type="checkbox" />
                 <p class="ml-2 relative  inline-block capitalize z-50">
@@ -102,7 +105,7 @@
 
 
           <button type="button" (click)="goToPage(3)"
-            class="mt-5 text-white py-1 font-semibold px-3 rounded-sm shadow-sm bg-blue">{{ 'common.continue' | transloco }}</button>
+            class="mt-5 text-white py-1 font-semibold px-3 rounded-sm shadow-sm bg-{{color}}">{{ 'common.continue' | transloco }}</button>
 
           <div class="flex">
             <div (click)="goToPage(1)" class="flex-1 mt-2 flex">
@@ -147,7 +150,7 @@
           </div>
 
           <button type="button" (click)="goToPage(4)"
-            class="mt-5 text-white py-1 font-semibold px-3 rounded-sm shadow-sm bg-blue">{{ 'common.continue' | transloco }}</button>
+            class="mt-5 text-white py-1 font-semibold px-3 rounded-sm shadow-sm bg-{{color}}">{{ 'common.continue' | transloco }}</button>
 
 
 
@@ -200,7 +203,7 @@
           </div>
 
           <button type="button" (click)="goToPage(5)"
-            class="mt-5 text-white py-1 font-semibold px-3 rounded-sm shadow-sm bg-blue">{{ 'common.continue' | transloco }}</button>
+            class="mt-5 text-white py-1 font-semibold px-3 rounded-sm shadow-sm bg-{{color}}">{{ 'common.continue' | transloco }}</button>
 
 
 
@@ -236,7 +239,7 @@
             <div class="flex-1">
               <label for="gender" class="font-semibold ">{{ t('5.gender') }}</label>
 
-              <select formControlName="gender" class="w-228 mt-2 py-1 px-3 outline-none rounded-sm shadow-md">
+              <select formControlName="gender" class="w-228 mt-2 py-1 px-3 outline-none rounded-sm shadow-md bg-{{color}}">
                   <option value="both">{{ 'common.genders.both' | transloco }}</option>
                   <option value="male">{{ 'common.genders.male' | transloco }}</option>
                   <option value="female">{{ 'common.genders.female' | transloco }}</option>
@@ -263,7 +266,7 @@
 
 
           <button type="button" (click)="goToPage(6)"
-            class="mt-5 text-white py-1 font-semibold px-3 rounded-sm shadow-sm bg-blue">{{ 'common.continue' | transloco }}</button>
+            class="mt-5 text-white py-1 font-semibold px-3 rounded-sm shadow-sm bg-{{color}}">{{ 'common.continue' | transloco }}</button>
 
 
           <div class="flex">
@@ -306,9 +309,10 @@
     
 
               <label for="sectors{{ item }}" class="font-semibold p-3 rounded-md text-white "
-                [class.bg-light-gray]="!sectors.controls[i].value" 
-                [class.btn-hover-animation]="!sectors.controls[i].value"
-                [class.btn-unselected-animation]="sectors.controls[i].value" 
+              [ngClass]="!sectors.controls[i].value 
+              ? 'bg-light-gray btn-hover-animation btn-hover-animation-' + color 
+              : 'btn-unselected-animation-' + color"
+
                 
 
                 >
@@ -328,7 +332,7 @@
 
 
           <button type="button" (click)="goToPage(7)"
-            class="mt-5 text-white py-1 font-semibold px-3 rounded-sm shadow-sm bg-blue">{{ 'common.continue' | transloco }}</button>
+            class="mt-5 text-white py-1 font-semibold px-3 rounded-sm shadow-sm bg-{{color}}">{{ 'common.continue' | transloco }}</button>
 
 
           <div class="flex">
@@ -404,7 +408,7 @@
 
 
           <button type="submit"
-            class="mt-5 text-white py-1 font-semibold px-3 rounded-sm shadow-sm bg-blue">{{ 'common.search' | transloco }}</button>
+            class="mt-5 text-white py-1 font-semibold px-3 rounded-sm shadow-sm bg-{{color}}">{{ 'common.search' | transloco }}</button>
 
 
           <div class="flex">
@@ -420,7 +424,7 @@
       </form>
       <div class="absolute bottom-10 w-500">
 
-        <app-pages-bottom-navigation [allPages]="allPages" [color]="'blue'"></app-pages-bottom-navigation>
+        <app-pages-bottom-navigation [allPages]="allPages" [color]="color"></app-pages-bottom-navigation>
       </div>
     </div>
   </div>

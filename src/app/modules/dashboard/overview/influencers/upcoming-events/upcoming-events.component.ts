@@ -6,11 +6,11 @@ import { OffersService } from 'src/app/core/services/offers/offers.service';
 import { Offer, SocialMediaInformation } from 'src/app/shared/models/offers';
 
 @Component({
-  selector: 'app-upcoming-events',
+  selector: 'app-influencer-upcoming-events',
   templateUrl: './upcoming-events.component.html',
   styleUrls: ['./upcoming-events.component.scss']
 })
-export class UpcomingEventsComponent implements OnInit {
+export class InfluencerUpcomingEventsComponent implements OnInit {
 
   @Input()
   public offers: Offer[];

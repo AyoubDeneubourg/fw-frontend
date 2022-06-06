@@ -1,21 +1,44 @@
 <div class="">
 
-  <div class="flex p-5  border-blue">
+  <div class="flex p-5  border-{{color}}">
     <p class="m-2 text-xl flex-1">Overview</p>
 
-    <p class="my-auto mx-2" (click)="changeActiveTab('Upcoming')" [class.active]="active === 'Upcoming'">
+    <ng-container *ngIf="color == 'blue'">
+
+
+    <p class="my-auto mx-2" (click)="changeActiveTab('1')" [ngClass]="active == '1' ? 'active-' + color: ''">
       Upcoming Events
     </p>
 
-    <p class="my-auto mx-2" (click)="changeActiveTab('Request')" [class.active]="active === 'Request'">
+    <p class="my-auto mx-2" (click)="changeActiveTab('2')" [ngClass]="active == '2' ? 'active-' + color: ''" >
       Request
     </p>
 
-    <p class="my-auto mx-2" (click)="changeActiveTab('History')" [class.active]="active === 'History'">
+    <p class="my-auto mx-2" (click)="changeActiveTab('3')" [ngClass]="active == '3' ? 'active-' + color: ''">
       History
     </p>
 
-    <i class="my-auto mx-2 fa-solid fa-filter"></i>
+    </ng-container>
+
+
+
+    <ng-container *ngIf="color == 'orange'">
+
+      <p class="my-auto mx-2" (click)="changeActiveTab('1')" [ngClass]="active == '1' ? 'active-' + color: ''" >
+        Requested
+      </p>
+
+      <p class="my-auto mx-2" (click)="changeActiveTab('2')" [ngClass]="active == '2' ? 'active-' + color: ''">
+        To Pay
+      </p>
+  
+  
+      <p class="my-auto mx-2" (click)="changeActiveTab('3')" [ngClass]="active == '3' ? 'active-' + color: ''">
+        History
+      </p>
+  
+      </ng-container>
+
   </div>
 
   <hr class="p-5 mx-6">
@@ -24,19 +47,44 @@
 
   <div class="p-5 pt-0">
 
-    <ng-container *ngIf="active === 'Upcoming'">
-      <app-upcoming-events [offers]="upcoming"></app-upcoming-events>
+    <ng-container *ngIf="color == 'blue'">
+
+      <ng-container *ngIf="active === '1'">
+        <app-influencer-upcoming-events [offers]="upcoming"></app-influencer-upcoming-events>
+      </ng-container>
+
+      <ng-container *ngIf="active === '2'">
+        <app-influencer-request [offers]="request" (refreshData)="refreshData()"></app-influencer-request>
+      </ng-container>
+
+      
+      <ng-container *ngIf="active === '3'">
+        <app-influencer-history [offers]="history"></app-influencer-history>
+      </ng-container>
+
     </ng-container>
 
 
-    <ng-container *ngIf="active === 'Request'">
-      <app-request [offers]="request" (refreshData)="refreshData()"></app-request>
+
+
+    <ng-container *ngIf="color == 'orange'">
+
+      <ng-container *ngIf="active === '1'">
+        <app-brand-requested [offers]="upcoming"></app-brand-requested>
+      </ng-container>
+      
+      <ng-container *ngIf="active === '2'">
+        <app-brand-to-pay [offers]="request"></app-brand-to-pay>
+      </ng-container>
+
+      
+      <ng-container *ngIf="active === '3'">
+        <app-brand-history [offers]="history"></app-brand-history>
+      </ng-container>
+
     </ng-container>
 
-    
-    <ng-container *ngIf="active === 'History'">
-      <app-history [offers]="history"></app-history>
-    </ng-container>
+
 
 
 

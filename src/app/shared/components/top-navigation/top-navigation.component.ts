@@ -25,7 +25,8 @@ export class TopNavigationComponent implements OnInit {
 
     this.auth.loggedInUser$.pipe(
       tap((user) => {
-        this.user = user[0];
+        console.log(user);
+        this.user = user;
       })).subscribe()
 
 

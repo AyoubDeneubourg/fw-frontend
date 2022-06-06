@@ -5,7 +5,7 @@
 
 <div class="search-tool w-300 bg-gray-50">
 
-    <div [routerLink]="'/wizard'" class="flex bg-blue px-6 py-8 text-white">
+    <div [routerLink]="'/wizard'" class="flex bg-{{color}} px-6 py-8 text-white">
         <p class="font-bold m-auto">LAUNCH WIZARD</p>
         <span><i class="fa-solid fa-arrow-right"></i></span>
     </div>
@@ -13,8 +13,8 @@
 
     <form class="m-2" [formGroup]="searchFormGroup" >
 
-        <div class="flex p-2">
-            <p class="flex-1 text-blue font-semibold">Filter by</p>
+        <div class="flex p-2 pl-0">
+            <p class="flex-1 text-{{color}} font-semibold">Filter by</p>
             <p (click)="null" class="text-gray-600 font-semibold text-sm m-auto">Reset Filters</p>
         </div>
 
@@ -24,7 +24,7 @@
         <div formGroupName="i1">    
             <p class="text-gray-600 font-semibold text-sm">Social Media</p>
             <div *ngFor="let item of socialMediaArray; let i = index">
-                <input [formControl]="socialMedia.controls[i]" class="mr-2" type="checkbox" name="socials" value="{{item}}" id="{{item}}">
+                <input [formControl]="socialMedia.controls[i]" class="mr-2  checkbox-{{color}}" type="checkbox" name="socials" value="{{item}}" id="{{item}}">
                 <label for="{{item}}">{{item}}</label>
             </div>
         </div>
@@ -37,15 +37,15 @@
 
             <p class="text-gray-600 font-semibold text-sm mt-2">Type</p>
             <div>
-                <input [formControl]="type.controls[0]" class="mr-2" type="checkbox" name="type" value="type" id="type">
+                <input [formControl]="type.controls[0]" class="mr-2 checkbox-{{color}}" type="checkbox" name="type" value="type" id="type">
                 <label for="type">Post</label>
             </div>
             <div>
-                <input [formControl]="type.controls[1]" class="mr-2" type="checkbox" name="type" value="story" id="story">
+                <input [formControl]="type.controls[1]" class="mr-2 checkbox-{{color}}" type="checkbox" name="type" value="story" id="story">
                 <label for="story">Story</label>
             </div>
             <div>
-                <input [formControl]="type.controls[2]" class="mr-2" type="checkbox" name="type" value="highlight" id="highlight">
+                <input [formControl]="type.controls[2]" class="mr-2 checkbox-{{color}}" type="checkbox" name="type" value="highlight" id="highlight">
                 <label for="highlight">Highlight</label>
             </div>
 
@@ -89,7 +89,7 @@
 
         <div formGroupName="i7">    
             <p class="text-gray-600 font-semibold text-sm mt-2">Gender</p>
-            <select formControlName="gender" class="shadow-md" name="gender" id="gender">
+            <select formControlName="gender" class="shadow-md bg-{{color}}" name="gender" id="gender">
                 <option value="both">No Matter</option>
                 <option value="male">Man</option>
                 <option value="female">Female</option>
@@ -100,7 +100,7 @@
 
         <div formGroupName="i8">    
             <p class="text-gray-600 font-semibold text-sm">Age</p>
-            <input [formControl]="age" class="mr-2 w-100 p-2 outline-none border rounded-md border-blue" type="number" name="age" id="age">
+            <input [formControl]="age" class="mr-2 w-100 p-2 outline-none border rounded-md border-{{color}}" type="number" name="age" id="age">
         </div>
 
 
@@ -116,7 +116,7 @@
 
 
         <div *ngFor="let item of sectorsArray; let i = index">
-            <input [formControl]="sectors.controls[i]" id="sector-{{ item }}" name="sector-{{item}}" class="mr-2"  type="checkbox" />
+            <input [formControl]="sectors.controls[i]" id="sector-{{ item }}" name="sector-{{item}}" class="mr-2 checkbox-{{color}}"  type="checkbox" />
             <label for="sector-{{ item }}">{{item}}</label>
         </div>
 
@@ -137,7 +137,7 @@
 
     <div class="search flex m-5">
         <input type="text" class="border w-100 py-2 px-4" placeholder="Search for influencers or for posts">
-        <button class="py-4 px-8 bg-blue text-white font-semibold">Search</button>
+        <button class="py-4 px-8 bg-{{color}} text-white font-semibold">Search</button>
     </div>
 
 

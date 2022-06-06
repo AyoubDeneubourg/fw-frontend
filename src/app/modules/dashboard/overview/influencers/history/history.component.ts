@@ -7,11 +7,11 @@ import { Offer, SocialMediaInformation } from 'src/app/shared/models/offers';
 
 
 @Component({
-  selector: 'app-history',
+  selector: 'app-influencer-history',
   templateUrl: './history.component.html',
   styleUrls: ['./history.component.scss']
 })
-export class HistoryComponent implements OnInit {
+export class InfluencerBrandHistoryComponent implements OnInit {
 
   @Input()
   public offers: Offer[];

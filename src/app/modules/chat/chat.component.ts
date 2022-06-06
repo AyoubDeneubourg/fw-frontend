@@ -8,7 +8,7 @@ import {
 } from '@angular/fire/compat/database';
 import { ChatService } from 'src/app/core/services/firebase/chat.service';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
-import { combineAll, map, mergeMap, switchMap, take } from 'rxjs/operators';
+import { combineAll, map, mergeMap, switchMap, take, tap } from 'rxjs/operators';
 import { collection, getDocs } from 'firebase/firestore';
 import { Firestore } from '@angular/fire/firestore';
 
@@ -79,7 +79,23 @@ export class ChatComponent implements OnInit {
           console.log(typeof y);
           if(typeof y == 'undefined') {
 
-            this.chats.push(element2)
+  
+            
+            let userId = this.authedUser.id == element2.user_1 ? element2.user_2 : element2.user_1;
+            console.log(userId);
+            console.log(this.authedUser.id);
+            console.log(element2.user_2);
+            console.log(element2.user_1);
+           
+            this.authService.getUser(userId).pipe(
+              tap(user => {
+
+                element2 = {...element2, ...user };
+                this.chats.push(element2)
+                console.log(this.chats);
+              }
+              )).subscribe();
+
       
             } else {
               y.messages = element2.messages;
@@ -119,7 +135,7 @@ export class ChatComponent implements OnInit {
 
   public getUser2(): string {
 
-    console.log(this.getUser2())
+    // console.log(this.getUser2())
 
     //  return this.authService.getUser(id).pipe(take(1));
     return "zzz";
@@ -127,11 +143,17 @@ export class ChatComponent implements OnInit {
     }
 
   
-  public getUser(id): Observable<any> {
+  public getUser(id) {
 
+    // let x;
 
-  //  return this.authService.getUser(id).pipe(take(1));
-  return of("");
+ /*    return this.authService.getUser(id).pipe(
+      map(user => {
+        return user
+      }
+      )); */
+
+  //return x;
 
   }
   public getFirebaseChat() {
@@ -151,9 +173,7 @@ export class ChatComponent implements OnInit {
       }); return ref.where('user_2', '==', this.authedUser.id.toString())
       .where('user_1', '==', this.route.snapshot.params.id.toString());
        }).valueChanges().subscribe((data: any) => {
-
         if(data[0]?.messages) this.bucketListArray = data[0];
-        console.log(id);
          if(typeof id != 'undefined') this.chatId = id;
 
          setTimeout(() => {
@@ -174,7 +194,6 @@ export class ChatComponent implements OnInit {
         .where('user_2', '==', this.route.snapshot.params.id.toString());
          }).valueChanges().subscribe((data: any) => {
            if(data[0]?.messages) this.bucketListArray = data[0];
-
            if(typeof id != 'undefined') this.chatId = id;
 
            setTimeout(() => {

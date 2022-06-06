@@ -1,0 +1,30 @@
+<div class="bg-{{color}} flex p-2 rounded shadow-sm h-40 max-w-full flex-col text-white overflow-hidden relative">
+
+  
+    <ng-container *ngFor="let item of data; let i = index">
+
+        <ng-container *ngIf="actualPage == i">
+
+            <div class="flex-1"></div>
+            <div class="text-2xl text-center">{{ item.title }}</div>
+            <div class="text-base text-center">{{ item.content }}</div>
+            <div class="flex-1"></div>
+
+        </ng-container> 
+    </ng-container>
+
+<div class="flex m-auto">
+
+    <ng-container *ngFor="let btns of data; let i = index;">
+        <div (click)="changePage(i)" class="mx-1 clickable" 
+        [class.bg-white]="actualPage != i" 
+        [class.bg-light-blue]="actualPage == i && color == 'blue'"
+        [class.bg-light-orange]="actualPage == i && color == 'orange'"
+        
+        
+        ></div>
+    </ng-container>
+    
+</div>
+  </div>
+  

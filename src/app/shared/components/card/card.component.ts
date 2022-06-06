@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { AuthService, Color } from 'src/app/core/services/auth-service/auth.service';
 import { DecoSquarePosition } from '../deco/squares/squares.component';
 
 @Component({
@@ -9,10 +10,15 @@ import { DecoSquarePosition } from '../deco/squares/squares.component';
 export class CardComponent implements OnInit {
 
   @Input() data: CardData;
+  public color: Color;
 
-  constructor() { }
+
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
+    
+    this.color = this.authService.colors;
+
   }
 
 }

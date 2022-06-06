@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { AuthService } from 'src/app/core/services/auth-service/auth.service';
+import { AuthService, Color } from 'src/app/core/services/auth-service/auth.service';
 import { SocialMediaArrayCapitalized } from 'src/app/shared/models/offers';
 import { PageNavigation } from 'src/app/shared/models/pagination';
 import { tap } from 'rxjs/operators'
@@ -26,9 +26,10 @@ export class WizardComponent implements OnInit {
 
   public wizardFormGroup: FormGroup;
 
-  public actualPage: number = 1;
+  public actualPage: number = 2;
   public allowToGo: number = 1;
 
+  public color: Color;
 
   public allPages: PageNavigation[] = [
     {
@@ -61,10 +62,13 @@ export class WizardComponent implements OnInit {
     }
   ];
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthService, private userPreferencesService: UserPreferencesService) { }
+  constructor(private formBuilder: FormBuilder, 
+    private authService: AuthService, 
+    private userPreferencesService: UserPreferencesService) { }
 
   ngOnInit(): void {
 
+    this.color = this.authService.colors;
 
     this.wizardFormGroup = this.formBuilder.group({
       p1: this.formBuilder.group({

@@ -7,11 +7,11 @@ import { OffersService } from 'src/app/core/services/offers/offers.service';
 import { of } from 'rxjs';
 
 @Component({
-  selector: 'app-request',
+  selector: 'app-influencer-request',
   templateUrl: './request.component.html',
   styleUrls: ['./request.component.scss']
 })
-export class RequestComponent implements OnInit {
+export class InfluencerRequestComponent implements OnInit {
 
 
   @Input()

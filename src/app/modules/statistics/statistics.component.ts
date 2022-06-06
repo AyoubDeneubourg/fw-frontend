@@ -31,9 +31,17 @@ export class StatisticsComponent implements OnInit  {
     'content': '',
   }
 
-  public data2 = {
-    'title': 'titleee 2',
+  public data2 = [{
+    'title': 'Item 1',
+    'content': 'Content 1',
+  },
+  {
+    'title': 'Item 2',
     'content': 'content 2',
-  }
+  },
+  {
+    'title': 'Item 3',
+    'content': 'content 3',
+  }]
   
 }

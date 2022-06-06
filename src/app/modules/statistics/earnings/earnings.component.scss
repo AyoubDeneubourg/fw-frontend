@@ -1,6 +1,10 @@
 @import "../../../../styles/variables";
 
-.active {
+.active-blue {
   font-weight: 500;
   border-bottom: 2px solid $blue;
+}
+.active-orange {
+  font-weight: 500;
+  border-bottom: 2px solid $orange;
 }

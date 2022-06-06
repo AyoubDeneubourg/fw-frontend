@@ -1,3 +1,6 @@
+import { Brand } from "./brand";
+import { Influencer } from "./influencer";
+
 export type User = {
 
     id?: number
@@ -21,11 +24,14 @@ export type User = {
 export type RegistrationData = {
     'firstName': string,
     'lastName': string,
-    //  'userName': string,
+    'address': string,
+    'city': string,
+    'postalCode': string,
     'password': string,
     'email': string,
     'phoneNumber': string
     'country': string,
+    'birthDate': string,
     'accountType': 'Influencer' | 'Brand';
 };
 
@@ -135,3 +141,6 @@ export type Statistics =  {
     "totalMoneyEarnedMonth": number,
     "totalPartnershipsMonth": number
 }
+
+
+export type Profile = User & (Influencer | Brand);

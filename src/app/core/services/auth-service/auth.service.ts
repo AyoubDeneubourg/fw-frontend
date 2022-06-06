@@ -41,8 +41,27 @@ export class AuthService {
   }
 
 
-  public getUser(id: string): Observable<User> {
-    return this.http.get<User>(`${this.apiUrl}/api/user/${id}`, getHeaders());
+  public cache: any = {
+    'getUser': {},
+  };
+
+  public getUser(id: string): Observable<any> {
+    if(this.cache?.getUser[id]) {
+
+      console.log("no http call");
+     return of(this.cache.getUser[id]);
+
+    } else {
+      console.log("http call");
+      return this.http.get<User>(`${this.apiUrl}/api/user/${id}`, getHeaders()).pipe(
+        tap((user) => {
+          this.cache.getUser[id] = user;
+          console.log(this.cache)
+        }
+        )
+      )
+      
+    }
   }
 
   public getProfile(id: string): Observable<any> {
@@ -77,6 +96,8 @@ export class AuthService {
       console.log('no http call')
       return this.loggedInInfluencer$ as Observable<Influencer>;
     } else {
+
+      // set influence ???
       return this.http.get<any>(`${this.apiUrl}/api/influencer/${userId}`, getHeaders());
 
     }
@@ -88,6 +109,8 @@ export class AuthService {
       console.log('no http call')
       return this.loggedInBrand$ as Observable<Brand>;
     } else {
+            // set brand ???
+
     return this.http.get<any>(`${this.apiUrl}/api/brand/${userId}`, getHeaders());
   }
   }
@@ -97,6 +120,7 @@ export class AuthService {
 
 
 
+  public colors: Color;
 
   public loggedInUser: User;
   public loggedInUser$: Observable<User> = of();
@@ -126,9 +150,16 @@ export class AuthService {
             this.loggedInUser$ = of(loggedInUser);
             
             console.log(loggedInUser.userType);
-            if(this.loggedInUser.userType == "BRAND") return this.getBrand(this.loggedInUser.id);
-            if(this.loggedInUser.userType == "INFLUENCER") return this.getInfluencer(loggedInUser.id);
+            if(this.loggedInUser.userType == "BRAND") {
+              this.colors = "orange"
+              return this.getBrand(this.loggedInUser.id);
 
+            } 
+            if(this.loggedInUser.userType == "INFLUENCER") {
+              this.colors = "blue"
+
+              return this.getInfluencer(loggedInUser.id);
+            }
             }),
    
           tap((loggedInUserOrInfluencer) => {
@@ -166,3 +197,5 @@ export class AuthService {
 
 
 }
+
+export type Color = "blue" | "orange";

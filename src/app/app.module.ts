@@ -25,8 +25,8 @@ import { CardComponent } from './shared/components/card/card.component';
 import { TopNavigationComponent } from './shared/components/top-navigation/top-navigation.component';
 import { SearchComponent } from './modules/search/search.component';
 import { OverviewComponent } from './modules/dashboard/overview/overview.component';
-import { UpcomingEventsComponent } from './modules/dashboard/overview/upcoming-events/upcoming-events.component';
-import { RequestComponent } from './modules/dashboard/overview/request/request.component';
+import { InfluencerUpcomingEventsComponent } from './modules/dashboard/overview/influencers/upcoming-events/upcoming-events.component';
+import { InfluencerRequestComponent } from './modules/dashboard/overview/influencers/request/request.component';
 import { ProfileComponent } from './modules/profile/profile.component';
 import { OffersComponent } from './modules/offers/offers.component';
 import { MainNavbarsComponent } from './shared/views/main-navbars/main-navbars.component';
@@ -38,7 +38,7 @@ import { PieChartComponent } from './modules/statistics/pie-chart/pie-chart.comp
 import { BarVerticalComponent } from './modules/statistics/bar-vertical/bar-vertical.component';
 import { LineChartComponent } from './modules/statistics/line-chart/line-chart.component';
 import { SquaresComponent } from './shared/components/deco/squares/squares.component';
-import { HistoryComponent } from './modules/dashboard/overview/history/history.component';
+import { InfluencerBrandHistoryComponent } from './modules/dashboard/overview/influencers/history/history.component';
 import { SocialMediaCounterPipe } from './shared/pipes/social-media-counter.pipe';
 import { EarningsComponent } from './modules/statistics/earnings/earnings.component';
 import { EditProfileComponent } from './modules/profile/edit/edit.component';
@@ -63,6 +63,10 @@ import { SocialMediaPriceCounterPipe } from './shared/pipes/social-media-price-c
 import { FirebaseTimeToNormalTimePipe } from './shared/pipes/firebase-time-to-normal-time.pipe';
 import { FirebaseTimeToNormalDatePipe } from './shared/pipes/firebase-time-to-normal-date.pipe';
 import { AveragePricePipe } from './shared/pipes/search/average-price.pipe';
+import { BrandRequestedComponent } from './modules/dashboard/overview/brands/requested/requested.component';
+import { BrandHistoryComponent } from './modules/dashboard/overview/brands/history/history.component';
+import { BrandToPayComponent } from './modules/dashboard/overview/brands/to-pay/to-pay.component';
+import { SlideCardComponent } from './modules/statistics/slide-card/slide-card.component';
 
 @NgModule({
   declarations: [
@@ -81,8 +85,8 @@ import { AveragePricePipe } from './shared/pipes/search/average-price.pipe';
     TopNavigationComponent,
     SearchComponent,
     OverviewComponent,
-    UpcomingEventsComponent,
-    RequestComponent,
+    InfluencerUpcomingEventsComponent,
+    InfluencerRequestComponent,
     ProfileComponent,
     OffersComponent,
     MainNavbarsComponent,
@@ -93,7 +97,7 @@ import { AveragePricePipe } from './shared/pipes/search/average-price.pipe';
     BarVerticalComponent,
     LineChartComponent,
     SquaresComponent,
-    HistoryComponent,
+    InfluencerBrandHistoryComponent,
     SocialMediaCounterPipe,
     EarningsComponent,
     EditProfileComponent,
@@ -105,7 +109,11 @@ import { AveragePricePipe } from './shared/pipes/search/average-price.pipe';
     SocialMediaPriceCounterPipe,
     FirebaseTimeToNormalTimePipe,
     FirebaseTimeToNormalDatePipe,
-    AveragePricePipe
+    AveragePricePipe,
+    BrandRequestedComponent,
+    BrandHistoryComponent,
+    BrandToPayComponent,
+    SlideCardComponent
   ],
 
   imports: [

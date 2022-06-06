@@ -1,7 +1,9 @@
 import { Options } from '@angular-slider/ngx-slider';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from 'src/app/core/services/auth-service/auth.service';
+import { Router } from '@angular/router';
+
+import { AuthService, Color } from 'src/app/core/services/auth-service/auth.service';
 import { SearchService } from 'src/app/core/services/search/search.service';
 import { UserPreferencesService } from 'src/app/core/services/user-preferences/user-preferences.service';
 import { COUNTRIES } from 'src/app/shared/data/countries';
@@ -83,15 +85,39 @@ export class SearchComponent implements OnInit {
 
   public results;
 
+  public color: Color;
+
   constructor(private formBuilder: FormBuilder, 
     private authService: AuthService, 
     private userPreferencesService: UserPreferencesService,
+    private router: Router,
     private searchService: SearchService) { }
 
   ngOnInit(): void {
+    this.color = this.authService.colors;
+    this.setOptionsColors();
     this.buildForm();
     this.setPreferences();
     this.getInfluencers();
+  }
+
+  public setOptionsColors() {
+
+    const color = this.color == 'blue' ? '#4cade6' : '#e5844c'
+
+    this.viewersOptions.getSelectionBarColor = (percentage: number) => { return color; }
+    this.viewersOptions.getTickColor = (percentage: number) => { return color; }
+    this.viewersOptions.getPointerColor = (percentage: number) => { return color; }
+
+    this.followersOptions.getSelectionBarColor = (percentage: number) => { return color; }
+    this.followersOptions.getTickColor = (percentage: number) => { return color; }
+    this.followersOptions.getPointerColor = (percentage: number) => { return color; }
+
+    this.budgetOptions.getSelectionBarColor = (percentage: number) => { return color; }
+    this.budgetOptions.getTickColor = (percentage: number) => { return color; }
+    this.budgetOptions.getPointerColor = (percentage: number) => { return color; }
+
+
   }
 
   public getInfluencers(): void {
@@ -99,6 +125,7 @@ export class SearchComponent implements OnInit {
 
     this.searchService.getInfluencers().subscribe(
       (data) => {
+        console.log(data);
         this.results = data;
       }
     );
@@ -171,16 +198,21 @@ export class SearchComponent implements OnInit {
 
     const searchPreferences: Filters = this.userPreferencesService.currentPreferences.search;
 
+    if(!searchPreferences) {
+      this.router.navigate(['/wizard']);
+      return;
+    }
+    console.log(searchPreferences)
     console.log(searchPreferences);
-    this.age.setValue(searchPreferences.age);
+    this.age?.setValue(searchPreferences?.age);
   
     // budget
     // followers
     // views
 
 
-    this.gender.setValue(searchPreferences.gender);
-    this.location.setValue(searchPreferences.location);
+    this.gender?.setValue(searchPreferences?.gender);
+    this.location?.setValue(searchPreferences?.location);
 
     searchPreferences.sectors.forEach((element, index) => {
       this.sectorsArray.forEach((element2, index2) => {

@@ -8,7 +8,8 @@
 
 
       <div routerLink="/chat/{{ authedUser.id == user.user_1 ? user.user_2 : user.user_1}}" 
-      class="flex bg-white m-2 shadow-md rounded-sm p-3 flex-1">
+      class="flex bg-white m-2 shadow-md rounded-sm p-3 flex-1"
+      [class.bg-gray-100]=" authedUser.id == user.user_1 ? user.user_2 == routeId : user.user_1 == routeId">
 
         <div class="my-auto p-2 ">
           <span class="bg-blue p-2 rounded-full">
@@ -19,7 +20,7 @@
         
         </div>
         <div class="flex flex-1 flex-col overflow-hidden">
-          <span class="font-semibold">{{getUser2()}} {{ authedUser.id == user.user_1 ? user.user_2 : user.user_1 }}</span>
+          <span class="font-semibold"> {{ user.firstName }}</span>
           <span>{{ user?.messages[user?.messages?.length - 1]?.message.slice(0,20)}}</span>
         
         </div>
@@ -44,11 +45,21 @@
       <div class="flex flex-1 flex-col">
         
 
+        <ng-container *ngFor="let user of chats">
+      
+          <ng-container *ngIf="user.user_1 == bucketListArray.user_1 && user.user_2 == bucketListArray.user_2">
+      
+            <h1>{{ user.firstName }}</h1>
+            
+          </ng-container>
+        </ng-container>
 
 <div class="flex flex-col   right-chat" #autoScroll>
 
   <ng-container *ngFor="let item of bucketListArray['messages']; let i = index">
    
+
+
     <div class="text-center my-2" *ngIf="(bucketListArray.messages[i - 1]?.timestamp | firebaseTimeToNormalDate) != (item?.timestamp | firebaseTimeToNormalDate)">
       <p class="font-semibold">{{ item?.timestamp | firebaseTimeToNormalDate}}</p>
     </div>

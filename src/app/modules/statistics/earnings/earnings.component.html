@@ -3,19 +3,18 @@
     <div class="flex p-5  border-blue">
       <p class="m-2 text-xl flex-1">Earnings</p>
   
-      <p class="my-auto mx-2" (click)="changeActiveTab('Total')" [class.active]="active === 'Total'">
+      <p class="my-auto mx-2" (click)="changeActiveTab('Total')" [ngClass]="active == 'Total' ? 'active-' + color: ''">
         Total earnings
       </p>
   
-      <p class="my-auto mx-2" (click)="changeActiveTab('Month')" [class.active]="active === 'Month'">
+      <p class="my-auto mx-2" (click)="changeActiveTab('Month')" [ngClass]="active == 'Month' ? 'active-' + color: ''">
         This month
       </p>
   
-      <p class="my-auto mx-2" (click)="changeActiveTab('Week')" [class.active]="active === 'Week'">
+      <p class="my-auto mx-2" (click)="changeActiveTab('Week')" [ngClass]="active == 'Week' ? 'active-' + color: ''">
         This week
       </p>
   
-      <i class="my-auto mx-2 fa-solid fa-filter"></i>
     </div>
   
     <hr class="p-5 mx-6">

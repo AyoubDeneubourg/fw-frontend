@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { AuthService, Color } from 'src/app/core/services/auth-service/auth.service';
 
 @Component({
   selector: 'app-deco-squares',
@@ -11,9 +12,14 @@ export class SquaresComponent implements OnInit {
   @Input()
   public position: DecoSquarePosition;
 
-  constructor() { }
+  public color: Color;
+
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
+    
+    this.color = this.authService.colors;
+
     console.log(this.position);
   }
 

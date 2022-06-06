@@ -13,8 +13,12 @@ i {
   font-size: 1.3rem;
 }
 
-.active {
+.active-blue {
   border-right: 5px solid $blue !important;
+}
+
+.active-orange {
+  border-right: 5px solid $orange !important;
 }
 
 .inactive {

@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { loadStripe } from '@stripe/stripe-js';
 import { of } from 'rxjs';
 import { catchError, take, tap } from 'rxjs/operators';
+import { AuthService, Color } from 'src/app/core/services/auth-service/auth.service';
 import { OffersService } from 'src/app/core/services/offers/offers.service';
 import { StripeService } from 'src/app/core/services/stripe/stripe.service';
 import { CardData } from 'src/app/shared/components/card/card.component';
@@ -40,13 +41,16 @@ export class DashboardComponent implements OnInit {
   }
 
 
+
   ngOnInit(): void {
+    
     this.offersService.getUpcoming().pipe(
       take(1),
       tap((data: Offer[]) => {
         let count = 0;
 
         data.forEach(element => {
+          console.log(element.startDate);
         
           let one_day=1000*60*60*24;
           let serverDateTime= new Date();
@@ -55,7 +59,7 @@ export class DashboardComponent implements OnInit {
           let diff = Math.ceil((newDate.getTime() - serverDateTime.getTime())/one_day);
 
           console.log(diff);
-          if(diff <= 7 && new Date(element.startDate) > new Date()) {
+          if(diff <= 7 && new Date(element.startDate) > new Date() || diff === -0) {
             console.log(element.startDate)
             count++;
           }

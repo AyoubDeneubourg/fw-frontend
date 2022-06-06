@@ -84,6 +84,7 @@ export class RegisterComponent implements OnInit {
         firstName: ['', [Validators.required]],
         lastName: ['', [Validators.required]],
         email: ['', [Validators.required,]],
+        birthDate: ['', [Validators.required,]],
 
       }),
       p5: this.formBuilder.group({
@@ -177,6 +178,18 @@ export class RegisterComponent implements OnInit {
       }
     }
 
+    if (page === 6) {
+      if (this.page1.valid && this.page2.valid && this.page3.valid && this.page4.valid && this.page5.valid) {
+
+        this.setCurrentPages(6);
+   
+      } else {
+
+        this.goToPage(5);
+        this.registerFormGroup.controls[`p${this.actualPage}`].markAllAsTouched();
+      }
+    }
+
 
   }
 
@@ -221,8 +234,12 @@ export class RegisterComponent implements OnInit {
         accountType: this.accountType.value,
         country: this.country.value,
         firstName: this.firstName.value,
+        address: this.address.value,
+        city: this.city.value,
+        postalCode: this.postalCode.value,
         lastName: this.lastName.value,
         email: this.email.value,
+        birthDate: this.birthDate.value,
         password: this.password.value,
         phoneNumber: this.phoneNumber.value
       }
@@ -300,6 +317,10 @@ export class RegisterComponent implements OnInit {
 
   get email(): AbstractControl {
     return this.registerFormGroup.get('p4.email');
+  }
+
+  get birthDate(): AbstractControl {
+    return this.registerFormGroup.get('p4.birthDate');
   }
 
   get password(): AbstractControl {

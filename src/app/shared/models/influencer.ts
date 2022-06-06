@@ -8,6 +8,7 @@ export type Influencer = {
     languages: object[],
     countries: object[],
     socialMedia: object[],
+    sectors: object[],
     storyPrice: number,
     postPrice: number,
     highlightPrice: number,

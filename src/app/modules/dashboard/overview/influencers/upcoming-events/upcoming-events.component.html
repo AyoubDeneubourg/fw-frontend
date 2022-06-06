@@ -8,9 +8,9 @@
 
 
         <label (change)="this.filterAndSort()" for="inProgress" class="text-center w-100 font-semibold p-2 px-3 rounded-md text-white "
-        [class.bg-light-gray]="!inProgress.value" 
-        [class.btn-hover-animation]="!inProgress.value"
-        [class.btn-unselected-animation]="inProgress.value">
+        [ngClass]="!inProgress.value 
+        ? 'bg-light-gray btn-hover-animation btn-hover-animation-blue' 
+        : 'btn-unselected-animation-blue'">
           <input id="inProgress" class="py-1 hidden px-3 outline-none rounded-sm shadow-md"
             [formControl]="inProgress" type="checkbox" />
           <p class="relative text-sm inline-block capitalize z-50">In progress</p>
@@ -20,9 +20,9 @@
 
 
         <label (change)="this.filterAndSort()" for="pending" class="text-center w-100 font-semibold p-2 rounded-md text-white "
-        [class.bg-light-gray]="!pending.value" 
-        [class.btn-hover-animation]="!pending.value"
-        [class.btn-unselected-animation]="pending.value">
+        [ngClass]="!pending.value 
+        ? 'bg-light-gray btn-hover-animation btn-hover-animation-blue' 
+        : 'btn-unselected-animation-blue'">
 
           <input id="pending" class="py-1 hidden px-3 outline-none rounded-sm shadow-md"
             [formControl]="pending" type="checkbox" />
@@ -94,7 +94,7 @@
         <td>
           <div (click)="null" class=" flex w-2/3  bg-gray-200 rounded-md text-sm p-1 font-semibold">
             <span class="my-auto mx-2 rounded-full status status-{{item.status}}"> </span>
-            <span>{{ item.status != "IN_PROGRESS" ? item.status  : "IN PROGRESS"  }}</span>
+            <span class="">{{ item.status != "IN_PROGRESS" ? item.status  : "IN PROGRESS"  }}</span>
           </div>
         </td>        
         <td routerLink="/profile/{{item.brandId}}">{{ item.brandName }}</td>

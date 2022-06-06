@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Event, NavigationEnd, Route, Router } from '@angular/router';
 import { tap } from 'rxjs/operators';
-import { AuthService } from 'src/app/core/services/auth-service/auth.service';
+import { AuthService, Color } from 'src/app/core/services/auth-service/auth.service';
 
 @Component({
   selector: 'app-left-navigation',
@@ -11,6 +11,8 @@ import { AuthService } from 'src/app/core/services/auth-service/auth.service';
 export class LeftNavigationComponent implements OnInit {
 
 
+  public color: Color;
+
 
 
   constructor(private authService: AuthService) {
@@ -18,8 +20,7 @@ export class LeftNavigationComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
-
+    this.color = this.authService.colors;
   }
 
 

@@ -3,6 +3,7 @@ import { OffersService } from 'src/app/core/services/offers/offers.service';
 import { Offer } from 'src/app/shared/models/offers';
 import { of } from 'rxjs';
 import { catchError, take, tap } from 'rxjs/operators';
+import { AuthService, Color } from 'src/app/core/services/auth-service/auth.service';
 
 @Component({
   selector: 'app-overview',
@@ -11,21 +12,24 @@ import { catchError, take, tap } from 'rxjs/operators';
 })
 export class OverviewComponent implements OnInit {
 
-  public active: ActiveTab = 'Upcoming';
+  public active: ActiveTab = '1';
 
   public upcoming: Offer[] = [];
   public request: Offer[] = [];
   public history: Offer[] = [];
 
+  public color: Color;
 
 
   public changeActiveTab(tab: ActiveTab) {
     this.active = tab;
   }
 
-  constructor(private offersService: OffersService) { }
+  constructor(private offersService: OffersService, private authService: AuthService) { }
 
   ngOnInit(): void {
+    
+    this.color = this.authService.colors;
 
 
     this.refreshData();
@@ -102,4 +106,4 @@ export class OverviewComponent implements OnInit {
 
 }
 
- type ActiveTab = 'Upcoming' | 'Request' | 'History';
+ type ActiveTab = '1' | '2' | '3';

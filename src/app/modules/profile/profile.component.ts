@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AuthService } from 'src/app/core/services/auth-service/auth.service';
+import { AuthService, Color } from 'src/app/core/services/auth-service/auth.service';
+import { ProfileService } from 'src/app/core/services/profile/profile-service.service';
 import { Brand } from 'src/app/shared/models/brand';
-import { User } from 'src/app/shared/models/common';
+import { Profile, User } from 'src/app/shared/models/common';
 import { Influencer } from 'src/app/shared/models/influencer';
 
 @Component({
@@ -12,16 +13,17 @@ import { Influencer } from 'src/app/shared/models/influencer';
 })
 export class ProfileComponent implements OnInit {
 
+  public profile: Profile;
   public user: User;
 
-  public influencer: Influencer;
-  public brand: Brand;
+  public color: Color;
+
 
   public type: ProfileType;
 
   public isOther: boolean = false;
 
-  constructor(private authService: AuthService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private authService: AuthService, private router: Router, private route: ActivatedRoute, private profileService: ProfileService) { }
 
   ngOnInit(): void {
 
@@ -30,9 +32,7 @@ export class ProfileComponent implements OnInit {
     if(this.route.snapshot.params.id) {
 
       this.authService.getProfile(this.route.snapshot.params.id).subscribe(user => {
-        console.error('nanani')
-        console.log("nananou", user);
-        console.error('nanana')
+
         this.isOther = true;
         this.user = user;
 
@@ -46,22 +46,54 @@ export class ProfileComponent implements OnInit {
       this.user = this.authService.loggedInUser;
 
       if(this.user.userType == "BRAND") {
-        this.brand = this.authService.loggedInBrand;
+
+        this.profile = {...this.authService.loggedInBrand['user'], ...this.authService.loggedInBrand['brand']};
         this.type = 'BRAND';
+
       } else {
-        this.influencer = this.authService.loggedInInfluencer;
+
+        this.profile = {...this.authService.loggedInInfluencer['user'], ...this.authService.loggedInInfluencer['influencer']};
         this.type = "INFLUENCER"
       }
     }
 
+    this.color = this.authService.colors;
 
+
+
+    console.log(this.profile);
 
 
   }
+
 
   public sendOffer() {
     
   }
+
+  public changeProfile() {
+    
+  }
+
+
+  fileChange(event) {
+    let fileList: FileList = event.target.files;
+
+
+
+    if(fileList.length > 0) {
+        let file: File = fileList[0];
+        let formData:FormData = new FormData();
+        formData.append('file', file, file.name);
+
+
+        this.profileService.postFile(formData, this.user.id).subscribe(data => {
+          console.log(data);
+        }
+        );
+
+    }
+}
 
 }
 

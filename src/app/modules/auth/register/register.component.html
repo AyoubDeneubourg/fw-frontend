@@ -204,6 +204,16 @@
             <p class="text-red-600">This email already exists</p>
           </ng-container>
 
+
+
+          <label for="birthDate" class="font-semibold mb-1">Birthdate</label>
+          <input id="birthDate" class="py-1 px-3 outline-none rounded-sm shadow-md" formControlName="birthDate"
+            type="date" />
+
+
+          <app-input-validation-error [control]="birthDate"></app-input-validation-error>
+
+
           <button type="button" (click)="goToPage(5)"
             class="mt-5 text-white py-1 font-semibold px-3 rounded-sm shadow-sm"
             [class.bg-blue]="actualPage !== 1 && accountType.value === 'Influencer'"

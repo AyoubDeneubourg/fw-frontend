@@ -8,9 +8,9 @@
 
 
           <label (change)="this.filterAndSort()" for="done" class="text-center w-100 font-semibold p-2 px-3 rounded-md text-white "
-          [class.bg-light-gray]="!done.value" 
-          [class.btn-hover-animation]="!done.value"
-          [class.btn-unselected-animation]="done.value">
+          [ngClass]="!done.value 
+          ? 'bg-light-gray btn-hover-animation btn-hover-animation-blue' 
+          : 'btn-unselected-animation-blue'">
             <input id="done" class="py-1 hidden px-3 outline-none rounded-sm shadow-md"
               [formControl]="done" type="checkbox" />
             <p class="relative text-sm inline-block capitalize z-50">Done</p>
@@ -20,9 +20,9 @@
   
   
           <label (change)="this.filterAndSort()" for="declined" class="text-center w-100 font-semibold p-2 rounded-md text-white "
-          [class.bg-light-gray]="!declined.value" 
-          [class.btn-hover-animation]="!declined.value"
-          [class.btn-unselected-animation]="declined.value">
+          [ngClass]="!declined.value 
+          ? 'bg-light-gray btn-hover-animation btn-hover-animation-blue' 
+          : 'btn-unselected-animation-blue'">
   
             <input id="declined" class="py-1 hidden px-3 outline-none rounded-sm shadow-md"
               [formControl]="declined" type="checkbox" />

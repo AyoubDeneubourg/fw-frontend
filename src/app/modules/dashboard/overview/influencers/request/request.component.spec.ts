@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RequestComponent } from './request.component';
+import { InfluencerRequestComponent } from './request.component';
 
-describe('RequestComponent', () => {
-  let component: RequestComponent;
-  let fixture: ComponentFixture<RequestComponent>;
+describe('InfluencerRequestComponent', () => {
+  let component: InfluencerRequestComponent;
+  let fixture: ComponentFixture<InfluencerRequestComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RequestComponent ]
+      declarations: [ InfluencerRequestComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RequestComponent);
+    fixture = TestBed.createComponent(InfluencerRequestComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

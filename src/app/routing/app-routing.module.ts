@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CancelComponent } from '../core/stripe/cancel/cancel.component';
+import { SuccessComponent } from '../core/stripe/success/success.component';
 import { LoginComponent } from '../modules/auth/login/login.component';
 import { RegisterComponent } from '../modules/auth/register/register.component';
 import { ChatComponent } from '../modules/chat/chat.component';
@@ -33,6 +35,7 @@ const routes: Routes = [
     path: 'dashboard',
     component: DashboardComponent,
     canActivate: [AuthenticatedGuard],
+    
   },
   {
     path: 'profile', // profile
@@ -58,7 +61,7 @@ const routes: Routes = [
   {
     path: 'search',
     component: SearchComponent,
-    canActivate: [],
+    canActivate: [AuthenticatedGuard],
   },
   {
     path: 'statistics',
@@ -78,7 +81,17 @@ const routes: Routes = [
   {
     path: 'wizard',
     component: WizardComponent,
-    canActivate: [],
+    canActivate: [AuthenticatedGuard],
+  },
+  {
+    path: 'payment/success',
+    component: SuccessComponent,
+    canActivate: [AuthenticatedGuard],
+  },
+  {
+    path: 'payment/canceled',
+    component: CancelComponent,
+    canActivate: [AuthenticatedGuard],
   },
   {
     path: '**', redirectTo: '',
