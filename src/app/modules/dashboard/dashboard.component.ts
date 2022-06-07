@@ -25,13 +25,13 @@ export class DashboardComponent implements OnInit {
   }
 
   public data2: CardData = {
-    title: '5',
+    title: '0',
     content: 'Partnerships',
     position: 'top-right'
   }
 
   public data3: CardData = {
-    title: '8235€',
+    title: '0€',
     content: 'Earned money this week',
     position: 'bottom-right'
   }
@@ -47,7 +47,9 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     
     this.user = this.authService.loggedInUser;
-    
+    this.data1.title = this.user.firstName + ' ' + this.user.lastName;
+    this.data1.content = this.user.city + ', ' + this.user.country;
+
     this.offersService.getUpcoming().pipe(
       take(1),
       tap((data: Offer[]) => {
