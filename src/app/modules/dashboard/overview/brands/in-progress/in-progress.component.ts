@@ -5,17 +5,15 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from
 import { catchError, take, tap } from 'rxjs/operators';
 import { OffersService } from 'src/app/core/services/offers/offers.service';
 import { of } from 'rxjs';
-
+import { StripeService } from 'src/app/core/services/stripe/stripe.service';
 
 @Component({
-  selector: 'app-brand-requested',
-  templateUrl: './requested.component.html',
-  styleUrls: ['./requested.component.scss']
+  selector: 'app-in-progress',
+  templateUrl: './in-progress.component.html',
+  styleUrls: ['./in-progress.component.scss']
 })
-export class BrandRequestedComponent implements OnInit {
+export class InProgressComponent implements OnInit {
 
-
-  
   @Input()
   public offers: Offer[];
   
@@ -33,6 +31,7 @@ export class BrandRequestedComponent implements OnInit {
 
   constructor(private translocoService: TranslocoService, 
     private formBuilder: FormBuilder, 
+    private stripeService: StripeService,
     private offersService: OffersService) { 
 
       this.buildForm();
@@ -41,12 +40,30 @@ export class BrandRequestedComponent implements OnInit {
 
 
   ngOnInit() {
+   
 
+
+  console.log(this.offers);
   }
 
    ngOnChanges(changes: SimpleChanges) {
     this.filterAndSort();
+   
   } 
+
+  public pay(item) {
+
+    console.log(item);
+
+    this.stripeService.pay(item);
+
+
+
+
+
+
+  }
+
 
 
 

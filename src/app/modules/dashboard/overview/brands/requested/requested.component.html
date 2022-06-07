@@ -1,1 +1,65 @@
-<p>requested works!</p>
+<ng-container *transloco="let t; read: 'dashboard.overview.request'">
+
+    <form class="flex mb-2" [formGroup]="sortingFormGroup">
+      <div class="flex-1" formGroupName="status">
+  
+  
+  
+  
+  
+      </div>
+  
+      <div formGroupName="sortTypes">
+  
+        <select (change)="this.filterAndSort()" formControlName="type" class="border px-2 py-1 rounded mr-2">
+          <option value="new">Newest</option>
+          <option value="time">Time</option>
+          <option value="client">Client</option>
+          <option value="amount">Amounts</option>
+          <option value="status">Status</option>
+        </select>
+  
+  
+        <select (change)="this.filterAndSort()" formControlName="order" class="border px-2 py-1 rounded mr-2">
+          <option value="ascending">Ascending</option>
+          <option value="descending">Descending</option>
+        </select>
+  
+      </div>
+    </form>
+  
+  
+   
+  
+    <table class="w-100 mt-10">
+      <thead>
+        <tr class="font-semibold">
+          <td>{{ t('orderNumber') }}</td>
+          <td>{{ t('influencer') }}</td>
+          <td>{{ t('socialMedia') }}</td>
+          <td>{{ t('posts') }}</td>
+          <td>{{ t('stories') }}</td>
+          <td>{{ t('highlights') }}</td>
+          <td>{{ t('dates') }}</td>
+          <td>{{ t('files') }}</td>
+          <td></td>
+          <td></td>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of newEvents ? newEvents : offers as Offer">
+            <td>{{ item.id }}</td>
+          <td routerLink="/profile/{{item.influencerId}}">{{ item.influencerName }}</td>
+          <td class="flex"><ng-container *ngFor="let socialMedia of item.socialMediaDetails"><img width="28px" src="assets/icons/socials/{{socialMedia.name}}.svg"></ng-container></td>
+          <td>{{ item.socialMediaDetails | socialMediaCounter : 'posts' }}</td>
+          <td>{{ item.socialMediaDetails | socialMediaCounter : 'stories' }}</td>
+          <td>{{ item.socialMediaDetails | socialMediaCounter : 'highlights' }}</td>
+          <td>{{ item.startDate }} - {{ item.endDate }}</td>
+          <td>{{ item.orderId }}</td>
+          <td> <div (click)="null" class="border border-blue text-center rounded-md text-blue text-sm p-1 font-semibold">View Details</div></td>
+        </tr>
+  
+      </tbody>
+    </table>
+  </ng-container>
