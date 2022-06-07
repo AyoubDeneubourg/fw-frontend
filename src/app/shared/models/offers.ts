@@ -11,6 +11,7 @@ export type Offer = { // add influencer & brand id
     file: OfferFiles,
     status?: OfferStatus, // change to status
     client?: OfferClient
+    finishDate?: any
 }
 
 
@@ -31,6 +32,7 @@ export const socialMediaConverter = {
 
 
 export type SocialMediaInformation = {
+    id?: number,
     name: string,
     stories?: number,
     storyPrice?: number,

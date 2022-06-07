@@ -67,6 +67,7 @@ import { BrandRequestedComponent } from './modules/dashboard/overview/brands/req
 import { BrandHistoryComponent } from './modules/dashboard/overview/brands/history/history.component';
 import { BrandToPayComponent } from './modules/dashboard/overview/brands/to-pay/to-pay.component';
 import { SlideCardComponent } from './modules/statistics/slide-card/slide-card.component';
+import { InProgressComponent } from './modules/dashboard/overview/brands/in-progress/in-progress.component';
 
 @NgModule({
   declarations: [
@@ -113,7 +114,8 @@ import { SlideCardComponent } from './modules/statistics/slide-card/slide-card.c
     BrandRequestedComponent,
     BrandHistoryComponent,
     BrandToPayComponent,
-    SlideCardComponent
+    SlideCardComponent,
+    InProgressComponent
   ],
 
   imports: [

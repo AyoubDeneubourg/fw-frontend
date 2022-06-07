@@ -24,16 +24,19 @@
 
     <ng-container *ngIf="color == 'orange'">
 
-      <p class="my-auto mx-2" (click)="changeActiveTab('1')" [ngClass]="active == '1' ? 'active-' + color: ''" >
+      <p class="my-auto mx-2" (click)="changeActiveTab('1')" [ngClass]="active == '1' ? 'active-' + color: ''">
+        In progress
+      </p>
+      <p class="my-auto mx-2" (click)="changeActiveTab('2')" [ngClass]="active == '2' ? 'active-' + color: ''" >
         Requested
       </p>
 
-      <p class="my-auto mx-2" (click)="changeActiveTab('2')" [ngClass]="active == '2' ? 'active-' + color: ''">
+      <p class="my-auto mx-2" (click)="changeActiveTab('3')" [ngClass]="active == '3' ? 'active-' + color: ''">
         To Pay
       </p>
   
   
-      <p class="my-auto mx-2" (click)="changeActiveTab('3')" [ngClass]="active == '3' ? 'active-' + color: ''">
+      <p class="my-auto mx-2" (click)="changeActiveTab('4')" [ngClass]="active == '4' ? 'active-' + color: ''">
         History
       </p>
   
@@ -70,15 +73,19 @@
     <ng-container *ngIf="color == 'orange'">
 
       <ng-container *ngIf="active === '1'">
-        <app-brand-requested [offers]="upcoming"></app-brand-requested>
+        <app-in-progress [offers]="inProgress"></app-in-progress>
+      </ng-container>
+
+      <ng-container *ngIf="active === '2'">
+        <app-brand-requested [offers]="request"></app-brand-requested>
       </ng-container>
       
-      <ng-container *ngIf="active === '2'">
-        <app-brand-to-pay [offers]="request"></app-brand-to-pay>
+      <ng-container *ngIf="active === '3'">
+        <app-brand-to-pay [offers]="upcoming" ></app-brand-to-pay>
       </ng-container>
 
       
-      <ng-container *ngIf="active === '3'">
+      <ng-container *ngIf="active === '4'">
         <app-brand-history [offers]="history"></app-brand-history>
       </ng-container>
 

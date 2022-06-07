@@ -10,6 +10,7 @@
       <app-card [data]="data2"></app-card>
     </div>
 
+    <ng-container *ngIf="user.userType == 'INFLUENCER'">
     <div class="flex-1 ml-2 mr-2">
       <app-card [data]="data3"></app-card>
     </div>
@@ -18,11 +19,11 @@
     <div class="flex-1 ml-2">
       <app-card [data]="data4"></app-card>
     </div>
+  </ng-container>
   </div>
 
   </div>
 
-  <div (click)="pay()">Pay</div>
 
   <div class="m-2">
 

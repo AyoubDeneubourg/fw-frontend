@@ -74,7 +74,14 @@
 
             <span class="flex">
               <img src="../../../assets/icons/socials/FACEBOOK.svg" alt="">
-              <span class="my-auto font-semibold text-sm">Youssef Sefiani</span>
+              <span class="my-auto font-semibold text-sm">        <ng-container *ngFor="let user of chats">
+      
+                <ng-container *ngIf="user.user_1 == bucketListArray.user_1 && user.user_2 == bucketListArray.user_2">
+            
+                  <h1>{{ user.firstName }}</h1>
+                  
+                </ng-container>
+              </ng-container></span>
               
             </span>
           </div>

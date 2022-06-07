@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ComponentFactoryResolver, OnInit } from '@angular/core';
 import { OffersService } from 'src/app/core/services/offers/offers.service';
 import { Offer } from 'src/app/shared/models/offers';
 import { of } from 'rxjs';
 import { catchError, take, tap } from 'rxjs/operators';
 import { AuthService, Color } from 'src/app/core/services/auth-service/auth.service';
+import { User } from 'src/app/shared/models/common';
 
 @Component({
   selector: 'app-overview',
@@ -18,8 +19,12 @@ export class OverviewComponent implements OnInit {
   public request: Offer[] = [];
   public history: Offer[] = [];
 
+  public inProgress: Offer[] = [];
+
   public color: Color;
 
+
+  public user: User;
 
   public changeActiveTab(tab: ActiveTab) {
     this.active = tab;
@@ -30,6 +35,7 @@ export class OverviewComponent implements OnInit {
   ngOnInit(): void {
     
     this.color = this.authService.colors;
+    this.user = this.authService.loggedInUser;
 
 
     this.refreshData();
@@ -40,9 +46,11 @@ export class OverviewComponent implements OnInit {
 
   public refreshData(): void {
 
+    console.log(this.user);
 
+    if(this.user.userType == "INFLUENCER") {
     
-    this.offersService.getAllPartnerships().pipe(
+    this.offersService.getAllInfluencerPartnerships().pipe(
       take(1),
       tap((data) => {
  
@@ -50,6 +58,7 @@ export class OverviewComponent implements OnInit {
         this.request = [];
         this.history = [];
 
+        console.log(data);
 
         data.forEach(element => {
           if (element.status == 'IN_PROGRESS' || element.status == 'PENDING') {
@@ -63,13 +72,58 @@ export class OverviewComponent implements OnInit {
 
 
 
+        console.log(this.upcoming)
+        console.log(this.request)
+        console.log(this.history)
       }),
       catchError(err => {
         console.log(err);
         return of(err)
       })).subscribe();
 
+            
+    }
+    else {
 
+      this.offersService.getAllBrandPartnerships().pipe(
+        take(1),
+        tap((data) => {
+   
+          this.upcoming = [];
+          this.request = [];
+          this.history = [];
+  
+          console.log(data);
+  
+          data.forEach(element => {
+            if (element.status == 'PENDING') {
+              this.upcoming.push(element);
+            } 
+            if (element.status == 'IN_PROGRESS') {
+              this.inProgress.push(element);
+            } 
+            if (element.status == 'REQUESTED') {
+              this.request.push(element);
+            } if (element.status == 'DECLINED' || element.status == 'DONE') {
+              this.history.push(element);
+            }
+          });
+  
+  
+  
+          console.log(this.upcoming)
+          console.log(this.request)
+          console.log(this.history)
+        }),
+        catchError(err => {
+          console.log(err);
+          return of(err)
+        })).subscribe();
+
+
+
+
+    }
 
 /* 
     this.offersService.getUpcoming().pipe(
@@ -106,4 +160,4 @@ export class OverviewComponent implements OnInit {
 
 }
 
- type ActiveTab = '1' | '2' | '3';
+ type ActiveTab = '1' | '2' | '3' | '4';

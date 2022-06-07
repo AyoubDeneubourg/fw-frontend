@@ -34,10 +34,19 @@ export class OffersService {
   }
 
 
+  public finishPartnership(partnershipId: number): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/api/partnership/finish/${partnershipId}`, getHeaders());
+  }
 
-  public getAllPartnerships(): Observable<Offer[]> {    
+
+  public getAllInfluencerPartnerships(): Observable<Offer[]> {    
     const userID = this.authService.loggedInUser.id;
-    return this.http.get<Offer[]>(`${this.apiUrl}/api/partnership/${userID}`, getHeaders());
+    return this.http.get<Offer[]>(`${this.apiUrl}/api/partnership/influencer/${userID}`, getHeaders());
+  }
+
+  public getAllBrandPartnerships(): Observable<Offer[]> {    
+    const userID = this.authService.loggedInUser.id;
+    return this.http.get<Offer[]>(`${this.apiUrl}/api/partnership/brand/${userID}`, getHeaders());
   }
 
   public getHistory(): Observable<Offer[]> {

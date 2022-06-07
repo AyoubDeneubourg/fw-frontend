@@ -20,7 +20,7 @@ export class InfluencerUpcomingEventsComponent implements OnInit {
   public sortingFormGroup: FormGroup;
 
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private offerService: OffersService) { }
 
   ngOnInit(): void {
 
@@ -108,7 +108,19 @@ export class InfluencerUpcomingEventsComponent implements OnInit {
 
 
 
+      public finishPartnership(id: number) {
+        console.log(id)
+        this.offerService.finishPartnership(id).pipe(
+          take(1),
+          tap((data) => {
+            console.log(data);
+            // this.filterAndSort();
+          }
+          )
+        ).subscribe();
 
+
+      }
 
 
       public buildForm() {

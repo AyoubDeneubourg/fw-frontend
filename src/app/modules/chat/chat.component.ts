@@ -215,6 +215,7 @@ export class ChatComponent implements OnInit {
     public sendMessage() {
 
       let textArea = document.getElementById('textAreaId') as HTMLInputElement;
+      if(textArea.value.trim().length === 0) return;
       let newChat = this.chatService.sendMessage(textArea.value, this.bucketListArray, this.chatId, this.authedUser.id, this.route.snapshot.params.id);
     
    

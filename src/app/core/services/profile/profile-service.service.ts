@@ -27,15 +27,6 @@ export class ProfileService {
   public postFile(formData, userId) {
 
     
-   // let headers = new Headers();
-    /** In Angular 5, including the header Content-Type can invalidate your request */
-//    headers.append('Content-Type', 'multipart/form-data');
- //   headers.append('Accept', 'application/json')
-
-    let x = {
-      'Content-Type' : null
-
-    }
     console.log(...formData);
 
     return this.http.put(`${this.apiUrl}/api/image/${userId}`, formData, getHeaders());

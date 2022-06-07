@@ -176,7 +176,11 @@ switch(section) {
     break;
   }
   case 'languagesEditMode':
-    let x = this.languageList.map(item => { language : item});
+    let x = this.languageList.map(elem => (
+      {
+        country: elem.country,
+      } 
+    ));
     console.log(x);
     PROFILE = { ...PROFILE, ...{ "influencer": { "languages": this.languageList } } };
     break;

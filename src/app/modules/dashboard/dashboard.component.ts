@@ -7,6 +7,7 @@ import { AuthService, Color } from 'src/app/core/services/auth-service/auth.serv
 import { OffersService } from 'src/app/core/services/offers/offers.service';
 import { StripeService } from 'src/app/core/services/stripe/stripe.service';
 import { CardData } from 'src/app/shared/components/card/card.component';
+import { User } from 'src/app/shared/models/common';
 import { Offer } from 'src/app/shared/models/offers';
 
 
@@ -17,6 +18,7 @@ import { Offer } from 'src/app/shared/models/offers';
 })
 export class DashboardComponent implements OnInit {
 
+  public user: User;
   public data1: CardData = {
     title: 'Alexander Doe',
     content: 'Brussels,',
@@ -43,6 +45,8 @@ export class DashboardComponent implements OnInit {
 
 
   ngOnInit(): void {
+    
+    this.user = this.authService.loggedInUser;
     
     this.offersService.getUpcoming().pipe(
       take(1),
@@ -76,12 +80,7 @@ export class DashboardComponent implements OnInit {
 
 
 
-  constructor(private stripeService: StripeService, private offersService: OffersService) {}
+  constructor(private authService: AuthService, private offersService: OffersService) {}
 
-  async pay(): Promise<void> {
-    // todo, add partnershipId
-    this.stripeService.pay(0);
-   
 
-}
 }

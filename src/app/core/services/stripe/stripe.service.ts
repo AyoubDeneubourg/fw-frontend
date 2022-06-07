@@ -21,28 +21,38 @@ export class StripeService {
 
    // here we create a payment object
    public payment = {
-    partnershipId: 185,
-    name: 'Iphone',
-    currency: 'usd',
-    amount: 99900,
+    partnershipId: null,
+    name: 'Partnership',
+    currency: 'eur',
+    amount: null,
     quantity: 1,
-    cancelUrl: environment.baseUrl + '/cancel',
-    successUrl: environment.baseUrl + '/success',
+    cancelUrl: environment.baseUrl + '/dashboard',
+    successUrl: environment.baseUrl + '/dashboard',
   };
 
 
 
   
-  public async pay(partnershipId: number | string) {
+  public async pay(item) {
     
-    console.log(this.payment);
+    let val = 0;
+    item.socialMediaDetails.forEach(element => {
+      
+      val += (element.storyPrice * element.stories);
+      val += (element.postPrice * element.posts);
+      val += (element.highlightPrice * element.highlights);
+    });
+
+    this.payment.partnershipId = item.id;
+    this.payment.amount = val + 100;
+
+  
     const stripe = await this.stripePromise;
 
     this.http
     .post(`${this.apiUrl}/api/payment`, this.payment, getHeaders())
     .subscribe((data: any) => {
 
-      alert(data.id);
       stripe.redirectToCheckout({
         sessionId: data.id,
       });

@@ -69,6 +69,7 @@
         "title": "Request",
         "orderNumber": "Order Number",
         "client": "Client",
+        "influencer": "Influencer",
         "customer": "Customer",
         "socialMedia": "Social Media",
         "posts": "Posts",
@@ -175,7 +176,9 @@
   },
 
 
- 
+ "chat": {
+   "title": "Chat"
+ },
   "wizard": {
 
     "1": {

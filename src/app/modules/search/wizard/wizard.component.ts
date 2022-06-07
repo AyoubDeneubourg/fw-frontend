@@ -11,6 +11,7 @@ import { COUNTRIES } from 'src/app/shared/data/countries';
 import { matchValues } from 'src/app/shared/static/forms/password-validation';
 import { Filters, sectors } from 'src/app/shared/models/common';
 import { UserPreferences, UserPreferencesService } from 'src/app/core/services/user-preferences/user-preferences.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-wizard',
@@ -26,7 +27,7 @@ export class WizardComponent implements OnInit {
 
   public wizardFormGroup: FormGroup;
 
-  public actualPage: number = 2;
+  public actualPage: number = 1;
   public allowToGo: number = 1;
 
   public color: Color;
@@ -64,6 +65,7 @@ export class WizardComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, 
     private authService: AuthService, 
+    private router: Router,
     private userPreferencesService: UserPreferencesService) { }
 
   ngOnInit(): void {
@@ -101,8 +103,8 @@ export class WizardComponent implements OnInit {
       }),
 
       p5: this.formBuilder.group({
-        gender: ['both', [Validators.required]],
-        age: ['', [Validators.required]],
+        gender: ['both', []],
+        age: ['', []],
       }),
 
 
@@ -127,7 +129,7 @@ export class WizardComponent implements OnInit {
       }),
 
       p7: this.formBuilder.group({
-        country: ['BE', [Validators.required]],
+        country: ['BE', []],
       }),
 
     });
@@ -276,7 +278,7 @@ export class WizardComponent implements OnInit {
     };
 
     this.userPreferencesService.update({search})
-
+    this.router.navigate(['/search']);
     
     if (this.wizardFormGroup.invalid) {
 

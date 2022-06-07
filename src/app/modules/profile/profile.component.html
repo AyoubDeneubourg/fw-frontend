@@ -3,7 +3,7 @@
 
   <div class="flex m-2 ml-4 flex-wrap">
     <div class="img w-400 bg-{{color}} h-72 mr-10">
-      <img class="img" src="https://fw-api-gateway.herokuapp.com/api/image/{{user.id}}" alt="">
+      <img class="img" src="https://fw-api-gateway.herokuapp.com/api/image/{{profile?.id}}" alt="">
 
       <input (change)="fileChange($event)"  type="file" name="changeProfile" id="changeProfile" hidden>
       <label  class="w-300 text-xs mb-2 font-semibold" for="changeProfile">Change picture</label>
@@ -23,27 +23,28 @@
 
       <div class="flex text-base">
         <i class="my-auto fa-solid fa-phone"></i>
-        <a href="tel:{{this.profile.phoneNumber}}" class="ml-2 m-auto">{{ this.profile?.phoneNumber }}</a>
+        <a href="tel:{{this.profile?.phoneNumber}}" class="ml-2 m-auto">{{ this.profile?.phoneNumber }}</a>
       </div>
 
       <div class="flex text-base">
         <i class="my-auto  fa-solid fa-envelope"></i>
-        <a href="mailto:{{this.profile.email}}"  class="ml-2 m-auto">{{ this.profile?.email }}</a>
+        <a href="mailto:{{this.profile?.email}}"  class="ml-2 m-auto">{{ this.profile?.email }}</a>
       </div>
 
     </div>
 
-    <div *ngIf="isOther">
-      <div [routerLink]="['/offer/new', user.id]"  class="p-2 rounded-md bg-{{color}} text-white font-semibold">Send Offer</div>
+    <div class="flex-col" *ngIf="isOther">
+      <div [routerLink]="['/offer/new', profile?.id]"  class="p-2 mb-2 text-center rounded-md bg-{{color}} text-white font-semibold">Send Offer</div>
+      <div [routerLink]="['/chat', profile?.id]"  class="p-2 text-center rounded-md bg-{{color}} text-white font-semibold">Send Message</div>
     </div>
-
-
+    
+    
     <div *ngIf="!isOther">
       <div [routerLink]="['/profile/edit']"  class="p-2 rounded-md bg-{{color}} text-white font-semibold">Edit profile</div>
     </div>
-
-
-
+    
+    
+    
   </div>
 
   <div class="flex flex-wrap mt-10 pt-5 p-2 pl-4 bg-gray-100">
@@ -59,7 +60,7 @@
       <ng-container #socialMedia>
         <h3 class="text-xl mb-2">Social Media</h3>
 
-        <ng-container *ngFor="let socialMedia of profile.socialMedia">
+        <ng-container *ngFor="let socialMedia of profile?.socialMedia">
 
           <div class="flex text-base">
             <img width="28px" src="../../../assets/icons/socials/{{socialMedia.name}}.svg">
@@ -76,7 +77,7 @@
         <h3 class="mt-5 text-xl mb-2">Languages</h3>
 
         <div class="flex">
-          <ng-container *ngFor="let language of profile.languages">
+          <ng-container *ngFor="let language of profile?.languages">
 
           <div class="text-base px-3 py-1 rounded bg-{{color}} font-semibold shadow-md text-white mr-2 mb-2">{{language.language}}</div>
            </ng-container>
@@ -91,7 +92,7 @@
         <h3 class="mt-3 text-xl mb-2 font-semibold">Countries</h3>
 
         <div class="flex flex-wrap">
-          <ng-container *ngFor="let country of profile.countries">
+          <ng-container *ngFor="let country of profile?.countries">
 
           <div class="text-base px-3 py-1 rounded bg-{{color}} font-semibold shadow-md text-white mr-2 mb-2">{{country.country}}</div>
 
@@ -107,7 +108,7 @@
         <h3 class="mt-3 text-xl mb-2">Sectors</h3>
 
         <div class="flex flex-wrap">
-          <ng-container *ngFor="let sector of profile.sectors">
+          <ng-container *ngFor="let sector of profile?.sectors">
 
           <div class="text-base px-3 py-1 rounded bg-{{color}} font-semibold shadow-md text-white mr-2 mb-2">{{sector.sector}}</div>
           </ng-container>

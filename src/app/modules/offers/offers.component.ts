@@ -32,7 +32,7 @@ export class OffersComponent implements OnInit {
   public socialMediaDetails: SocialMediaInformation[] = [];
 
 
-  public brandId: number;
+  public influencerId: number;
 
   public allPages: PageNavigation[] = [
     {
@@ -69,7 +69,7 @@ export class OffersComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.brandId = this.route.snapshot.params.id;
+    this.influencerId = this.route.snapshot.params.id;
 
      this.authService.loggedInUser$.subscribe(data => {
       console.log(data);
@@ -230,8 +230,8 @@ export class OffersComponent implements OnInit {
     console.log(user);
 
     const OFFER: Offer = {
-      influencerId: user.id,
-      brandId: this.brandId,
+      influencerId: this.influencerId, 
+      brandId: user.id,
       socialMediaDetails: this.socialMediaDetails,
       description: this.description.value,
       startDate: this.startDate.value,

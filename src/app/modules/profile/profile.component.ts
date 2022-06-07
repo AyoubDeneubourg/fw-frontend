@@ -31,12 +31,22 @@ export class ProfileComponent implements OnInit {
 
     if(this.route.snapshot.params.id) {
 
-      this.authService.getProfile(this.route.snapshot.params.id).subscribe(user => {
+      this.authService.getProfile(this.route.snapshot.params.id).subscribe(data => {
 
+        
         this.isOther = true;
-        this.user = user;
+        if(data.user.userType == "INFLUENCER") {
+          this.profile = { ...data.user, ...data.influencer};
+          }
+        if(data.user.userType == "BRAND") {
+          this.profile = { ...data.user, ...data.brand};
 
-        console.log(this.user);
+        }
+
+    
+        console.log(data);
+
+        console.log(this.profile);
       },error => {
         this.router.navigate(['/']);
       });

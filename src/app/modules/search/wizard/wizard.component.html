@@ -389,7 +389,7 @@
             <label for="country" class="font-semibold">{{ t('7.country') }}</label>
 
 
-            <select formControlName="country" class="w-100 mt-2 py-1 px-3 outline-none rounded-sm shadow-md">
+            <select formControlName="country" class="w-100 mt-2 py-1 px-3 outline-none rounded-sm shadow-md bg-{{color}}">
 
               <ng-container *ngFor="let item of countries | keyvalue">
                 <option value="{{ item.key }}"

@@ -76,7 +76,7 @@
     </thead>
     <tbody>
       <tr *ngFor="let item of newEvents ? newEvents : offers as Offer">
-          <td>{{ item.id }}</td>
+        <td>{{ item.id }}</td>
         <td routerLink="/profile/{{item.brandId}}">{{ item.brandName }}</td>
         <td class="flex"><ng-container *ngFor="let socialMedia of item.socialMediaDetails"><img width="28px" src="assets/icons/socials/{{socialMedia.name}}.svg"></ng-container></td>
         <td>{{ item.socialMediaDetails | socialMediaCounter : 'posts' }}</td>
@@ -84,8 +84,8 @@
         <td>{{ item.socialMediaDetails | socialMediaCounter : 'highlights' }}</td>
         <td>{{ item.startDate }} - {{ item.endDate }}</td>
         <td>{{ item.orderId }}</td>
-        <td> <div  class="icon-accept bg-blue"> <i (click)="acceptPartnership(item.id)"  class="  m-auto align-middle text-white rounded-md fa-solid fa-check"></i></div></td>
-        <td ><div class="icon-decline bg-red-500 "> <i (click)="declinePartnership(item.id)" class=" m-auto align-middle text-white rounded-md fa-solid fa-xmark"></i></div></td>
+        <td> <div  class="icon-accept bg-blue"><i (click)="acceptPartnership(item.id)"  class="  m-auto align-middle text-white rounded-md fa-solid fa-check"></i></div></td>
+        <td ><div class="icon-decline bg-red-500 "><i (click)="declinePartnership(item.id)" class=" m-auto align-middle text-white rounded-md fa-solid fa-xmark"></i></div></td>
         <td> <div (click)="null" class="border border-blue text-center rounded-md text-blue text-sm p-1 font-semibold">View Details</div></td>
       </tr>
 
