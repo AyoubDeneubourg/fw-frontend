@@ -251,8 +251,6 @@ export class WizardComponent implements OnInit {
       }
      })
 
-     console.log(sectors);
-
 
     const search: Filters = {
 

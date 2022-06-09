@@ -19,7 +19,6 @@ export class PieChartComponent  {
     
   @Input() set statistics(value: Statistics) {
   
-    console.log(value);
 
     if(value) {
 
@@ -31,8 +30,6 @@ export class PieChartComponent  {
         })
 
       }
-
-      console.log(this.single);
 
     }
      this._statistics = value;

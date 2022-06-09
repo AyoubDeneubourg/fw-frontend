@@ -136,14 +136,22 @@ export const sectors = [
 
 
 export type Statistics =  {
-    "influencerId": number,
-    "totalPartnerships": number,
-    "totalMoneyEarned": number,
-    "topCountries": null,
-    "topSocialMedia": Object,
-    "totalEarningsGraphData": Object,
-    "totalMoneyEarnedMonth": number,
-    "totalPartnershipsMonth": number
+    influencerId: number,
+    topCountries: any,
+    topMonths: Object,
+    topSocialMedia: Object,
+
+    totalEarningsGraphData: Object,
+    totalEarningsMonthGraphData: Object,
+    totalEarningsWeekGraphData: Object,
+    
+    totalMoneyEarned: number,
+    totalMoneyEarnedMonth: number,
+    totalMoneyEarnedWeek: number,
+    
+    totalPartnerships: number,
+    totalPartnershipsMonth: number
+    totalPartnershipsWeek: number
 }
 
 

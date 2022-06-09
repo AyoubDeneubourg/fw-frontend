@@ -42,9 +42,6 @@ export class BrandToPayComponent implements OnInit {
 
   ngOnInit() {
    
-
-
-  console.log(this.offers);
   }
 
    ngOnChanges(changes: SimpleChanges) {
@@ -54,13 +51,8 @@ export class BrandToPayComponent implements OnInit {
 
   public pay(item) {
 
-    console.log(item);
 
     this.stripeService.pay(item);
-
-
-
-
 
 
   }
@@ -118,9 +110,6 @@ export class BrandToPayComponent implements OnInit {
 
     this.newEvents = this.offers;
 
-    console.log(this.newEvents)
-    console.log(this.offers)
-
 /*     this.newEvents = this.offers.filter(event => {
       if (this.accepted.value && event.status === "REQUESTED") {
         return event;
@@ -135,9 +124,6 @@ export class BrandToPayComponent implements OnInit {
  */
 
 
-    console.log(this.order)
-    console.log(this.order.value)
-
     this.newEvents?.sort((a, b) => {
       if (this.order.value === 'ascending') {
         return this.sort(a, b, 'ascending');
@@ -149,7 +135,6 @@ export class BrandToPayComponent implements OnInit {
 
     });
 
-    console.log(this.newEvents)
 
   }
 

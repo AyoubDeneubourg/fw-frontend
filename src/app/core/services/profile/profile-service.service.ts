@@ -25,10 +25,6 @@ export class ProfileService {
   }
 
   public postFile(formData, userId) {
-
-    
-    console.log(...formData);
-
     return this.http.put(`${this.apiUrl}/api/image/${userId}`, formData, getHeaders());
   }
 

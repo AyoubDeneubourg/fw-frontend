@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { of } from 'rxjs';
 import { catchError, take, tap } from 'rxjs/operators';
@@ -11,20 +11,66 @@ import { Offer, SocialMediaInformation } from 'src/app/shared/models/offers';
   styleUrls: ['./upcoming-events.component.scss']
 })
 export class InfluencerUpcomingEventsComponent implements OnInit {
+  
+  
 
   @Input()
   public offers: Offer[];
-
+  
   public newEvents: Offer[];
-
+  
   public sortingFormGroup: FormGroup;
+
+  @Output()
+  refreshData: EventEmitter<any> = new EventEmitter();
+
+
+  public partnership;
+  showModal = false;
+  showDetailModal = false;
+  
+
+  openDetailModal(partnership){
+    console.log(partnership);
+    this.partnership = partnership;
+    this.showDetailModal = true;
+  }
+
+  openModal(partnership){
+    this.partnership = partnership;
+    this.showModal = true;
+  }
+
+
+  public acceptModal() {
+   
+    this.showModal = false;
+    this.offerService.finishPartnership(this.partnership.id).pipe(
+      take(1),
+      tap((data) => {
+        this.refreshData.emit();
+
+      }
+      )
+    ).subscribe();
+
+
+  }
+
+
+  closeModal() {
+    this.showModal = false;
+  }
+
+  closeDetailModal() {
+    this.showDetailModal = false;
+  }
+
 
 
   constructor(private formBuilder: FormBuilder, private offerService: OffersService) { }
 
   ngOnInit(): void {
-
-    console.log(this.offers)
     this.buildForm();
 
   }
@@ -108,19 +154,6 @@ export class InfluencerUpcomingEventsComponent implements OnInit {
 
 
 
-      public finishPartnership(id: number) {
-        console.log(id)
-        this.offerService.finishPartnership(id).pipe(
-          take(1),
-          tap((data) => {
-            console.log(data);
-            // this.filterAndSort();
-          }
-          )
-        ).subscribe();
-
-
-      }
 
 
       public buildForm() {

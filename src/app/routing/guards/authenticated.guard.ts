@@ -21,7 +21,6 @@ export class AuthenticatedGuard implements CanActivate {
     return this.authService.getCurrentLoggedInUser()
       .pipe(
         map(loggedIn => {
-          console.log(loggedIn)
           return true;
         }),
         catchError((err) => {

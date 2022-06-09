@@ -9,8 +9,28 @@
 @import "size";
 @import "border";
 @import "display";
+@import "hover";
 
 body {
   overflow-x: hidden;
   background-color: white;
+}
+
+* {
+
+  scrollbar-width: auto;
+  scrollbar-color: #7b7b7b #ffffff;
+  &::-webkit-scrollbar {
+      width: 10px;
+    }
+  
+    &::-webkit-scrollbar-track {
+      background: #ffffff;
+    }
+  
+    &::-webkit-scrollbar-thumb {
+      background-color: #7b7b7b;
+      border-radius: 12px;
+      border: 2px solid #ffffff;
+    }
 }

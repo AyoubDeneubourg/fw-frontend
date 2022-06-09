@@ -18,7 +18,6 @@ export class SearchCardComponent implements OnInit {
 
   ngOnInit(): void {
     this.color = this.authService.colors;
-    console.log(this.data);
   }
 
 }

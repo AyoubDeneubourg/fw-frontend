@@ -67,28 +67,47 @@
         <td>{{ t('posts') }}</td>
         <td>{{ t('stories') }}</td>
         <td>{{ t('highlights') }}</td>
+        <td>{{ t('price') }}</td>
         <td>{{ t('dates') }}</td>
         <td>{{ t('files') }}</td>
         <td></td>
         <td></td>
         <td></td>
+
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let item of newEvents ? newEvents : offers as Offer">
         <td>{{ item.id }}</td>
         <td routerLink="/profile/{{item.brandId}}">{{ item.brandName }}</td>
-        <td class="flex"><ng-container *ngFor="let socialMedia of item.socialMediaDetails"><img width="28px" src="assets/icons/socials/{{socialMedia.name}}.svg"></ng-container></td>
+        <td class="flex"><ng-container *ngFor="let socialMedia of item.socialMediaDetails"><img width="28px" src="assets/icons/socials/{{socialMedia.name | uppercase}}.svg"></ng-container></td>
         <td>{{ item.socialMediaDetails | socialMediaCounter : 'posts' }}</td>
         <td>{{ item.socialMediaDetails | socialMediaCounter : 'stories' }}</td>
         <td>{{ item.socialMediaDetails | socialMediaCounter : 'highlights' }}</td>
+        <td>€{{ item.socialMediaDetails | socialMediaPriceCounter : 'total' }}</td>
+
         <td>{{ item.startDate }} - {{ item.endDate }}</td>
-        <td>{{ item.orderId }}</td>
-        <td> <div  class="icon-accept bg-blue"><i (click)="acceptPartnership(item.id)"  class="  m-auto align-middle text-white rounded-md fa-solid fa-check"></i></div></td>
-        <td ><div class="icon-decline bg-red-500 "><i (click)="declinePartnership(item.id)" class=" m-auto align-middle text-white rounded-md fa-solid fa-xmark"></i></div></td>
-        <td> <div (click)="null" class="border border-blue text-center rounded-md text-blue text-sm p-1 font-semibold">View Details</div></td>
+        <td>Download</td>
+        <td></td>
+        <td> 
+          <div class="flex">
+            <div (click)="openAcceptModal(item)" class="icon-accept bg-blue mx-1 shadow hover:shadow-lg ease-linear cursor-pointer transition-all duration-150">
+              <i  class="m-auto align-middle text-white rounded-md fa-solid fa-check"></i>
+            </div>
+            <div (click)="openDeclineModal(item)" class="icon-decline bg-red-500 mx-1 shadow hover:shadow-lg ease-linear cursor-pointer transition-all duration-150 ">
+              <i  class=" m-auto align-middle text-white rounded-md fa-solid fa-xmark"></i>
+            </div>
+          </div>
+        </td>
+        <td> <span (click)="openDetailModal(item)" class="m-0  bg-blue  text-center rounded-sm font-semibold text-white text-sm py-1.5 px-3 shadow hover:shadow-lg ease-linear cursor-pointer transition-all duration-150">View Details</span></td>
+
       </tr>
 
     </tbody>
   </table>
+
+  <app-modal-small [translate]="'modals.acceptPartnership'" (acceptModal)="acceptPartnership()" (closeModal)="closeAcceptModal()" [showModal]="showAcceptModal"></app-modal-small>
+  <app-modal-small [translate]="'modals.declinePartnership'" (acceptModal)="declinePartnership()" (closeModal)="closeDeclineModal()" [showModal]="showDeclineModal"></app-modal-small>
+  <app-modal-large [translate]="'modals.upcomingEvents.details'" [data]="partnership" (closeModal)="closeDetailModal()" [showModal]="showDetailModal"></app-modal-large>
+
 </ng-container>

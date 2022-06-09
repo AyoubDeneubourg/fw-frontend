@@ -56,7 +56,6 @@ export class AuthService {
       return this.http.get<User>(`${this.apiUrl}/api/user/${id}`, getHeaders()).pipe(
         tap((user) => {
           this.cache.getUser[id] = user;
-          console.log(this.cache)
         }
         )
       )
@@ -145,11 +144,9 @@ export class AuthService {
         .get<User>(`${this.apiUrl}/api/user/current `, getHeaders())
         .pipe(
           switchMap((loggedInUser) =>  {
-            console.log(loggedInUser.id);
             this.loggedInUser = loggedInUser;
             this.loggedInUser$ = of(loggedInUser);
             
-            console.log(loggedInUser.userType);
             if(this.loggedInUser.userType == "BRAND") {
               this.colors = "orange"
               return this.getBrand(this.loggedInUser.id);
@@ -164,7 +161,6 @@ export class AuthService {
    
           tap((loggedInUserOrInfluencer) => {
 
-            console.log(loggedInUserOrInfluencer)
 
             if(this.loggedInUser.userType == "BRAND") {
 
@@ -178,7 +174,6 @@ export class AuthService {
             } 
 
 
-            console.log(loggedInUserOrInfluencer);
 
   
 

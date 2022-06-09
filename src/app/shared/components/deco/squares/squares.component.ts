@@ -19,8 +19,6 @@ export class SquaresComponent implements OnInit {
   ngOnInit(): void {
     
     this.color = this.authService.colors;
-
-    console.log(this.position);
   }
 
 }

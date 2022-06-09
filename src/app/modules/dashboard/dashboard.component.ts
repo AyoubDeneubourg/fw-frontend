@@ -20,8 +20,8 @@ export class DashboardComponent implements OnInit {
 
   public user: User;
   public data1: CardData = {
-    title: 'Alexander Doe',
-    content: 'Brussels,',
+    title: '',
+    content: '',
   }
 
   public data2: CardData = {
@@ -56,7 +56,6 @@ export class DashboardComponent implements OnInit {
         let count = 0;
 
         data.forEach(element => {
-          console.log(element.startDate);
         
           let one_day=1000*60*60*24;
           let serverDateTime= new Date();
@@ -64,9 +63,7 @@ export class DashboardComponent implements OnInit {
 
           let diff = Math.ceil((newDate.getTime() - serverDateTime.getTime())/one_day);
 
-          console.log(diff);
           if(diff <= 7 && new Date(element.startDate) > new Date() || diff === -0) {
-            console.log(element.startDate)
             count++;
           }
 

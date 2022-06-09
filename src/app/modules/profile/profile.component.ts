@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CollectBankAccountForSetupOptions } from '@stripe/stripe-js';
 import { AuthService, Color } from 'src/app/core/services/auth-service/auth.service';
 import { ProfileService } from 'src/app/core/services/profile/profile-service.service';
+import { COUNTRIES } from 'src/app/shared/data/countries';
 import { Brand } from 'src/app/shared/models/brand';
 import { Profile, User } from 'src/app/shared/models/common';
 import { Influencer } from 'src/app/shared/models/influencer';
@@ -19,6 +21,8 @@ export class ProfileComponent implements OnInit {
   public color: Color;
 
 
+  public countryList = COUNTRIES;
+  
   public type: ProfileType;
 
   public isOther: boolean = false;
@@ -44,9 +48,6 @@ export class ProfileComponent implements OnInit {
         }
 
     
-        console.log(data);
-
-        console.log(this.profile);
       },error => {
         this.router.navigate(['/']);
       });
@@ -100,7 +101,7 @@ export class ProfileComponent implements OnInit {
 
 
         this.profileService.postFile(formData, this.user.id).subscribe(data => {
-          console.log(data);
+          // refrsh page
         }
         );
 

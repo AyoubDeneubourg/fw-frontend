@@ -97,9 +97,6 @@ export class BrandHistoryComponent implements OnInit {
 
     this.newEvents = this.offers;
 
-    console.log(this.newEvents)
-    console.log(this.offers)
-
 /*     this.newEvents = this.offers.filter(event => {
       if (this.accepted.value && event.status === "REQUESTED") {
         return event;
@@ -114,9 +111,6 @@ export class BrandHistoryComponent implements OnInit {
  */
 
 
-    console.log(this.order)
-    console.log(this.order.value)
-
     this.newEvents?.sort((a, b) => {
       if (this.order.value === 'ascending') {
         return this.sort(a, b, 'ascending');
@@ -128,7 +122,6 @@ export class BrandHistoryComponent implements OnInit {
 
     });
 
-    console.log(this.newEvents)
 
   }
 

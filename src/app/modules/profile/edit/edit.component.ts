@@ -29,13 +29,19 @@ export class EditProfileComponent implements OnInit {
   public type: "BRAND" | "INFLUENCER";
 
 
+  public allEditMode = ['personalInformationEditMode' , 'languagesEditMode' , 'sectorsEditMode' , 'countryEditMode' , 'homeDetailsEditMode' , 'socialMediaEditMode' , 'paymentInformationEditMode'];
 
   public changeActiveTab(tab: ActiveTab) {
     this.active = tab;
   }
 
 
-  public changeEditMode(editMode: 'personalInformationEditMode' | 'languagesEditMode' | 'homeDetailsEditMode' | 'sectorsEditMode' | 'socialMediaEditMode' | 'countryEditMode' | 'paymentInformationEditMode') {
+
+  public changeEditMode(editMode: string) {
+    this.allEditMode.forEach(element => {
+      this[element] = false;
+    });
+
     this[editMode] = !this[editMode];
   }
 
@@ -56,8 +62,36 @@ export class EditProfileComponent implements OnInit {
       this.type = "INFLUENCER"
     }
 
+    this.setLanguagesCountriesSectorsSocialMedia()
   }
 
+  public setLanguagesCountriesSectorsSocialMedia() {
+
+
+    this.profile.languages.forEach((element : any) => {
+      this.languageList.push(element.language);
+    });
+
+
+
+
+    this.profile.sectors.forEach((element: any) => {
+      this.sectorList.push(element.sector);
+    });
+
+    this.profile.countries.forEach((element: any) => {
+      this.countryList.push(element.country);
+    });
+
+
+    this.profile.socialMedia.forEach((element: any) => {
+      this.socialMediaList.push({
+        name: element.name,
+        link: element.link
+      });
+    });
+
+  }
   public availableLanguages = LANGUAGES;
   public availableCountries = COUNTRIES;
   public availableSectors = sectors;
@@ -108,17 +142,29 @@ export class EditProfileComponent implements OnInit {
   public socialMediaList = [];
 
 
-  public removeSocialMedia(item: string) {
+  public removeSocialMedia(item: any) {
     if(this.socialMediaList.length === 1) {
       console.log("minimum 1")
     } else {
-      this.socialMediaList.splice(this.socialMediaList.indexOf(item), 1);
+
+      var index = this.socialMediaList.findIndex(e => e.name === item.name);
+      if (index !== -1) {
+        this.socialMediaList.splice(index, 1);
+      }
+
     }
   }
 
   public addSocialMedia() {
     let select = document.getElementById('selectSocialMedia') as HTMLSelectElement;
-    this.socialMediaList.indexOf(select.value) === -1 && this.socialMediaList.push(select.value);
+    var found = this.socialMediaList.find(e => e.name === select.value);
+
+    if(found === undefined) {
+   this.socialMediaList.push({
+      name: select.value,
+      link: ''
+    });
+  }
   }
 
 
@@ -141,6 +187,17 @@ export class EditProfileComponent implements OnInit {
 
   @ViewChild('headtitle') headTitle : ElementRef;
   @ViewChild('description') description : ElementRef;
+
+  @ViewChild('country') country : ElementRef;
+  @ViewChild('city') city : ElementRef;
+  @ViewChild('address') address : ElementRef;
+  @ViewChild('postalCode') postalCode : ElementRef;
+
+  @ViewChild('postPrice') postPrice : ElementRef;
+  @ViewChild('storyPrice') storyPrice : ElementRef;
+  @ViewChild('highlightPrice') highlightPrice : ElementRef;
+
+  @ViewChild('ibanNumber') ibanNumber : ElementRef;
 
   public updateUser(section) {
 
@@ -166,53 +223,69 @@ export class EditProfileComponent implements OnInit {
       "storyPrice": this.profile.storyPrice,
       "postPrice": this.profile.postPrice,
       "highlightPrice": this.profile.highlightPrice,
+      "sectors": this.profile.sectors,
 }
 }
 
 
 switch(section) {
   case 'personalInformationEditMode': {
-    PROFILE = { ...PROFILE, ...{ "influencer": { "headTitle": this.headTitle.nativeElement.value, "description": this.description.nativeElement.value  } } };
+    PROFILE.influencer.headTitle = this.headTitle.nativeElement.value;
+    PROFILE.influencer.description = this.description.nativeElement.value;
     break;
   }
   case 'languagesEditMode':
-    let x = this.languageList.map(elem => (
-      {
-        country: elem.country,
-      } 
-    ));
-    console.log(x);
-    PROFILE = { ...PROFILE, ...{ "influencer": { "languages": this.languageList } } };
+    let languageList = this.languageList.map(elem => ({ language: elem, } ));
+    PROFILE.influencer.languages = languageList;
     break;
-  case 'homeDetailsEditMode':
-    PROFILE = { ...{}}
-    break;
+
   case 'sectorsEditMode':
-    PROFILE = { ...{}}
+    let sectorList = this.sectorList.map(elem => ({ sector: elem, } ));
+    PROFILE.influencer.sectors = sectorList;
     break;
-  case 'socialMediaEditMode':
-    PROFILE = { ...{}}
-    break;
+
   case 'countryEditMode':
-    PROFILE = { ...{}}
+    let countryList = this.countryList.map(elem => ({ country: elem, } ));
+    PROFILE.influencer.countries = countryList;
     break;
+
+  case 'homeDetailsEditMode':
+    PROFILE = { ...PROFILE, ...{ "user": { "country": this.country.nativeElement.value, "city": this.city.nativeElement.value, "address": this.address.nativeElement.value, "postalCode": this.postalCode.nativeElement.value  } } };
+    break;
+
+  case 'socialMediaEditMode':
+   let socialMediaList = [];
+
+    this.socialMediaList.forEach((element: any) => {
+      let x = document.getElementById('link-' + element.name) as HTMLSelectElement;
+      socialMediaList.push({
+        name: element.name,
+        link: x.value
+      });
+    }); 
+
+
+    PROFILE.influencer.postPrice = this.postPrice.nativeElement.value;
+    PROFILE.influencer.storyPrice = this.storyPrice.nativeElement.value;
+    PROFILE.influencer.highlightPrice = this.highlightPrice.nativeElement.value;
+    PROFILE.influencer.socialMedia = socialMediaList;
+
+    break;
+
   case 'paymentInformationEditMode':
-    PROFILE = { ...{}}
-    break;
-
-  default:
-    PROFILE = { ...{}}
+    PROFILE.influencer.ibanNumber = this.ibanNumber.nativeElement.value;
     break;
 
 
+    break;
 
 
 
 }
-console.log(PROFILE);
-console.log(this.profile.userId, this.profile.id)
-    this.profileService.updateInfluencerProfile(PROFILE, this.profile.id).subscribe(res => {
-      console.log(res);
+  this.profileService.updateInfluencerProfile(PROFILE, this.profile.id).subscribe(res => {
+
+  location.href = '/profile/edit';
+
     });
 
   }

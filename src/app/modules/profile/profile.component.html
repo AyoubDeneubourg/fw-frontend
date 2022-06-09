@@ -2,11 +2,13 @@
 
 
   <div class="flex m-2 ml-4 flex-wrap">
-    <div class="img w-400 bg-{{color}} h-72 mr-10">
-      <img class="img" src="https://fw-api-gateway.herokuapp.com/api/image/{{profile?.id}}" alt="">
+    <div class="img w-400 h-72 mr-10">
+      <img class="img max-h-72 mx-auto" src="https://fw-api-gateway.herokuapp.com/api/image/{{profile?.id}}" alt="">
 
-      <input (change)="fileChange($event)"  type="file" name="changeProfile" id="changeProfile" hidden>
-      <label  class="w-300 text-xs mb-2 font-semibold" for="changeProfile">Change picture</label>
+      <ng-container *ngIf="!isOther && profile">
+        <input (change)="fileChange($event)"  type="file" name="changeProfile" id="changeProfile" hidden>
+        <label  class="w-300 text-xs mb-2 font-semibold" for="changeProfile">Change picture</label>
+      </ng-container>
 
     </div>
 
@@ -17,7 +19,7 @@
 
       <div class="flex text-base">
         <i class="my-auto fa-solid fa-location-dot"></i>
-        <p class="ml-2 my-auto">Brussels</p>
+        <p class="ml-2 my-auto">{{ this.profile?.city }}</p>
       </div>
 
 
@@ -63,8 +65,8 @@
         <ng-container *ngFor="let socialMedia of profile?.socialMedia">
 
           <div class="flex text-base">
-            <img width="28px" src="../../../assets/icons/socials/{{socialMedia.name}}.svg">
-            <a href="{{socialMedia.link}}" target="_blank" class="ml-2 my-auto font-semibold">{{socialMedia.name }}</a>
+            <img width="28px" src="../../../assets/icons/socials/{{socialMedia.name | uppercase}}.svg">
+            <a href="/{{socialMedia.link}}" target="_blank" class="ml-2 my-auto font-semibold">{{socialMedia.name }}</a>
           </div>
         </ng-container>
       </ng-container>
@@ -94,8 +96,7 @@
         <div class="flex flex-wrap">
           <ng-container *ngFor="let country of profile?.countries">
 
-          <div class="text-base px-3 py-1 rounded bg-{{color}} font-semibold shadow-md text-white mr-2 mb-2">{{country.country}}</div>
-
+          <div class="text-base px-3 py-1 rounded bg-{{color}} font-semibold shadow-md text-white mr-2 mb-2">{{ countryList[country.country].name }}</div>
           </ng-container>
         </div>
       </ng-container>
@@ -121,8 +122,8 @@
 
 
     <div class="w-1/3">
-      <h3 class="mt-3 text-xl mb-2">About</h3>
-      <p class="mr-5"> {{profile?.description}}</p>
+      <h3 class="mt-3 text-xl mb-2 ">About</h3>
+      <p class="mr-5 break-all"> {{profile?.description}}</p>
     </div>
 
 

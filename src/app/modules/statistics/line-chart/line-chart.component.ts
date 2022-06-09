@@ -15,30 +15,63 @@ export class LineChartComponent implements AfterViewInit{
   constructor( private cdref: ChangeDetectorRef) {
   }
 
-  
-  private _statistics: Statistics;
-    
-  @Input() set statistics(value: Statistics) {
-  
-    if(value) {
 
-      for (const key in value.totalEarningsGraphData) {
+
+  private _data: any;
     
-        this.multi[0].series.unshift({
-          name: key,
-          value: value.totalEarningsGraphData[key]
-        })
+  @Input() set data(value: any) {
+  
+
+    console.log(value);
+    
+    if(value.statistics !== undefined || typeof value.statistics !== 'undefined') {
+      
+      console.log(value);
+
+      if(value.active == 'Total') {
+        for (const key in value?.statistics?.totalEarningsGraphData) {
+          this.multi[0].series.push({
+            name: key,
+            value: value.statistics.totalEarningsGraphData[key]
+          })
+          
+        }
         
+      }
+      if(value.active == 'Month') {
+        for (const key in value?.statistics?.totalEarningsMonthGraphData) {
+          this.multi[0].series.push({
+            name: key,
+            value: value?.statistics?.totalEarningsGraphData[key]
+          })
+          
+        }
+
+      }
+      if(value.active == 'Week') {
+
+        for (const key in value?.statistics?.totalEarningsWeekGraphData) {
+          this.multi[0].series.push({
+            name: key,
+            value: value?.statistics?.totalEarningsGraphData[key]
+          })
+          
+        }
+
       }
 
     }
-     this._statistics = value;
+
+
+     this._data = value;
   
   }
   
-  get statistics(): Statistics {
-      return this._statistics;
+  get data(): any {
+      return this._data;
   }
+
+
 
 
   @ViewChild('containerRef') containerRef : ElementRef;
@@ -90,14 +123,14 @@ export class LineChartComponent implements AfterViewInit{
 
 
   onSelect(data): void {
-    console.log('Item clicked', JSON.parse(JSON.stringify(data)));
+   // console.log('Item clicked', JSON.parse(JSON.stringify(data)));
   }
 
   onActivate(data): void {
-    console.log('Activate', JSON.parse(JSON.stringify(data)));
+   // console.log('Activate', JSON.parse(JSON.stringify(data)));
   }
 
   onDeactivate(data): void {
-    console.log('Deactivate', JSON.parse(JSON.stringify(data)));
+   // console.log('Deactivate', JSON.parse(JSON.stringify(data)));
   }
 }

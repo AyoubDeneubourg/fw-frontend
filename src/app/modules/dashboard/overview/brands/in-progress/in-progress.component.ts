@@ -43,7 +43,6 @@ export class InProgressComponent implements OnInit {
    
 
 
-  console.log(this.offers);
   }
 
    ngOnChanges(changes: SimpleChanges) {
@@ -52,19 +51,9 @@ export class InProgressComponent implements OnInit {
   } 
 
   public pay(item) {
-
-    console.log(item);
-
     this.stripeService.pay(item);
 
-
-
-
-
-
   }
-
-
 
 
   public buildForm() {
@@ -117,8 +106,6 @@ export class InProgressComponent implements OnInit {
 
     this.newEvents = this.offers;
 
-    console.log(this.newEvents)
-    console.log(this.offers)
 
 /*     this.newEvents = this.offers.filter(event => {
       if (this.accepted.value && event.status === "REQUESTED") {
@@ -134,9 +121,6 @@ export class InProgressComponent implements OnInit {
  */
 
 
-    console.log(this.order)
-    console.log(this.order.value)
-
     this.newEvents?.sort((a, b) => {
       if (this.order.value === 'ascending') {
         return this.sort(a, b, 'ascending');
@@ -147,8 +131,6 @@ export class InProgressComponent implements OnInit {
       }
 
     });
-
-    console.log(this.newEvents)
 
   }
 

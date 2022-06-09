@@ -46,7 +46,6 @@ export class OverviewComponent implements OnInit {
 
   public refreshData(): void {
 
-    console.log(this.user);
 
     if(this.user.userType == "INFLUENCER") {
     
@@ -58,7 +57,6 @@ export class OverviewComponent implements OnInit {
         this.request = [];
         this.history = [];
 
-        console.log(data);
 
         data.forEach(element => {
           if (element.status == 'IN_PROGRESS' || element.status == 'PENDING') {
@@ -71,10 +69,6 @@ export class OverviewComponent implements OnInit {
         });
 
 
-
-        console.log(this.upcoming)
-        console.log(this.request)
-        console.log(this.history)
       }),
       catchError(err => {
         console.log(err);
@@ -93,7 +87,6 @@ export class OverviewComponent implements OnInit {
           this.request = [];
           this.history = [];
   
-          console.log(data);
   
           data.forEach(element => {
             if (element.status == 'PENDING') {
@@ -109,11 +102,6 @@ export class OverviewComponent implements OnInit {
             }
           });
   
-  
-  
-          console.log(this.upcoming)
-          console.log(this.request)
-          console.log(this.history)
         }),
         catchError(err => {
           console.log(err);

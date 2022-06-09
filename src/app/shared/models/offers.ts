@@ -8,7 +8,7 @@ export type Offer = { // add influencer & brand id
     description: string,
     startDate: string,
     endDate: string,
-    file: OfferFiles,
+    file: any,
     status?: OfferStatus, // change to status
     client?: OfferClient
     finishDate?: any
@@ -17,13 +17,14 @@ export type Offer = { // add influencer & brand id
 
 
 
-export const SocialMediaArray = ['FACEBOOK', 'TWITTER', 'INSTAGRAM', 'TIKTOK', 'SNAPCHAT', 'YOUTUBE', 'TWITCH']
+export const SocialMediaArray = ['FACEBOOK', 'TWITTER', 'INSTAGRAM', 'TIK-TOK', 'SNAPCHAT', 'YOUTUBE', 'TWITCH']
 export const SocialMediaArrayCapitalized = ['Facebook', 'Twitter', 'Instagram', 'Tik-Tok', 'Snapchat', 'YouTube', 'Twitch']
 export const socialMediaConverter = {
 
     'FACEBOOK' : 'Facebook',
     'TWITTER' : 'Twitter',
     'INSTAGRAM' : 'Instagram',
+    'TIK-TOK' :'Tik-Tok',
     'TIKTOK' :'Tik-Tok',
     'SNAPCHAT' :'Snapchat',
     'YOUTUBE' :'YouTube',
@@ -48,7 +49,6 @@ export type OfferDates = {
     endDate: string
 }
 
-export type OfferFiles = string;
 
 export type OfferClient = {};
 

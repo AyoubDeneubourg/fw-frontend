@@ -100,8 +100,6 @@ export class BrandRequestedComponent implements OnInit {
 
     this.newEvents = this.offers;
 
-    console.log(this.newEvents)
-    console.log(this.offers)
 
 /*     this.newEvents = this.offers.filter(event => {
       if (this.accepted.value && event.status === "REQUESTED") {
@@ -117,8 +115,6 @@ export class BrandRequestedComponent implements OnInit {
  */
 
 
-    console.log(this.order)
-    console.log(this.order.value)
 
     this.newEvents?.sort((a, b) => {
       if (this.order.value === 'ascending') {
@@ -131,7 +127,6 @@ export class BrandRequestedComponent implements OnInit {
 
     });
 
-    console.log(this.newEvents)
 
   }
 

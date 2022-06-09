@@ -12,8 +12,9 @@
 
 
     <div class="socials flex">
-        <img width="25px" src="../../../../assets/icons/socials/FACEBOOK.svg">
-        <img width="25px" src="../../../../assets/icons/socials/INSTAGRAM.svg">
+        <ng-container *ngFor="let item of this.data.influencer.socialMedia">
+            <img width="25px" src="../../../../assets/icons/socials/{{item.name | uppercase }}.svg">
+        </ng-container>
     </div>
 
 

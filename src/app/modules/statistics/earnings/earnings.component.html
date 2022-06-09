@@ -3,15 +3,15 @@
     <div class="flex p-5  border-blue">
       <p class="m-2 text-xl flex-1">Earnings</p>
   
-      <p class="my-auto mx-2" (click)="changeActiveTab('Total')" [ngClass]="active == 'Total' ? 'active-' + color: ''">
+      <p class="my-auto mx-2 text-black-animation cursor-pointer" (click)="changeActiveTab('Total')" [ngClass]="active == 'Total' ? 'active-' + color: ''">
         Total earnings
       </p>
   
-      <p class="my-auto mx-2" (click)="changeActiveTab('Month')" [ngClass]="active == 'Month' ? 'active-' + color: ''">
+      <p class="my-auto mx-2 text-black-animation cursor-pointer" (click)="changeActiveTab('Month')" [ngClass]="active == 'Month' ? 'active-' + color: ''">
         This month
       </p>
   
-      <p class="my-auto mx-2" (click)="changeActiveTab('Week')" [ngClass]="active == 'Week' ? 'active-' + color: ''">
+      <p class="my-auto mx-2 text-black-animation cursor-pointer" (click)="changeActiveTab('Week')" [ngClass]="active == 'Week' ? 'active-' + color: ''">
         This week
       </p>
   
@@ -24,8 +24,7 @@
     <div class="p-5 pt-0">
   
     <ng-container *ngIf="active === 'Total'">
-        <app-line-chart [statistics]="statistics" ></app-line-chart>
-
+        <app-line-chart [data]="{statistics: statistics, active: 'Total'}" ></app-line-chart>
     </ng-container>
   
 
@@ -33,16 +32,15 @@
 
   
     <ng-container *ngIf="active === 'Month'">
-        <app-line-chart ></app-line-chart>
-
+        <app-line-chart [data]="{statistics: statistics, active: 'Month'}"></app-line-chart>
     </ng-container>
-
-
-
-  
+      
+      
+      
+      
       
     <ng-container *ngIf="active === 'Week'">
-
+      <app-line-chart [data]="{statistics: statistics, active: 'Week'}"></app-line-chart>
     </ng-container>
   
   

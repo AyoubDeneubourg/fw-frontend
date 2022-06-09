@@ -65,14 +65,6 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
 
-    console.log(this.countries)
-    let x = "";
-   for (const zz in this.countries) {
-    x = x + zz + ', '
-    console.log(zz)
-   }
-
-   console.log(x);
 
     this.registerFormGroup = this.formBuilder.group({
       p1: this.formBuilder.group({
@@ -171,19 +163,16 @@ export class RegisterComponent implements OnInit {
 
     if (page === 5) {
       if (this.page1.valid && this.page2.valid && this.page3.valid && this.page4.valid) {
-        console.log("hehehe");
         this.emailAlreadyExists = false;
         this.usernameAlreadyExists = false;
 
         this.authService.checkCredentialsAvailability({ email: this.email.value, userName: this.userName.value, })
         .pipe(
           tap(data => {
-            console.log(data);
             if(data) this.setCurrentPages(5);
             }
           ),
           catchError((err) => {
-            console.log(err.error.message);
             if(err.error.message == "email") {
               this.emailAlreadyExists = true;
               
@@ -251,6 +240,7 @@ export class RegisterComponent implements OnInit {
 
   }
 
+  public clickedRegister: boolean = false;
 
   onSubmit(): void {
 
@@ -260,6 +250,9 @@ export class RegisterComponent implements OnInit {
       this.registerFormGroup.markAllAsTouched()
 
     } else {
+
+
+      if(!this.clickedRegister) {
 
       const REGISTRATIONDATA: RegistrationData = {
         userType: this.accountType.value,
@@ -276,30 +269,26 @@ export class RegisterComponent implements OnInit {
         phoneNumber: this.phoneNumber.value
       }
 
+      this.clickedRegister = true;
 
       this.authService.register(REGISTRATIONDATA)
         .subscribe((response) => {
-          console.log(response);
           this.authService.login(
             {
               username: this.userName.value,
               password: this.password.value
             }
           ).subscribe((response) => {
-            console.log(response);
-            
             this.router.navigate(['/dashboard']);
           })
         });
 
     }
 
-
-
   }
 
 
-
+  }
 
 
   get page1(): AbstractControl {

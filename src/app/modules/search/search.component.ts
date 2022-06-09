@@ -8,7 +8,7 @@ import { SearchService } from 'src/app/core/services/search/search.service';
 import { UserPreferencesService } from 'src/app/core/services/user-preferences/user-preferences.service';
 import { COUNTRIES } from 'src/app/shared/data/countries';
 import { Filters, sectors } from 'src/app/shared/models/common';
-import { SocialMediaArrayCapitalized } from 'src/app/shared/models/offers';
+import { Offer, SocialMediaArrayCapitalized, SocialMediaInformation } from 'src/app/shared/models/offers';
 
 @Component({
   selector: 'app-search',
@@ -17,7 +17,7 @@ import { SocialMediaArrayCapitalized } from 'src/app/shared/models/offers';
 })
 export class SearchComponent implements OnInit {
 
-  public socialMediaArray = SocialMediaArrayCapitalized;
+  public socialMediaArrayCapitalized = SocialMediaArrayCapitalized;
 
   public searchFormGroup: FormGroup;
 
@@ -76,6 +76,7 @@ export class SearchComponent implements OnInit {
     getPointerColor: (percentage: number) => {
       return '#4cade6';
     },
+    
     floor: 0,
     ceil: 1500,
 
@@ -84,6 +85,7 @@ export class SearchComponent implements OnInit {
 
 
   public results;
+  public newResults;
 
   public color: Color;
 
@@ -125,8 +127,8 @@ export class SearchComponent implements OnInit {
 
     this.searchService.getInfluencers().subscribe(
       (data) => {
-        console.log(data);
         this.results = data;
+        this.filterAndSort();
       }
     );
   }
@@ -194,6 +196,117 @@ export class SearchComponent implements OnInit {
   }
 
 
+  public filterAndSort() {
+
+    this.newResults = this.results;
+
+    let socialMediaArrayFiltered = [];
+    let noSocialMediaChecked: boolean = true;
+
+
+
+    this.results.forEach(profile => {
+       this.socialMedia.controls.forEach((control, index) => {
+        if(control.value) {
+          noSocialMediaChecked = false;
+          if(profile.influencer.socialMedia.some(item => item.name == this.socialMediaArrayCapitalized[index].toUpperCase())) {
+            if(socialMediaArrayFiltered.indexOf(profile) === -1) {
+              socialMediaArrayFiltered.push(profile);
+            }
+          }
+        }
+      });
+    });
+
+    if(noSocialMediaChecked) socialMediaArrayFiltered = [...this.results];
+    
+    
+    
+    let sectorsArrayFiltered = [];
+    let noSectorsChecked: boolean = true;
+
+
+    socialMediaArrayFiltered.forEach(profile => {
+      this.sectors.controls.forEach((control, index) => {
+        if(control.value) {
+          noSectorsChecked = false;
+          if(profile.influencer.sectors.some(item => item.sector == this.sectorsArray[index])) {
+            if(sectorsArrayFiltered.indexOf(profile) === -1) {
+              sectorsArrayFiltered.push(profile);
+            }
+          }
+        }
+      });
+    })
+
+    if(noSectorsChecked) sectorsArrayFiltered = [...socialMediaArrayFiltered];
+
+    this.newResults = sectorsArrayFiltered;
+    this.newResults?.sort((a, b) => {
+/*       if (this.order.value === 'ascending') { */
+        return this.sort(a, b, 'ascending');
+/* 
+      } else if (this.order.value === 'descending') {
+        return this.sort(a, b, 'descending');
+
+      } */
+
+    });
+
+  }
+
+
+  private sort(a: Offer | any, b: Offer | any, order: 'ascending' | 'descending'): number {
+
+    if (this.type.value === 'new') {
+      a = a.id;
+      b = b.id;
+
+    } else if (this.type.value === 'time') {
+      a = a.startDate;
+      b = b.startDate;
+
+    } else if (this.type.value === 'client') {
+      a = a.brandId;
+      b = b.brandId;
+
+    } else if (this.type.value === 'status') {
+      a = a.status;
+      b = b.status;
+
+    } else if (this.type.value === 'amount') {
+      let amountA = 0;
+      let amountB = 0;
+
+
+      a.socialMediaDetails.forEach((element: SocialMediaInformation) => {
+        amountA += element?.posts + element?.stories + element?.highlights;
+      });
+
+      b.socialMediaDetails.forEach((element: SocialMediaInformation) => {
+        amountB += element?.posts + element?.stories + element?.highlights;
+      });
+
+
+      a = amountA;
+      b = amountB;
+    }
+
+    if (b < a) return order === 'ascending' ? 1 : -1;
+    if (b > a) return order === 'ascending' ? -1 : 1;
+    return 0;
+
+  }
+
+  public resetFilters() {
+    this.searchFormGroup.reset();
+    this.hoverStars = 0;
+    this.clickedStars = 0;
+    this.gender.setValue('both');
+    this.filterAndSort();
+
+  }
+
   public setPreferences(): void {
 
     const searchPreferences: Filters = this.userPreferencesService.currentPreferences.search;
@@ -202,8 +315,6 @@ export class SearchComponent implements OnInit {
       this.router.navigate(['/wizard']);
       return;
     }
-    console.log(searchPreferences)
-    console.log(searchPreferences);
     this.age?.setValue(searchPreferences?.age);
   
     // budget
@@ -226,7 +337,7 @@ export class SearchComponent implements OnInit {
 
 
     searchPreferences.socialMedia.forEach((element, index) => {
-      this.socialMediaArray.forEach((element2, index2) => {
+      this.socialMediaArrayCapitalized.forEach((element2, index2) => {
         if (element === element2) {
           this.socialMedia.controls[index2].setValue(true);
         }

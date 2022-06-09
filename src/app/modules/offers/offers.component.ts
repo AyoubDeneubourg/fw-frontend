@@ -2,10 +2,12 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { of } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
 
-import { AuthService } from 'src/app/core/services/auth-service/auth.service';
+import { AuthService, Color } from 'src/app/core/services/auth-service/auth.service';
 import { OffersService } from 'src/app/core/services/offers/offers.service';
-import { User } from 'src/app/shared/models/common';
+import { Profile, User } from 'src/app/shared/models/common';
 import { Offer, SocialMediaArray, SocialMediaInformation } from 'src/app/shared/models/offers';
 import { PageNavigation } from 'src/app/shared/models/pagination';
 import { dateAfterNow } from 'src/app/shared/static/forms/date-after-now-validation';
@@ -21,7 +23,7 @@ import { minOneChecked } from 'src/app/shared/static/forms/min-one-true-validati
 export class OffersComponent implements OnInit {
 
   public offerFormGroup: FormGroup;
-  public actualPage: number = 1;
+  public actualPage: number = 4;
   public allowToGo: number = 1;
 
 
@@ -33,6 +35,8 @@ export class OffersComponent implements OnInit {
 
 
   public influencerId: number;
+
+  public influencerProfile: Profile;
 
   public allPages: PageNavigation[] = [
     {
@@ -61,27 +65,56 @@ export class OffersComponent implements OnInit {
     }
   ];
 
+  public color: Color;
+
   constructor(private formBuilder: FormBuilder, 
     private offerService: OffersService, 
     private route: ActivatedRoute,
     private router: Router,
+    
     private authService: AuthService) { }
 
   ngOnInit(): void {
 
+    this.color = this.authService.colors;
     this.influencerId = this.route.snapshot.params.id;
 
      this.authService.loggedInUser$.subscribe(data => {
       console.log(data);
     });
 
+    this.buildForm();
 
+
+    this.authService.getInfluencer(this.influencerId).pipe(
+      tap(data => {
+      this.influencerProfile = {...data.user, ...data.influencer};
+
+    }), catchError(err => {
+      this.router.navigateByUrl('/dashboard');
+      return of(err);
+    })).subscribe();
+
+
+
+
+
+
+  }
+
+  
+  
+
+
+
+  public buildForm() {
+    
 
     this.offerFormGroup = this.formBuilder.group({
 
       p1: this.formBuilder.group({
         socialMedia: new FormArray([
-          new FormControl(false),
+          new FormControl(true),
           new FormControl(false),
           new FormControl(false),
           new FormControl(false),
@@ -99,17 +132,16 @@ export class OffersComponent implements OnInit {
       p3: this.formBuilder.group({
 /*         startDate: ['2022-05-29', [Validators.required]],
         endDate: ['2022-05-29', [Validators.required]], */
-        startDate: ['', [Validators.required, dateAfterNow()]],
+        startDate: ['2022-06-10', [Validators.required, dateAfterNow()]],
         endDate: ['', [Validators.required, dateBeforeDate("startDate")]], 
       }),
 
 
       p4: this.formBuilder.group({
-        description: ['x', [Validators.required]],
+        description: ['', [Validators.required]],
       }),
 
       p5: this.formBuilder.group({
-        uploadFile: ['x', [Validators.required]],
       }),
 
       p6: this.formBuilder.group({
@@ -120,11 +152,7 @@ export class OffersComponent implements OnInit {
     this.startDate.valueChanges.subscribe(() => {
       this.endDate.updateValueAndValidity();
     });
-
-
-
   }
-
 
 
   public goToPage(page: number): void {
@@ -222,21 +250,17 @@ export class OffersComponent implements OnInit {
 
   onSubmit(): void {
 
-    // influencerId,
-    // brandId,
-
     let user: User = this.authService.loggedInUser;
 
-    console.log(user);
 
-    const OFFER: Offer = {
+    const OFFER = {
       influencerId: this.influencerId, 
       brandId: user.id,
       socialMediaDetails: this.socialMediaDetails,
       description: this.description.value,
       startDate: this.startDate.value,
       endDate: this.endDate.value,
-      file: this.uploadFile.value,
+      file: this.formData,
     };
 
 
@@ -249,7 +273,6 @@ export class OffersComponent implements OnInit {
 
       this.offerService.createOffer(OFFER).subscribe(
         (response: Offer) => {
-          console.log(response);
 
          this.router.navigate(['/dashboard']);
         },
@@ -301,7 +324,6 @@ export class OffersComponent implements OnInit {
       if (!this.socialMediaDetails[socialMedia].posts
         && !this.socialMediaDetails[socialMedia].stories
         && !this.socialMediaDetails[socialMedia].highlights) {
-        console.log(this.socialMediaDetails[socialMedia])
         this.socialMediaDetailsValid = false;
       }
     }
@@ -331,6 +353,23 @@ export class OffersComponent implements OnInit {
     }
    */
 
+    public fileList: FileList;
+    public formData: FormData = new FormData();
+
+
+    fileChange(event) {
+      this.fileList = event.target.files;
+  
+  
+  
+      if(this.fileList.length > 0) {
+
+          let file: File = this.fileList[0];
+
+          this.formData.append('file', file, file.name);
+  
+      }
+  }
 
   get page1(): AbstractControl {
     return this.offerFormGroup.controls.p1;

@@ -90,7 +90,7 @@ transition: 1.2s color;
   }
   100% {
     left: 50%;
-    width: 375px;
+    width: 550px;
     height: 375px;
   }
 }
@@ -106,7 +106,7 @@ transition: 1.2s color;
   }
   100% {
     left: 50%;
-    width: 375px;
+    width: 550px;
     height: 375px;
   }
 }
@@ -121,7 +121,7 @@ transition: 1.2s color;
   }
   100% {
     right: 50%;
-    width: 375px;
+    width: 550px;
     height: 375px;
   }
 }
@@ -136,7 +136,7 @@ transition: 1.2s color;
   }
   100% {
     right: 50%;
-    width: 375px;
+    width: 550px;
     height: 375px;
   }
 }
@@ -167,4 +167,70 @@ transition: 1.2s color;
   100% {
     background-color: $orange;
   }
+}
+
+
+
+
+
+.button-orange-filled-animation, .button-orange-border-animation, .button-blue-border-animation, .button-blue-filled-animation {
+  &:hover {
+    cursor:pointer;
+    -webkit-box-shadow: 1px 1px 3px  #a0a0a0; 
+    box-shadow: 1px 1px 3px  #a0a0a0;
+  }
+}
+
+.button-blue-filled-animation {
+  &:hover {
+    background-color: #339cd8;
+  }
+}
+
+.button-orange-filled-animation {
+  &:hover {
+    background-color: #da7236;
+  
+  }
+}
+
+
+.button-blue-border-animation {
+  
+  &:hover {
+  }
+}
+
+
+
+.button-orange-border-animation {
+  
+  &:hover {
+
+  }
+}
+
+
+.text-blue-animation {
+  &:hover {
+    font-weight: 600;
+    }
+}
+.text-orange-animation {
+  &:hover {
+    font-weight: 600;
+    }
+}
+
+.text-black-animation {
+  display:inline-block;
+
+  &:hover {
+  font-weight: 500;
+  }
+
+
+
+
+
 }

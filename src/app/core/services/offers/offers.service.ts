@@ -18,8 +18,8 @@ export class OffersService {
   constructor(private http: HttpClient, private router: Router, private authService: AuthService) { }
 
 
-  public createOffer(offer: Offer): Observable<Offer> {
-    return this.http.post<Offer>(`${this.apiUrl}/api/partnership`, offer, getHeaders());
+  public createOffer(offer: Offer | any): Observable<Offer> {
+    return this.http.post<Offer | any>(`${this.apiUrl}/api/partnership`, offer, getHeaders());
   }
 
 

@@ -5,7 +5,7 @@
 
 <div class="search-tool w-300 bg-gray-50">
 
-    <div [routerLink]="'/wizard'" class="flex bg-{{color}} px-6 py-8 text-white">
+    <div [routerLink]="'/wizard'" class="flex bg-{{color}} button-orange-filled-animation px-6 py-8 text-white">
         <p class="font-bold m-auto">LAUNCH WIZARD</p>
         <span><i class="fa-solid fa-arrow-right"></i></span>
     </div>
@@ -15,7 +15,7 @@
 
         <div class="flex p-2 pl-0">
             <p class="flex-1 text-{{color}} font-semibold">Filter by</p>
-            <p (click)="null" class="text-gray-600 font-semibold text-sm m-auto">Reset Filters</p>
+            <p (click)="resetFilters()" class="text-gray-600 cursor-pointer hover:text-black font-semibold text-sm m-auto">Reset Filters</p>
         </div>
 
 
@@ -23,8 +23,8 @@
 
         <div formGroupName="i1">    
             <p class="text-gray-600 font-semibold text-sm">Social Media</p>
-            <div *ngFor="let item of socialMediaArray; let i = index">
-                <input [formControl]="socialMedia.controls[i]" class="mr-2  checkbox-{{color}}" type="checkbox" name="socials" value="{{item}}" id="{{item}}">
+            <div *ngFor="let item of socialMediaArrayCapitalized; let i = index">
+                <input (change)="filterAndSort()" [formControl]="socialMedia.controls[i]" class="mr-2  checkbox-{{color}}" type="checkbox" name="socials" value="{{item}}" id="{{item}}">
                 <label for="{{item}}">{{item}}</label>
             </div>
         </div>
@@ -116,7 +116,7 @@
 
 
         <div *ngFor="let item of sectorsArray; let i = index">
-            <input [formControl]="sectors.controls[i]" id="sector-{{ item }}" name="sector-{{item}}" class="mr-2 checkbox-{{color}}"  type="checkbox" />
+            <input (change)="filterAndSort()" [formControl]="sectors.controls[i]" id="sector-{{ item }}" name="sector-{{item}}" class="mr-2 checkbox-{{color}}"  type="checkbox" />
             <label for="sector-{{ item }}">{{item}}</label>
         </div>
 
@@ -138,7 +138,7 @@
 
 
 <div class="flex flex-wrap">
-    <ng-container *ngFor="let data of results">
+    <ng-container *ngFor="let data of newResults ? newResults : results">
         
         <app-search-card [data]="data"></app-search-card>
 

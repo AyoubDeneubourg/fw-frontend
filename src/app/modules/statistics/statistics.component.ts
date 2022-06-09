@@ -21,8 +21,11 @@ export class StatisticsComponent implements OnInit  {
     let user: User = this.authService.loggedInUser;
 
     this.statsService.getTotalEarnings(user.id).subscribe(data => {
-      console.log(data);
       this.statistics = data;
+      this.data2[0].content = "€" + this.statistics.totalMoneyEarned;
+      this.data2[1].content = "€" + this.statistics.totalMoneyEarnedMonth;
+      this.data2[2].content = "€" + this.statistics.totalMoneyEarnedWeek;
+
     });
   }
 
@@ -32,16 +35,16 @@ export class StatisticsComponent implements OnInit  {
   }
 
   public data2 = [{
-    'title': 'Item 1',
-    'content': 'Content 1',
+    'title': 'Total earned',
+    'content': ' ',
   },
   {
-    'title': 'Item 2',
-    'content': 'content 2',
+    'title': 'Earned this month',
+    'content': ' ',
   },
   {
-    'title': 'Item 3',
-    'content': 'content 3',
+    'title': 'Earned this week',
+    'content': ' ',
   }]
   
 }

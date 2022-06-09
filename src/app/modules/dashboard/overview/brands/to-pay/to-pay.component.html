@@ -51,14 +51,14 @@
         <tr *ngFor="let item of newEvents ? newEvents : offers as Offer">
             <td>{{ item.id }}</td>
           <td routerLink="/profile/{{item.influencerId}}">{{ item.influencerName }}</td>
-          <td class="flex"><ng-container *ngFor="let socialMedia of item.socialMediaDetails"><img width="28px" src="assets/icons/socials/{{socialMedia.name}}.svg"></ng-container></td>
+          <td class="flex"><ng-container *ngFor="let socialMedia of item.socialMediaDetails"><img width="28px" src="assets/icons/socials/{{socialMedia.name | uppercase}}.svg"></ng-container></td>
           <td>{{ item.socialMediaDetails | socialMediaCounter : 'posts' }}</td>
           <td>{{ item.socialMediaDetails | socialMediaCounter : 'stories' }}</td>
           <td>{{ item.socialMediaDetails | socialMediaCounter : 'highlights' }}</td>
           <td>{{ item.startDate }} - {{ item.endDate }}</td>
-          <td>{{ item.orderId }}</td>
-          <td> <div (click)="pay(item)"  class="icon-accept bg-blue font-semibold text-center"> Pay</div></td>
-          <td> <div (click)="null" class="border border-blue text-center rounded-md text-blue text-sm p-1 font-semibold">View Details</div></td>
+          <td>Download</td>
+          <td> <div (click)="pay(item)" class="border border-orange text-center rounded-sm text-orange text-sm p-1 shadow hover:shadow-lg ease-linear cursor-pointer transition-all duration-150"> Pay</div></td>
+          <td> <span (click)="null" class="m-0  bg-orange  text-center rounded-sm font-semibold text-white text-sm py-1.5 px-3 shadow hover:shadow-lg ease-linear cursor-pointer transition-all duration-150">View Details</span></td>
         </tr>
   
       </tbody>

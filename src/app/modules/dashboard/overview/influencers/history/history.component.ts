@@ -28,11 +28,25 @@ export class InfluencerBrandHistoryComponent implements OnInit {
 
   ngOnInit(): void {
 
-    console.log(this.offers)
     this.buildForm();
 
   }
 
+
+  public partnership;
+  showDetailModal = false;
+  
+
+  openDetailModal(partnership){
+    console.log(partnership);
+    this.partnership = partnership;
+    this.showDetailModal = true;
+  }
+
+
+  closeDetailModal() {
+    this.showDetailModal = false;
+  }
 
   public filterAndSort() {
 

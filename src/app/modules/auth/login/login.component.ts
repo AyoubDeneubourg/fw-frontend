@@ -53,7 +53,6 @@ export class LoginComponent implements OnInit {
       this.authService.login(LOGIN_DATA).pipe(
         take(1),
         tap((data) => {
-          console.log(data)
           this.router.navigate(['/dashboard']);
         }),
         catchError(err => {

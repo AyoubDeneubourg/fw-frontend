@@ -11,8 +11,69 @@ import { Statistics } from 'src/app/shared/models/common';
 export class BarVerticalComponent implements OnInit {
 
 
-  @Input()
-  public statistics: Statistics;
+
+  
+  private _statistics: any;
+    
+  @Input() set statistics(value: any) {
+  
+    if(value !== undefined || typeof value !== 'undefined') {
+      
+      console.log(value);
+
+      let arr = [];
+
+      for (const item in value.topMonths) {
+
+        arr.push({
+          "name": item,
+          "value": value.topMonths[item]
+        })
+      }
+ 
+      console.log(arr);
+
+      let x = arr.sort((a, b) => (a.name < b.name) ? -1 : 1);
+
+
+      const month = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+
+
+      let y = [];
+
+      y.push({
+          "name": "",
+          "value": "0"
+      })
+      x.forEach(element => {
+        y.push({
+          "name": month[element.name],
+          "value": element.value
+        });
+      });
+
+      y.push({
+        "name": " ",
+        "value": "0"
+    })
+
+      console.log(x);
+      this.single = y;
+      this._statistics = y;
+
+    }
+
+
+  
+  }
+  
+  get statistics(): any {
+      return this._statistics;
+  }
+
+
+
+  
 
 
   public single: any[];
@@ -38,38 +99,14 @@ export class BarVerticalComponent implements OnInit {
   }
 
   onSelect(event) {
-    console.log(event);
+
   }
 
   ngOnInit(): void {
       
+ 
 
-      this.single = [
-        {
-          "name": "",
-          "value": "0"
-        },
-        {
-          "name": "January",
-          "value": "1000"
-        },
-        {
-          "name": "March",
-          "value": "400"
-        },
-        {
-          "name": "May",
-          "value": "325"
-        },
-        {
-          "name": "April",
-          "value": "135"
-        },
-        {
-          "name": "  ",
-          "value": "0"
-        },
-      ];
+ 
       
   }
 }

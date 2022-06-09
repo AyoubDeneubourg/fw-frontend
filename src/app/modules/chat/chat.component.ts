@@ -67,32 +67,23 @@ export class ChatComponent implements OnInit {
 
       data.valueChanges().subscribe((dataz: any) => {
         
-        console.log(dataz);
-        console.log(this.chats);
       //  let y = this.chats.find(x => x.user_1 == dataz[0]?.user_1 && x.user_2 == dataz[0]?.user_2);
 
         dataz.forEach(element2 => {
 
           let y = this.chats.find(x => x.user_1 == element2.user_1 && x.user_2 == element2.user_2);
 
-          console.log(y);
-          console.log(typeof y);
           if(typeof y == 'undefined') {
 
   
             
             let userId = this.authedUser.id == element2.user_1 ? element2.user_2 : element2.user_1;
-            console.log(userId);
-            console.log(this.authedUser.id);
-            console.log(element2.user_2);
-            console.log(element2.user_1);
            
             this.authService.getUser(userId).pipe(
               tap(user => {
 
                 element2 = {...element2, ...user };
                 this.chats.push(element2)
-                console.log(this.chats);
               }
               )).subscribe();
 
@@ -133,29 +124,7 @@ export class ChatComponent implements OnInit {
   }
 
 
-  public getUser2(): string {
 
-    // console.log(this.getUser2())
-
-    //  return this.authService.getUser(id).pipe(take(1));
-    return "zzz";
-  
-    }
-
-  
-  public getUser(id) {
-
-    // let x;
-
- /*    return this.authService.getUser(id).pipe(
-      map(user => {
-        return user
-      }
-      )); */
-
-  //return x;
-
-  }
   public getFirebaseChat() {
 
     let id;
@@ -173,12 +142,13 @@ export class ChatComponent implements OnInit {
       }); return ref.where('user_2', '==', this.authedUser.id.toString())
       .where('user_1', '==', this.route.snapshot.params.id.toString());
        }).valueChanges().subscribe((data: any) => {
-        if(data[0]?.messages) this.bucketListArray = data[0];
-         if(typeof id != 'undefined') this.chatId = id;
-
+        if(data[0]?.user_2 == this.route.snapshot.params.id.toString() || data[0]?.user_1 == this.route.snapshot.params.id.toString()) {
+          if(data[0]?.messages) this.bucketListArray = data[0];
+          if(typeof id != 'undefined') this.chatId = id;
+        }
          setTimeout(() => {
           this.scrollToBottom();
-         }, 100);
+         }, 50);
       });
 
 
@@ -193,12 +163,13 @@ export class ChatComponent implements OnInit {
         }); return ref.where('user_1', '==', this.authedUser.id.toString())
         .where('user_2', '==', this.route.snapshot.params.id.toString());
          }).valueChanges().subscribe((data: any) => {
-           if(data[0]?.messages) this.bucketListArray = data[0];
-           if(typeof id != 'undefined') this.chatId = id;
-
+          if(data[0]?.user_2 == this.route.snapshot.params.id.toString() || data[0]?.user_1 == this.route.snapshot.params.id.toString()) {
+            if(data[0]?.messages) this.bucketListArray = data[0];
+            if(typeof id != 'undefined') this.chatId = id;
+          }
            setTimeout(() => {
              this.scrollToBottom();
-            }, 100);
+            }, 50);
         });
 
     }
@@ -222,7 +193,6 @@ export class ChatComponent implements OnInit {
       textArea.value = "";
       if(newChat) this.getFirebaseChat();
 
-      console.log(this.chats)
 
     }
 

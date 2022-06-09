@@ -29,3 +29,29 @@ tbody tr {
   width: 27px;
   height:27px;
 }
+
+
+.status {
+  width:8px;
+  height:8px;
+}
+
+.status-IN_PROGRESS {
+  background-color: orange;
+}
+
+.status-REQUESTED {
+  background-color:  yellow;
+}
+
+.status-DECLINED {
+  background-color:red ;
+}
+
+.status-DONE {
+  background-color: green;
+}
+
+.status-PENDING {
+  background-color: skyblue ;
+}

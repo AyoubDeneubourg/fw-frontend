@@ -68,8 +68,6 @@
       <ng-container *ngIf="item.sender_id != authedUser.id">
         <div class="flex flex-col">
 
-
-
           <div *ngIf="bucketListArray['messages'][i - 1]?.sender_id != item.sender_id">
 
             <span class="flex">
@@ -101,9 +99,23 @@
 
       <ng-container *ngIf="item.sender_id == authedUser.id">
         <div class="flex-1"></div>
+        <span class="flex flex-col">
+          <div class="flex">
+            <span class="my-auto font-semibold text-sm">   
+              <h1>{{ authedUser.firstName }}</h1>
+            </span>
+            <img src="../../../assets/icons/socials/FACEBOOK.svg" alt="">
+          </div>
+
         <div class="py-2 px-4 rounded-md m-2 bg-blue text-white break-all">
         {{ item.message }}
+        <p class="text-xs mt-2 font-semibold text-white">
+          {{ item.timestamp | firebaseTimeToNormalTime}}
+        </p>
         </div>
+                  
+      </span>
+
       </ng-container>
 
 

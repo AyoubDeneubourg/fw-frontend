@@ -46,15 +46,69 @@ export class InfluencerRequestComponent implements OnInit {
     this.filterAndSort();
   } 
 
-  public acceptPartnership(id: number) {
+
+
+  public partnership: any;
+
+  showAcceptModal = false;
+  showDeclineModal = false;
+  showDetailModal = false;
+  
+
+  openDetailModal(partnership){
+    console.log(partnership);
+    this.partnership = partnership;
+    this.showDetailModal = true;
+  }
 
 
 
-    this.offersService.acceptPartnership(id).pipe(
+  openAcceptModal(partnership){
+    this.partnership = partnership;
+    this.showAcceptModal = true;
+  }
+
+
+  openDeclineModal(partnership){
+    this.partnership = partnership;
+    this.showDeclineModal = true;
+  }
+
+  closeAcceptModal() {
+    this.showAcceptModal = false;
+  }
+
+  closeDeclineModal() {
+    this.showDeclineModal = false;
+  }
+  closeDetailModal() {
+    this.showDetailModal = false;
+  }
+  
+  public acceptPartnership() {
+   
+    this.showAcceptModal = false;
+
+    this.offersService.acceptPartnership(this.partnership.id).pipe(
       take(1),
       tap((data) => {
         this.refreshData.emit();
+      }),
+      catchError(err => {
+        console.log(err)
+        return of(err)
+      })).subscribe();
+  }
 
+  public declinePartnership() {
+
+    this.showDeclineModal = false;
+
+
+    this.offersService.declinePartnership(this.partnership.id).pipe(
+      take(1),
+      tap((data) => {
+        this.refreshData.emit();
       }),
       catchError(err => {
         console.log(err)
@@ -62,27 +116,11 @@ export class InfluencerRequestComponent implements OnInit {
       })).subscribe();
 
 
-
-
   }
 
 
-  public declinePartnership(id: number) {
-    
-    this.offersService.declinePartnership(id).pipe(
-      take(1),
-      tap((data) => {
-        this.refreshData.emit();
-
-        console.log(data);
-      }),
-      catchError(err => {
-        console.log(err)
-        return of(err)
-      })).subscribe();
 
 
-  }
 
 
   public buildForm() {
@@ -135,8 +173,6 @@ export class InfluencerRequestComponent implements OnInit {
 
     this.newEvents = this.offers;
 
-    console.log(this.newEvents)
-    console.log(this.offers)
 
 /*     this.newEvents = this.offers.filter(event => {
       if (this.accepted.value && event.status === "REQUESTED") {
@@ -151,10 +187,6 @@ export class InfluencerRequestComponent implements OnInit {
     });
  */
 
-
-    console.log(this.order)
-    console.log(this.order.value)
-
     this.newEvents?.sort((a, b) => {
       if (this.order.value === 'ascending') {
         return this.sort(a, b, 'ascending');
@@ -166,7 +198,6 @@ export class InfluencerRequestComponent implements OnInit {
 
     });
 
-    console.log(this.newEvents)
 
   }
 

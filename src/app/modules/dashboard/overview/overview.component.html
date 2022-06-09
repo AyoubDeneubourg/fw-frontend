@@ -6,15 +6,15 @@
     <ng-container *ngIf="color == 'blue'">
 
 
-    <p class="my-auto mx-2" (click)="changeActiveTab('1')" [ngClass]="active == '1' ? 'active-' + color: ''">
+    <p class="my-auto mx-2 text-black-animation cursor-pointer" (click)="changeActiveTab('1')" [ngClass]="active == '1' ? 'active-' + color: ''">
       Upcoming Events
     </p>
 
-    <p class="my-auto mx-2" (click)="changeActiveTab('2')" [ngClass]="active == '2' ? 'active-' + color: ''" >
+    <p class="my-auto mx-2 text-black-animation cursor-pointer" (click)="changeActiveTab('2')" [ngClass]="active == '2' ? 'active-' + color: ''" >
       Request
     </p>
 
-    <p class="my-auto mx-2" (click)="changeActiveTab('3')" [ngClass]="active == '3' ? 'active-' + color: ''">
+    <p class="my-auto mx-2  text-black-animation cursor-pointer" (click)="changeActiveTab('3')" [ngClass]="active == '3' ? 'active-' + color: ''">
       History
     </p>
 
@@ -24,19 +24,19 @@
 
     <ng-container *ngIf="color == 'orange'">
 
-      <p class="my-auto mx-2" (click)="changeActiveTab('1')" [ngClass]="active == '1' ? 'active-' + color: ''">
+      <p class="my-auto mx-2 text-black-animation cursor-pointer " (click)="changeActiveTab('1')" [ngClass]="active == '1' ? 'active-' + color: ''">
         In progress
       </p>
-      <p class="my-auto mx-2" (click)="changeActiveTab('2')" [ngClass]="active == '2' ? 'active-' + color: ''" >
+      <p class="my-auto mx-2 text-black-animation cursor-pointer" (click)="changeActiveTab('2')" [ngClass]="active == '2' ? 'active-' + color: ''" >
         Requested
       </p>
 
-      <p class="my-auto mx-2" (click)="changeActiveTab('3')" [ngClass]="active == '3' ? 'active-' + color: ''">
+      <p class="my-auto mx-2 text-black-animation cursor-pointer" (click)="changeActiveTab('3')" [ngClass]="active == '3' ? 'active-' + color: ''">
         To Pay
       </p>
   
   
-      <p class="my-auto mx-2" (click)="changeActiveTab('4')" [ngClass]="active == '4' ? 'active-' + color: ''">
+      <p class="my-auto mx-2 text-black-animation cursor-pointer" (click)="changeActiveTab('4')" [ngClass]="active == '4' ? 'active-' + color: ''">
         History
       </p>
   
@@ -53,7 +53,7 @@
     <ng-container *ngIf="color == 'blue'">
 
       <ng-container *ngIf="active === '1'">
-        <app-influencer-upcoming-events [offers]="upcoming"></app-influencer-upcoming-events>
+        <app-influencer-upcoming-events [offers]="upcoming" (refreshData)="refreshData()"></app-influencer-upcoming-events>
       </ng-container>
 
       <ng-container *ngIf="active === '2'">
