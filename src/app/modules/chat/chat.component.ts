@@ -144,6 +144,7 @@ export class ChatComponent implements OnInit {
        }).valueChanges().subscribe((data: any) => {
         if(data[0]?.user_2 == this.route.snapshot.params.id.toString() || data[0]?.user_1 == this.route.snapshot.params.id.toString()) {
           if(data[0]?.messages) this.bucketListArray = data[0];
+          console.log(this.bucketListArray);
           if(typeof id != 'undefined') this.chatId = id;
         }
          setTimeout(() => {
@@ -165,6 +166,8 @@ export class ChatComponent implements OnInit {
          }).valueChanges().subscribe((data: any) => {
           if(data[0]?.user_2 == this.route.snapshot.params.id.toString() || data[0]?.user_1 == this.route.snapshot.params.id.toString()) {
             if(data[0]?.messages) this.bucketListArray = data[0];
+            console.log(this.bucketListArray);
+
             if(typeof id != 'undefined') this.chatId = id;
           }
            setTimeout(() => {
