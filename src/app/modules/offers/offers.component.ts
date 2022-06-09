@@ -90,6 +90,7 @@ export class OffersComponent implements OnInit {
       tap(data => {
       this.influencerProfile = {...data.user, ...data.influencer};
 
+      console.log(this.influencerProfile);
     }), catchError(err => {
       this.router.navigateByUrl('/dashboard');
       return of(err);
@@ -114,7 +115,7 @@ export class OffersComponent implements OnInit {
 
       p1: this.formBuilder.group({
         socialMedia: new FormArray([
-          new FormControl(true),
+          new FormControl(false),
           new FormControl(false),
           new FormControl(false),
           new FormControl(false),

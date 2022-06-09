@@ -95,7 +95,7 @@ export class EditProfileComponent implements OnInit {
   public availableLanguages = LANGUAGES;
   public availableCountries = COUNTRIES;
   public availableSectors = sectors;
-  public availableSocialMedias = SocialMediaArrayCapitalized;
+  public availableSocialMedias = SocialMediaArray;
 
 
 
@@ -256,10 +256,13 @@ switch(section) {
   case 'socialMediaEditMode':
    let socialMediaList = [];
 
+   
+
     this.socialMediaList.forEach((element: any) => {
+
       let x = document.getElementById('link-' + element.name) as HTMLSelectElement;
       socialMediaList.push({
-        name: element.name,
+        name: element.name.toUpperCase(),
         link: x.value
       });
     }); 
@@ -284,7 +287,7 @@ switch(section) {
 }
   this.profileService.updateInfluencerProfile(PROFILE, this.profile.id).subscribe(res => {
 
-  location.href = '/profile/edit';
+  //location.href = '/profile/edit';
 
     });
 

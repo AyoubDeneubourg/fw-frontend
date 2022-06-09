@@ -17,7 +17,7 @@ export type Offer = { // add influencer & brand id
 
 
 
-export const SocialMediaArray = ['FACEBOOK', 'TWITTER', 'INSTAGRAM', 'TIK-TOK', 'SNAPCHAT', 'YOUTUBE', 'TWITCH']
+export const SocialMediaArray = ['FACEBOOK', 'TWITTER', 'INSTAGRAM', 'TIKTOK', 'SNAPCHAT', 'YOUTUBE', 'TWITCH']
 export const SocialMediaArrayCapitalized = ['Facebook', 'Twitter', 'Instagram', 'Tik-Tok', 'Snapchat', 'YouTube', 'Twitch']
 export const socialMediaConverter = {
 
