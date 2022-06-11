@@ -5,6 +5,7 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from
 import { catchError, take, tap } from 'rxjs/operators';
 import { OffersService } from 'src/app/core/services/offers/offers.service';
 import { of } from 'rxjs';
+import { Rate, RatingService } from 'src/app/core/services/profile/rating-service.service';
 
 @Component({
   selector: 'app-brand-history',
@@ -29,7 +30,8 @@ export class BrandHistoryComponent implements OnInit {
 
   constructor(private translocoService: TranslocoService, 
     private formBuilder: FormBuilder, 
-    private offersService: OffersService) { 
+    private offersService: OffersService,
+    private rateService: RatingService) { 
 
       this.buildForm();
 
@@ -90,7 +92,70 @@ export class BrandHistoryComponent implements OnInit {
   }
 
 
+  public rate;
+  showRateModal = false;
+  
 
+  openRateModal(rate){
+    console.log(rate);
+    this.rate = rate;
+    this.showRateModal = true;
+  }
+
+
+  closeRateModal() {
+    this.showRateModal = false;
+  }
+
+
+
+
+  acceptRateModal() {
+
+ 
+    let amount = document.getElementById('rateAmount') as HTMLInputElement;
+    let description = document.getElementById('rateDescription') as HTMLInputElement;
+
+    if(!amount.checkValidity() || !description.checkValidity()){
+      amount.reportValidity();
+      description.reportValidity();
+
+    } else {
+      
+      this.showRateModal = false;
+      
+      let rate: Rate = {
+      influencerId: this.rate.influencerId,
+      brandId: this.rate.brandId,
+      amount: parseInt(amount.value) as 1 | 2 | 3 | 4 | 5,
+      description: description.value
+    }
+    this.rateService.postRating(rate).pipe(
+      take(1),
+      tap((data) => {
+      }
+      )).subscribe();
+  }
+
+
+}
+
+
+
+  public partnership;
+  showDetailModal = false;
+  
+
+  openDetailModal(partnership){
+    console.log(partnership);
+    this.partnership = partnership;
+    this.showDetailModal = true;
+  }
+
+
+  closeDetailModal() {
+    this.showDetailModal = false;
+  }
 
 
   public filterAndSort() {

@@ -1,8 +1,12 @@
 @import "../../../../styles/variables";
 
-.active {
+.active-blue {
     font-weight: 500;
     border-bottom: 2px solid $blue;
+  }
+.active-orange {
+    font-weight: 500;
+    border-bottom: 2px solid $orange;
   }
   
 
@@ -26,10 +30,22 @@
 
     &:focus {
       outline: none;
-      border: 0.25px solid #4cade6 !important;
     }
   }
 
+  .input-blue {
+
+    &:focus {
+      border: 0.25px solid $blue !important;
+    }
+
+  }
+  .input-orange {
+
+    &:focus {
+      border: 0.25px solid $orange !important;
+    }
+  }
 
 
 
@@ -41,7 +57,22 @@
 
     &:focus {
       outline: none;
-      border: 0.25px solid #4cade6 !important;
+    }
+
+  }
+
+  .textarea-blue {
+
+    &:focus {
+      border: 0.25px solid $blue !important;
+    }
+
+  }
+
+  .textarea-orange {
+
+    &:focus {
+      border: 0.25px solid $orange !important;
     }
 
   }
@@ -49,9 +80,14 @@
  
 }
 
+.select-blue {
+  background-color: $blue;
+}
+.select-orange {
+  background-color: $orange;
+}
 
 select {
-  background-color: #4cade6;
 
   padding:7px;
   margin:10px;

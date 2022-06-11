@@ -1,8 +1,10 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CollectBankAccountForSetupOptions } from '@stripe/stripe-js';
 import { AuthService, Color } from 'src/app/core/services/auth-service/auth.service';
 import { ProfileService } from 'src/app/core/services/profile/profile-service.service';
+import { RatingService } from 'src/app/core/services/profile/rating-service.service';
 import { COUNTRIES } from 'src/app/shared/data/countries';
 import { Brand } from 'src/app/shared/models/brand';
 import { Profile, User } from 'src/app/shared/models/common';
@@ -27,16 +29,20 @@ export class ProfileComponent implements OnInit {
 
   public isOther: boolean = false;
 
-  constructor(private authService: AuthService, private router: Router, private route: ActivatedRoute, private profileService: ProfileService) { }
+  constructor(private location: Location, private authService: AuthService, private rateService: RatingService, private router: Router, private route: ActivatedRoute, private profileService: ProfileService) { }
 
   ngOnInit(): void {
 
-    
+    this.user = this.authService.loggedInUser;
+
 
     if(this.route.snapshot.params.id) {
 
       this.authService.getProfile(this.route.snapshot.params.id).subscribe(data => {
 
+        console.log(data);
+
+        if(!data) this.location.back();
         
         this.isOther = true;
         if(data.user.userType == "INFLUENCER") {
@@ -54,17 +60,33 @@ export class ProfileComponent implements OnInit {
 
 
     } else {
-      this.user = this.authService.loggedInUser;
 
       if(this.user.userType == "BRAND") {
 
         this.profile = {...this.authService.loggedInBrand['user'], ...this.authService.loggedInBrand['brand']};
         this.type = 'BRAND';
 
+
+
+
+
       } else {
 
         this.profile = {...this.authService.loggedInInfluencer['user'], ...this.authService.loggedInInfluencer['influencer']};
         this.type = "INFLUENCER"
+
+        this.rateService.getInfluencerRating(this.profile.id).subscribe(data => {
+         console.log(data);
+          
+        })
+
+
+        this.rateService.getAverageInfluencerRating(this.profile.id).subscribe(data => {
+          console.log(data);
+           
+         })
+      
+      
       }
     }
 

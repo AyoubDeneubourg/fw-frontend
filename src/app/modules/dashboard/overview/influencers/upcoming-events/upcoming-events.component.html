@@ -1,4 +1,4 @@
-<ng-container *transloco="let t; read: 'dashboard.overview.upcoming'">
+<ng-container *transloco="let t; read: 'dashboard.overview'">
 
 
   <form class="flex mb-2" [formGroup]="sortingFormGroup">
@@ -13,7 +13,7 @@
         : 'btn-unselected-animation-blue'">
           <input id="inProgress" class="py-1 hidden px-3 outline-none rounded-sm shadow-md"
             [formControl]="inProgress" type="checkbox" />
-          <p class="relative text-sm inline-block capitalize z-50">In progress</p>
+          <p class="relative text-sm inline-block capitalize z-50">{{ t('upcoming') }}</p>
 
         </label>
 
@@ -26,26 +26,11 @@
 
           <input id="pending" class="py-1 hidden px-3 outline-none rounded-sm shadow-md"
             [formControl]="pending" type="checkbox" />
-            <p class="relative text-sm inline-block capitalize z-50">Pending</p>
+            <p class="relative text-sm inline-block capitalize z-50">{{ t('pending') }}</p>
           </label>
 
       </div>
-    <!--   <label (change)="this.filterAndSort()" for="inProgress" class="inline-block px-3 text-sm py-2 rounded-md mr-2" [class.bg-light-gray]="!inProgress.value"
-        [class.bg-blue]="inProgress.value">
-        <input formControlName="inProgress" id="inProgress" class="p-0 outline-none rounded-sm shadow-md" type="checkbox" />
-        <p class="ml-2 text-white inline-block">
-          In progress
-        </p>
-      </label> -->
 
-
-<!--       <label (change)="this.filterAndSort()" for="pending" class="inline-block px-3 text-sm py-2 rounded-md bg-blue mr-2" [class.bg-light-gray]="!pending.value"
-        [class.bg-blue]="pending.value">
-        <input formControlName="pending" id="pending" class="p-0 outline-none rounded-sm shadow-md" type="checkbox" />
-        <p class="ml-2 text-white inline-block">
-          Pending
-        </p>
-      </label> -->
 
 
 
@@ -54,17 +39,17 @@
     <div formGroupName="sortTypes">
 
       <select (change)="this.filterAndSort()" formControlName="type" class="border px-2 py-1 rounded mr-2">
-        <option value="new">Newest</option>
-        <option value="time">Time</option>
-        <option value="client">Client</option>
-        <option value="amount">Amounts</option>
-        <option value="status">Status</option>
+        <option value="new">{{ t('newest') }}</option>
+        <option value="time">{{ t('time') }}</option>
+        <option value="client">{{ t('client') }}</option>
+        <option value="amount">{{ t('amount') }}</option>
+        <option value="status">{{ t('status') }}</option>
       </select>
 
 
       <select (change)="this.filterAndSort()" formControlName="order" class="border px-2 py-1 rounded mr-2">
-        <option value="ascending">Ascending</option>
-        <option value="descending">Descending</option>
+        <option value="ascending">{{ t('ascending') }}</option>
+        <option value="descending">{{ t('descending') }}</option>
       </select>
 
     </div>
@@ -94,7 +79,7 @@
         <td>
           <div (click)="null" class=" flex w-2/3  bg-gray-200 rounded-md text-sm p-1 font-semibold">
             <span class="my-auto mx-2 rounded-full status status-{{item.status}}"> </span>
-            <span class="">{{ item.status != "IN_PROGRESS" ? item.status  : "IN PROGRESS"  }}</span>
+            <span class=""> {{ t(item.status) }}</span>
           </div>
         </td>        
         <td class="cursor-pointer" routerLink="/profile/{{item.brandId}}">{{ item.brandName }}</td>
@@ -108,17 +93,17 @@
             {{ item.startDate }} - {{ item.endDate }}
           </div>
         </td>
-        <td *ngIf="item.status == 'IN_PROGRESS'"> <div (click)="openModal(item)" class="border  border-blue text-center rounded-sm text-blue text-sm p-1 shadow hover:shadow-lg ease-linear cursor-pointer transition-all duration-150">Finish</div></td>
+        <td *ngIf="item.status == 'IN_PROGRESS'"> <div (click)="openModal(item)" class="border  border-blue text-center rounded-sm text-blue text-sm p-1 shadow hover:shadow-lg ease-linear cursor-pointer transition-all duration-150">{{ t('finish') }}</div></td>
         <td *ngIf="item.status != 'IN_PROGRESS'"> </td>
-        <td> <span (click)="openDetailModal(item)" class="m-0  bg-blue  text-center rounded-sm font-semibold text-white text-sm py-1.5 px-3 shadow hover:shadow-lg ease-linear cursor-pointer transition-all duration-150">View Details</span></td>
+        <td> <span (click)="openDetailModal(item)" class="m-0  bg-blue  text-center rounded-sm font-semibold text-white text-sm py-1.5 px-3 shadow hover:shadow-lg ease-linear cursor-pointer transition-all duration-150">{{ t('viewDetails') }}</span></td>
       </tr>
 
     </tbody>
   </table>
 
 
-  <app-modal-small [translate]="'modals.upcomingEvents.finishPartnership'" (acceptModal)="acceptModal()" (closeModal)="closeModal()" [showModal]="showModal"></app-modal-small>
-  <app-modal-large [translate]="'modals.upcomingEvents.details'" [data]="partnership" (closeModal)="closeDetailModal()" [showModal]="showDetailModal"></app-modal-large>
+  <app-modal-small [translate]="'modals.finishPartnership'" (acceptModal)="acceptModal()" (closeModal)="closeModal()" [showModal]="showModal"></app-modal-small>
+  <app-modal-large [translate]="'modals.details'" [data]="partnership" (closeModal)="closeDetailModal()" [showModal]="showDetailModal"></app-modal-large>
 
 
 

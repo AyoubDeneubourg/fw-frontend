@@ -1,37 +1,9 @@
-<ng-container *transloco="let t; read: 'dashboard.overview.request'">
+<ng-container *transloco="let t; read: 'dashboard.overview'">
 
   <form class="flex mb-2" [formGroup]="sortingFormGroup">
     <div class="flex-1" formGroupName="status">
 
 
-
-     <!--  <label (change)="this.filterAndSort()" for="accepted" class="inline-block px-3 text-sm py-2 rounded-md mr-2" [class.bg-light-gray]="!accepted.value"
-        [class.bg-blue]="accepted.value">
-        <input formControlName="accepted" id="accepted" class="p-0 outline-none rounded-sm shadow-md" type="checkbox" />
-        <p class="ml-2 text-white inline-block">
-          Accepted
-        </p>
-      </label>
-
-
-      <label (change)="this.filterAndSort()" for="pending" class="inline-block px-3 text-sm py-2 rounded-md bg-blue mr-2" [class.bg-light-gray]="!pending.value"
-        [class.bg-blue]="pending.value">
-        <input formControlName="pending" id="pending" class="p-0 outline-none rounded-sm shadow-md" type="checkbox" />
-        <p class="ml-2 text-white inline-block">
-          Pending
-        </p>
-      </label>
-
-
-
-      <label (change)="this.filterAndSort()" for="cancelled" class="inline-block px-3 text-sm py-2 rounded-md bg-blue mr-2" [class.bg-light-gray]="!cancelled.value"
-        [class.bg-blue]="cancelled.value">
-        <input formControlName="cancelled" id="cancelled" class="p-0 outline-none rounded-sm shadow-md"
-          type="checkbox" />
-        <p class="ml-2 text-white inline-block">
-          Cancelled
-        </p>
-      </label> -->
 
 
     </div>
@@ -39,17 +11,16 @@
     <div formGroupName="sortTypes">
 
       <select (change)="this.filterAndSort()" formControlName="type" class="border px-2 py-1 rounded mr-2">
-        <option value="new">Newest</option>
-        <option value="time">Time</option>
-        <option value="client">Client</option>
-        <option value="amount">Amounts</option>
-        <option value="status">Status</option>
+        <option value="new">{{ t('newest') }}</option>
+        <option value="time">{{ t('time') }}</option>
+        <option value="client">{{ t('client') }}</option>
+        <option value="amount">{{ t('amount') }}</option>
       </select>
 
 
       <select (change)="this.filterAndSort()" formControlName="order" class="border px-2 py-1 rounded mr-2">
-        <option value="ascending">Ascending</option>
-        <option value="descending">Descending</option>
+        <option value="ascending">{{ t('ascending') }}</option>
+        <option value="descending">{{ t('descending') }}</option>
       </select>
 
     </div>
@@ -86,8 +57,12 @@
         <td>{{ item.socialMediaDetails | socialMediaCounter : 'highlights' }}</td>
         <td>€{{ item.socialMediaDetails | socialMediaPriceCounter : 'total' }}</td>
 
-        <td>{{ item.startDate }} - {{ item.endDate }}</td>
-        <td>Download</td>
+        <td>
+          <div class=" w-fit  bg-gray-200 rounded-md text-sm p-1 px-3 font-semibold">
+            {{ item.startDate }} - {{ item.endDate }}
+          </div>
+        </td>
+        <td> <a class="hover:border-b-2 " href="https://fw-file-service.herokuapp.com/api/file/{{item.id}}" target="_blank">{{ t('download') }}</a></td>
         <td></td>
         <td> 
           <div class="flex">
@@ -99,7 +74,7 @@
             </div>
           </div>
         </td>
-        <td> <span (click)="openDetailModal(item)" class="m-0  bg-blue  text-center rounded-sm font-semibold text-white text-sm py-1.5 px-3 shadow hover:shadow-lg ease-linear cursor-pointer transition-all duration-150">View Details</span></td>
+        <td> <span (click)="openDetailModal(item)" class="m-0  bg-blue  text-center rounded-sm font-semibold text-white text-sm py-1.5 px-3 shadow hover:shadow-lg ease-linear cursor-pointer transition-all duration-150">{{ t('viewDetails') }}</span></td>
 
       </tr>
 
@@ -108,6 +83,6 @@
 
   <app-modal-small [translate]="'modals.acceptPartnership'" (acceptModal)="acceptPartnership()" (closeModal)="closeAcceptModal()" [showModal]="showAcceptModal"></app-modal-small>
   <app-modal-small [translate]="'modals.declinePartnership'" (acceptModal)="declinePartnership()" (closeModal)="closeDeclineModal()" [showModal]="showDeclineModal"></app-modal-small>
-  <app-modal-large [translate]="'modals.upcomingEvents.details'" [data]="partnership" (closeModal)="closeDetailModal()" [showModal]="showDetailModal"></app-modal-large>
+  <app-modal-large [translate]="'modals.details'" [data]="partnership" (closeModal)="closeDetailModal()" [showModal]="showDetailModal"></app-modal-large>
 
 </ng-container>

@@ -16,13 +16,11 @@
         <!--body-->
         <div class="relative p-6 flex-auto">
           <p class="my-2 text-slate-500 text-lg leading-relaxed">
-            <!-- {{ translate + '.message' | transloco }} -->
-            Description   
+
+            {{ 'common.description' | transloco }}   
           </p>
           <p class="mb-2">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur, rerum.
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur, rerum.
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur, rerum.
+
             {{data.description}}
 
           </p>
@@ -30,11 +28,12 @@
             <thead>
 
             <tr class="mx-6 font-bold text-sm text-gray-700 uppercase">
-              <td>Social Media</td>
-              <td> Posts </td>
-              <td> Stories </td>
-              <td> Highlights</td>
-              <td> Total </td>
+              <td>{{ 'common.socialMedia' | transloco }}</td>
+              <td>{{ 'common.posts' | transloco }}</td>
+              <td>{{ 'common.stories' | transloco }}</td>
+              <td>{{ 'common.highlights' | transloco }}</td>
+              <td>{{ 'common.total' | transloco }}</td>
+
             </tr>
             </thead>
             
@@ -63,7 +62,7 @@
 
         <div class="flex items-center justify-center p-6 border-t border-solid border-slate-200 rounded-b">
 
-          <button class="bg-blue text-white font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" (click)="closeModal.emit()">
+          <button class="bg-{{color}} text-white font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" (click)="closeModal.emit()">
             {{ translate + '.button' | transloco }}
           </button>
         </div>

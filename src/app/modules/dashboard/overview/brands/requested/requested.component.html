@@ -1,4 +1,4 @@
-<ng-container *transloco="let t; read: 'dashboard.overview.request'">
+<ng-container *transloco="let t; read: 'dashboard.overview'">
 
     <form class="flex mb-2" [formGroup]="sortingFormGroup">
       <div class="flex-1" formGroupName="status">
@@ -12,17 +12,17 @@
       <div formGroupName="sortTypes">
   
         <select (change)="this.filterAndSort()" formControlName="type" class="border px-2 py-1 rounded mr-2">
-          <option value="new">Newest</option>
-          <option value="time">Time</option>
-          <option value="client">Client</option>
-          <option value="amount">Amounts</option>
-          <option value="status">Status</option>
+          <option value="new">{{ t('newest') }}</option>
+          <option value="time">{{ t('time') }}</option>
+          <option value="client">{{ t('client') }}</option>
+          <option value="amount">{{ t('amount') }}</option>
+          <option value="status">{{ t('status') }}</option>
         </select>
   
   
         <select (change)="this.filterAndSort()" formControlName="order" class="border px-2 py-1 rounded mr-2">
-          <option value="ascending">Ascending</option>
-          <option value="descending">Descending</option>
+          <option value="ascending">{{ t('ascending') }}</option>
+          <option value="descending">{{ t('descending') }}</option>
         </select>
   
       </div>
@@ -55,11 +55,19 @@
           <td>{{ item.socialMediaDetails | socialMediaCounter : 'posts' }}</td>
           <td>{{ item.socialMediaDetails | socialMediaCounter : 'stories' }}</td>
           <td>{{ item.socialMediaDetails | socialMediaCounter : 'highlights' }}</td>
-          <td>{{ item.startDate }} - {{ item.endDate }}</td>
-          <td>{{ item.orderId }}</td>
-          <td class="w-fit"> <span (click)="null" class="float-right m-0  bg-orange  text-center rounded-sm font-semibold text-white text-sm py-1.5 px-3 shadow hover:shadow-lg ease-linear cursor-pointer transition-all duration-150">View Details</span></td>
+          <td>
+            <div class=" w-fit  bg-gray-200 rounded-md text-sm p-1 px-3 font-semibold">
+              {{ item.startDate }} - {{ item.endDate }}
+            </div>
+          </td>
+          <td> <a class="hover:border-b-2 " href="https://fw-file-service.herokuapp.com/api/file/{{item.id}}" target="_blank">{{ t('download') }}</a></td>
+          <td class="w-fit"> <span (click)="openDetailModal(item)" class="float-right m-0  bg-orange  text-center rounded-sm font-semibold text-white text-sm py-1.5 px-3 shadow hover:shadow-lg ease-linear cursor-pointer transition-all duration-150">
+            {{ t('viewDetails') }}</span></td>
         </tr>
   
       </tbody>
     </table>
+
+    <app-modal-large [translate]="'modals.details'" [data]="partnership" (closeModal)="closeDetailModal()" [showModal]="showDetailModal"></app-modal-large>
+
   </ng-container>

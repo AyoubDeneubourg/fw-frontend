@@ -26,8 +26,8 @@ export class StripeService {
     currency: 'eur',
     amount: null,
     quantity: 1,
-    cancelUrl: environment.baseUrl + '/dashboard',
-    successUrl: environment.baseUrl + '/dashboard',
+    cancelUrl: environment.baseUrl + '/payment/canceled',
+    successUrl: environment.baseUrl + '/payment/success',
   };
 
 
@@ -44,7 +44,7 @@ export class StripeService {
     });
 
     this.payment.partnershipId = item.id;
-    this.payment.amount = val + 100;
+    this.payment.amount = val * 100;
 
   
     const stripe = await this.stripePromise;

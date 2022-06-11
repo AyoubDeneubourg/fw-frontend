@@ -12,6 +12,8 @@ import { matchValues } from 'src/app/shared/static/forms/password-validation';
 import { Filters, sectors } from 'src/app/shared/models/common';
 import { UserPreferences, UserPreferencesService } from 'src/app/core/services/user-preferences/user-preferences.service';
 import { Router } from '@angular/router';
+import { isGreather } from 'src/app/shared/static/forms/isGreather-validation';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-wizard',
@@ -34,31 +36,31 @@ export class WizardComponent implements OnInit {
 
   public allPages: PageNavigation[] = [
     {
-      title: 'Budget',
+      title: 'wizard.budget',
       currentStatus: 'Active',
     },
     {
-      title: 'Choose platforms',
+      title: 'wizard.choosePlatforms',
       currentStatus: 'Future',
     },
     {
-      title: 'Amount of followers',
+      title: 'wizard.amountOfFollowers',
       currentStatus: 'Future',
     },
     {
-      title: 'Amount of viewers',
+      title: 'wizard.amountOfViewers',
       currentStatus: 'Future',
     },
     {
-      title: 'Gender and age',
+      title: 'wizard.genderAndAge',
       currentStatus: 'Future',
     },
     {
-      title: 'Sector',
+      title: 'wizard.sector',
       currentStatus: 'Future',
     },
     {
-      title: 'Localisation',
+      title: 'wizard.localisation',
       currentStatus: 'Future',
     }
   ];
@@ -66,6 +68,7 @@ export class WizardComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, 
     private authService: AuthService, 
     private router: Router,
+    private location: Location,
     private userPreferencesService: UserPreferencesService) { }
 
   ngOnInit(): void {
@@ -75,7 +78,7 @@ export class WizardComponent implements OnInit {
     this.wizardFormGroup = this.formBuilder.group({
       p1: this.formBuilder.group({
         minimumBudget: ["", []],
-        maximumBudget: ["", []],
+        maximumBudget: ["", [isGreather('minimumBudget')]],
       }),
 
       p2: this.formBuilder.group({
@@ -92,7 +95,7 @@ export class WizardComponent implements OnInit {
 
       p3: this.formBuilder.group({
         minimumFollowers: ["", []],
-        maximumFollowers: ["", []],
+        maximumFollowers: ["", [isGreather('minimumFollowers')]],
 
       }),
 
@@ -103,7 +106,7 @@ export class WizardComponent implements OnInit {
       }),
 
       p5: this.formBuilder.group({
-        gender: ['both', []],
+        gender: ['any', []],
         age: ['', []],
       }),
 
@@ -135,6 +138,14 @@ export class WizardComponent implements OnInit {
     });
 
 
+    
+    this.minimumFollowers.valueChanges.subscribe(() => {
+      this.maximumFollowers.updateValueAndValidity();
+    });
+
+    this.minimumBudget.valueChanges.subscribe(() => {
+      this.maximumBudget.updateValueAndValidity();
+    });
   }
 
 
@@ -229,6 +240,13 @@ export class WizardComponent implements OnInit {
 
   }
 
+
+  public returnBack() {
+
+    this.location.back();
+
+
+  }
 
 
 

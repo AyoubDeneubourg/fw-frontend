@@ -12,7 +12,7 @@ import { combineAll, map, mergeMap, switchMap, take, tap } from 'rxjs/operators'
 import { collection, getDocs } from 'firebase/firestore';
 import { Firestore } from '@angular/fire/firestore';
 
-import { AuthService } from 'src/app/core/services/auth-service/auth.service';
+import { AuthService, Color } from 'src/app/core/services/auth-service/auth.service';
 import { User } from 'src/app/shared/models/common';
 import { ActivatedRoute, Event, NavigationEnd, NavigationStart, Router } from '@angular/router';
 
@@ -34,6 +34,8 @@ export class ChatComponent implements OnInit {
 
   public chats = [];
 
+  public color: Color;
+  
   scrollToBottom(): void {
     try {
         this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
@@ -42,6 +44,7 @@ export class ChatComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.color = this.authService.colors;
 
 
    
@@ -81,15 +84,28 @@ export class ChatComponent implements OnInit {
            
             this.authService.getUser(userId).pipe(
               tap(user => {
+                console.log("Hello");
 
                 element2 = {...element2, ...user };
                 this.chats.push(element2)
-              }
+
+                console.log(this.chats);
+                
+                this.chats = this.chats.sort((a, b) => {
+                  return a?.messages[a?.messages?.length - 1]?.timestamp?.seconds > b?.messages[b?.messages?.length - 1]?.timestamp?.seconds ? -1 : 1;
+                });
+
+              
+              } 
               )).subscribe();
 
       
             } else {
               y.messages = element2.messages;
+
+              this.chats = this.chats.sort((a, b) => {
+                return a?.messages[a?.messages?.length - 1]?.timestamp?.seconds > b?.messages[b?.messages?.length - 1]?.timestamp?.seconds ? -1 : 1;
+              });
             }
 
           
@@ -135,6 +151,7 @@ export class ChatComponent implements OnInit {
       .where('user_1', '==', this.route.snapshot.params.id.toString())
       .get()
       .then(function(querySnapshot) {
+        console.log("Hello");
 
         if(typeof querySnapshot?.docs[0]?.id != 'undefined') id = querySnapshot.docs[0].id;
 
@@ -158,6 +175,7 @@ export class ChatComponent implements OnInit {
         .where('user_2', '==', this.route.snapshot.params.id.toString())
         .get()
         .then(function(querySnapshot) {
+          console.log("Hello");
 
           if(typeof querySnapshot?.docs[0]?.id != 'undefined') id = querySnapshot.docs[0].id;
 
@@ -167,6 +185,7 @@ export class ChatComponent implements OnInit {
           if(data[0]?.user_2 == this.route.snapshot.params.id.toString() || data[0]?.user_1 == this.route.snapshot.params.id.toString()) {
             if(data[0]?.messages) this.bucketListArray = data[0];
             console.log(this.bucketListArray);
+            
 
             if(typeof id != 'undefined') this.chatId = id;
           }

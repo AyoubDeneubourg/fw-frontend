@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { AuthService } from 'src/app/core/services/auth-service/auth.service';
 
 
 @Component({
@@ -12,9 +13,16 @@ export class MainNavbarsComponent {
 
   public dropdownActive: boolean = false;
 
+  constructor(private authService: AuthService) {}
 
   public dropdownToggle() {
     this.dropdownActive = !this.dropdownActive;
   }
 
+
+  public logout(): void {
+
+    this.authService.logout();
+
+  }
 }

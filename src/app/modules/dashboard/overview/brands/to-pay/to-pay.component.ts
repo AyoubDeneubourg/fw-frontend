@@ -20,7 +20,20 @@ export class BrandToPayComponent implements OnInit {
   
 
   
+  public partnership;
+  showDetailModal = false;
+  
 
+  openDetailModal(partnership){
+    console.log(partnership);
+    this.partnership = partnership;
+    this.showDetailModal = true;
+  }
+
+
+  closeDetailModal() {
+    this.showDetailModal = false;
+  }
 
   @Output()
   refreshData: EventEmitter<any> = new EventEmitter();

@@ -1,20 +1,21 @@
-<app-main-navbars [title]="'profile.title'">
+<ng-container *transloco="let t; read: 'profile'">
+  <app-main-navbars [title]="'profile.title'">
 
 
   <div class="flex m-2 ml-4 flex-wrap">
     <div class="img w-400 h-72 mr-10">
-      <img class="img max-h-72 mx-auto" src="https://fw-api-gateway.herokuapp.com/api/image/{{profile?.id}}" alt="">
+      <img *ngIf="profile?.id" class="img max-h-72 mx-auto" src="https://fw-api-gateway.herokuapp.com/api/image/{{profile?.id}}" alt="">
 
       <ng-container *ngIf="!isOther && profile">
         <input (change)="fileChange($event)"  type="file" name="changeProfile" id="changeProfile" hidden>
-        <label  class="w-300 text-xs mb-2 font-semibold" for="changeProfile">Change picture</label>
+        <label  class="w-300 text-xs mb-2 font-semibold" for="changeProfile"> {{ t('changeProfile') }}</label>
       </ng-container>
 
     </div>
 
 
     <div class="flex flex-col m-2" [class.flex-1]="!isOther">
-      <h3 class="text-3xl">{{ this.profile?.firstName }} </h3>
+      <h3 class="text-3xl">{{ this.profile?.firstName }} {{ this.profile?.lastName }} </h3>
       <h4 class="text-xl flex-1">{{ this.profile?.headTitle }}</h4>
 
       <div class="flex text-base">
@@ -36,13 +37,13 @@
     </div>
 
     <div class="flex-col" *ngIf="isOther">
-      <div [routerLink]="['/offer/new', profile?.id]"  class="p-2 mb-2 text-center rounded-md bg-{{color}} text-white font-semibold">Send Offer</div>
-      <div [routerLink]="['/chat', profile?.id]"  class="p-2 text-center rounded-md bg-{{color}} text-white font-semibold">Send Message</div>
+      <div *ngIf="profile?.userType == 'INFLUENCER' && user?.userType !== 'INFLUENCER' " [routerLink]="['/offer/new', profile?.id]"  class="mb-2 bg-{{color}} text-center rounded-sm font-semibold text-white text-sm py-1.5 px-3 shadow hover:shadow-lg ease-linear cursor-pointer transition-all duration-150 m-2">{{ t('sendOffer') }}</div>
+      <div [routerLink]="['/chat', profile?.id]"  class="bg-{{color}} text-center rounded-sm font-semibold text-white text-sm py-1.5 px-3 shadow hover:shadow-lg ease-linear cursor-pointer transition-all duration-150 m-2">{{ t('sendMessage') }}</div>
     </div>
     
     
     <div *ngIf="!isOther">
-      <div [routerLink]="['/profile/edit']"  class="p-2 rounded-md bg-{{color}} text-white font-semibold">Edit profile</div>
+      <div [routerLink]="['/profile/edit']"  class="bg-{{color}} text-center rounded-sm font-semibold text-white text-sm py-1.5 px-3 shadow hover:shadow-lg ease-linear cursor-pointer transition-all duration-150 m-2">{{ t('editProfile') }}</div>
     </div>
     
     
@@ -60,7 +61,7 @@
     <div class="flex flex-col m-2 w-1/3">
 
       <ng-container #socialMedia>
-        <h3 class="text-xl mb-2">Social Media</h3>
+        <h3 class="text-xl mb-2">{{ t('socialMedia') }}</h3>
 
         <ng-container *ngFor="let socialMedia of profile?.socialMedia">
 
@@ -76,7 +77,7 @@
 
 
       <ng-container #languages>
-        <h3 class="mt-5 text-xl mb-2">Languages</h3>
+        <h3 class="mt-5 text-xl mb-2">{{ t('languages') }}</h3>
 
         <div class="flex">
           <ng-container *ngFor="let language of profile?.languages">
@@ -91,7 +92,7 @@
 
 
       <ng-container #countries>
-        <h3 class="mt-3 text-xl mb-2 font-semibold">Countries</h3>
+        <h3 class="mt-3 text-xl mb-2">{{ t('countries') }}</h3>
 
         <div class="flex flex-wrap">
           <ng-container *ngFor="let country of profile?.countries">
@@ -106,7 +107,7 @@
 
 
       <ng-container #sectors>
-        <h3 class="mt-3 text-xl mb-2">Sectors</h3>
+        <h3 class="mt-3 text-xl mb-2">{{ t('sectors') }}</h3>
 
         <div class="flex flex-wrap">
           <ng-container *ngFor="let sector of profile?.sectors">
@@ -122,7 +123,7 @@
 
 
     <div class="w-1/3">
-      <h3 class="mt-3 text-xl mb-2 ">About</h3>
+      <h3 class="mt-3 text-xl mb-2 ">{{ t('about') }}</h3>
       <p class="mr-5 break-all"> {{profile?.description}}</p>
     </div>
 
@@ -132,3 +133,5 @@
   </div>
 
 </app-main-navbars>
+
+</ng-container>

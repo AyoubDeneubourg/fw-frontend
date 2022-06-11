@@ -35,8 +35,8 @@ export class ProfileService {
     }
 
 
-    public updateBrandProfile(user: Profile): Observable<any> {
-      return this.http.put(`${this.apiUrl}/api/profile/brand/${user.id}`, user, getHeaders());
+    public updateBrandProfile(user: Profile, userId: any): Observable<any> {
+      return this.http.put(`${this.apiUrl}/api/profile/brand/${userId}`, user, getHeaders());
     
       }
 

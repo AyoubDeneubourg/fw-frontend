@@ -1,5 +1,8 @@
 import { Component, ElementRef, OnInit, ViewChild, AfterViewInit} from '@angular/core';
+import { TranslocoService } from '@ngneat/transloco';
+import { take, tap } from 'rxjs/operators';
 import { AuthService } from 'src/app/core/services/auth-service/auth.service';
+import { RatingService } from 'src/app/core/services/profile/rating-service.service';
 import { StatsService } from 'src/app/core/services/stats-service/stats.service';
 import { Statistics, User } from 'src/app/shared/models/common';
 
@@ -13,7 +16,10 @@ export class StatisticsComponent implements OnInit  {
 
   public statistics: Statistics;
 
-  constructor(private statsService: StatsService, private authService: AuthService) {
+  constructor(private statsService: StatsService, 
+    private rateService: RatingService, 
+    private authService: AuthService,
+    private translocoService: TranslocoService) {
   }
 
   ngOnInit(): void {
@@ -27,23 +33,39 @@ export class StatisticsComponent implements OnInit  {
       this.data2[2].content = "€" + this.statistics.totalMoneyEarnedWeek;
 
     });
+
+    this.rateService.getAverageInfluencerRating(user.id).subscribe(data => {
+      console.log(data);
+      this.data1.title = data.toString();
+    });
+
+
+    
+    this.translocoService.selectTranslate('statistics.rating')
+    .pipe(
+      take(1),
+      tap(value => {
+        this.data1.content = value;
+    })).subscribe();
+
+    
   }
 
   public data1 = {
-    'title': '5 partnerships this month',
+    'title': '',
     'content': '',
   }
 
   public data2 = [{
-    'title': 'Total earned',
+    'title': 'total',
     'content': ' ',
   },
   {
-    'title': 'Earned this month',
+    'title': 'month',
     'content': ' ',
   },
   {
-    'title': 'Earned this week',
+    'title': 'week',
     'content': ' ',
   }]
   

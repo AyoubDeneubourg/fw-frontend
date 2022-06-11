@@ -6,8 +6,8 @@
         <ng-container *ngIf="actualPage == i">
 
             <div class="flex-1"></div>
-            <div class="text-2xl text-center">{{ item.title }}</div>
-            <div class="text-base text-center">{{ item.content }}</div>
+            <div class="text-2xl text-center">{{ 'slideCard.' + item.title | transloco }}</div>
+            <div class="text-base text-center">{{ item.content  }}</div>
             <div class="flex-1"></div>
 
         </ng-container> 

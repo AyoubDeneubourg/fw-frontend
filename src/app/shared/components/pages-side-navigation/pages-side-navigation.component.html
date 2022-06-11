@@ -5,7 +5,7 @@
 
     <ng-container *ngIf="direction === 'Right'">
       <p class="my-auto mr-2 text-white text-right flex-1" [class.font-semibold]="page.currentStatus === 'Active'">
-        {{ page.title | transloco }}
+        {{ 'sideNavigation.' + page.title | transloco }}
       </p>
     </ng-container>
 
@@ -24,7 +24,7 @@
 
     <ng-container *ngIf="direction === 'Left'">
       <p class="my-auto ml-2 text-white" [class.font-semibold]="page.currentStatus === 'Active'">
-        {{ page.title | transloco }}
+        {{ 'sideNavigation.' + page.title | transloco }}
       </p>
     </ng-container>
 

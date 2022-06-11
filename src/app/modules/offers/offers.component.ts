@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
@@ -13,6 +14,7 @@ import { PageNavigation } from 'src/app/shared/models/pagination';
 import { dateAfterNow } from 'src/app/shared/static/forms/date-after-now-validation';
 import { dateBeforeDate } from 'src/app/shared/static/forms/date-before-date-validation';
 import { minOneChecked } from 'src/app/shared/static/forms/min-one-true-validation';
+import { isNotNullOrUndefined } from 'src/app/shared/static/utils/is-null-or-undefined';
 
 @Component({
   selector: 'app-offers',
@@ -27,6 +29,8 @@ export class OffersComponent implements OnInit {
   public allowToGo: number = 1;
 
 
+  public noFileUploaded: boolean = false;
+
   public socialMediaArray = SocialMediaArray;
 
   public socialMediaDetailsValid: boolean = true;
@@ -40,27 +44,27 @@ export class OffersComponent implements OnInit {
 
   public allPages: PageNavigation[] = [
     {
-      title: 'Social Media',
+      title: 'offers.socialMedia',
       currentStatus: 'Active',
     },
     {
-      title: 'Amounts',
+      title: 'offers.amounts',
       currentStatus: 'Future',
     },
     {
-      title: 'Dates',
+      title: 'offers.dates',
       currentStatus: 'Future',
     },
     {
-      title: 'Description',
+      title: 'offers.description',
       currentStatus: 'Future',
     },
     {
-      title: 'Upload',
+      title: 'offers.upload',
       currentStatus: 'Future',
     },
     {
-      title: 'Confirm',
+      title: 'offers.confirm',
       currentStatus: 'Future',
     }
   ];
@@ -70,6 +74,7 @@ export class OffersComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, 
     private offerService: OffersService, 
     private route: ActivatedRoute,
+    private location: Location,
     private router: Router,
     
     private authService: AuthService) { }
@@ -81,16 +86,28 @@ export class OffersComponent implements OnInit {
 
      this.authService.loggedInUser$.subscribe(data => {
       console.log(data);
+      if(data.userType == 'INFLUENCER') {
+        console.log('Influencers are not authorized to send offers.')
+
+        this.router.navigateByUrl('/dashboard');
+
+      }
     });
 
     this.buildForm();
 
 
+    console.log(this.influencerId);
     this.authService.getInfluencer(this.influencerId).pipe(
       tap(data => {
+        console.table(data);
       this.influencerProfile = {...data.user, ...data.influencer};
 
       console.log(this.influencerProfile);
+      if(!this.influencerProfile.socialMedia?.length || (!this.influencerProfile.postPrice && !this.influencerProfile.highlightPrice && !this.influencerProfile.storyPrice)) {
+        console.log('This influencer has no social media or no prices.')
+        this.router.navigateByUrl('/dashboard');
+      }
     }), catchError(err => {
       this.router.navigateByUrl('/dashboard');
       return of(err);
@@ -105,6 +122,12 @@ export class OffersComponent implements OnInit {
 
   
   
+  public returnBack() {
+
+    this.location.back();
+
+
+  }
 
 
 
@@ -133,7 +156,7 @@ export class OffersComponent implements OnInit {
       p3: this.formBuilder.group({
 /*         startDate: ['2022-05-29', [Validators.required]],
         endDate: ['2022-05-29', [Validators.required]], */
-        startDate: ['2022-06-10', [Validators.required, dateAfterNow()]],
+        startDate: ['', [Validators.required, dateAfterNow()]],
         endDate: ['', [Validators.required, dateBeforeDate("startDate")]], 
       }),
 
@@ -206,7 +229,7 @@ export class OffersComponent implements OnInit {
     }
 
     if (page === 5) {
-      if (this.page1.valid && this.checkSocialMediaDetailsValid() && this.page3.valid && this.page4.valid) {
+      if (this.page1.valid && this.checkSocialMediaDetailsValid() && this.page3.valid && this.page4.valid ) {
         this.setCurrentPages(5);
 
       } else {
@@ -218,12 +241,15 @@ export class OffersComponent implements OnInit {
 
 
     if (page === 6) {
-      if (this.page1.valid && this.checkSocialMediaDetailsValid() && this.page3.valid && this.page4.valid && this.page5.valid) {
+      console.log(this.formData.getAll('file'));
+
+      if (this.page1.valid && this.checkSocialMediaDetailsValid() && this.page3.valid && this.page4.valid && this.page5.valid && this.formData.getAll('file').length) {
         this.setCurrentPages(6);
 
       } else {
 
         this.goToPage(5);
+        this.noFileUploaded = true;
         this.offerFormGroup.controls[Object.keys(this.offerFormGroup.controls)[this.actualPage - 1]].markAllAsTouched();
       }
     }
@@ -273,7 +299,16 @@ export class OffersComponent implements OnInit {
 
 
       this.offerService.createOffer(OFFER).subscribe(
-        (response: Offer) => {
+        (response: any) => {
+          console.log(response);
+
+          this.offerService.postFile(this.formData, response).subscribe(
+            (response: any) => {
+              console.log(response);
+
+            }
+          );
+
 
          this.router.navigate(['/dashboard']);
         },
@@ -308,7 +343,10 @@ export class OffersComponent implements OnInit {
             name: this.socialMediaArray[controlIndex],
             posts: 0,
             highlights: 0,
-            stories: 0
+            stories: 0,
+            highlightPrice: this.influencerProfile.highlightPrice,
+            storyPrice: this.influencerProfile.storyPrice,
+            postPrice: this.influencerProfile.postPrice
           });
          }
       }

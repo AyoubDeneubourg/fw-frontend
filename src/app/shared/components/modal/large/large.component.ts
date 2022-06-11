@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AuthService, Color } from 'src/app/core/services/auth-service/auth.service';
 
 @Component({
   selector: 'app-modal-large',
@@ -25,9 +26,13 @@ export class LargeComponent implements OnInit {
   @Input()
   data;
 
-  constructor() { }
+
+  public color: Color;
+
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
+    this.color = this.authService.colors;
   }
 
 }

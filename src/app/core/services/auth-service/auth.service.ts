@@ -43,6 +43,8 @@ export class AuthService {
 
   public cache: any = {
     'getUser': {},
+    'getInfluencer': {},
+    'getBrand': {},
   };
 
   public getUser(id: string): Observable<any> {
@@ -70,7 +72,7 @@ export class AuthService {
   
 
   public login(loginData: LoginData): Observable<any> {
-
+    
     return this.http.post<LoginData>(`${this.apiUrl}/api/login`, loginData, { observe: 'response' })
       .pipe(
         tap((response) => {
@@ -89,34 +91,37 @@ export class AuthService {
 
 
   public getInfluencer(userId: number): Observable<any> {
-    console.log(userId)
-    if (this.loggedInInfluencer) {
 
-      console.log('no http call')
-      return this.loggedInInfluencer$ as Observable<Influencer>;
+    if(this.cache?.getInfluencer[userId]) {
+
+    return of(this.cache.getInfluencer[userId]);
+
     } else {
 
-      // set influence ???
-      return this.http.get<any>(`${this.apiUrl}/api/influencer/${userId}`, getHeaders());
+      return this.http.get<any>(`${this.apiUrl}/api/influencer/${userId}`, getHeaders()).pipe(
+        tap((user) => {
+          this.cache.getInfluencer[userId] = user;
+        }
+
+      ));
 
     }
   }
 
   public getBrand(userId: number): Observable<any> {
-    if (this.loggedInBrand) {
+    if (this.cache?.getBrand[userId]) {
 
-      console.log('no http call')
-      return this.loggedInBrand$ as Observable<Brand>;
+      return of(this.cache.getBrand[userId]);
     } else {
-            // set brand ???
+           
+    return this.http.get<any>(`${this.apiUrl}/api/brand/${userId}`, getHeaders()).pipe(
+      tap((user) => {
+        this.cache.getBrand[userId] = user;
+      }
 
-    return this.http.get<any>(`${this.apiUrl}/api/brand/${userId}`, getHeaders());
+    ));
   }
   }
-
-
-
-
 
 
   public colors: Color;

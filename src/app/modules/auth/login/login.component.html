@@ -1,3 +1,5 @@
+<ng-container *transloco="let t; read: 'login'">
+
 <div class="flex flex-row h-screen">
   <div class="w-2/3 bg-white flex items-center">
     <div class="m-auto items-center">
@@ -8,12 +10,12 @@
         <div formGroupName="p1" class="flex flex-col w-500">
 
           <div class="mb-5">
-            <h2 class="flex flex-col text-4xl font-semibold">Welcome</h2>
+            <h2 class="flex flex-col text-4xl font-semibold">{{ t('title') }}</h2>
           </div>
 
 
 
-          <label for="email" class="font-semibold mb-1">Username</label>
+          <label for="email" class="font-semibold mb-1">{{ t('username') }}</label>
           <input id="email" class="border py-1 px-3 outline-none rounded-sm shadow-md" placeholder="johndoe"
             formControlName="email" type="text" />
 
@@ -25,7 +27,7 @@
           </ng-container>
 
 
-          <label for="password" class="font-semibold mb-1">Password</label>
+          <label for="password" class="font-semibold mb-1">{{ t('password') }}</label>
           <input id="password" class="border  py-1 px-4 outline-none rounded-sm shadow-md" placeholder="••••••••••••"
             formControlName="password" type="password" />
 
@@ -46,9 +48,9 @@
 
           <div class="flex my-4">
             <button type="submit"
-              class="shadow-md cursor-pointer py-2  px-12 rounded-md text-white bg-gray-800">Login</button>
+              class="shadow-md cursor-pointer py-2  px-12 rounded-md text-white bg-gray-800">{{ t('login') }}</button>
             <div class="flex-1"></div>
-            <div class="m-auto cursor-pointer  font-bold hover:border-b border-black ">Forgot password?</div>
+            <div class="m-auto cursor-pointer  font-bold hover:border-b border-black ">{{ t('forgot') }}</div>
           </div>
 
 
@@ -62,9 +64,9 @@
 
 
 
-      <p>Don't have an account?
+      <p>{{ t('noAccount') }}
         <span class="font-bold cursor-pointer hover:border-b border-black" [routerLink]="['/register']">
-          Open an account
+          {{ t('openAccount') }}
         </span>
       </p>
 
@@ -93,3 +95,5 @@
 
 
 </div>
+
+</ng-container>

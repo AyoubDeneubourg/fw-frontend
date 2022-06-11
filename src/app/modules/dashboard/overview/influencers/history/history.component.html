@@ -1,4 +1,4 @@
-<ng-container *transloco="let t; read: 'dashboard.overview.upcoming'">
+<ng-container *transloco="let t; read: 'dashboard.overview'">
 
 
     <form class="flex mb-2" [formGroup]="sortingFormGroup">
@@ -13,7 +13,7 @@
           : 'btn-unselected-animation-blue'">
             <input id="done" class="py-1 hidden px-3 outline-none rounded-sm shadow-md"
               [formControl]="done" type="checkbox" />
-            <p class="relative text-sm inline-block capitalize z-50">Done</p>
+            <p class="relative text-sm inline-block capitalize z-50">{{ t('done') }}</p>
   
           </label>
   
@@ -26,7 +26,7 @@
   
             <input id="declined" class="py-1 hidden px-3 outline-none rounded-sm shadow-md"
               [formControl]="declined" type="checkbox" />
-              <p class="relative text-sm inline-block capitalize z-50">Declined</p>
+              <p class="relative text-sm inline-block capitalize z-50">{{ t('declined') }}</p>
             </label>
   
         </div>
@@ -39,17 +39,17 @@
       <div formGroupName="sortTypes">
   
         <select (change)="this.filterAndSort()" formControlName="type" class="border px-2 py-1 rounded mr-2">
-          <option value="new">Newest</option>
-          <option value="time">Time</option>
-          <option value="client">Client</option>
-          <option value="amount">Amounts</option>
-          <option value="status">Status</option>
+          <option value="new">{{ t('newest') }}</option>
+          <option value="time">{{ t('time') }}</option>
+          <option value="client">{{ t('client') }}</option>
+          <option value="amount">{{ t('amount') }}</option>
+          <option value="status">{{ t('status') }}</option>
         </select>
   
   
         <select (change)="this.filterAndSort()" formControlName="order" class="border px-2 py-1 rounded mr-2">
-          <option value="ascending">Ascending</option>
-          <option value="descending">Descending</option>
+          <option value="ascending">{{ t('ascending') }}</option>
+          <option value="descending">{{ t('descending') }}</option>
         </select>
   
       </div>
@@ -79,7 +79,7 @@
           <td>
                 <div (click)="null" class=" flex w-2/3  bg-gray-200 rounded-md text-sm p-1 font-semibold">
                   <span class="my-auto mx-2 rounded-full status status-{{item.status}}"> </span>
-                  <span>{{ item.status }}</span>
+                  <span>{{  t(item.status) }}</span>
                 </div>
           </td>
           <td routerLink="/profile/{{item.brandId}}">{{ item.brandName }}</td>
@@ -89,15 +89,19 @@
           <td>{{ item.socialMediaDetails | socialMediaCounter : 'stories' }}</td>
           <td>{{ item.socialMediaDetails | socialMediaCounter : 'highlights' }}</td>
           <td>€{{ item.socialMediaDetails | socialMediaPriceCounter : 'total' }}</td>
-          <td>{{ item.startDate }} - {{ item.endDate }}</td>
-          <td> <span (click)="openDetailModal(item)" class="m-0  bg-blue  text-center rounded-sm font-semibold text-white text-sm py-1.5 px-3 shadow hover:shadow-lg ease-linear cursor-pointer transition-all duration-150">View Details</span></td>
+          <td>
+            <div class=" w-fit  bg-gray-200 rounded-md text-sm p-1 px-3 font-semibold">
+              {{ item.startDate }} - {{ item.endDate }}
+            </div>
+          </td>
+          <td> <span (click)="openDetailModal(item)" class="m-0  bg-blue  text-center rounded-sm font-semibold text-white text-sm py-1.5 px-3 shadow hover:shadow-lg ease-linear cursor-pointer transition-all duration-150">{{ t('viewDetails') }}</span></td>
 
         </tr>
   
       </tbody>
     </table>
 
-    <app-modal-large [translate]="'modals.upcomingEvents.details'" [data]="partnership" (closeModal)="closeDetailModal()" [showModal]="showDetailModal"></app-modal-large>
+    <app-modal-large [translate]="'modals.details'" [data]="partnership" (closeModal)="closeDetailModal()" [showModal]="showDetailModal"></app-modal-large>
 
   </ng-container>
   

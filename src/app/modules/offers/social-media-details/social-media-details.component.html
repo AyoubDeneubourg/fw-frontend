@@ -1,42 +1,42 @@
 <div class="bg-{{color}} p-4 rounded-md mb-2 overflow-hidden">
   <div (click)="changeCollapsed()" class="flex overflow-hidden z-50">
     <h4 class="text-xl mb-3 text-white flex-1 capitalize">{{ socialMediaDetails.name }}</h4>
-    <i *ngIf="collapsed" class="fa-solid fa-angle-down"></i>
-    <i *ngIf="!collapsed" class="fa-solid fa-angle-up"></i>
+    <i *ngIf="collapsed" class="fa-solid fa-angle-down cursor-pointer"></i>
+    <i *ngIf="!collapsed" class="fa-solid fa-angle-up cursor-pointer"></i>
   </div>
 
   <div class="z-0" [class.collapseItem]="collapsed" [class.collapseItemReverse]="!collapsed">
     <div class="flex">
-      <p class="flex-1 text-white">Posts</p>
+      <p class="flex-1 text-white">{{ 'common.posts' | transloco }}</p>
       <div>
         <span (click)="addOrRemoveSocialMediaDetails.emit({socialMedia: socialMediaDetails.name, type: 'posts', action: '-'})"
-          class="bg-light-{{color}} m-auto justify-center px-2 rounded-sm font-bold text-sm">-</span>
+          class="bg-light-{{color}} m-auto justify-center px-2 rounded-sm font-bold text-sm cursor-pointer hover:shadow-md">-</span>
         <span class="mx-2 text-white">{{ socialMediaDetails.posts }}</span>
         <span (click)="addOrRemoveSocialMediaDetails.emit({socialMedia: socialMediaDetails.name, type: 'posts', action: '+'})"
-          class="bg-light-{{color}} m-auto justify-center px-2 rounded-sm font-bold text-sm">+</span>
+          class="bg-light-{{color}} m-auto justify-center px-2 rounded-sm font-bold text-sm cursor-pointer hover:shadow-md">+</span>
       </div>
     </div>
 
 
     <div class="flex my-3">
-      <p class="flex-1 text-white">Stories</p>
+      <p class="flex-1 text-white">{{ 'common.stories' | transloco }}</p>
       <div>
         <span (click)="addOrRemoveSocialMediaDetails.emit({socialMedia: socialMediaDetails.name, type: 'stories', action: '-'})"
-          class="bg-light-{{color}} m-auto justify-center px-2 rounded-sm font-bold text-sm">-</span>
+          class="bg-light-{{color}} m-auto justify-center px-2 rounded-sm font-bold text-sm cursor-pointer hover:shadow-md">-</span>
         <span class="mx-2 text-white">{{ socialMediaDetails.stories }}</span>
         <span (click)="addOrRemoveSocialMediaDetails.emit({socialMedia: socialMediaDetails.name, type: 'stories', action: '+'})"
-          class="bg-light-{{color}} m-auto justify-center px-2 rounded-sm font-bold text-sm">+</span>
+          class="bg-light-{{color}} m-auto justify-center px-2 rounded-sm font-bold text-sm cursor-pointer hover:shadow-md">+</span>
       </div>
     </div>
 
     <div class="flex">
-      <p class="flex-1 text-white">Highlights</p>
+      <p class="flex-1 text-white">{{ 'common.highlights' | transloco }}</p>
       <div>
         <span (click)="addOrRemoveSocialMediaDetails.emit({socialMedia: socialMediaDetails.name, type: 'highlights', action: '-'})"
-          class="bg-light-{{color}} m-auto justify-center px-2 rounded-sm font-bold text-sm">-</span>
+          class="bg-light-{{color}} m-auto justify-center px-2 rounded-sm font-bold text-sm cursor-pointer hover:shadow-md">-</span>
         <span class="mx-2 text-white">{{ socialMediaDetails.highlights }}</span>
         <span (click)="addOrRemoveSocialMediaDetails.emit({socialMedia: socialMediaDetails.name, type: 'highlights', action: '+'})"
-          class="bg-light-{{color}} m-auto justify-center px-2 rounded-sm font-bold text-sm">+</span>
+          class="bg-light-{{color}} m-auto justify-center px-2 rounded-sm font-bold text-sm cursor-pointer hover:shadow-md">+</span>
       </div>
     </div>
   </div>

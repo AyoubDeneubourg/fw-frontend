@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AuthService, Color } from 'src/app/core/services/auth-service/auth.service';
+import { COUNTRIES } from 'src/app/shared/data/countries';
 
 @Component({
   selector: 'app-search-card',
@@ -20,4 +21,6 @@ export class SearchCardComponent implements OnInit {
     this.color = this.authService.colors;
   }
 
+
+  public countries = COUNTRIES;
 }

@@ -2,8 +2,10 @@ import { Options } from '@angular-slider/ngx-slider';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { take, tap } from 'rxjs/operators';
 
 import { AuthService, Color } from 'src/app/core/services/auth-service/auth.service';
+import { RatingService } from 'src/app/core/services/profile/rating-service.service';
 import { SearchService } from 'src/app/core/services/search/search.service';
 import { UserPreferencesService } from 'src/app/core/services/user-preferences/user-preferences.service';
 import { COUNTRIES } from 'src/app/shared/data/countries';
@@ -39,15 +41,15 @@ export class SearchComponent implements OnInit {
       return '#4cade6';
     },
     floor: 0,
-    ceil: 1000,
+    ceil: 2500,
     step: 10,
     translate: (value: number): string => {
-      return '$' + value;
+      return '€' + value;
     }
   };
 
-  minimumFollowers: number = 1000;
-  maximumFollowers: number = 10000;
+  minimumFollowers: number = 0;
+  maximumFollowers: number = 100000;
   followersOptions: Options = {
     getSelectionBarColor: (percentage: number) => {
       return '#4cade6';
@@ -59,7 +61,7 @@ export class SearchComponent implements OnInit {
       return '#4cade6';
     },
     floor: 0,
-    ceil: 15000,
+    ceil: 500000,
     step: 100,
   };
 
@@ -93,13 +95,13 @@ export class SearchComponent implements OnInit {
     private authService: AuthService, 
     private userPreferencesService: UserPreferencesService,
     private router: Router,
-    private searchService: SearchService) { }
+    private searchService: SearchService,
+    private rateService: RatingService) { }
 
   ngOnInit(): void {
     this.color = this.authService.colors;
     this.setOptionsColors();
     this.buildForm();
-    this.setPreferences();
     this.getInfluencers();
   }
 
@@ -128,7 +130,22 @@ export class SearchComponent implements OnInit {
     this.searchService.getInfluencers().subscribe(
       (data) => {
         this.results = data;
+        this.setPreferences();
         this.filterAndSort();
+        data.forEach((element, index) => {
+          this.rateService.getAverageInfluencerRating(element.user.id).pipe(
+            take(1),
+            tap(rate => {
+              if(rate) {
+                this.results[index].rate = rate;
+
+              } else {
+                this.results[index].rate = 0;
+              }
+              console.log(this.results);
+            }
+          )).subscribe()
+        });
       }
     );
   }
@@ -198,7 +215,12 @@ export class SearchComponent implements OnInit {
 
   public filterAndSort() {
 
+    console.log("here");
+
+    let input = document.getElementById('searchInput') as HTMLInputElement;
+    
     this.newResults = this.results;
+
 
     let socialMediaArrayFiltered = [];
     let noSocialMediaChecked: boolean = true;
@@ -241,68 +263,91 @@ export class SearchComponent implements OnInit {
 
     if(noSectorsChecked) sectorsArrayFiltered = [...socialMediaArrayFiltered];
 
-    this.newResults = sectorsArrayFiltered;
-    this.newResults?.sort((a, b) => {
-/*       if (this.order.value === 'ascending') { */
+
+    let budgetArrayFiltered = [];
+    let noBudgetChecked: boolean = true;
+
+    sectorsArrayFiltered.forEach(profile => {
+
+        if(  (profile.influencer.storyPrice >= this.minimumBudget && profile.influencer.storyPrice <= this.maximumBudget)
+          || (profile.influencer.postPrice >= this.minimumBudget && profile.influencer.postPrice <= this.maximumBudget)
+          || (profile.influencer.highlightPrice >= this.minimumBudget && profile.influencer.highlightPrice <= this.maximumBudget)) {
+
+            budgetArrayFiltered.push(profile);
+            noBudgetChecked = false;
+        }
+  
+    
+      });
+
+      if(noBudgetChecked) budgetArrayFiltered = [...sectorsArrayFiltered];
+
+
+
+
+
+    let followersArrayFiltered = [];
+    let noFollowersChecked: boolean = true;
+
+    budgetArrayFiltered.forEach(profile => {
+
+        if( profile.influencer.followers >= this.minimumFollowers && profile.influencer.followers <= this.maximumFollowers) {
+
+            followersArrayFiltered.push(profile);
+            noFollowersChecked = false;
+        }
+  
+    
+      });
+
+      if(noBudgetChecked) followersArrayFiltered = [...budgetArrayFiltered];
+
+
+
+      let x = [];
+
+      if(input.value.trim() !== '') {
+        
+        followersArrayFiltered.forEach(
+          (element) => {
+            let firstLastName = element.user.firstName.toLowerCase() + " " + element.user.lastName.toLowerCase();
+            if(element.user.userName.toLowerCase().includes(input.value.toLowerCase()) || 
+            firstLastName.includes(input.value.toLowerCase())) {
+              x.push(element);
+            }
+          }
+        );
+        
+      } else {
+        x = [...followersArrayFiltered];
+      }
+
+      this.newResults = x;
+ /*     this.newResults?.sort((a, b) => {
+     if (this.order.value === 'ascending') { 
         return this.sort(a, b, 'ascending');
-/* 
+
       } else if (this.order.value === 'descending') {
         return this.sort(a, b, 'descending');
 
-      } */
+      } 
 
     });
-
+    */
   }
 
-
-  private sort(a: Offer | any, b: Offer | any, order: 'ascending' | 'descending'): number {
-
-    if (this.type.value === 'new') {
-      a = a.id;
-      b = b.id;
-
-    } else if (this.type.value === 'time') {
-      a = a.startDate;
-      b = b.startDate;
-
-    } else if (this.type.value === 'client') {
-      a = a.brandId;
-      b = b.brandId;
-
-    } else if (this.type.value === 'status') {
-      a = a.status;
-      b = b.status;
-
-    } else if (this.type.value === 'amount') {
-      let amountA = 0;
-      let amountB = 0;
-
-
-      a.socialMediaDetails.forEach((element: SocialMediaInformation) => {
-        amountA += element?.posts + element?.stories + element?.highlights;
-      });
-
-      b.socialMediaDetails.forEach((element: SocialMediaInformation) => {
-        amountB += element?.posts + element?.stories + element?.highlights;
-      });
-
-
-      a = amountA;
-      b = amountB;
-    }
-
-    if (b < a) return order === 'ascending' ? 1 : -1;
-    if (b > a) return order === 'ascending' ? -1 : 1;
-    return 0;
-
-  }
 
   public resetFilters() {
     this.searchFormGroup.reset();
     this.hoverStars = 0;
     this.clickedStars = 0;
-    this.gender.setValue('both');
+    this.minimumBudget = 0;
+    console.log(this.budgetOptions.ceil);
+    this.maximumBudget = this.budgetOptions.ceil;
+    console.log(this.maximumBudget);
+    this.minimumFollowers = 0;
+    this.maximumFollowers = this.followersOptions.ceil;
+    this.gender.setValue('any');
     this.filterAndSort();
 
   }
@@ -316,10 +361,57 @@ export class SearchComponent implements OnInit {
       return;
     }
     this.age?.setValue(searchPreferences?.age);
+
+    this.gender?.setValue(searchPreferences?.gender);
   
     // budget
     // followers
     // views
+
+    console.log(searchPreferences);
+
+
+    if(searchPreferences?.budget?.min && !searchPreferences?.budget?.max) {
+
+      this.budgetOptions.floor = (searchPreferences.budget.min / 2)
+      this.minimumBudget = searchPreferences.budget.min;
+
+      let maxBudget = 0;
+      this.results?.forEach(profile => {
+        if(profile.influencer.storyPrice > maxBudget) maxBudget = profile.influencer.storyPrice;
+        if(profile.influencer.highlightPrice > maxBudget)  maxBudget = profile.influencer.highlightPrice;
+        if(profile.influencer.postPrice > maxBudget) maxBudget = profile.influencer.postPrice;
+        
+      })
+
+      this.maximumBudget = maxBudget;
+
+
+    } else if(searchPreferences?.budget?.max && !searchPreferences?.budget?.min) {
+
+      this.budgetOptions.floor = 0;
+      this.maximumBudget = searchPreferences.budget.max;
+      this.minimumBudget = 0;
+
+
+    } else if(searchPreferences?.budget?.min && searchPreferences?.budget?.max) {
+
+
+      this.budgetOptions.floor = (searchPreferences.budget.min / 2)
+      this.minimumBudget = searchPreferences.budget.min;
+      this.maximumBudget = searchPreferences.budget.max;
+    }
+
+
+    if(searchPreferences.followers.min && searchPreferences.followers.min !== 0) {
+    //  this.followersOptions.floor = (searchPreferences.followers.min / 2)
+      this.minimumFollowers = searchPreferences.followers.min;
+    }
+
+    if(searchPreferences.followers.max && searchPreferences.followers.max !== 0) {
+    //  this.followersOptions.ceil = (searchPreferences.followers.max / 2)
+      this.maximumFollowers = searchPreferences.followers.max;
+    }
 
 
     this.gender?.setValue(searchPreferences?.gender);

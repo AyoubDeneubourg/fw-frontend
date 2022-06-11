@@ -1,21 +1,22 @@
-<div class="">
+<ng-container  *transloco="let t; read: 'dashboard.overview'">
 
-  <div class="flex p-5  border-{{color}}">
-    <p class="m-2 text-xl flex-1">Overview</p>
+
+  <div class="flex m-2 pt-6 border-{{color}}">
+    <p class=" text-xl flex-1">{{ t('overviewTitle') }}</p>
 
     <ng-container *ngIf="color == 'blue'">
 
 
     <p class="my-auto mx-2 text-black-animation cursor-pointer" (click)="changeActiveTab('1')" [ngClass]="active == '1' ? 'active-' + color: ''">
-      Upcoming Events
+      {{ t('upcomingEvents') }}
     </p>
 
     <p class="my-auto mx-2 text-black-animation cursor-pointer" (click)="changeActiveTab('2')" [ngClass]="active == '2' ? 'active-' + color: ''" >
-      Request
+      {{ t('requests') }}
     </p>
 
     <p class="my-auto mx-2  text-black-animation cursor-pointer" (click)="changeActiveTab('3')" [ngClass]="active == '3' ? 'active-' + color: ''">
-      History
+      {{ t('history') }}
     </p>
 
     </ng-container>
@@ -25,30 +26,30 @@
     <ng-container *ngIf="color == 'orange'">
 
       <p class="my-auto mx-2 text-black-animation cursor-pointer " (click)="changeActiveTab('1')" [ngClass]="active == '1' ? 'active-' + color: ''">
-        In progress
+        {{ t('progress') }}
       </p>
       <p class="my-auto mx-2 text-black-animation cursor-pointer" (click)="changeActiveTab('2')" [ngClass]="active == '2' ? 'active-' + color: ''" >
-        Requested
+        {{ t('requested') }}
       </p>
 
       <p class="my-auto mx-2 text-black-animation cursor-pointer" (click)="changeActiveTab('3')" [ngClass]="active == '3' ? 'active-' + color: ''">
-        To Pay
+        {{ t('pay') }}
       </p>
   
   
       <p class="my-auto mx-2 text-black-animation cursor-pointer" (click)="changeActiveTab('4')" [ngClass]="active == '4' ? 'active-' + color: ''">
-        History
+        {{ t('history') }}
       </p>
   
       </ng-container>
 
   </div>
 
-  <hr class="p-5 mx-6">
+  <hr class="p-5">
 
   
 
-  <div class="p-5 pt-0">
+  <ng-container class="p-5 pt-0">
 
     <ng-container *ngIf="color == 'blue'">
 
@@ -92,11 +93,12 @@
     </ng-container>
 
 
+  
+    
+    
+  </ng-container>
 
-
-
-  </div>
-
+</ng-container>
   
 
 

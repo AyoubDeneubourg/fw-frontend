@@ -34,13 +34,13 @@
 
     <div class="flex-1">
 
-    <h2 class="mb-6 font-semibold text-blue">Best Months</h2>
+    <h2 class="mb-6 font-semibold text-blue"> {{ 'statistics.bestMonths' | transloco }} </h2>
     <app-bar-vertical [statistics]="statistics"></app-bar-vertical>
   </div>
   
   <div class="flex-1 mt-10">
     
-    <h2 class="font-semibold text-blue">Most used Social Media</h2>
+    <h2 class="font-semibold text-blue">{{ 'statistics.mostUsed' | transloco }}</h2>
     
     <app-pie-chart [statistics]="statistics"></app-pie-chart>
     </div>

@@ -10,6 +10,7 @@ export type Influencer = {
     socialMedia: object[],
     sectors: object[],
     storyPrice: number,
+    followers: number,
     postPrice: number,
     highlightPrice: number,
     address: string,

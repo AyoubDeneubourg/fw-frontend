@@ -98,7 +98,20 @@ export class InProgressComponent implements OnInit {
     return this.sortingFormGroup.get('sortTypes.type');
   }
 
+  public partnership;
+  showDetailModal = false;
+  
 
+  openDetailModal(partnership){
+    console.log(partnership);
+    this.partnership = partnership;
+    this.showDetailModal = true;
+  }
+
+
+  closeDetailModal() {
+    this.showDetailModal = false;
+  }
 
 
 
@@ -133,6 +146,8 @@ export class InProgressComponent implements OnInit {
     });
 
   }
+
+
 
 
   private sort(a: Offer | any, b: Offer | any, order: 'ascending' | 'descending'): number {

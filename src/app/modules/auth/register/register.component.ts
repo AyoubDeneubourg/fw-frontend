@@ -36,27 +36,27 @@ export class RegisterComponent implements OnInit {
 
   public allPages: PageNavigation[] = [
     {
-      title: 'Account type',
+      title: 'register.accountType',
       currentStatus: 'Active',
     },
     {
-      title: 'Country',
+      title: 'register.country',
       currentStatus: 'Future',
     },
     {
-      title: 'Address',
+      title: 'register.address',
       currentStatus: 'Future',
     },
     {
-      title: 'Details',
+      title: 'register.details',
       currentStatus: 'Future',
     },
     {
-      title: 'Password',
+      title: 'register.password',
       currentStatus: 'Future',
     },
     {
-      title: 'Phone number',
+      title: 'register.phoneNumber',
       currentStatus: 'Future',
     }
   ];

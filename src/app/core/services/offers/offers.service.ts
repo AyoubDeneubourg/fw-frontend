@@ -23,6 +23,11 @@ export class OffersService {
   }
 
 
+  public postFile(formData, partnershipId) {
+    return this.http.post(`${this.apiUrl}/api/file/${partnershipId}`, formData, getHeaders());
+  }
+
+
   public acceptPartnership(id: number): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/api/partnership/accept/${id}`, getHeaders());
   }

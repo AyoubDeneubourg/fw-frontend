@@ -14,6 +14,7 @@ export type User = {
     country: string
     city?: string
     password?: string
+    gender?: any,
     phoneNumber?: number
     profilePicture?: string
     rating?: number

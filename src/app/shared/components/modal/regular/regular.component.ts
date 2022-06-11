@@ -10,6 +10,8 @@ export class RegularComponent implements OnInit {
   @Input()
   showModal: boolean;
 
+  @Input()
+  data;
 
   @Output()
   closeModal: EventEmitter<any> = new EventEmitter();

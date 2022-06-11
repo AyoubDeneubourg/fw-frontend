@@ -19,7 +19,6 @@ export class BarVerticalComponent implements OnInit {
   
     if(value !== undefined || typeof value !== 'undefined') {
       
-      console.log(value);
 
       let arr = [];
 
@@ -31,7 +30,6 @@ export class BarVerticalComponent implements OnInit {
         })
       }
  
-      console.log(arr);
 
       let x = arr.sort((a, b) => (a.name < b.name) ? -1 : 1);
 
@@ -57,7 +55,6 @@ export class BarVerticalComponent implements OnInit {
         "value": "0"
     })
 
-      console.log(x);
       this.single = y;
       this._statistics = y;
 

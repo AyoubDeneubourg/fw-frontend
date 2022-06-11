@@ -2,7 +2,7 @@
 
   <div class="flex flex-row">
 
-    <div class="w-300 left-bar ">
+    <div class="w-300 left-bar bg-{{color}} shadow-md z-10">
       <ng-container *ngFor="let user of chats">
 
 
@@ -12,7 +12,7 @@
       [class.bg-gray-100]=" authedUser.id == user.user_1 ? user.user_2 == routeId : user.user_1 == routeId">
 
         <div class="my-auto p-2 ">
-          <span class="bg-blue p-2 rounded-full">
+          <span class="bg-{{color}} p-2 rounded-full">
          
 
           </span>
@@ -20,7 +20,7 @@
         
         </div>
         <div class="flex flex-1 flex-col overflow-hidden">
-          <span class="font-semibold"> {{ user.firstName }}</span>
+          <span class="font-semibold "> {{ user.firstName }}</span>
           <span>{{ user?.messages[user?.messages?.length - 1]?.message.slice(0,20)}}</span>
         
         </div>
@@ -41,7 +41,7 @@
 
 
 
-    <div class="flex flex-1 bg-blue-50">
+    <div class="flex flex-1  bg-{{color}}-50">
       <div class="flex flex-1 flex-col">
         
 
@@ -49,7 +49,7 @@
       
           <ng-container *ngIf="user.user_1 == bucketListArray.user_1 && user.user_2 == bucketListArray.user_2">
       
-            <h1>{{ user.firstName }}</h1>
+            <h1 class="bg-{{color}} text-white p-2 text-xl font-semibold pl-4 shadow-md ">{{ user.firstName }}</h1>
             
           </ng-container>
         </ng-container>
@@ -107,7 +107,7 @@
             <img src="../../../assets/icons/socials/FACEBOOK.svg" alt="">
           </div>
 
-        <div class="py-2 px-4 rounded-md m-2 bg-blue text-white break-all">
+        <div class="py-2 px-4 rounded-md m-2 bg-{{color}} text-white break-all">
         {{ item.message }}
         <p class="text-xs mt-2 font-semibold text-white">
           {{ item.timestamp | firebaseTimeToNormalTime}}
@@ -129,10 +129,10 @@
    
 <div class="flex bg-white rounded-lg mx-16 my-4 shadow-md p-2">
 
-  <input (keyup.enter)="sendMessage()" name="" placeholder="Type your message here..." class="outline-none p-2 w-100  rounded-md" id="textAreaId" cols="30" rows="10"/>
+  <input (keyup.enter)="sendMessage()" name="" placeholder="{{ 'chat.placeholder' | transloco }}" class="outline-none p-2 w-100  rounded-md" id="textAreaId" cols="30" rows="10"/>
   
   
-  <i  (click)="sendMessage()"  class="mx-4 fa-solid my-auto text-2xl text-blue fa-circle-right"></i>
+  <i  (click)="sendMessage()"  class="mx-4 fa-solid my-auto text-2xl text-{{color}} fa-circle-right"></i>
 </div>
 </div>
 

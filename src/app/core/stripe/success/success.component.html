@@ -1,13 +1,19 @@
 <app-main-navbars [title]="'payment.success.title'">
 
 
-        <div class="f-page flex flex-col">
+  <div class="f-page flex flex-col">
 
-            <div class="flex-1"></div>
-            <p>zz</p>
-            <iframe src="https://embed.lottiefiles.com/animation/79952"></iframe>
-<!--             <iframe class="m-auto" src="https://embed.lottiefiles.com/animation/19230"></iframe>
- -->            <div class="flex-1"></div>
-        </div>
+    <div class="flex-1"></div>
+    <p class="m-auto text-2xl font-semibold ">{{ 'payment.success.text' | transloco }}</p>
+    <div class="flex-1"></div>
+    <iframe src="https://embed.lottiefiles.com/animation/79952"></iframe>
+    <div class="flex-1"></div>
+    <div class="m-auto">
+      <a href="/dashboard"
+        class="m-0  bg-orange  text-center rounded-sm font-semibold text-white py-1.5 px-3 shadow hover:shadow-lg ease-linear cursor-pointer transition-all duration-150">{{ 'payment.success.goBack' | transloco }}</a>
+    </div>
+    <div class="flex-1"></div>
+    <div class="flex-1"></div>
+  </div>
 
 </app-main-navbars>

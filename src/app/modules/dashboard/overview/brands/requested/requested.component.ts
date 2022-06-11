@@ -50,6 +50,22 @@ export class BrandRequestedComponent implements OnInit {
 
 
 
+  public partnership;
+  showDetailModal = false;
+  
+
+  openDetailModal(partnership){
+    console.log(partnership);
+    this.partnership = partnership;
+    this.showDetailModal = true;
+  }
+
+
+  closeDetailModal() {
+    this.showDetailModal = false;
+  }
+
+  
   public buildForm() {
 
     this.sortingFormGroup = this.formBuilder.group({

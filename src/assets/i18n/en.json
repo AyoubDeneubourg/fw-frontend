@@ -1,6 +1,69 @@
 {
   "title": "Bonjour",
 
+  "login": {
+    "title": "Welcome",
+    "username": "Username",
+    "password": "Password",
+    "login": "Login",
+    "forgot": "Forgot password?",
+    "noAccount": "Don't have an account?",
+    "openAccount": "Open an account"
+
+
+  },
+
+
+  "nav": {
+    "myAccount": "My account",
+    "settings": "Settings",
+    "logout": "Logout"
+
+  },
+
+
+  "search": {
+    "title": "Search",
+    "launchWizard": "Launch Wizard",
+    "resetFilters": "Reset filters",
+    "filterBy": "Filter by",
+    "post": "Post",
+    "story": "Story",
+    "highlight": "Highlight",
+    "notes": "Notes",
+    "budget": "Budget",
+    "amountFollowers": "Amount of followers",
+    "amountViewers": "Amount of viewers",
+    "gender": "Gender",
+    "any": "Any",
+    "man": "Man",
+    "girl": "Girl",
+    "age": "Age",
+    "type": "Type",
+    "socialMedia": "Social Media",
+    "search": "Search",
+    "goToProfile": "Go to profile",
+
+    "sectors": {
+      "title": "Sectors",
+      "Automotive": "Automotive",
+      "Lifestyle": "Lifestyle",
+      "Science": "Science",
+      "Music": "Music",
+      "Pets and Animals": "Pets and Animals",
+      "Sports": "Sports",
+      "Gym and Fitness": "Gym and Fitness",
+      "Gaming": "Gaming",
+      "Food and Drink": "Food and Drink",
+      "Fashion": "Fashion",
+      "Travel": "Travel",
+      "Beauty": "Beauty",
+      "Art": "Art",
+      "IT": "IT",
+      "Finance": "Finance"
+    }
+  },
+
   "common": {
 
     "continue": "Continue",
@@ -9,11 +72,39 @@
     "search": "Search",
     "minimum": "Minimum",
     "maximum": "Maximum",
+    "total": "Total",
+
+
+    "sendOffer": "Send offer",
+
+    "post": "Post",
+    "story": "Story",
+    "highlight": "Highlight",
+
+    "posts": "Posts",
+    "stories": "Stories",
+    "highlights": "Highlights",
+
+    "socialMedia": "Social Media",
+    "description": "Description",
     
     "genders": {
       "male": "Male",
       "female" : "Female",
+      "any": "Any",
       "both": "Any"
+    },
+
+
+    "filters": {
+
+      "ascending": "Ascending",
+      "descending": "Descending",
+      "newest": "Newest",
+      "time": "Time",
+      "amount": "Amount",
+      "client": "Client",
+      "status":"Status"
     }
     
 
@@ -54,56 +145,97 @@
     "p6": {
       "title":"Offer Summary",
       "description": ""
-    }
+    },
     
+    "dates": "Dates",
+    "description": "Description",
+    "uploadFile": "Upload file",
+    "order": "Order",
+    "startDate" :"Start Date",
+    "endDate" :"End Date",
+    "download": "Download",
+    "submit": "Send offer"
+
 
   },
+
 
   "dashboard": {
     "title": "Dashboard",
 
+    "toDo": "Partnership to do the next 7 days",
+    "earned": "Earned money this week",
+    "partnerships": "Partnerships",
+
+
+
     "overview": {
-      "title": "Overview",
+      "overviewTitle": "Overview",
+      "progress": "In Progress",
+      "upcomingEvents": "Upcoming",
+      "requests": "Request",
+      "requested": "Requested",
+      "pay": "To pay",
+      "payMe": "Pay",
+      "history": "History",
+      "requestTitle": "Request",
+      "orderNumber": "Order Number",
+      "client": "Client",
+      "influencer": "Influencer",
+      "customer": "Customer",
+      "socialMedia": "Social Media",
+      "status": "Status",
+      "price": "Price",
+      "deadline": "Deadline",
+      "posts": "Posts",
+      "stories": "Stories",
+      "highlights": "Highlights",
+      "dates": "Dates",
+      "files": "Files",
+      "viewDetails": "View Details",
+      "notes": "Notes",
+      "rate": "Rate",
+      "download": "Download",
+      "description": "Description",
+      "????": "????",
+      "promotionalCode": "Promotional Code",
 
-      "request": {
-        "title": "Request",
-        "orderNumber": "Order Number",
-        "client": "Client",
-        "influencer": "Influencer",
-        "customer": "Customer",
-        "socialMedia": "Social Media",
-        "status": "Status",
-        "price": "Price",
-        "deadline": "Deadline",
-        "posts": "Posts",
-        "stories": "Stories",
-        "highlights": "Highlights",
-        "dates": "Dates",
-        "files": "Files"
-      },
+      "pending": "Pending",
+      "finish": "Finish",
+      "done": "Done",
+      "declined": "Declined",
+      "upcoming": "Upcoming",
 
+      "DONE": "DONE",
+      "PENDING": "PENDING",
+      "IN_PROGRESS": "IN PROGRESS",
+      "REQUESTED": "REQUESTED",
+      "DECLINED": "DECLINED",
+      "UPCOMING": "UPCOMING",
 
-      "upcoming": {
-        "title": "Upcoming Events",
-        "orderNumber": "Order Number",
-        "status": "Status",
-        "client": "Client",
-        "customer": "Customer",
-        "socialMedia": "Social Media",
-        "price": "Price",
-        "posts": "Posts",
-        "stories": "Stories",
-        "highlights": "Highlights",
-        "????": "????",
-        "promotionalCode": "Promotional Code",
-        "deadline": "Deadline"
-      }
+      
+      "ascending": "{{ common.filters.ascending }}",
+      "descending": "{{ common.filters.descending }}",
+      "newest": "{{ common.filters.newest }}",
+      "time": "{{ common.filters.time }}",
+      "amount": "{{ common.filters.amount }}"
     }
   },
 
 
   "profile": {
     "title": "Profile",
+
+    "profile": "Profile",
+    "changeProfile": "Change profile",
+    "sendMessage": "Send message",
+    "sendOffer": "Send offer",
+    "editProfile": "Edit profile",
+    "socialMedia": "Social Media",
+    "languages": "Languages",
+    "countries": "Countries",
+    "sectors": "Sectors",
+    "about": "About",
 
     "edit": {
       "title":"Edit profile",
@@ -117,6 +249,7 @@
         "homeDetails": "Home details",
         "country": "Country",
         "city": "City",
+        "gender": "Gender",
         "address": "Address",
         "postalCode": "Postal code",
         "firstName": "First name",
@@ -143,9 +276,30 @@
 
   "statistics": {
   
-    "title": "Statistics"
-  },
+    "title": "Statistics",
+    "bestMonths": "Best Months",
+    "mostUsed": "Most Used Social Media",
+    "rating": "Average rating",
 
+
+    "earnings": {
+      "title": "Earnings",
+      "total": "Total",
+      "month": "This Month",
+      "week": "This week"
+  }
+},
+
+"slideCard": {
+  "month": "Earned this month",
+  "week": "Earned this week",
+  "total": "Total earnings",
+  "rating": "Average rating"
+},
+
+"card": {
+
+},
 
   "register": {
     "p1": {
@@ -153,11 +307,11 @@
       "description": "Brand or influencer? Depending on the account type, you will have access to different tools specially designed for you.",
       "influencer": {
         "title": "Influencer",
-        "description": "This is text bro"
+        "description": "This is text"
       },
       "brand": {
         "title": "Brand",
-        "description": "This is text bro"
+        "description": "This is text"
       }
     },
     "p2": {
@@ -166,13 +320,17 @@
     },
     "p3": {
       "title": "Tell us where you are.",
-      "description": "We need a little more information from you. You would need your email to login."
+      "description": "Tell us where you live to have better performance with our algorithm."
     },
     "p4": {
       "title": "Tell us where you are.",
-      "description": "We need a little more information from you. You would need your email to login."
+      "description": "We need a little more information from you. You would need your username to login."
     },
     "p5": {
+      "title": "Enter your password",
+      "description": "Enter a password of at least 6 characters."
+    },
+    "p6": {
       "title": "Last step!",
       "description": "Please enter your phone number. After this, you'll be all set."
     }
@@ -180,7 +338,8 @@
 
 
  "chat": {
-   "title": "Chat"
+   "title": "Chat",
+   "placeholder": "Type your message here..."
  },
   "wizard": {
 
@@ -219,6 +378,18 @@
 
   "modals": {
 
+    "rate": {
+      "title": "Rate",
+      "description": "Please rate the influencer",
+      "button": "Rate",
+      "close": "Close"
+      
+    },
+
+    "details": {
+      "title": "Details",
+      "button": "Close"
+    },
     "finishPartnership": {
       "title": "End partnership",
       "message": "Are you sure you want to finish this partnership? ",
@@ -233,6 +404,50 @@
       "title": "Decline partnership",
       "message": "Are you sure you want to decline this partnership? ",
       "button": "Confirm"
+    }
+  },
+
+
+  "sideNavigation": {
+
+    "register": {
+      "accountType": "Account type",
+      "country": "Country",
+      "address": "Address",
+      "details": "Details",
+      "password": "Password",
+      "phoneNumber": "Phone number"
+    },
+
+    "wizard": {
+      "budget": "Budget",
+      "choosePlatforms": "Choose platforms",
+      "amountOfFollowers": "Amount of followers",
+      "amountOfViewers": "Amount of viewers",
+      "genderAndAge": "Gender and Age",
+      "sector": "Sector",
+      "localisation": "Localisation"
+    },
+    "offers": {
+      "socialMedia":"Social Media",
+      "amounts": "Amounts",
+      "dates": "Dates",
+      "description": "Description",
+      "upload": "Upload",
+      "confirm": "Confirm"
+    }
+
+  },
+
+
+  "payment": {
+    "title": "Payment",
+
+    "success": {
+      "title": "Payment successful",
+      "text": "Your payment was successful. Thank you.",
+      "goBack": "Go back"
+
     }
   }
 }

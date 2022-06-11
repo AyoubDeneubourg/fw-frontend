@@ -55,3 +55,43 @@ tbody tr {
 .status-PENDING {
   background-color: skyblue ;
 }
+
+
+.select {
+  background-color: $orange;
+
+  padding:7px;
+
+  border-radius: 5px;
+  color: white;
+  font-weight: 500;
+  
+  &:focus {
+      border:none;
+      outline: none;
+  }
+}
+
+
+
+
+textarea {
+
+    padding:10px;
+    min-height: fit-content;
+
+    &:focus {
+      outline: none;
+    }
+
+  }
+
+
+
+  .textarea-orange {
+
+    &:focus {
+      border: 0.25px solid $orange !important;
+    }
+
+  }

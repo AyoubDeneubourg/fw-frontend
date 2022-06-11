@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { AuthService } from 'src/app/core/services/auth-service/auth.service';
+import { AuthService, Color } from 'src/app/core/services/auth-service/auth.service';
 import { ProfileService } from 'src/app/core/services/profile/profile-service.service';
 import { COUNTRIES } from 'src/app/shared/data/countries';
 import { LANGUAGES } from 'src/app/shared/data/languages';
@@ -29,6 +29,8 @@ export class EditProfileComponent implements OnInit {
   public type: "BRAND" | "INFLUENCER";
 
 
+  public color: Color; 
+  
   public allEditMode = ['personalInformationEditMode' , 'languagesEditMode' , 'sectorsEditMode' , 'countryEditMode' , 'homeDetailsEditMode' , 'socialMediaEditMode' , 'paymentInformationEditMode'];
 
   public changeActiveTab(tab: ActiveTab) {
@@ -49,15 +51,21 @@ export class EditProfileComponent implements OnInit {
 
   ngOnInit(): void {
 
+
+    this.color = this.authService.colors;
+
     const user = this.authService.loggedInUser;
 
     if(user.userType == "BRAND") {
 
+      console.log(this.authService.loggedInBrand['user'], this.authService.loggedInBrand['brand'])
+      
       this.profile = {...this.authService.loggedInBrand['user'], ...this.authService.loggedInBrand['brand']};
       this.type = 'BRAND';
-
+      
     } else {
-
+      
+      console.log(this.authService.loggedInInfluencer['user'], this.authService.loggedInInfluencer['influencer'])
       this.profile = {...this.authService.loggedInInfluencer['user'], ...this.authService.loggedInInfluencer['influencer']};
       this.type = "INFLUENCER"
     }
@@ -193,6 +201,7 @@ export class EditProfileComponent implements OnInit {
   @ViewChild('address') address : ElementRef;
   @ViewChild('postalCode') postalCode : ElementRef;
 
+  @ViewChild('followers') followers : ElementRef;
   @ViewChild('postPrice') postPrice : ElementRef;
   @ViewChild('storyPrice') storyPrice : ElementRef;
   @ViewChild('highlightPrice') highlightPrice : ElementRef;
@@ -201,19 +210,20 @@ export class EditProfileComponent implements OnInit {
 
   public updateUser(section) {
 
-
-    let PROFILE: any = {    
+    let PROFILE: any = {
       "user": {
-     // "firstName":this.profile.firstName,
-     // "lastName": this.profile.lastName,
-     // "userName": this.profile.userName,
-      "address": this.profile.address,
-      "city": this.profile.city,
-      "postalCode": this.profile.postalCode,
-      "country": this.profile.country,
-  },
 
-  "influencer": {
+        "address": this.profile.address,
+        "city": this.profile.city,
+        "postalCode": this.profile.postalCode,
+        "country": this.profile.country,
+    },
+    };
+
+    if(this.profile.userType == 'INFLUENCER') {
+
+
+    PROFILE.influencer = {   
       "ibanNumber": this.profile.ibanNumber,
       "headTitle": this.profile.headTitle,
       "description": this.profile.description,
@@ -221,32 +231,57 @@ export class EditProfileComponent implements OnInit {
       "socialMedia": this.profile.socialMedia,
       "countries": this.profile.countries,
       "storyPrice": this.profile.storyPrice,
+      "followers": this.profile.followers,
       "postPrice": this.profile.postPrice,
       "highlightPrice": this.profile.highlightPrice,
       "sectors": this.profile.sectors,
-}
+} 
+
+} else {
+
+  PROFILE.brand = {   
+    "headTitle": this.profile.headTitle,
+    "description": this.profile.description,
+    "languages": this.profile.languages,
+    "socialMedia": this.profile.socialMedia,
+    "countries": this.profile.countries,
+    "sectors": this.profile.sectors,
+
+
+} 
+
+
 }
 
 
 switch(section) {
   case 'personalInformationEditMode': {
-    PROFILE.influencer.headTitle = this.headTitle.nativeElement.value;
-    PROFILE.influencer.description = this.description.nativeElement.value;
+    if(this.profile.userType == 'INFLUENCER') {
+      PROFILE.influencer.headTitle = this.headTitle.nativeElement.value;
+      PROFILE.influencer.description = this.description.nativeElement.value;
+
+    } else {
+      PROFILE.brand.headTitle = this.headTitle.nativeElement.value;
+      PROFILE.brand.description = this.description.nativeElement.value;
+    }
     break;
   }
   case 'languagesEditMode':
     let languageList = this.languageList.map(elem => ({ language: elem, } ));
-    PROFILE.influencer.languages = languageList;
+    if(this.profile.userType == 'INFLUENCER') PROFILE.influencer.languages = languageList;
+    else PROFILE.brand.languages = languageList;
     break;
 
   case 'sectorsEditMode':
     let sectorList = this.sectorList.map(elem => ({ sector: elem, } ));
-    PROFILE.influencer.sectors = sectorList;
+    if(this.profile.userType == 'INFLUENCER') PROFILE.influencer.sectors = sectorList;
+    else PROFILE.brand.sectors = sectorList;
     break;
 
   case 'countryEditMode':
     let countryList = this.countryList.map(elem => ({ country: elem, } ));
-    PROFILE.influencer.countries = countryList;
+    if(this.profile.userType == 'INFLUENCER') PROFILE.influencer.countries = countryList;
+    else PROFILE.brand.countries = countryList;
     break;
 
   case 'homeDetailsEditMode':
@@ -268,6 +303,7 @@ switch(section) {
     }); 
 
 
+    PROFILE.influencer.followers = this.followers.nativeElement.value;
     PROFILE.influencer.postPrice = this.postPrice.nativeElement.value;
     PROFILE.influencer.storyPrice = this.storyPrice.nativeElement.value;
     PROFILE.influencer.highlightPrice = this.highlightPrice.nativeElement.value;
@@ -285,11 +321,17 @@ switch(section) {
 
 
 }
+
+if(this.profile.userType == 'INFLUENCER') {
   this.profileService.updateInfluencerProfile(PROFILE, this.profile.id).subscribe(res => {
+  });
+} else {
+  this.profileService.updateBrandProfile(PROFILE, this.profile.id).subscribe(res => {
+  });
+}
 
   //location.href = '/profile/edit';
 
-    });
 
   }
 

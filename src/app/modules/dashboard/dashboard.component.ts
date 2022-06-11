@@ -1,10 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { TranslocoService } from '@ngneat/transloco';
 import { loadStripe } from '@stripe/stripe-js';
 import { of } from 'rxjs';
 import { catchError, take, tap } from 'rxjs/operators';
 import { AuthService, Color } from 'src/app/core/services/auth-service/auth.service';
 import { OffersService } from 'src/app/core/services/offers/offers.service';
+import { StatsService } from 'src/app/core/services/stats-service/stats.service';
 import { StripeService } from 'src/app/core/services/stripe/stripe.service';
 import { CardData } from 'src/app/shared/components/card/card.component';
 import { User } from 'src/app/shared/models/common';
@@ -31,7 +33,7 @@ export class DashboardComponent implements OnInit {
   }
 
   public data3: CardData = {
-    title: '0€',
+    title: '€0',
     content: 'Earned money this week',
     position: 'bottom-right'
   }
@@ -49,6 +51,9 @@ export class DashboardComponent implements OnInit {
     this.user = this.authService.loggedInUser;
     this.data1.title = this.user.firstName + ' ' + this.user.lastName;
     this.data1.content = this.user.city + ', ' + this.user.country;
+
+
+
 
     this.offersService.getUpcoming().pipe(
       take(1),
@@ -74,12 +79,44 @@ export class DashboardComponent implements OnInit {
       catchError(err => {
         return of(err)
       })).subscribe();
+
+
+      if(this.user.userType == "INFLUENCER") {
+
+        this.statsService.getTotalEarnings(this.user.id).pipe(
+          take(1),
+          tap(data => {
+            console.log(this.user.id);
+            this.data2.title = data.totalPartnerships.toString();
+            this.data3.title = '€' + data.totalMoneyEarnedWeek.toString();
+            console.log(data);
+          })
+          ).subscribe()
+          
+        }
+
+      this.translocoService.selectTranslate('dashboard.partnerships').pipe(take(1),
+        tap(value => {
+          this.data2.content = value;
+      })).subscribe();
+
+
+      this.translocoService.selectTranslate('dashboard.earned').pipe(take(1),
+        tap(value => {
+          this.data3.content = value;
+      })).subscribe();
+
+
+      this.translocoService.selectTranslate('dashboard.toDo').pipe(take(1),
+        tap(value => {
+          this.data4.content = value;
+      })).subscribe();
   }
 
 
 
 
-  constructor(private authService: AuthService, private offersService: OffersService) {}
+  constructor(private authService: AuthService, private statsService: StatsService, private offersService: OffersService, private translocoService: TranslocoService) {}
 
 
 }
