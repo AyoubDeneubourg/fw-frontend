@@ -271,6 +271,56 @@
         "IBANNumber": "IBAN number",
         "bankName": "Bank name"
       }
+    },
+
+
+    "setup": {
+
+
+      "1" : { 
+        "title": "zzzzzzz", 
+        "description": "zzzzzzz",
+        "headtitle": "Headtitle",
+        "descriptionT": "Description"
+      },
+      "2" : { 
+        "title": "zzzzzzz", 
+        "description": "zzzzzzz" 
+      },
+      "3" : { 
+        "title": "zzzzzzz", 
+        "description": "zzzzzzz"
+        
+      },
+      "4" : { 
+        "title": "zzzzzzz", 
+        "description": "zzzzzzz" 
+      },
+      "5" : { 
+        "title": "zzzzzzz", 
+        "description": "zzzzzzz",
+        "country": "Country",
+        "city": "City",
+        "address": "Address",
+        "postalCode": "Postal code"
+      },
+      "6" : { 
+        "title": "zzzzzzz", 
+        "description": "zzzzzzz"
+      },
+      "7" : { 
+        "title": "zzzzzzz", 
+        "description": "zzzzzz",
+        "followers": "Followers",
+        "pricePerPost": "Price per post",
+        "pricePerStory": "Price per story",
+        "pricePerHighlight": "Price per highlight",
+        "ibanNumber": "IBAN number"
+      }
+
+
+      
+
     }
   },
 
@@ -409,6 +459,18 @@
 
 
   "sideNavigation": {
+
+    "profile": {
+      "setup": {
+        "personalInformation": "Personal Information",
+        "languages": "Languages",
+        "countries": "Countries",
+        "sectors": "Sectors",
+        "homeDetails": "Home details",
+        "socialMedia": "Social Media",
+        "influencerDetails": "Influencer details"
+      }
+    },
 
     "register": {
       "accountType": "Account type",

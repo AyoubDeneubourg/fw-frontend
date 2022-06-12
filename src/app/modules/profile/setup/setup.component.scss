@@ -1,0 +1,87 @@
+@import "../../../../styles/variables";
+
+input {
+
+
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .input-blue {
+
+    &:focus {
+      border: 0.25px solid $blue !important;
+    }
+
+  }
+  .input-orange {
+
+    &:focus {
+      border: 0.25px solid $orange !important;
+    }
+  }
+
+
+
+
+textarea {
+
+    padding:10px;
+
+    min-height: fit-content;
+
+    &:focus {
+      outline: none;
+    }
+
+  }
+
+  .textarea-blue {
+
+    &:focus {
+      border: 0.25px solid $blue !important;
+    }
+
+  }
+
+  .textarea-orange {
+
+    &:focus {
+      border: 0.25px solid $orange !important;
+    }
+
+  }
+
+
+  .addBtn {
+    height:30px;
+    width:30px;
+  }
+
+
+
+  .select-blue {
+    background-color: $blue;
+  }
+  .select-orange {
+    background-color: $orange;
+  }
+  
+  select {
+  
+    border-radius: 5px;
+    color: white;
+    font-weight: 500;
+    
+    &:focus {
+        border:none;
+        outline: none;
+    }
+  }
+  
+  option {
+    background-color: white;
+    color:black;
+  }

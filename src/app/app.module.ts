@@ -71,6 +71,7 @@ import { InProgressComponent } from './modules/dashboard/overview/brands/in-prog
 import { SmallComponent } from './shared/components/modal/small/small.component';
 import { RegularComponent } from './shared/components/modal/regular/regular.component';
 import { LargeComponent } from './shared/components/modal/large/large.component';
+import { SetupProfileComponent } from './modules/profile/setup/setup.component';
 
 @NgModule({
   declarations: [
@@ -121,7 +122,8 @@ import { LargeComponent } from './shared/components/modal/large/large.component'
     InProgressComponent,
     SmallComponent,
     RegularComponent,
-    LargeComponent
+    LargeComponent,
+    SetupProfileComponent
   ],
 
   imports: [

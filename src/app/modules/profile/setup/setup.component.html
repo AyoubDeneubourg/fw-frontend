@@ -1,0 +1,484 @@
+<ng-container *transloco="let t; read: 'profile.setup'">
+    <div class="flex flex-row h-screen">
+      <div class="w-1/3 flex items-center bg-{{color}}">
+        <div class="flex flex-col ml-14">
+  
+          <i (click)="returnBack()" class="absolute top-3 right-3 fa-solid fa-arrow-left text-xl" ></i>
+  
+          <img class="absolute top-3 left-3" width="135px" src="../../../../assets/logo/logo-white-{{color}}.svg">
+          <app-pages-side-navigation (goToPage)='goToPage($event)' [allPages]="allPages" [color]="color">
+  
+  
+  
+  
+          </app-pages-side-navigation>
+  
+        </div>
+      </div>
+  
+      <div class="flex m-auto items-center">
+  
+  
+        <form class="m-auto w-max" [formGroup]="wizardFormGroup" (ngSubmit)="onSubmit()">
+          <div formGroupName="p1" class="flex flex-col w-500" *ngIf="actualPage === 1">
+  
+            <div class="mb-5">
+              <h2 class="flex flex-col text-4xl font-semibold">{{ t('1.title') }}</h2>
+              <h3 class="flex flex-col text-lg">{{ t('1.description') }}</h3>
+            </div>
+  
+  
+            <div class="flex flex-col w-500">
+              <div>
+                <label for="headtitle" class="font-semibold ">{{ t('1.headtitle') }}</label>
+                <input step="25" id="headtitle" class="mt-2 w-100 mr-2 py-1 px-3 outline-none input-{{color}} rounded-sm shadow-md border"
+                  formControlName="headtitle" placeholder="Sports coach and Gamer" type="text" />
+                <app-input-validation-error [control]="headtitle"></app-input-validation-error>
+              </div>
+  
+  
+              <div>
+                <label for="description" class="font-semibold ">{{ t('1.descriptionT') }}</label>
+
+                <textarea name="description" id="description" cols="30" rows="10"
+                class="py-1 px-3 block w-100 outline-none rounded-sm shadow-md border textarea-{{color}}" formControlName="description">
+                </textarea>
+                <app-input-validation-error [control]="description"></app-input-validation-error>
+
+              </div>
+  
+            <button type="button" (click)="goToPage(2)"
+              class="mt-5 text-white py-1 font-semibold px-3 rounded-sm shadow-sm bg-{{color}}">{{ 'common.continue' | transloco }}</button>
+  
+  
+          </div>
+  
+        </div>
+  
+  
+  
+  
+  
+          <div formGroupName="p2" class="flex flex-col w-500" *ngIf="actualPage === 2">
+  
+  
+  
+  
+            <div class="mb-5">
+              <h2 class="flex flex-col text-4xl font-semibold">{{ t('2.title') }}</h2>
+              <h3 class="flex flex-col text-lg">{{ t('2.description') }}</h3>
+            </div>
+  
+            <div class="flex flex-col w-500">
+
+            <span class="flex my-auto mr-auto">
+                <select class="shadow-md  py-1  px-3 select-{{color}}" name="languages" id="selectLanguages">
+                    <ng-container *ngFor="let availableLanguage of availableLanguages">
+                        <option value="{{availableLanguage}}">{{availableLanguage }}</option>
+                    </ng-container>
+                </select>
+                <span (click)="addLanguage()" class="ml-2 addBtn rounded-sm my-auto text-lg text-center bg-{{color}} text-white font-semibold">+</span>
+            </span>
+
+          
+            <span class="flex">
+                <span *ngFor="let item of languageList" class="language border-2 mr-1 my-2 py-1 px-2 border-{{color}} rounded-md">      
+                    <span class="my-auto">{{ item }}</span>
+                    <span (click)="removeLanguage(item)" class="my-auto ml-2">
+                        <i class="fa-solid fa-trash-can text-red-600"></i>
+                    </span> 
+                </span>
+            </span>
+
+
+            <ng-container *ngIf="languageValid ; else space">
+                <p class="text-red-600">{{ t('validations.languageValid')}}</p>
+              </ng-container>
+              <ng-template #space>
+                &nbsp;
+              </ng-template>
+
+            </div>
+  
+  
+  
+  
+            <button type="button" (click)="goToPage(3)"
+              class="mt-5 text-white py-1 font-semibold px-3 rounded-sm shadow-sm bg-{{color}}">{{ 'common.continue' | transloco }}</button>
+  
+            <div class="flex">
+              <div (click)="goToPage(1)" class="mt-2">
+                <i class="fa-solid fa-arrow-left-long my-auto"></i>
+                <p class="inline-block ml-2 my-auto cursor-pointer">{{ 'common.back' | transloco }}</p>
+              </div>
+            </div>
+  
+  
+          </div>
+  
+  
+          <div formGroupName="p3" class="flex flex-col w-500" *ngIf="actualPage === 3">
+  
+            <div class="mb-5">
+              <h2 class="flex flex-col text-4xl font-semibold">{{ t('3.title') }}</h2>
+              <h3 class="flex flex-col text-lg">{{ t('3.description') }}</h3>
+            </div>
+  
+  
+            <div class="flex flex-col">
+            
+                <span class="flex my-auto mr-auto">
+                    <select class="shadow-md py-1  px-3 select-{{color}}" name="sectors" id="selectSectors">
+                        <ng-container *ngFor="let availableSector of availableSectors">
+                            <option value="{{availableSector}}">{{availableSector }}</option>
+                        </ng-container>
+                    </select>
+                    <span (click)="addSector()" class="ml-2 addBtn rounded-sm my-auto text-lg text-center bg-{{color}} text-white font-semibold">+</span>
+                </span>
+
+                <span class="flex">
+                    <span *ngFor="let item of sectorList" class="language border-2 mr-1 my-2 py-1 px-2 border-{{color}} rounded-md">      
+                        <span class="my-auto">{{ item }}</span>
+                        <span (click)="removeSector(item)" class="my-auto ml-2">
+                            <i class="fa-solid fa-trash-can text-red-600"></i>
+                        </span> 
+                    </span>
+                </span>
+  
+                <ng-container *ngIf="sectorValid ; else space">
+                    <p class="text-red-600">{{ t('validations.sectorValid')}}</p>
+                  </ng-container>
+                  <ng-template #space>
+                    &nbsp;
+                  </ng-template>
+            </div>
+  
+            <button type="button" (click)="goToPage(4)"
+              class="mt-5 text-white py-1 font-semibold px-3 rounded-sm shadow-sm bg-{{color}}">{{ 'common.continue' | transloco }}</button>
+  
+  
+  
+            <div class="flex">
+              <div (click)="goToPage(2)" class="mt-2">
+                <i class="fa-solid fa-arrow-left-long my-auto"></i>
+                <p class="inline-block ml-2 my-auto cursor-pointer">{{ 'common.back' | transloco }}</p>
+              </div>
+            </div>
+  
+  
+          </div>
+  
+  
+  
+  
+  
+          <div formGroupName="p4" class="flex flex-col w-500" *ngIf="actualPage === 4">
+  
+  
+  
+            <div class="mb-5">
+              <h2 class="flex flex-col text-4xl font-semibold">{{ t('5.title') }}</h2>
+              <h3 class="flex flex-col text-lg">{{ t('5.description') }}</h3>
+            </div>
+  
+  
+  
+  
+            <div class="flex flex-col">
+  
+                <span class="flex my-auto mr-auto">
+                    <select class="shadow-md py-1  px-3 select-{{color}}" name="country" id="selectCountries">
+                        <ng-container *ngFor="let availableCountry of availableCountries | keyvalue">
+                            <option value="{{availableCountry.key}}">{{availableCountry.value.name }}</option>
+                        </ng-container>
+                    </select>
+                    <span (click)="addCountry()" class="ml-2 addBtn rounded-sm my-auto text-lg text-center bg-{{color}} text-white font-semibold">+</span>
+                </span>
+
+                <span class="flex">
+                    <span *ngFor="let item of countryList" class="language border-2 mr-1 my-2 py-1 px-2 border-{{color}} rounded-md">      
+                        <span class="my-auto">{{ availableCountries[item].name  }}</span>
+                        <span (click)="removeCountry(item)" class="my-auto ml-2">
+                            <i class="fa-solid fa-trash-can text-red-600"></i>
+                        </span> 
+                    </span>
+                </span>
+  
+                <ng-container *ngIf="countryValid ; else space">
+                    <p class="text-red-600">{{ t('validations.countryValid')}}</p>
+                  </ng-container>
+                  <ng-template #space>
+                    &nbsp;
+                  </ng-template>
+            </div>
+  
+  
+  
+            <button type="button" (click)="goToPage(5)"
+              class="mt-5 text-white py-1 font-semibold px-3 rounded-sm shadow-sm bg-{{color}}">{{ 'common.continue' | transloco }}</button>
+  
+  
+            <div class="flex">
+              <div (click)="goToPage(3)" class="mt-2">
+                <i class="fa-solid fa-arrow-left-long my-auto"></i>
+                <p class="inline-block ml-2 my-auto cursor-pointer">{{ 'common.back' | transloco }}</p>
+              </div>
+            </div>
+  
+  
+  
+          </div>
+  
+  
+  
+  
+  
+  
+          <div formGroupName="p5" class="flex flex-col w-500" *ngIf="actualPage === 5">
+  
+  
+  
+            <div class="mb-5">
+              <h2 class="flex flex-col text-4xl font-semibold">{{ t('5.title') }}</h2>
+              <h3 class="flex flex-col text-lg">{{ t('6.description') }}</h3>
+            </div>
+  
+  
+  
+  
+            <div class="grid grid-cols-2 gap-3">
+                <div class="flex-1">
+  
+                    <label for="country" class="font-semibold">{{ t('5.country') }}</label>
+
+                    <select formControlName="country" class="shadow-md py-1 mt-2 px-3 border-b flex w-200 select-{{color}}" name="country">
+                        <ng-container *ngFor="let country of availableCountries | keyvalue">
+                            <option value="{{ country.key }}">
+                            {{ country.value.name }}</option>
+                        </ng-container>
+                    </select>
+                  </div>
+
+
+                  
+
+
+
+
+
+                  <div class="flex-1">
+  
+                    <label for="city" class="font-semibold">{{ t('5.city') }}</label>
+                    <input id="city" class="mt-2 input-{{color}} py-1 w-11/12 px-3 outline-none rounded-sm shadow-md border"
+                      formControlName="city" placeholder="Brussels" type="text" />
+                    <app-input-validation-error [control]="city"></app-input-validation-error>
+                  </div>
+
+
+
+                  <div class="flex-1">
+  
+                    <label for="address" class="font-semibold">{{ t('5.address') }}</label>
+                    <input id="address" class="mt-2 input-{{color}} py-1 w-11/12 px-3 outline-none rounded-sm shadow-md border"
+                      formControlName="address" placeholder="Street, number" type="text" />
+                    <app-input-validation-error [control]="address"></app-input-validation-error>
+                  </div>
+
+
+
+
+                  <div class="flex-1">
+  
+                    <label for="postalCode" class="font-semibold">{{ t('5.postalCode') }}</label>
+                    <input id="postalCode" class="mt-2 input-{{color}} py-1 w-11/12 px-3 outline-none rounded-sm shadow-md border"
+                      formControlName="postalCode"  placeholder="1080" type="number" />
+                    <app-input-validation-error [control]="postalCode"></app-input-validation-error>
+                  </div>
+  
+  
+            </div>
+  
+  
+  
+            <button (click)="goToPage(6)" type="button" 
+              class="mt-5 text-white py-1 font-semibold px-3 rounded-sm shadow-sm bg-{{color}}">{{ 'common.continue' | transloco }}</button>
+  
+  
+            <div class="flex">
+              <div (click)="goToPage(4)" class="mt-2">
+                <i class="fa-solid fa-arrow-left-long my-auto"></i>
+                <p class="inline-block ml-2 my-auto cursor-pointer">{{ 'common.back' | transloco }}</p>
+              </div>
+            </div>
+  
+  
+  
+          </div>
+  
+  
+  
+  
+  
+  
+          <div formGroupName="p6" class="flex flex-col w-500" *ngIf="actualPage === 6">
+  
+  
+  
+            <div class="mb-5">
+              <h2 class="flex flex-col text-4xl font-semibold">{{ t('6.title') }}</h2>
+              <h3 class="flex flex-col text-lg">{{ t('6.description') }}</h3>
+            </div>
+  
+  
+  
+  
+            <div class="flex flex-col">
+              
+              <label for="country" class="font-semibold">{{ t('6.country') }}</label>
+  
+  
+              <span class="flex my-auto mr-auto">
+                <select class="shadow-md py-1 px-3 select-{{color}}" name="socialMedia" id="selectSocialMedia">
+                    <ng-container *ngFor="let availableSocialMedia of availableSocialMedias">
+                        <option value="{{availableSocialMedia}}">{{availableSocialMedia }}</option>
+                    </ng-container>
+                </select>
+                <span (click)="addSocialMedia()" class="ml-2 addBtn rounded-sm my-auto text-lg text-center bg-{{color}} text-white font-semibold">+</span>
+            </span>
+
+            <span *ngFor="let item of socialMediaList"  class="flex">
+                <span class="language mr-1 my-2 py-1  rounded-md">      
+                    <span class="my-auto  font-semibold">{{ item.name }}</span>
+                    <span (click)="removeSocialMedia(item)" class="my-auto ml-2">
+                        <i class="fa-solid fa-trash-can text-red-600"></i>
+                    </span> 
+                    <br>
+                    <span class="my-auto">Link :</span>
+                    <input id="link-{{item.name}}" required type="text" class="p-1 mx-1 input-{{color}} w-max border rounded-md border-gray-500 input-{{color}}" placeholder="http://{{item.name}}.com/john" value="{{item.link}}">
+
+                </span>
+            </span>
+  
+  
+  
+            </div>
+  
+  
+  
+            <ng-container *ngIf="authedUser.userType == 'INFLUENCER'">
+
+                <button (click)="goToPage(7)" type="button" 
+                  class="mt-5 text-white py-1 font-semibold px-3 rounded-sm shadow-sm bg-{{color}}">{{ 'common.search' | transloco }}</button>
+
+            </ng-container>
+
+
+            <ng-container *ngIf="authedUser.userType == 'BRAND'">
+
+                <button type="submit"
+                  class="mt-5 text-white py-1 font-semibold px-3 rounded-sm shadow-sm bg-{{color}}">{{ 'common.search' | transloco }}</button>
+                
+            </ng-container>
+
+  
+            <div class="flex">
+                <div (click)="goToPage(5)" class="mt-2">
+                  <i class="fa-solid fa-arrow-left-long my-auto"></i>
+                  <p class="inline-block ml-2 my-auto cursor-pointer">{{ 'common.back' | transloco }}</p>
+                </div>
+              </div>
+  
+          </div>
+  
+
+
+
+
+          <div formGroupName="p7" class="flex flex-col w-500" *ngIf="actualPage === 7">
+  
+  
+  
+            <div class="mb-5">
+              <h2 class="flex flex-col text-4xl font-semibold">{{ t('7.title') }}</h2>
+              <h3 class="flex flex-col text-lg">{{ t('7.description') }}</h3>
+            </div>
+  
+  
+    
+                <div class="grid grid-cols-2 gap-3">
+
+  
+   
+                <div class="flex-1">
+  
+                    <label for="followers" class="font-semibold">{{ t('7.followers') }}</label>
+                    <input id="followers" class="mt-2 input-{{color}} py-1 px-3 outline-none rounded-sm shadow-md border"
+                      formControlName="followers" step="1000" placeholder="50.000" type="number" />
+                    <app-input-validation-error [control]="followers"></app-input-validation-error>
+
+                  </div>
+
+
+
+                  <div class="flex-1">
+  
+                    <label for="pricePerPost" class="font-semibold">{{ t('7.pricePerPost') }}</label>
+                    <input id="pricePerPost" class="mt-2 input-{{color}} py-1 px-3 outline-none rounded-sm shadow-md border"
+                      formControlName="pricePerPost" step="10" placeholder="€150" type="text" />
+                    <app-input-validation-error [control]="pricePerPost"></app-input-validation-error>
+                  </div>
+
+
+
+                  <div class="flex-1">
+  
+                    <label for="pricePerStory" class="font-semibold">{{ t('7.pricePerStory') }}</label>
+                    <input id="pricePerStory" class="mt-2 input-{{color}} py-1 px-3 outline-none rounded-sm shadow-md border"
+                      formControlName="pricePerStory" step="10" placeholder="€150" type="number" />
+                    <app-input-validation-error [control]="pricePerStory"></app-input-validation-error>
+                  </div>
+
+
+
+
+                  <div class="flex-1">
+  
+                    <label for="pricePerHighlight" class="font-semibold">{{ t('7.pricePerHighlight') }}</label>
+                    <input id="pricePerHighlight" class="mt-2 input-{{color}} py-1 px-3 outline-none rounded-sm shadow-md border"
+                      formControlName="pricePerHighlight"  step="10" placeholder="€200" type="number" />
+                    <app-input-validation-error [control]="pricePerHighlight"></app-input-validation-error>
+                  </div>
+  
+                </div>
+                  <div class="flex-1 flex flex-col">
+  
+                    <label for="ibanNumber" class="font-semibold">{{ t('7.ibanNumber') }}</label>
+                    <input id="ibanNumber" class="mt-2 input-{{color}} py-1 px-3 outline-none rounded-sm shadow-md border"
+                      formControlName="ibanNumber"  placeholder="BE78 8977 7889 9878" type="text" />
+                    <app-input-validation-error [control]="ibanNumber"></app-input-validation-error>
+                  </div>
+  
+
+  
+            <button type="submit"
+              class="mt-5 text-white py-1 font-semibold px-3 rounded-sm shadow-sm bg-{{color}}">{{ 'common.search' | transloco }}</button>
+  
+  
+            <div class="flex">
+              <div (click)="goToPage(5)" class="mt-2">
+                <i class="fa-solid fa-arrow-left-long my-auto"></i>
+                <p class="inline-block ml-2 my-auto cursor-pointer">{{ 'common.back' | transloco }}</p>
+              </div>
+            </div>
+  
+          </div>
+  
+        </form>
+        <div class="absolute bottom-10 w-500">
+  
+          <app-pages-bottom-navigation [allPages]="allPages" [color]="color"></app-pages-bottom-navigation>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+  

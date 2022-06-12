@@ -6,6 +6,7 @@ import { catchError, take, tap } from 'rxjs/operators';
 import { OffersService } from 'src/app/core/services/offers/offers.service';
 import { of } from 'rxjs';
 import { Rate, RatingService } from 'src/app/core/services/profile/rating-service.service';
+import { AuthService } from 'src/app/core/services/auth-service/auth.service';
 
 @Component({
   selector: 'app-brand-history',
@@ -31,19 +32,53 @@ export class BrandHistoryComponent implements OnInit {
   constructor(private translocoService: TranslocoService, 
     private formBuilder: FormBuilder, 
     private offersService: OffersService,
+    private authService: AuthService,
     private rateService: RatingService) { 
 
       this.buildForm();
 
     }
 
+    public authedUser;
 
   ngOnInit() {
 
+    this.authedUser = this.authService.loggedInUser;
+
+    this.getBrandRatings();    
   }
 
+  public getBrandRatings() {
+    this.rateService.getBrandRating(this.authedUser.id).pipe(
+      take(1),
+      tap((data) => {
+
+        
+        this.offers.forEach((offer, index) => {
+          this.offers[index]['toRate'] = true;
+          data.forEach(data => {
+
+            if(offer.id === data.partnershipId){
+              console.log(offer.id);
+              this.offers[index]['toRate'] = false;
+            } else {
+              //this.offers[index]['toRate'] = true;
+            }
+          });
+          
+        });
+        console.log(this.offers);
+        console.log(data);      
+      
+      }
+      )).subscribe();
+
+  }
    ngOnChanges(changes: SimpleChanges) {
+
+
     this.filterAndSort();
+    console.log('here');
   } 
 
 
@@ -127,13 +162,25 @@ export class BrandHistoryComponent implements OnInit {
       let rate: Rate = {
       influencerId: this.rate.influencerId,
       brandId: this.rate.brandId,
+      partnershipId: this.rate.id,
       amount: parseInt(amount.value) as 1 | 2 | 3 | 4 | 5,
       description: description.value
     }
     this.rateService.postRating(rate).pipe(
       take(1),
       tap((data) => {
+
+        amount.value = "";
+        description.value = "";
+   
+        this.offers.forEach((offer, index) => {
+          if(offer.id === rate.partnershipId){
+            this.offers[index]['toRate'] = false;
+          }
+      
       }
+
+        )}
       )).subscribe();
   }
 

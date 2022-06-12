@@ -68,7 +68,7 @@
               {{ item.startDate }} - {{ item.endDate }}
             </div>
           </td>
-          <td> <div *ngIf="item.status == 'DONE' " (click)="openRateModal(item)" class="border border-orange text-center rounded-sm text-orange text-sm p-1 shadow hover:shadow-lg ease-linear cursor-pointer transition-all duration-150">{{ t('rate') }}</div></td>
+          <td> <div *ngIf="item.status == 'DONE' && item['toRate']" (click)="openRateModal(item)" class="border border-orange text-center rounded-sm text-orange text-sm p-1 shadow hover:shadow-lg ease-linear cursor-pointer transition-all duration-150">{{ t('rate') }}</div></td>
           <td> <span (click)="openDetailModal(item)" class="m-0  bg-orange  text-center rounded-sm font-semibold  text-white text-sm py-1.5 px-3 shadow hover:shadow-lg ease-linear cursor-pointer transition-all duration-150">{{ t('viewDetails') }}</span></td>
 
         </tr>

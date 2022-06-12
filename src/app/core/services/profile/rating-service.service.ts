@@ -22,13 +22,13 @@ export class RatingService {
   }
 
 
-  public getInfluencerRating(id): Observable<Rate> {
-    return this.http.get<Rate>(`${this.apiUrl}/api/rating/influencer/${id}`,  getHeaders());
+  public getInfluencerRating(id): Observable<Rate[]> {
+    return this.http.get<Rate[]>(`${this.apiUrl}/api/rating/influencer/${id}`,  getHeaders());
   
     }
 
-  public getBrandRating(id): Observable<Rate> {
-    return this.http.get<Rate>(`${this.apiUrl}/api/rating/brand/${id}`,  getHeaders());
+  public getBrandRating(id): Observable<Rate[]> {
+    return this.http.get<Rate[]>(`${this.apiUrl}/api/rating/brand/${id}`,  getHeaders());
   
     }
 
@@ -45,6 +45,7 @@ export type Rate = {
     id?: number,
     influencerId: number,
     brandId: number,
+    partnershipId: number,
     amount: 1 | 2 | 3 | 4 | 5,
     description: string
 }

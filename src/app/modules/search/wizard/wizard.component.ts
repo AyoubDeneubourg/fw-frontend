@@ -48,10 +48,6 @@ export class WizardComponent implements OnInit {
       currentStatus: 'Future',
     },
     {
-      title: 'wizard.amountOfViewers',
-      currentStatus: 'Future',
-    },
-    {
       title: 'wizard.genderAndAge',
       currentStatus: 'Future',
     },
@@ -99,19 +95,14 @@ export class WizardComponent implements OnInit {
 
       }),
 
+
       p4: this.formBuilder.group({
-        minimumViewers: ["", []],
-        maximumViewers: ["", []],
-
-      }),
-
-      p5: this.formBuilder.group({
         gender: ['any', []],
         age: ['', []],
       }),
 
 
-      p6: this.formBuilder.group({
+      p5: this.formBuilder.group({
         sectors: new FormArray([
           new FormControl(false),
           new FormControl(false),
@@ -131,7 +122,7 @@ export class WizardComponent implements OnInit {
         ]),
       }),
 
-      p7: this.formBuilder.group({
+      p6: this.formBuilder.group({
         country: ['BE', []],
       }),
 
@@ -210,16 +201,6 @@ export class WizardComponent implements OnInit {
     }
 
 
-    if (page === 7) {
-      if (this.page1.valid && this.page2.valid && this.page3.valid && this.page4.valid) {
-        this.setCurrentPages(7);
-
-      } else {
-
-        this.goToPage(6);
-        this.wizardFormGroup.controls[`p${this.actualPage}`].markAllAsTouched();
-      }
-    }
 
   }
 
@@ -279,11 +260,6 @@ export class WizardComponent implements OnInit {
         followers: {
           min: this.minimumFollowers.value,
           max: this.maximumFollowers.value
-        },
-        views: {
-          min: this.minimumViewers.value,
-          max: this.maximumViewers.value,
-  
         },
         gender: this.gender.value,
         age: this.age.value,
@@ -364,30 +340,24 @@ export class WizardComponent implements OnInit {
 
 
 
-  get minimumViewers(): AbstractControl {
-    return this.wizardFormGroup.get('p4.minimumViewers');
-  }
-  get maximumViewers(): AbstractControl {
-    return this.wizardFormGroup.get('p4.maximumViewers');
-  }
 
 
   get gender(): AbstractControl {
-    return this.wizardFormGroup.get('p5.gender');
+    return this.wizardFormGroup.get('p4.gender');
   }
 
   get age(): AbstractControl {
-    return this.wizardFormGroup.get('p5.age');
+    return this.wizardFormGroup.get('p4.age');
   }
 
 
   get sectors(): any {
-    return this.wizardFormGroup.get('p6.sectors');
+    return this.wizardFormGroup.get('p5.sectors');
   }
 
 
   get country(): any {
-    return this.wizardFormGroup.get('p7.country');
+    return this.wizardFormGroup.get('p6.country');
   }
 
 

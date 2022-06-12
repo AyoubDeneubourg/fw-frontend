@@ -10,6 +10,7 @@ import { HomeComponent } from '../modules/home/home.component';
 import { OffersComponent } from '../modules/offers/offers.component';
 import { EditProfileComponent } from '../modules/profile/edit/edit.component';
 import { ProfileComponent } from '../modules/profile/profile.component';
+import { SetupProfileComponent } from '../modules/profile/setup/setup.component';
 import { SearchComponent } from '../modules/search/search.component';
 import { WizardComponent } from '../modules/search/wizard/wizard.component';
 import { StatisticsComponent } from '../modules/statistics/statistics.component';
@@ -45,6 +46,11 @@ const routes: Routes = [
   {
     path: 'profile/edit', // profile
     component: EditProfileComponent,
+    canActivate: [AuthenticatedGuard],
+  },
+  {
+    path: 'profile/setup', // profile
+    component: SetupProfileComponent,
     canActivate: [AuthenticatedGuard],
   },
   {

@@ -87,7 +87,7 @@
 
       
       <ng-container *ngIf="active === '4'">
-        <app-brand-history [offers]="history"></app-brand-history>
+        <app-brand-history [offers]="history" (refreshData)="refreshData()"></app-brand-history>
       </ng-container>
 
     </ng-container>

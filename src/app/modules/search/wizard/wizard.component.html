@@ -174,57 +174,7 @@
 
 
 
-
         <div formGroupName="p4" class="flex flex-col w-500" *ngIf="actualPage === 4">
-
-
-          <div class="mb-5">
-            <h2 class="flex flex-col text-4xl font-semibold">{{ t('4.title') }}</h2>
-            <h3 class="flex flex-col text-lg">{{ t('4.description') }}</h3>
-          </div>
-
-
-          <div class="flex">
-            <div>
-              <label for="firstName" class="font-semibold ">{{ 'common.minimum' | transloco }}</label>
-
-              <input id="firstName" class="mt-2 py-1 w-11/12 px-3 outline-none rounded-sm shadow-md border"
-                formControlName="minimumViewers" placeholder="10.000" type="number" />
-              <app-input-validation-error [control]="minimumViewers"></app-input-validation-error>
-            </div>
-
-
-            <div>
-
-              <label for="firstName" class="font-semibold">{{ 'common.maximum' | transloco }}</label>
-              <input id="firstName" class="mt-2 py-1 w-11/12 px-3 outline-none rounded-sm shadow-md border"
-                formControlName="maximumViewers" placeholder="25.000" type="number" />
-              <app-input-validation-error [control]="maximumViewers"></app-input-validation-error>
-            </div>
-
-          </div>
-
-          <button type="button" (click)="goToPage(5)"
-            class="mt-5 text-white py-1 font-semibold px-3 rounded-sm shadow-sm bg-{{color}}">{{ 'common.continue' | transloco }}</button>
-
-
-
-          <div class="flex">
-            <div (click)="goToPage(3)" class="flex-1 mt-2 flex">
-              <i class="fa-solid fa-arrow-left-long my-auto"></i>
-              <p class="inline-block ml-2 my-auto cursor-pointer">{{ 'common.back' | transloco }}</p>
-            </div>
-            <div (click)="goToPage(5)" class="mx-auto mt-2 flex">
-              <p class="inline-block mr-2 my-auto cursor-pointer">{{ 'common.skip' | transloco }}</p>
-              <i class="fa-solid fa-arrow-right-long my-auto"></i>
-            </div>
-          </div>
-
-
-        </div>
-
-
-        <div formGroupName="p5" class="flex flex-col w-500" *ngIf="actualPage === 5">
 
 
 
@@ -267,16 +217,16 @@
 
 
 
-          <button type="button" (click)="goToPage(6)"
+          <button type="button" (click)="goToPage(5)"
             class="mt-5 text-white py-1 font-semibold px-3 rounded-sm shadow-sm bg-{{color}}">{{ 'common.continue' | transloco }}</button>
 
 
           <div class="flex">
-            <div (click)="goToPage(4)" class="flex-1 mt-2 flex">
+            <div (click)="goToPage(3)" class="flex-1 mt-2 flex">
               <i class="fa-solid fa-arrow-left-long my-auto"></i>
               <p class="inline-block ml-2 my-auto cursor-pointer">{{ 'common.back' | transloco }}</p>
             </div>
-            <div (click)="goToPage(6)" class="mx-auto mt-2 flex">
+            <div (click)="goToPage(5)" class="mx-auto mt-2 flex">
               <p class="inline-block mr-2 my-auto cursor-pointer">{{ 'common.skip' | transloco }}</p>
               <i class="fa-solid fa-arrow-right-long my-auto"></i>
             </div>
@@ -292,7 +242,7 @@
 
 
 
-        <div formGroupName="p6" class="flex flex-col w-500" *ngIf="actualPage === 6">
+        <div formGroupName="p5" class="flex flex-col w-500" *ngIf="actualPage === 5">
 
 
 
@@ -333,16 +283,16 @@
 
 
 
-          <button type="button" (click)="goToPage(7)"
+          <button type="button" (click)="goToPage(6)"
             class="mt-5 text-white py-1 font-semibold px-3 rounded-sm shadow-sm bg-{{color}}">{{ 'common.continue' | transloco }}</button>
 
 
           <div class="flex">
-            <div (click)="goToPage(5)" class="flex-1 mt-2 flex">
+            <div (click)="goToPage(4)" class="flex-1 mt-2 flex">
               <i class="fa-solid fa-arrow-left-long my-auto"></i>
               <p class="inline-block ml-2 my-auto cursor-pointer">{{ 'common.back' | transloco }}</p>
             </div>
-            <div (click)="goToPage(7)" class="mx-auto mt-2 flex">
+            <div (click)="goToPage(6)" class="mx-auto mt-2 flex">
               <p class="inline-block mr-2 my-auto cursor-pointer">{{ 'common.skip' | transloco }}</p>
               <i class="fa-solid fa-arrow-right-long my-auto"></i>
             </div>
@@ -374,7 +324,7 @@
 
 
 
-        <div formGroupName="p7" class="flex flex-col w-500" *ngIf="actualPage === 7">
+        <div formGroupName="p6" class="flex flex-col w-500" *ngIf="actualPage === 6">
 
 
 
@@ -414,7 +364,7 @@
 
 
           <div class="flex">
-            <div (click)="goToPage(6)" class="flex-1 mt-2 flex">
+            <div (click)="goToPage(5)" class="flex-1 mt-2 flex">
               <i class="fa-solid fa-arrow-left-long my-auto"></i>
               <p class="inline-block ml-2 my-auto cursor-pointer">{{ 'common.back' | transloco }}</p>
             </div>

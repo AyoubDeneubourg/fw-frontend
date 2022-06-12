@@ -2,6 +2,7 @@ import { Options } from '@angular-slider/ngx-slider';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { timeStamp } from 'console';
 import { take, tap } from 'rxjs/operators';
 
 import { AuthService, Color } from 'src/app/core/services/auth-service/auth.service';
@@ -102,6 +103,7 @@ export class SearchComponent implements OnInit {
     this.color = this.authService.colors;
     this.setOptionsColors();
     this.buildForm();
+    this.setPreferences();
     this.getInfluencers();
   }
 
@@ -130,7 +132,7 @@ export class SearchComponent implements OnInit {
     this.searchService.getInfluencers().subscribe(
       (data) => {
         this.results = data;
-        this.setPreferences();
+        this.setPreferences(true);
         this.filterAndSort();
         data.forEach((element, index) => {
           this.rateService.getAverageInfluencerRating(element.user.id).pipe(
@@ -300,29 +302,47 @@ export class SearchComponent implements OnInit {
     
       });
 
-      if(noBudgetChecked) followersArrayFiltered = [...budgetArrayFiltered];
+      if(noFollowersChecked) followersArrayFiltered = [...budgetArrayFiltered];
+
+
+      let genderArrayFiltered = [];
+
+      
+      if(this.gender.value != "any") {
+        followersArrayFiltered.forEach(
+          (element) => {
+            if(element?.user?.gender?.toLowerCase() == this.gender?.value) {
+              genderArrayFiltered.push(element);
+            }
+           
+          }
+        );
+
+      } else {
+        genderArrayFiltered = [...followersArrayFiltered];
+      }
 
 
 
-      let x = [];
+      let nameArrayFiltered = [];
 
       if(input.value.trim() !== '') {
         
-        followersArrayFiltered.forEach(
+        genderArrayFiltered.forEach(
           (element) => {
             let firstLastName = element.user.firstName.toLowerCase() + " " + element.user.lastName.toLowerCase();
             if(element.user.userName.toLowerCase().includes(input.value.toLowerCase()) || 
             firstLastName.includes(input.value.toLowerCase())) {
-              x.push(element);
+              nameArrayFiltered.push(element);
             }
           }
         );
         
       } else {
-        x = [...followersArrayFiltered];
+        nameArrayFiltered = [...genderArrayFiltered];
       }
 
-      this.newResults = x;
+      this.newResults = nameArrayFiltered;
  /*     this.newResults?.sort((a, b) => {
      if (this.order.value === 'ascending') { 
         return this.sort(a, b, 'ascending');
@@ -352,7 +372,7 @@ export class SearchComponent implements OnInit {
 
   }
 
-  public setPreferences(): void {
+  public setPreferences(fetched = false): void {
 
     const searchPreferences: Filters = this.userPreferencesService.currentPreferences.search;
 
@@ -371,6 +391,9 @@ export class SearchComponent implements OnInit {
     console.log(searchPreferences);
 
 
+    if(fetched) {
+
+  
     if(searchPreferences?.budget?.min && !searchPreferences?.budget?.max) {
 
       this.budgetOptions.floor = (searchPreferences.budget.min / 2)
@@ -402,6 +425,7 @@ export class SearchComponent implements OnInit {
       this.maximumBudget = searchPreferences.budget.max;
     }
 
+  }
 
     if(searchPreferences.followers.min && searchPreferences.followers.min !== 0) {
     //  this.followersOptions.floor = (searchPreferences.followers.min / 2)
