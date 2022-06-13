@@ -514,7 +514,7 @@
 
     "success": {
       "title": "Payment successful",
-      "text": "Your payment was successful. Thank you.",
+      "text": "Payment successful! Thank you for using Plugger.",
       "goBack": "Go back"
 
     }

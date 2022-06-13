@@ -175,7 +175,8 @@ export class ProfileComponent implements OnInit {
 
 
         this.profileService.postFile(formData, this.user.id).subscribe(data => {
-          // refrsh page
+          location.href = '/profile';
+
         }
         );
 

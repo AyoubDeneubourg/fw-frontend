@@ -32,13 +32,11 @@ export class TopNavigationComponent implements OnInit {
       })).subscribe()
 
 
-      this.profileService.getImage(this.user.id).pipe(
-        tap((image) => {
-          this.src = image;
-          console.log(image);
-        }
-        )
-        ).subscribe()
+    this.profileService.getImage(this.user.id).pipe(
+      tap((image) => {
+        this.src = image;
+      })
+      ).subscribe();
 
 
   }

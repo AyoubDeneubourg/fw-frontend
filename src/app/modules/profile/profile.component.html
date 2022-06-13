@@ -68,15 +68,15 @@
           <img width="50px" *ngIf="type == 'BRAND'" src="https://fw-api-gateway.herokuapp.com/api/image/{{item?.influencerId}}">
 
 -->          
-          <p class="font-semibold flex-1">{{item.user.firstName + ' ' + item.user.lastName }}</p>
+          <p class="font-semibold flex-1">{{item?.user?.firstName + ' ' + item?.user?.lastName }}</p>
           
-          <p class="font-semibold"> {{ item.amount }} <i class="fa-regular fa-solid text-{{color}} fa-star"></i></p>
+          <p class="font-semibold"> {{ item?.amount }} <i class="fa-regular fa-solid text-{{color}} fa-star"></i></p>
             
 
         </div>
-        <p class="break-all">{{ item.description }}</p>
+        <p class="break-all">{{ item?.description }}</p>
 
-        <div [routerLink]="['/chat/' + item.brandId]"  class="bg-{{color}} text-center rounded-sm font-semibold text-white text-sm py-1.5 px-3 shadow hover:shadow-lg ease-linear cursor-pointer transition-all duration-150 my-2">{{ t('contact') }}</div>
+        <div [routerLink]="['/chat/' + item?.brandId]"  class="bg-{{color}} text-center rounded-sm font-semibold text-white text-sm py-1.5 px-3 shadow hover:shadow-lg ease-linear cursor-pointer transition-all duration-150 my-2">{{ t('contact') }}</div>
       </div>
     </ng-container>
 

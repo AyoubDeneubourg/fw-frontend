@@ -328,13 +328,16 @@ switch(section) {
 
 if(this.profile.userType == 'INFLUENCER') {
   this.profileService.updateInfluencerProfile(PROFILE, this.profile.id).subscribe(res => {
+    location.href = '/profile/edit';
+
   });
 } else {
   this.profileService.updateBrandProfile(PROFILE, this.profile.id).subscribe(res => {
+    location.href = '/profile/edit';
+
   });
 }
 
-  //location.href = '/profile/edit';
 
 
   }

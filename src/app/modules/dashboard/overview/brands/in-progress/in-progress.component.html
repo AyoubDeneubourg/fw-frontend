@@ -15,7 +15,7 @@
           <option value="new">Newest</option>
           <option value="time">Time</option>
           <option value="client">Client</option>
-          <option value="amount">Amounts</option>
+          <option value="amount">Amount</option>
         </select>
   
   
@@ -29,7 +29,6 @@
   
   
    
-  
     <table class="w-100 mt-10">
       <thead>
         <tr class="font-semibold">
@@ -46,8 +45,8 @@
 
         </tr>
       </thead>
-      <tbody>
-        <tr *ngFor="let item of newEvents ? newEvents : offers as Offer">
+      <tbody  >
+        <tr class="animate__animated animate__fadeIn" *ngFor="let item of newEvents ? newEvents : offers as Offer">
             <td>{{ item.id }}</td>
           <td routerLink="/profile/{{item.influencerId}}">{{ item.influencerName }}</td>
           <td class="flex"><ng-container *ngFor="let socialMedia of item.socialMediaDetails"><img width="28px" src="assets/icons/socials/{{socialMedia.name | uppercase}}.svg"></ng-container></td>
