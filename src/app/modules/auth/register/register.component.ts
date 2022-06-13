@@ -9,7 +9,7 @@ import {
 import { AuthService } from 'src/app/core/services/auth-service/auth.service';
 import { RegistrationData } from 'src/app/shared/models/common';
 import { PageNavigation } from 'src/app/shared/models/pagination';
-import { catchError, tap } from 'rxjs/operators'
+import { catchError, take, tap } from 'rxjs/operators'
 import { COUNTRIES } from 'src/app/shared/data/countries';
 import { matchValues } from 'src/app/shared/static/forms/password-validation';
 import { birthDate } from 'src/app/shared/static/forms/birthdate-validation';
@@ -272,7 +272,10 @@ export class RegisterComponent implements OnInit {
       this.clickedRegister = true;
 
       this.authService.register(REGISTRATIONDATA)
-        .subscribe((response) => {
+      .pipe(
+        take(1),
+        tap(data => {
+
           this.authService.login(
             {
               username: this.userName.value,
@@ -281,7 +284,14 @@ export class RegisterComponent implements OnInit {
           ).subscribe((response) => {
             this.router.navigate(['/dashboard']);
           })
-        });
+
+        }),
+        catchError(err => {
+          this.clickedRegister = false;
+          return err;
+        })).subscribe();
+
+     
 
     }
 
