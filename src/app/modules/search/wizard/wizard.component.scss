@@ -1,3 +1,7 @@
+$blue : #4cade6 ;
+$orange :  #e5844c;
+
+
 select {
   color: white;
   font-weight: 500;
@@ -15,4 +19,18 @@ option {
 .w-228 {
 
   width: 228px;
+}
+
+.input-blue {
+
+  &:focus {
+    border: 0.25px solid $blue !important;
+  }
+
+}
+.input-orange {
+
+  &:focus {
+    border: 0.25px solid $orange !important;
+  }
 }

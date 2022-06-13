@@ -2,7 +2,7 @@
 
   <div class="m-6">
 
-  <div class="flex flex-wrap justify-between">
+  <div  id="step6" class="flex flex-wrap justify-between">
     <div class="flex-1 mr-2">
       <app-card [data]="data1"></app-card>
     </div>
@@ -11,7 +11,7 @@
     </div>
 
     <ng-container *ngIf="user.userType == 'INFLUENCER'">
-    <div class="flex-1 ml-2 mr-2">
+    <div  class="flex-1 ml-2 mr-2">
       <app-card [data]="data3"></app-card>
     </div>
 

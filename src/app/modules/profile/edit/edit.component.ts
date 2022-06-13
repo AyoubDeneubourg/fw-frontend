@@ -289,6 +289,7 @@ switch(section) {
     break;
 
   case 'socialMediaEditMode':
+    
    let socialMediaList = [];
 
    
@@ -302,12 +303,15 @@ switch(section) {
       });
     }); 
 
-
-    PROFILE.influencer.followers = this.followers.nativeElement.value;
-    PROFILE.influencer.postPrice = this.postPrice.nativeElement.value;
-    PROFILE.influencer.storyPrice = this.storyPrice.nativeElement.value;
-    PROFILE.influencer.highlightPrice = this.highlightPrice.nativeElement.value;
-    PROFILE.influencer.socialMedia = socialMediaList;
+    if(this.profile.userType == 'INFLUENCER') {
+      PROFILE.influencer.followers = this.followers.nativeElement.value;
+      PROFILE.influencer.postPrice = this.postPrice.nativeElement.value;
+      PROFILE.influencer.storyPrice = this.storyPrice.nativeElement.value;
+      PROFILE.influencer.highlightPrice = this.highlightPrice.nativeElement.value;
+      PROFILE.influencer.socialMedia = socialMediaList;
+    } else {
+      PROFILE.brand.socialMedia = socialMediaList;
+    }
 
     break;
 

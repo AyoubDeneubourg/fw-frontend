@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Event, NavigationEnd, Route, Router } from '@angular/router';
 import { tap } from 'rxjs/operators';
 import { AuthService, Color } from 'src/app/core/services/auth-service/auth.service';
+import { IntrojsService } from 'src/app/core/services/introjs.service';
 import { User } from '../../models/common';
 
 @Component({
@@ -24,6 +25,7 @@ export class LeftNavigationComponent implements OnInit {
   ngOnInit(): void {
     this.color = this.authService.colors;
     this.user = this.authService.loggedInUser;
+
   }
 
 
@@ -32,5 +34,12 @@ export class LeftNavigationComponent implements OnInit {
     this.authService.logout();
 
   }
+
+  ngAfterViewInit(): void {
+  //  this.introService.featureOne();
+
+    
+   // 
+}
 
 }

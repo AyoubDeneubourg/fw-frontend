@@ -2,13 +2,13 @@
 
   <div class="flex flex-row">
 
-    <div class="w-300 left-bar bg-{{color}} shadow-md z-10">
+    <div class="w-300 left-bar shadow-md z-10">
       <ng-container *ngFor="let user of chats">
 
 
 
       <div routerLink="/chat/{{ authedUser.id == user.user_1 ? user.user_2 : user.user_1}}" 
-      class="flex bg-white m-2 shadow-md rounded-sm p-3 flex-1"
+      class="flex bg-white m-2 shadow-lg rounded-sm p-3 flex-1 cursor-pointer"
       [class.bg-gray-100]=" authedUser.id == user.user_1 ? user.user_2 == routeId : user.user_1 == routeId">
 
         <div class="my-auto p-2 ">
@@ -49,7 +49,7 @@
       
           <ng-container *ngIf="user.user_1 == bucketListArray.user_1 && user.user_2 == bucketListArray.user_2">
       
-            <h1 class="bg-{{color}} text-white p-2 text-xl font-semibold pl-4 shadow-md ">{{ user.firstName }}</h1>
+            <div [routerLink]="['/profile', authedUser.id == user.user_1 ? user.user_2 : user.user_1]" class="bg-{{color}} text-white p-2 text-xl font-semibold pl-4 shadow-md cursor-pointer ">{{ user.firstName }}</div>
             
           </ng-container>
         </ng-container>

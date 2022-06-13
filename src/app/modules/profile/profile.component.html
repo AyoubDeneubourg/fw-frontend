@@ -51,12 +51,40 @@
   </div>
 
   <div class="flex flex-wrap mt-10 pt-5 p-2 pl-4 bg-gray-100">
+    
+    
+    
+    <div>
+      
+      <h3 *ngIf="type == 'INFLUENCER'" class=" text-xl mb-2">{{ t('notes.received') }}</h3>
+      <h3 *ngIf="type == 'BRAND'" class=" text-xl mb-2">{{ t('notes.sended') }}</h3>
 
+      <div  class="w-400 bg-light-{{color}} h-500 mr-10 rounded shadow-md overflow-y-auto">
+      <ng-container *ngFor="let item of ratings">
+      <div class="bg-gray-50 m-2 p-2  rounded shadow">
+        <div class="flex">
 
-    <div class="video w-400 bg-{{color}} h-500 mr-10">
+<!--           <img width="50px" *ngIf="type == 'INFLUENCER'" src="https://fw-api-gateway.herokuapp.com/api/image/{{item?.brandId}}">
+          <img width="50px" *ngIf="type == 'BRAND'" src="https://fw-api-gateway.herokuapp.com/api/image/{{item?.influencerId}}">
+
+-->          
+          <p class="font-semibold flex-1">{{item.user.firstName + ' ' + item.user.lastName }}</p>
+          
+          <p class="font-semibold"> {{ item.amount }} <i class="fa-regular fa-solid text-{{color}} fa-star"></i></p>
+            
+
+        </div>
+        <p class="break-all">{{ item.description }}</p>
+
+        <div [routerLink]="['/chat/' + item.brandId]"  class="bg-{{color}} text-center rounded-sm font-semibold text-white text-sm py-1.5 px-3 shadow hover:shadow-lg ease-linear cursor-pointer transition-all duration-150 my-2">{{ t('contact') }}</div>
+      </div>
+    </ng-container>
+
+            
+  </div>
+
 
     </div>
-
 
     <div class="flex flex-col m-2 w-1/3">
 

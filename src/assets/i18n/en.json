@@ -235,11 +235,17 @@
     "languages": "Languages",
     "countries": "Countries",
     "sectors": "Sectors",
+    "contact": "Contact",
     "about": "About",
+
+    "notes": {
+      "received": "Last received ratings",
+      "sended": "Last sent ratings"
+    },
 
     "edit": {
       "title":"Edit profile",
-
+      "confirm": "Confirm",
       "edit": "Edit",
 
       "personalInformation": {
@@ -250,6 +256,7 @@
         "country": "Country",
         "city": "City",
         "gender": "Gender",
+        "socialMedia":"Social Media",
         "address": "Address",
         "postalCode": "Postal code",
         "firstName": "First name",
@@ -511,6 +518,42 @@
       "goBack": "Go back"
 
     }
+  },
+
+
+  "introduction": {
+
+    "step1": {
+      "title": "Dashboard",
+      "content": "This is yo"
+    },
+    "step2": {
+      "title": "Search tool",
+      "content": "This is the search tool. You can search for influencers and brands."
+    },
+    "step3": {
+      "title": "Statistics",
+      "content": "This is the statistics page. Here you can see the statistics of your account."
+    },
+    "step4": {
+      "title": "Messages",
+      "content": "This is the messages page. Here you can see the messages you have received."
+    },
+    "step5": {
+      "title": "Logout",
+      "content": "Here you can logout."
+    },
+    "step6": {
+      "title": "Statistics",
+      "content": "zzzzzzzzzzzzzaaaaaaaa"
+    },
+    "step7": {
+      "title": "Partnerships",
+      "content": "zzzzzzzzzzzzzaaaaaaaa"
+    }
+
+
+
   }
 }
 

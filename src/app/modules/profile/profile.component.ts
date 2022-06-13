@@ -1,14 +1,12 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CollectBankAccountForSetupOptions } from '@stripe/stripe-js';
+import { take, tap } from 'rxjs/operators';
 import { AuthService, Color } from 'src/app/core/services/auth-service/auth.service';
 import { ProfileService } from 'src/app/core/services/profile/profile-service.service';
 import { RatingService } from 'src/app/core/services/profile/rating-service.service';
 import { COUNTRIES } from 'src/app/shared/data/countries';
-import { Brand } from 'src/app/shared/models/brand';
 import { Profile, User } from 'src/app/shared/models/common';
-import { Influencer } from 'src/app/shared/models/influencer';
 
 @Component({
   selector: 'app-profile',
@@ -22,6 +20,7 @@ export class ProfileComponent implements OnInit {
 
   public color: Color;
 
+  public ratings;
 
   public countryList = COUNTRIES;
   
@@ -38,18 +37,29 @@ export class ProfileComponent implements OnInit {
 
     if(this.route.snapshot.params.id) {
 
+
       this.authService.getProfile(this.route.snapshot.params.id).subscribe(data => {
 
         console.log(data);
 
         if(!data) this.location.back();
         
-        this.isOther = true;
+        if(this.authService.loggedInUser.id != this.route.snapshot.params.id) {
+          this.isOther = true;
+        }
         if(data.user.userType == "INFLUENCER") {
           this.profile = { ...data.user, ...data.influencer};
+          this.type = 'INFLUENCER';
+
+          this.setInfluencerRating(this.route.snapshot.params.id);
+
           }
         if(data.user.userType == "BRAND") {
           this.profile = { ...data.user, ...data.brand};
+          this.type = 'BRAND';
+
+          this.setBrandRating(this.route.snapshot.params.id);
+
 
         }
 
@@ -65,6 +75,7 @@ export class ProfileComponent implements OnInit {
 
         this.profile = {...this.authService.loggedInBrand['user'], ...this.authService.loggedInBrand['brand']};
         this.type = 'BRAND';
+        this.setBrandRating(this.authService.loggedInUser.id);
 
 
 
@@ -74,11 +85,7 @@ export class ProfileComponent implements OnInit {
 
         this.profile = {...this.authService.loggedInInfluencer['user'], ...this.authService.loggedInInfluencer['influencer']};
         this.type = "INFLUENCER"
-
-        this.rateService.getInfluencerRating(this.profile.id).subscribe(data => {
-         console.log(data);
-          
-        })
+        this.setInfluencerRating(this.authService.loggedInUser.id);
 
 
         this.rateService.getAverageInfluencerRating(this.profile.id).subscribe(data => {
@@ -102,12 +109,57 @@ export class ProfileComponent implements OnInit {
   }
 
 
-  public sendOffer() {
+  public setInfluencerRating(id) {
+
+    this.rateService.getInfluencerRating(id).subscribe(data => {
+      console.log(data);
+      this.ratings = data;
+
+      data.forEach((element, index) => {
+        
+       this.authService.getUser(element.brandId.toString()).pipe(
+         take(1),
+         tap(user => {
+           console.log(user);
+           this.ratings[index].user = user;
+
+           console.log(this.ratings);
+         }
+         )
+         ).subscribe()
+       }
+      );
+       
+     })
     
+
   }
 
-  public changeProfile() {
+  public setBrandRating(id) {
     
+
+    this.rateService.getBrandRating(id).subscribe(data => {
+      console.log(data);
+      this.ratings = data;
+
+      data.forEach((element, index) => {
+        
+       this.authService.getUser(element.influencerId.toString()).pipe(
+         take(1),
+         tap(user => {
+           console.log(user);
+           this.ratings[index].user = user;
+
+           console.log(this.ratings);
+         }
+         )
+         ).subscribe()
+       }
+      );
+       
+     })
+
+
   }
 
 

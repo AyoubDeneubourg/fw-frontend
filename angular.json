@@ -31,9 +31,13 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles/styles.scss"
+              "src/styles/styles.scss",
+              "node_modules/intro.js/introjs.css"
+
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/intro.js/intro.js"
+            ]
           },
           "configurations": {
             "production": {

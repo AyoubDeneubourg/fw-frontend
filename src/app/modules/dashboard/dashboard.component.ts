@@ -5,9 +5,11 @@ import { loadStripe } from '@stripe/stripe-js';
 import { of } from 'rxjs';
 import { catchError, take, tap } from 'rxjs/operators';
 import { AuthService, Color } from 'src/app/core/services/auth-service/auth.service';
+import { IntrojsService } from 'src/app/core/services/introjs.service';
 import { OffersService } from 'src/app/core/services/offers/offers.service';
 import { StatsService } from 'src/app/core/services/stats-service/stats.service';
 import { StripeService } from 'src/app/core/services/stripe/stripe.service';
+import { UserPreferencesService } from 'src/app/core/services/user-preferences/user-preferences.service';
 import { CardData } from 'src/app/shared/components/card/card.component';
 import { User } from 'src/app/shared/models/common';
 import { Offer } from 'src/app/shared/models/offers';
@@ -44,6 +46,19 @@ export class DashboardComponent implements OnInit {
     position: 'bottom-right'
   }
 
+  ngAfterViewInit(): void {
+
+  setTimeout(() => {
+    
+    if(!this.userPreferencesService.currentPreferences.introduction) {
+      console.log(this.user.userType)
+      this.introService.startIntroduction(this.user.userType);
+      window.resizeTo(window.innerWidth, window.innerHeight);
+    }
+  }, 200);
+    
+}
+
 
 
   ngOnInit(): void {
@@ -51,7 +66,6 @@ export class DashboardComponent implements OnInit {
     this.user = this.authService.loggedInUser;
     this.data1.title = this.user.firstName + ' ' + this.user.lastName;
     this.data1.content = this.user.city + ', ' + this.user.country;
-
 
 
 
@@ -116,7 +130,17 @@ export class DashboardComponent implements OnInit {
 
 
 
-  constructor(private authService: AuthService, private statsService: StatsService, private offersService: OffersService, private translocoService: TranslocoService) {}
+  constructor(private authService: AuthService, 
+    private statsService: StatsService, 
+    private offersService: OffersService, 
+    private translocoService: TranslocoService,
+    private userPreferencesService: UserPreferencesService,
+    private introService: IntrojsService) {
+
+
+
+      
+    }
 
 
 }

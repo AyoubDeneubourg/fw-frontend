@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { tap } from 'rxjs/operators';
 import { AuthService } from 'src/app/core/services/auth-service/auth.service';
+import { ProfileService } from 'src/app/core/services/profile/profile-service.service';
 import { User } from '../../models/common';
 
 @Component({
@@ -18,7 +19,9 @@ export class TopNavigationComponent implements OnInit {
 
   public user: User;
 
-  constructor(private auth: AuthService) { }
+  public src;
+
+  constructor(private auth: AuthService, private profileService: ProfileService) { }
 
   ngOnInit(): void {
 
@@ -28,6 +31,14 @@ export class TopNavigationComponent implements OnInit {
         this.user = user;
       })).subscribe()
 
+
+      this.profileService.getImage(this.user.id).pipe(
+        tap((image) => {
+          this.src = image;
+          console.log(image);
+        }
+        )
+        ).subscribe()
 
 
   }

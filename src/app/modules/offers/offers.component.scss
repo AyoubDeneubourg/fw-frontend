@@ -1,3 +1,39 @@
+$blue: #4cade6;
+$orange: #e5844c;
+
+
 textarea {
   resize: none;
+}
+
+
+.textarea-blue {
+
+  &:focus {
+    border: 0.25px solid $blue !important;
+  }
+
+}
+
+.textarea-orange {
+
+  &:focus {
+    border: 0.25px solid $orange !important;
+  }
+
+}
+
+
+.input-blue {
+
+  &:focus {
+    border: 0.25px solid $blue !important;
+  }
+
+}
+.input-orange {
+
+  &:focus {
+    border: 0.25px solid $orange !important;
+  }
 }

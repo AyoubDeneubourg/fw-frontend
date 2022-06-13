@@ -1,36 +1,33 @@
 <div class="container shadow-md border">
 
-  <span class="logo flex-auto">
-    <img src="../../../../assets/logo/logo-{{color}}.svg" alt="">
-  </span>
 
+
+  <div class="flex-auto"></div>
 
   <div class="icons flex-col flex-auto">
 
 
     <div [routerLinkActive]="'cursor-default'" [routerLink]="['/dashboard']" class="cursor-pointer flex flex-row my-5">
-      <i class="fa-light fa-home my-auto ml-auto"></i>
+      <i  id="step1" class="fa-light fa-home my-auto ml-auto"></i>
       <div [routerLinkActive]="'active-' + color" class="ml-auto inactive py-5"></div>
     </div>
 
-    <ng-container *ngIf="user.userType != 'INFLUENCER'">
     <div [routerLinkActive]="'cursor-default'" [routerLink]="['/search']" class="cursor-pointer flex flex-row my-5">
-      <i class="fa-light fa-magnifying-glass my-auto ml-auto"></i>
+      <i id="step2" class="fa-light fa-magnifying-glass my-auto ml-auto"></i>
       <div [routerLinkActive]="'active-' + color" class="ml-auto inactive py-5"></div>
     </div>
-  </ng-container>
 
   <ng-container *ngIf="user.userType != 'BRAND'">
 
     <div [routerLinkActive]="'cursor-default'" [routerLink]="['/statistics']" class="cursor-pointer flex flex-row my-5">
-      <i class="fa-light fa-chart-column my-auto ml-auto"></i>
+      <i id="step3"  class="fa-light fa-chart-column my-auto ml-auto"></i>
       <div [routerLinkActive]="'active-' + color" class="ml-auto inactive py-5"></div>
     </div>
   </ng-container>
 
 
     <div [routerLinkActive]="'cursor-default'" [routerLink]="['/chat']" class="cursor-pointer flex flex-row my-5">
-      <i class="fa-light fa-comment my-auto ml-auto"></i>
+      <i id="step4" class="fa-light fa-comment my-auto ml-auto"></i>
       <div [routerLinkActive]="'active-' + color" class="ml-auto inactive py-5"></div>
     </div>
 
@@ -40,7 +37,7 @@
 
 
   <div (click)="logout()" class="cursor-pointer flex flex-row my-5">
-    <i class="fa-light fa-arrow-right-from-bracket my-auto ml-auto"></i>
+    <i id="step5" class="fa-light fa-arrow-right-from-bracket my-auto ml-auto"></i>
     <div class="ml-auto inactive py-5"></div>
   </div>
 

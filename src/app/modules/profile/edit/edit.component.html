@@ -47,7 +47,7 @@
 <ng-template #personal>
     <div class="flex">
         <h1 class="m-2 text-lg font-semibold flex-1">{{ t('personalInformation.title') }}</h1>
-        <h1 (click)="changeEditMode('personalInformationEditMode')" class="m-auto text-base font-semibold">{{ t('edit') }}</h1>
+        <h1 (click)="changeEditMode('personalInformationEditMode')" class="m-auto text-base font-semibold cursor-pointer">{{ t('edit') }}</h1>
     </div>
 
 
@@ -85,7 +85,7 @@
 
         
     </div>
-    <div *ngIf="personalInformationEditMode" class="m-auto bg-{{color}} px-2 py-1 font-semibold text-white w-fit rounded-sm shadow-sm" (click)="updateUser('personalInformationEditMode')">Confirm</div>
+    <div *ngIf="personalInformationEditMode" class="m-auto bg-{{color}} px-2 py-1 font-semibold text-white w-fit rounded-sm shadow-sm" (click)="updateUser('personalInformationEditMode')">{{ t('confirm') }}</div>
 
 
 
@@ -94,7 +94,7 @@
 
     <div class="flex mt-10">
         <h1 class="m-2 text-lg font-semibold flex-1">{{ t('personalInformation.languages') }}</h1>
-        <h1 (click)="changeEditMode('languagesEditMode')" class="m-auto text-base font-semibold">{{ t('edit') }}</h1>
+        <h1 (click)="changeEditMode('languagesEditMode')" class="m-auto text-base font-semibold cursor-pointer">{{ t('edit') }}</h1>
     </div>
 
 
@@ -133,10 +133,61 @@
 
 
     </div>
+    <div *ngIf="languagesEditMode" class="m-auto bg-{{color}} px-2 py-1 font-semibold text-white w-fit rounded-sm shadow-sm" (click)="updateUser('languagesEditMode')">{{ t('confirm') }}</div>
 
-    <div *ngIf="languagesEditMode" class="m-auto bg-{{color}} px-2 py-1 font-semibold text-white w-fit rounded-sm shadow-sm" (click)="updateUser('languagesEditMode')">Confirm</div>
+
+    <ng-container *ngIf="this.profile.userType == 'BRAND'">
+
+    
+    <div class="flex mt-10">
+        <h1 class="m-2 text-lg font-semibold flex-1">{{ t('personalInformation.socialMedia') }}</h1>
+        <h1 (click)="changeEditMode('socialMediaEditMode')" class="m-auto text-base font-semibold cursor-pointer">{{ t('edit') }}</h1>
+    </div>
 
 
+    <div class="grid m-2">
+
+
+        <p class="font-medium border-b">{{ t('partnershipInformation.socialMedia') }}</p>
+        <p *ngIf="!socialMediaEditMode" class="font-medium border-b text-gray-600">
+            <ng-container *ngFor="let socialMedia of profile.socialMedia; let i = index">{{socialMedia.name}}<span *ngIf="profile.socialMedia.length != 1 + i">, </span></ng-container>
+        </p>
+        <span *ngIf="socialMediaEditMode" id="socialMedia" class=" border-b text-gray-600 flex flex-col">
+     
+                <span class="flex my-auto mr-auto">
+                    <select class="shadow-md select-{{color}}" name="socialMedia" id="selectSocialMedia">
+                        <ng-container *ngFor="let availableSocialMedia of availableSocialMedias">
+                            <option value="{{availableSocialMedia}}">{{availableSocialMedia }}</option>
+                        </ng-container>
+                    </select>
+                    <span (click)="addSocialMedia()" class="ml-2 addBtn rounded-sm my-auto text-lg text-center bg-{{color}} text-white font-semibold">+</span>
+                </span>
+
+                <span *ngFor="let item of socialMediaList"  class="flex">
+                    <span class="language mr-1 my-2 py-1  rounded-md">      
+                        <span class="my-auto  font-semibold">{{ item.name }}</span>
+                        <span (click)="removeSocialMedia(item)" class="my-auto ml-2">
+                            <i class="fa-solid fa-trash-can text-red-600"></i>
+                        </span> 
+                        <br>
+                        <span class="my-auto">Link :</span>
+                        <input id="link-{{item.name}}" type="text" class="p-1  w-max border rounded-md border-gray-500 input-{{color}}" placeholder="http://{{item.name}}.com/john" value="{{item.link}}">
+
+                    </span>
+                </span>
+            </span>
+
+
+
+
+            
+            
+        </div>
+        
+        <div *ngIf="socialMediaEditMode" class="m-auto bg-{{color}} px-2 py-1 font-semibold text-white w-fit rounded-sm shadow-sm" (click)="updateUser('socialMediaEditMode')">{{ t('confirm') }}</div>
+
+
+    </ng-container>
 
 
 
@@ -144,7 +195,7 @@
 
     <div class="flex mt-10">
         <h1 class="m-2 text-lg font-semibold flex-1">{{ t('personalInformation.sectors') }}</h1>
-        <h1 (click)="changeEditMode('sectorsEditMode')" class="m-auto text-base font-semibold">{{ t('edit') }}</h1>
+        <h1 (click)="changeEditMode('sectorsEditMode')" class="m-auto text-base font-semibold cursor-pointer">{{ t('edit') }}</h1>
     </div>
 
 
@@ -183,7 +234,7 @@
 
     </div>
 
-    <div *ngIf="sectorsEditMode" class="m-auto bg-{{color}} px-2 py-1 font-semibold text-white w-fit rounded-sm shadow-sm" (click)="updateUser('sectorsEditMode')">Confirm</div>
+    <div *ngIf="sectorsEditMode" class="m-auto bg-{{color}} px-2 py-1 font-semibold text-white w-fit rounded-sm shadow-sm" (click)="updateUser('sectorsEditMode')">{{ t('confirm') }}</div>
 
 
 
@@ -192,7 +243,7 @@
 
     <div class="flex mt-10">
         <h1 class="m-2 text-lg font-semibold flex-1">{{ t('personalInformation.country') }}</h1>
-        <h1 (click)="changeEditMode('countryEditMode')" class="m-auto text-base font-semibold">{{ t('edit') }}</h1>
+        <h1 (click)="changeEditMode('countryEditMode')" class="m-auto text-base font-semibold cursor-pointer">{{ t('edit') }}</h1>
     </div>
 
 
@@ -234,7 +285,7 @@
 
 
 
-    <div *ngIf="countryEditMode" class="m-auto bg-{{color}} px-2 py-1 font-semibold text-white w-fit rounded-sm shadow-sm" (click)="updateUser('countryEditMode')">Confirm</div>
+    <div *ngIf="countryEditMode" class="m-auto bg-{{color}} px-2 py-1 font-semibold text-white w-fit rounded-sm shadow-sm" (click)="updateUser('countryEditMode')">{{ t('confirm') }}</div>
 
 
 
@@ -251,7 +302,7 @@
 
     <div class="flex mt-10">
         <h1 class="m-2 text-lg font-semibold flex-1">{{ t('personalInformation.homeDetails') }}</h1>
-        <h1 (click)="changeEditMode('homeDetailsEditMode')" class="m-auto text-base  bg-{{color}} text-white shadow-sm py-2 px-4 rounded-md">{{ t('edit') }}<i class="fa-solid fa-pen-to-square ml-2 "></i></h1>
+        <h1 (click)="changeEditMode('homeDetailsEditMode')" class="m-auto text-base font-semibold cursor-pointer">{{ t('edit') }}</h1>
     </div>
 
 
@@ -295,7 +346,7 @@
     </div>
 
 
-    <div *ngIf="homeDetailsEditMode" class="m-auto bg-{{color}} px-2 py-1 font-semibold text-white w-fit rounded-sm shadow-sm" (click)="updateUser('homeDetailsEditMode')">Confirm</div>
+    <div *ngIf="homeDetailsEditMode" class="m-auto bg-{{color}} px-2 py-1 font-semibold text-white w-fit rounded-sm shadow-sm" (click)="updateUser('homeDetailsEditMode')">{{ t('confirm') }}</div>
 
 
 
@@ -323,7 +374,7 @@
 <ng-template #partnershipDetails  >
     <div class="flex">
         <h1 class="m-2 text-lg font-semibold flex-1">{{ t('partnershipInformation.title') }}</h1>
-        <h1 (click)="changeEditMode('socialMediaEditMode')" class="m-auto text-base font-semibold">{{ t('edit') }}</h1>
+        <h1 (click)="changeEditMode('socialMediaEditMode')" class="m-auto text-base font-semibold cursor-pointer">{{ t('edit') }}</h1>
     </div>
 
 
@@ -403,11 +454,11 @@
 
     <div class="flex mt-10">
         <h1 class="m-2 text-lg font-semibold flex-1">{{ t('partnershipInformation.paymentInformation') }}</h1>
-        <h1 (click)="changeEditMode('paymentInformationEditMode')" class="m-auto text-base font-semibold">{{ t('edit') }}</h1>
+        <h1 (click)="changeEditMode('paymentInformationEditMode')" class="m-auto text-base font-semibold cursor-pointer">{{ t('edit') }}</h1>
 
     </div>
 
-    <div *ngIf="socialMediaEditMode" class="m-auto bg-{{color}} px-2 py-1 font-semibold text-white w-fit rounded-sm shadow-sm" (click)="updateUser('socialMediaEditMode')">Confirm</div>
+    <div *ngIf="socialMediaEditMode" class="m-auto bg-{{color}} px-2 py-1 font-semibold text-white w-fit rounded-sm shadow-sm" (click)="updateUser('socialMediaEditMode')">{{ t('confirm') }}</div>
 
     <div class="grid m-2">
 
@@ -425,7 +476,7 @@
 
     </div>
 
-    <div *ngIf="paymentInformationEditMode" class="m-auto bg-{{color}} px-2 py-1 font-semibold text-white w-fit rounded-sm shadow-sm" (click)="updateUser('paymentInformationEditMode')">Confirm</div>
+    <div *ngIf="paymentInformationEditMode" class="m-auto bg-{{color}} px-2 py-1 font-semibold text-white w-fit rounded-sm shadow-sm" (click)="updateUser('paymentInformationEditMode')">{{ t('confirm') }}</div>
 
 
 </ng-template>

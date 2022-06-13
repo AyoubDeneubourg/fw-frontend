@@ -45,7 +45,8 @@ export class UserPreferencesService {
   private defaultPreferences(): UserPreferences {
     return {
       language: null,
-      search: null
+      search: null,
+      introduction: false
     };
   }
 
@@ -65,5 +66,6 @@ export class UserPreferencesService {
 
 export interface UserPreferences {
   language: string;
-  search: Filters
+  search: Filters,
+  introduction: boolean
 }

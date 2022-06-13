@@ -11,10 +11,10 @@ import { OffersComponent } from '../modules/offers/offers.component';
 import { EditProfileComponent } from '../modules/profile/edit/edit.component';
 import { ProfileComponent } from '../modules/profile/profile.component';
 import { SetupProfileComponent } from '../modules/profile/setup/setup.component';
-import { SearchComponent } from '../modules/search/search.component';
 import { WizardComponent } from '../modules/search/wizard/wizard.component';
 import { StatisticsComponent } from '../modules/statistics/statistics.component';
 import { AuthenticatedGuard } from './guards/authenticated.guard';
+import { SearchComponent } from '../modules/search/search.component';
 
 const routes: Routes = [
   {

@@ -1,48 +1,48 @@
-<ng-container  *transloco="let t; read: 'dashboard.overview'">
+
+
 
 
   <div class="flex m-2 pt-6 border-{{color}}">
-    <p class=" text-xl flex-1">{{ t('overviewTitle') }}</p>
+    <p id="" class=" text-xl flex-1">{{ 'dashboard.overview.overviewTitle' | transloco }}</p>
 
-    <ng-container *ngIf="color == 'blue'">
-
-
-    <p class="my-auto mx-2 text-black-animation cursor-pointer" (click)="changeActiveTab('1')" [ngClass]="active == '1' ? 'active-' + color: ''">
-      {{ t('upcomingEvents') }}
-    </p>
-
-    <p class="my-auto mx-2 text-black-animation cursor-pointer" (click)="changeActiveTab('2')" [ngClass]="active == '2' ? 'active-' + color: ''" >
-      {{ t('requests') }}
+    <div id="step7" *ngIf="color == 'blue'">
+        
+        
+        <p class="my-auto mx-2 text-black-animation cursor-pointer" (click)="changeActiveTab('1')" [ngClass]="active == '1' ? 'active-' + color: ''">
+          {{ 'dashboard.overview.upcomingEvents' | transloco }}
+        </p>
+        
+        <p class="my-auto mx-2 text-black-animation cursor-pointer" (click)="changeActiveTab('2')" [ngClass]="active == '2' ? 'active-' + color: ''" >
+      {{ 'dashboard.overview.requests' | transloco }}
     </p>
 
     <p class="my-auto mx-2  text-black-animation cursor-pointer" (click)="changeActiveTab('3')" [ngClass]="active == '3' ? 'active-' + color: ''">
-      {{ t('history') }}
+      {{ 'dashboard.overview.history' | transloco }}
     </p>
+    
+  </div>
+  
 
-    </ng-container>
-
-
-
-    <ng-container *ngIf="color == 'orange'">
+  <div id="step7" *ngIf="color == 'orange'">
 
       <p class="my-auto mx-2 text-black-animation cursor-pointer " (click)="changeActiveTab('1')" [ngClass]="active == '1' ? 'active-' + color: ''">
-        {{ t('progress') }}
+        {{ 'dashboard.overview.progress'  | transloco }}
       </p>
       <p class="my-auto mx-2 text-black-animation cursor-pointer" (click)="changeActiveTab('2')" [ngClass]="active == '2' ? 'active-' + color: ''" >
-        {{ t('requested') }}
+        {{ 'dashboard.overview.requested'  | transloco }}
       </p>
 
       <p class="my-auto mx-2 text-black-animation cursor-pointer" (click)="changeActiveTab('3')" [ngClass]="active == '3' ? 'active-' + color: ''">
-        {{ t('pay') }}
+        {{ 'dashboard.overview.pay' | transloco  }}
       </p>
   
   
       <p class="my-auto mx-2 text-black-animation cursor-pointer" (click)="changeActiveTab('4')" [ngClass]="active == '4' ? 'active-' + color: ''">
-        {{ t('history') }}
+        {{ 'dashboard.overview.history' | transloco  }}
       </p>
   
-      </ng-container>
-
+    </div>
+    
   </div>
 
   <hr class="p-5">
@@ -97,8 +97,3 @@
     
     
   </ng-container>
-
-</ng-container>
-  
-
-

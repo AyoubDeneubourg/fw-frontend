@@ -1,20 +1,15 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { combineLatest, concat, merge, Observable, of, pipe, Subject } from 'rxjs';
+import { concat,  of, } from 'rxjs';
 
-import {
-  AngularFireDatabase,
-  AngularFireList,
-  AngularFireObject,
-} from '@angular/fire/compat/database';
+
 import { ChatService } from 'src/app/core/services/firebase/chat.service';
-import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
-import { combineAll, map, mergeMap, switchMap, take, tap } from 'rxjs/operators';
-import { collection, getDocs } from 'firebase/firestore';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import {  tap } from 'rxjs/operators';
 import { Firestore } from '@angular/fire/firestore';
 
 import { AuthService, Color } from 'src/app/core/services/auth-service/auth.service';
 import { User } from 'src/app/shared/models/common';
-import { ActivatedRoute, Event, NavigationEnd, NavigationStart, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({

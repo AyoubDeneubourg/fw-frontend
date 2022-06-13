@@ -1,9 +1,34 @@
 <ng-container *transloco="let t; read: 'register'">
 
   <div class="flex flex-row h-screen">
-    <div class="w-1/3 flex items-center" [class.bg-gray]="actualPage === 1"
+    <div class="w-1/3 flex items-center relative" [class.bg-gray]="actualPage === 1"
       [class.bg-blue]="actualPage !== 1 && accountType.value === 'INFLUENCER'"
       [class.bg-orange]="actualPage !== 1 && accountType.value === 'BRAND'">
+
+      <ng-container *ngIf="accountType.value == 'INFLUENCER' && actualPage !== 1">
+        <div class="absolute top-5 right-5">
+          <app-deco-wizard-squares [color]="'blue'" [position]="'top-right'"></app-deco-wizard-squares>
+        </div>
+      </ng-container>
+
+
+      <ng-container *ngIf="accountType.value == 'BRAND' && actualPage !== 1">
+        <div class="absolute top-5 right-5">
+          <app-deco-wizard-squares [color]="'orange'" [position]="'top-right'"></app-deco-wizard-squares>
+        </div>
+      </ng-container>
+
+
+      <ng-container *ngIf="actualPage === 1">
+        <div class="absolute top-5 right-5">
+          <app-deco-wizard-squares [color]="'grey'" [position]="'top-right'"></app-deco-wizard-squares>
+        </div>
+      </ng-container>
+
+
+
+
+
       <div class="flex flex-col ml-14 flex-1">
 
 

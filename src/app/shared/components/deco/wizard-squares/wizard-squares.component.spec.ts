@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SearchCardComponent } from './search-card.component';
+import { WizardSquaresComponent } from './wizard-squares.component';
 
-describe('SearchCardComponent', () => {
-  let component: SearchCardComponent;
-  let fixture: ComponentFixture<SearchCardComponent>;
+describe('WizardSquaresComponent', () => {
+  let component: WizardSquaresComponent;
+  let fixture: ComponentFixture<WizardSquaresComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SearchCardComponent ]
+      declarations: [ WizardSquaresComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SearchCardComponent);
+    fixture = TestBed.createComponent(WizardSquaresComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

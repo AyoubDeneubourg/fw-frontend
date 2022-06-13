@@ -19,7 +19,9 @@ export class SearchService {
 
   public getInfluencers(): Observable<any> {
    return this.http.get<any>(`${this.apiUrl}/api/influencer/`, getHeaders());
+  }
 
-  
+  public getBrands(): Observable<any> {
+   return this.http.get<any>(`${this.apiUrl}/api/brand/`, getHeaders());
   }
 }

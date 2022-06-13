@@ -104,13 +104,13 @@
 
         <label for="startDate" class="font-semibold mb-1">{{ t('startDate') }}</label>
 
-        <input id="startDate" type="date" class="py-1 px-3 outline-none rounded-sm shadow-md border"
+        <input id="startDate" type="date" class="input-{{color}} py-1 px-3 outline-none rounded-sm shadow-md border"
           formControlName="startDate">
         <app-input-validation-error [control]="startDate"></app-input-validation-error>
 
         <label for="endDate" class="font-semibold mb-1">{{ t('endDate') }}</label>
 
-        <input id="endDate" type="date" class="py-1 px-3 outline-none rounded-sm shadow-md border"
+        <input id="endDate" type="date" class="input-{{color}} py-1 px-3 outline-none rounded-sm shadow-md border"
           formControlName="endDate">
 
         <app-input-validation-error [control]="endDate"></app-input-validation-error>
@@ -143,7 +143,7 @@
 
         <label for="description" class="font-semibold mb-1">{{ t('description') }}</label>
         <textarea name="description" id="description" cols="30" rows="10"
-          class="py-1 px-3 outline-none rounded-sm shadow-md border" formControlName="description">
+          class="textarea-{{color}} py-1 px-3 outline-none rounded-sm shadow-md border" formControlName="description">
         </textarea>
 
 
@@ -355,17 +355,27 @@
 
 
 
-  <div class="w-1/3 flex items-center bg-{{color}} justify-end">
-    <div class="flex flex-col mr-14 ">
+  <div class="w-1/3 flex items-center bg-{{color}} justify-end relative ">
 
-      <i (click)="returnBack()" class="absolute top-3 left-3 fa-solid fa-arrow-left text-xl" ></i>
-      <img class="absolute top-3 right-3" width="135px" src="../../../../assets/logo/logo-white-{{color}}.svg">
+    
+    
+    <div class="flex flex-col mr-14  ">
+      <div class="absolute top-5 right-5">
+        <app-deco-wizard-squares [color]="color" [position]="'top-right'"></app-deco-wizard-squares>
+      </div>
+
+ 
+      <img class="absolute bottom-3 right-3" width="115px" src="../../../../assets/logo/logo-white-{{color}}.svg">
 
       <app-pages-side-navigation (goToPage)='goToPage($event)' [allPages]="allPages" [color]="color"
         [direction]="'Right'">
       </app-pages-side-navigation>
 
     </div>
+
+    
+    
   </div>
+  <i (click)="returnBack()" class="absolute top-7 left-7 fa-solid fa-arrow-left text-xl cursor-pointer" ></i>
 </div>
 </ng-container>

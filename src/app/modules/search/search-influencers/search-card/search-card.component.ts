@@ -3,11 +3,11 @@ import { AuthService, Color } from 'src/app/core/services/auth-service/auth.serv
 import { COUNTRIES } from 'src/app/shared/data/countries';
 
 @Component({
-  selector: 'app-search-card',
+  selector: 'app-search-influencer-card',
   templateUrl: './search-card.component.html',
   styleUrls: ['./search-card.component.scss']
 })
-export class SearchCardComponent implements OnInit {
+export class SearchInfluencerCardComponent implements OnInit {
 
   @Input()
   public data;

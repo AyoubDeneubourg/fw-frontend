@@ -1,6 +1,7 @@
 $size: 37px;
 $light-orange: #ffb992;
 $light-blue: #bfe7ff;
+$light-gray: #717171;
 
 
 .background {
@@ -24,6 +25,12 @@ $light-blue: #bfe7ff;
 .color-orange {
 
     border: 3px solid $light-orange;
+
+}
+
+.color-grey {
+
+    border: 3px solid $light-gray;
 
 }
 
@@ -98,4 +105,25 @@ $light-blue: #bfe7ff;
 .square-3-bottom-right {
     bottom: calc($size + 5px);
     right:calc($size + 5px);
+}
+
+
+div {
+    animation: move 5s infinite alternate-reverse;
+}
+
+
+@keyframes move {
+    
+    0% {
+        transform: translate(0, 0);
+    }
+
+    50% {
+        transform: translate(-3px, 3px);
+    }
+
+    100% {
+        transform: translate(3px, -3px);
+    }
 }

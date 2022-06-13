@@ -1,0 +1,35 @@
+input {
+
+    &:focus {
+        outline: none;
+    }
+}
+
+select {
+
+    width: 100%;
+    padding:8px;
+    border-radius: 5px;
+    color: white;
+    font-weight: 500;
+    
+    &:focus {
+        border:none;
+        outline: none;
+    }
+}
+
+option {
+    background-color: white;
+    color:black;
+}
+
+.checkbox-orange {
+    accent-color: #e65400;
+
+}
+
+.checkbox-blue {
+    accent-color: #007fc8;
+
+}

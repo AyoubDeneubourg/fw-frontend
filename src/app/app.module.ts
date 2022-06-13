@@ -45,7 +45,7 @@ import { EditProfileComponent } from './modules/profile/edit/edit.component';
 import { SuccessComponent } from './core/stripe/success/success.component';
 import { CancelComponent } from './core/stripe/cancel/cancel.component';
 import { CheckoutComponent } from './core/stripe/checkout/checkout.component';
-import { SearchCardComponent } from './modules/search/search-card/search-card.component';
+import { SearchInfluencerCardComponent } from './modules/search/search-influencers/search-card/search-card.component';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import { FirebaseApp, initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
@@ -72,6 +72,10 @@ import { SmallComponent } from './shared/components/modal/small/small.component'
 import { RegularComponent } from './shared/components/modal/regular/regular.component';
 import { LargeComponent } from './shared/components/modal/large/large.component';
 import { SetupProfileComponent } from './modules/profile/setup/setup.component';
+import { SearchInfluencersComponent } from './modules/search/search-influencers/search.component';
+import { SearchBrandsComponent } from './modules/search/search-brands/search.component';
+import { SearchBrandCardComponent } from './modules/search/search-brands/search-card/search-card.component';
+import { WizardSquaresComponent } from './shared/components/deco/wizard-squares/wizard-squares.component';
 
 @NgModule({
   declarations: [
@@ -109,7 +113,8 @@ import { SetupProfileComponent } from './modules/profile/setup/setup.component';
     SuccessComponent,
     CancelComponent,
     CheckoutComponent,
-    SearchCardComponent,
+    SearchInfluencerCardComponent,
+    SearchBrandCardComponent,
     ChatComponent,
     SocialMediaPriceCounterPipe,
     FirebaseTimeToNormalTimePipe,
@@ -123,7 +128,10 @@ import { SetupProfileComponent } from './modules/profile/setup/setup.component';
     SmallComponent,
     RegularComponent,
     LargeComponent,
-    SetupProfileComponent
+    SetupProfileComponent,
+    SearchInfluencersComponent,
+    SearchBrandsComponent,
+    WizardSquaresComponent
   ],
 
   imports: [
