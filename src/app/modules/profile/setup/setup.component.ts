@@ -1,18 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 
 
-import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { AuthService, Color } from 'src/app/core/services/auth-service/auth.service';
 import { SocialMediaArray, SocialMediaArrayCapitalized } from 'src/app/shared/models/offers';
 import { PageNavigation } from 'src/app/shared/models/pagination';
-import { tap } from 'rxjs/operators'
 import { COUNTRIES } from 'src/app/shared/data/countries';
-import { matchValues } from 'src/app/shared/static/forms/password-validation';
-import { Filters, sectors, User } from 'src/app/shared/models/common';
-import { UserPreferences, UserPreferencesService } from 'src/app/core/services/user-preferences/user-preferences.service';
+import { sectors, User } from 'src/app/shared/models/common';
+import { UserPreferencesService } from 'src/app/core/services/user-preferences/user-preferences.service';
 import { Router } from '@angular/router';
-import { isGreather } from 'src/app/shared/static/forms/isGreather-validation';
 import { Location } from '@angular/common';
 import { LANGUAGES } from 'src/app/shared/data/languages';
 import { ProfileService } from 'src/app/core/services/profile/profile-service.service';
@@ -236,6 +233,7 @@ export class SetupProfileComponent implements OnInit {
 
 
   public returnBack() {
+    console.log(this.location.back());
     this.location.back();
   }
 

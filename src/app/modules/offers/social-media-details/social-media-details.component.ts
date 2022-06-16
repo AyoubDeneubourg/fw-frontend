@@ -1,6 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Color } from 'src/app/core/services/auth-service/auth.service';
-import { SocialMediaInformation } from 'src/app/shared/models/offers';
 
 @Component({
   selector: 'app-social-media-details',

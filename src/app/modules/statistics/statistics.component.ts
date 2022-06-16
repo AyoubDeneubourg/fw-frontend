@@ -1,9 +1,9 @@
-import { Component, ElementRef, OnInit, ViewChild, AfterViewInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TranslocoService } from '@ngneat/transloco';
 import { take, tap } from 'rxjs/operators';
 import { AuthService } from 'src/app/core/services/auth-service/auth.service';
 import { RatingService } from 'src/app/core/services/profile/rating-service.service';
-import { StatsService } from 'src/app/core/services/stats-service/stats.service';
+import { StatsService } from 'src/app/core/services/stats/stats.service';
 import { Statistics, User } from 'src/app/shared/models/common';
 
 @Component({

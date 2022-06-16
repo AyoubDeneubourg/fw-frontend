@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { of } from 'rxjs';
-import { catchError, take, tap } from 'rxjs/operators';
+import { take, tap } from 'rxjs/operators';
 import { OffersService } from 'src/app/core/services/offers/offers.service';
 import { Offer, SocialMediaInformation } from 'src/app/shared/models/offers';
 

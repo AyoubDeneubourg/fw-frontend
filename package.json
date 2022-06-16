@@ -29,7 +29,6 @@
     "express": "^4.17.1",
     "firebase": "^9.8.2",
     "intro.js": "^5.1.0",
-    "ngx-cookie-service": "^13.1.2",
     "rxjs": "~6.6.0",
     "save": "^2.5.0",
     "tslib": "^2.0.0",

@@ -1,11 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, of } from 'rxjs';
-import { tap } from 'rxjs/operators';
-import { LoginData, RegistrationData, Statistics, User } from 'src/app/shared/models/common';
+import { Observable } from 'rxjs';
+import { Statistics } from 'src/app/shared/models/common';
 import { AuthService } from '../auth-service/auth.service';
-import { getHeaders, getToken, removeToken, setToken } from '../authorization/authorization';
+import { getHeaders } from '../authorization/authorization';
 
 @Injectable({
   providedIn: 'root'

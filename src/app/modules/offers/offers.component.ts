@@ -9,12 +9,11 @@ import { catchError, tap } from 'rxjs/operators';
 import { AuthService, Color } from 'src/app/core/services/auth-service/auth.service';
 import { OffersService } from 'src/app/core/services/offers/offers.service';
 import { Profile, User } from 'src/app/shared/models/common';
-import { Offer, SocialMediaArray, SocialMediaInformation } from 'src/app/shared/models/offers';
+import { SocialMediaArray, SocialMediaInformation } from 'src/app/shared/models/offers';
 import { PageNavigation } from 'src/app/shared/models/pagination';
 import { dateAfterNow } from 'src/app/shared/static/forms/date-after-now-validation';
 import { dateBeforeDate } from 'src/app/shared/static/forms/date-before-date-validation';
 import { minOneChecked } from 'src/app/shared/static/forms/min-one-true-validation';
-import { isNotNullOrUndefined } from 'src/app/shared/static/utils/is-null-or-undefined';
 
 @Component({
   selector: 'app-offers',

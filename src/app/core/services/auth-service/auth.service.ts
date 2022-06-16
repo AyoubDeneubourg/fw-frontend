@@ -6,7 +6,7 @@ import { switchMap, tap } from 'rxjs/operators';
 import { Brand } from 'src/app/shared/models/brand';
 import { LoginData, RegistrationData, User } from 'src/app/shared/models/common';
 import { Influencer } from 'src/app/shared/models/influencer';
-import { getHeaders, getToken, removeToken, setToken } from '../authorization/authorization';
+import { getHeaders, removeToken, setToken } from '../authorization/authorization';
 
 
 @Injectable({

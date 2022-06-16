@@ -2,7 +2,6 @@ import { Options } from '@angular-slider/ngx-slider';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { timeStamp } from 'console';
 import { take, tap } from 'rxjs/operators';
 
 import { AuthService, Color } from 'src/app/core/services/auth-service/auth.service';
@@ -11,7 +10,7 @@ import { SearchService } from 'src/app/core/services/search/search.service';
 import { UserPreferencesService } from 'src/app/core/services/user-preferences/user-preferences.service';
 import { COUNTRIES } from 'src/app/shared/data/countries';
 import { Filters, sectors } from 'src/app/shared/models/common';
-import { Offer, SocialMediaArrayCapitalized, SocialMediaInformation } from 'src/app/shared/models/offers';
+import { SocialMediaArrayCapitalized } from 'src/app/shared/models/offers';
 
 @Component({
   selector: 'app-search-influencers',

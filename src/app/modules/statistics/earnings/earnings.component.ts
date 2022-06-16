@@ -1,7 +1,6 @@
-import { AfterViewChecked, AfterViewInit, ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { AuthService, Color } from 'src/app/core/services/auth-service/auth.service';
-import { StatsService } from 'src/app/core/services/stats-service/stats.service';
-import { Statistics, User } from 'src/app/shared/models/common';
+import { Statistics } from 'src/app/shared/models/common';
 
 @Component({
   selector: 'app-earnings',

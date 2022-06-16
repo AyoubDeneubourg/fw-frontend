@@ -1,6 +1,4 @@
-import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, ChangeDetectorRef, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
-import { Statistics } from 'src/app/shared/models/common';
-import { socialMediaConverter } from 'src/app/shared/models/offers';
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, Input, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-line-chart',

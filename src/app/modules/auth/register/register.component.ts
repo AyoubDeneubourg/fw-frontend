@@ -6,7 +6,7 @@ import {
   Validators,
   AbstractControl,
 } from '@angular/forms';
-import { AuthService } from 'src/app/core/services/auth-service/auth.service';
+import { AuthService, Color } from 'src/app/core/services/auth-service/auth.service';
 import { RegistrationData } from 'src/app/shared/models/common';
 import { PageNavigation } from 'src/app/shared/models/pagination';
 import { catchError, take, tap } from 'rxjs/operators'
@@ -15,7 +15,6 @@ import { matchValues } from 'src/app/shared/static/forms/password-validation';
 import { birthDate } from 'src/app/shared/static/forms/birthdate-validation';
 import { of } from 'rxjs';
 import { Router } from '@angular/router';
-import { databaseInstanceFactory } from '@angular/fire/database/database.module';
 
 
 @Component({
@@ -30,6 +29,8 @@ export class RegisterComponent implements OnInit {
   public registerFormGroup: FormGroup;
   public actualPage: number = 1;
   public allowToGo: number = 1;
+
+  public color: Color;
 
   public emailAlreadyExists: boolean = false;
   public usernameAlreadyExists: boolean = false;
@@ -88,7 +89,7 @@ export class RegisterComponent implements OnInit {
         firstName: ['', [Validators.required]],
         lastName: ['', [Validators.required]],
         userName: ['', [Validators.required,]],
-        email: ['', [Validators.required,]],
+        email: ['', [Validators.required, Validators.email]],
         birthDate: ['', [Validators.required, birthDate()]],
 
       }),
@@ -236,6 +237,7 @@ export class RegisterComponent implements OnInit {
   public selectType(type: "BRAND" | "INFLUENCER"): void {
 
     this.accountType.setValue(type);
+    type == "INFLUENCER" ? this.color = "blue" : this.color = "orange";
     this.goToPage(2)
 
   }
@@ -288,7 +290,7 @@ export class RegisterComponent implements OnInit {
         }),
         catchError(err => {
           this.clickedRegister = false;
-          return err;
+          return of(err);
         })).subscribe();
 
      

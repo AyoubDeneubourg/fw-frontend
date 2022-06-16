@@ -2,13 +2,12 @@ import { NgModule } from '@angular/core';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
-import { CookieService } from 'ngx-cookie-service';
+
 
 import { AppRoutingModule } from './routing/app-routing.module';
 import { AppComponent } from './app.component';
-import { Observable } from 'rxjs';
 import { TranslocoRootModule } from './shared/translations/transloco-root.module';
 import { ChangeLanguageComponent } from './shared/components/change-language/change-language.component';
 import { PagesSideNavigationComponent } from './shared/components/pages-side-navigation/pages-side-navigation.component';
@@ -47,17 +46,10 @@ import { CancelComponent } from './core/stripe/cancel/cancel.component';
 import { CheckoutComponent } from './core/stripe/checkout/checkout.component';
 import { SearchInfluencerCardComponent } from './modules/search/search-influencers/search-card/search-card.component';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
-import { FirebaseApp, initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
-import { provideDatabase,getDatabase } from '@angular/fire/database';
 import { ChatComponent } from './modules/chat/chat.component';
-import { FirestoreModule, provideFirestore,getFirestore, Firestore } from '@angular/fire/firestore';
-import {
-  AngularFireDatabase,
-  AngularFireDatabaseModule,
-  AngularFireList,
-  AngularFireObject,
-} from '@angular/fire/compat/database';
+import { FirestoreModule} from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire/compat';
 import { SocialMediaPriceCounterPipe } from './shared/pipes/social-media-price-counter.pipe';
 import { FirebaseTimeToNormalTimePipe } from './shared/pipes/firebase-time-to-normal-time.pipe';
@@ -150,7 +142,7 @@ import { WizardSquaresComponent } from './shared/components/deco/wizard-squares/
 
 
   ],
-  providers: [CookieService, FormBuilder],
+  providers: [FormBuilder],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

@@ -1,5 +1,5 @@
 import { Input, ViewEncapsulation } from '@angular/core';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Statistics } from 'src/app/shared/models/common';
 import { socialMediaConverter } from 'src/app/shared/models/offers';
 

@@ -7,8 +7,8 @@
 
 
 
-      <div routerLink="/chat/{{ authedUser.id == user.user_1 ? user.user_2 : user.user_1}}" 
-      class="flex bg-white m-2 shadow-lg rounded-sm p-3 flex-1 cursor-pointer"
+      <div   routerLink="/chat/{{ authedUser.id == user.user_1 ? user.user_2 : user.user_1}}" 
+      class="animate__animated animate__fadeIn flex bg-white m-2 shadow-lg rounded-sm p-3 flex-1 cursor-pointer"
       [class.bg-gray-100]=" authedUser.id == user.user_1 ? user.user_2 == routeId : user.user_1 == routeId">
 
         <div class="my-auto p-2 ">
@@ -19,7 +19,7 @@
         
         
         </div>
-        <div class="flex flex-1 flex-col overflow-hidden">
+        <div class="animate__animated animate__fadeIn  flex flex-1 flex-col overflow-hidden">
           <span class="font-semibold "> {{ user.firstName }}</span>
           <span>{{ user?.messages[user?.messages?.length - 1]?.message.slice(0,20)}}</span>
         
@@ -54,7 +54,7 @@
           </ng-container>
         </ng-container>
 
-<div class="flex flex-col   right-chat" #autoScroll>
+<div class="flex flex-col right-chat" #autoScroll>
 
   <ng-container *ngFor="let item of bucketListArray['messages']; let i = index">
    
@@ -66,7 +66,7 @@
     <div class="flex">
 
       <ng-container *ngIf="item.sender_id != authedUser.id">
-        <div class="flex flex-col">
+        <div class="animate__animated animate__fadeIn  flex flex-col">
 
           <div *ngIf="bucketListArray['messages'][i - 1]?.sender_id != item.sender_id">
 
@@ -99,7 +99,7 @@
 
       <ng-container *ngIf="item.sender_id == authedUser.id">
         <div class="flex-1"></div>
-        <span class="flex flex-col">
+        <span class="animate__animated animate__fadeIn flex flex-col">
           <div class="flex">
             <span class="my-auto font-semibold text-sm">   
               <h1>{{ authedUser.firstName }}</h1>

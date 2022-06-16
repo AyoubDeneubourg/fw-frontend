@@ -35,6 +35,8 @@ export class ProfileComponent implements OnInit {
     this.user = this.authService.loggedInUser;
 
 
+    
+
     if(this.route.snapshot.params.id) {
 
 
@@ -71,10 +73,16 @@ export class ProfileComponent implements OnInit {
 
     } else {
 
+      
+    
+      
       if(this.user.userType == "BRAND") {
 
         this.profile = {...this.authService.loggedInBrand['user'], ...this.authService.loggedInBrand['brand']};
         this.type = 'BRAND';
+        if(!this.profile.headTitle && !this.profile.description ) {
+          this.router.navigateByUrl('/profile/setup');
+        }
         this.setBrandRating(this.authService.loggedInUser.id);
 
 
@@ -85,6 +93,9 @@ export class ProfileComponent implements OnInit {
 
         this.profile = {...this.authService.loggedInInfluencer['user'], ...this.authService.loggedInInfluencer['influencer']};
         this.type = "INFLUENCER"
+        if(!this.profile.headTitle && !this.profile.description ) {
+          this.router.navigateByUrl('/profile/setup');
+        }
         this.setInfluencerRating(this.authService.loggedInUser.id);
 
 
@@ -99,11 +110,8 @@ export class ProfileComponent implements OnInit {
 
     this.color = this.authService.colors;
 
-/* 
-    if(!this.profile.headTitle && !this.profile.description ) {
-      this.router.navigateByUrl('/profile/edit');
-    }
- */
+
+
 
 
   }

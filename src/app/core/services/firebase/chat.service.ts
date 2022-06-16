@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/compat/database';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { User } from 'src/app/shared/models/common';
 import { AuthService } from '../auth-service/auth.service';
-import { Timestamp }  from "@angular/fire/firestore";
 
 
 @Injectable({
@@ -39,7 +37,7 @@ export class ChatService {
 
 
     if(arr.user_2 && arr.user_1) {
-      this.angularFirestore.doc('test2/' + chat_id).set({
+      this.angularFirestore.doc('conversations/' + chat_id).set({
         user_1: arr?.user_1,
         user_2: arr?.user_2,
         messages: [...arr?.messages, newMessage],
@@ -49,7 +47,7 @@ export class ChatService {
     } else {
 
       
-      this.angularFirestore.collection('test2').add({
+      this.angularFirestore.collection('conversations').add({
         user_1: sender_id.toString(),
         user_2: receiver_id.toString(),
         messages: [newMessage],

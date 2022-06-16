@@ -48,9 +48,9 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let item of newEvents ? newEvents : offers as Offer">
+      <tr class="animate__animated animate__fadeIn" *ngFor="let item of newEvents ? newEvents : offers as Offer">
         <td>{{ item.id }}</td>
-        <td routerLink="/profile/{{item.brandId}}">{{ item.brandName }}</td>
+        <td> <p class="select-none cursor-pointer" routerLink="/profile/{{item.brandId}}">{{ item.brandName }}</p></td>
         <td class="flex"><ng-container *ngFor="let socialMedia of item.socialMediaDetails"><img width="28px" src="assets/icons/socials/{{socialMedia.name | uppercase}}.svg"></ng-container></td>
         <td>{{ item.socialMediaDetails | socialMediaCounter : 'posts' }}</td>
         <td>{{ item.socialMediaDetails | socialMediaCounter : 'stories' }}</td>

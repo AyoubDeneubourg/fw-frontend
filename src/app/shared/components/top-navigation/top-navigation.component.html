@@ -4,7 +4,7 @@
   <div class="icon  mx-6 m-auto flex">
     <img class="m-auto align-middle max-h-12" src="https://fw-api-gateway.herokuapp.com/api/image/{{user?.id}}">
   </div>
-  <div class="my-auto mr-8 cursor-pointer" (click)="dropdownToggle.emit()">{{user.firstName + ' ' + user.lastName}}</div>
+  <div class="my-auto mr-8 cursor-pointer select-none" (click)="dropdownToggle.emit()">{{user.firstName + ' ' + user.lastName}}</div>
 
 
 

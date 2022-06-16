@@ -110,7 +110,7 @@
 
 
 
-          <select formControlName="country" class="px-2 py-3 shadow-md outline-none">
+          <select formControlName="country" class="input-{{color}} border rounded-sm px-2 py-3 shadow-md outline-none">
 
 
 
@@ -151,14 +151,14 @@
 
 
           <label for="address" class="font-semibold mb-1">Address</label>
-          <input id="address" class="py-1 px-3 outline-none rounded-sm shadow-md" formControlName="address"
+          <input id="address" class="input-{{color}} border py-1 px-3 outline-none rounded-sm shadow-md" formControlName="address"
             type="text" />
 
           <app-input-validation-error [control]="address"></app-input-validation-error>
 
 
           <label for="city" class="font-semibold mb-1">City</label>
-          <input id="city" class="py-1 px-3 outline-none rounded-sm shadow-md" formControlName="city"
+          <input id="city" class="input-{{color}} border py-1 px-3 outline-none rounded-sm shadow-md" formControlName="city"
             type="text" />
 
 
@@ -166,7 +166,7 @@
 
 
           <label for="postalCode" class="font-semibold mb-1">Postal code</label>
-          <input id="postalCode" class="py-1 px-3 outline-none rounded-sm shadow-md" formControlName="postalCode" type="text" />
+          <input id="postalCode" class="input-{{color}} border py-1 px-3 outline-none rounded-sm shadow-md" formControlName="postalCode" type="number" />
 
 
           <app-input-validation-error [control]="postalCode"></app-input-validation-error>
@@ -206,14 +206,14 @@
 
 
           <label for="firstName" class="font-semibold mb-1">First Name</label>
-          <input id="firstName" class="py-1 px-3 outline-none rounded-sm shadow-md" formControlName="firstName"
+          <input id="firstName" class="input-{{color}} border py-1 px-3 outline-none rounded-sm shadow-md" formControlName="firstName"
             type="text" />
 
           <app-input-validation-error [control]="firstName"></app-input-validation-error>
 
 
           <label for="lastName" class="font-semibold mb-1">Last Name</label>
-          <input id="lastName" class="py-1 px-3 outline-none rounded-sm shadow-md" formControlName="lastName"
+          <input id="lastName" class="input-{{color}} border py-1 px-3 outline-none rounded-sm shadow-md" formControlName="lastName"
             type="text" />
 
 
@@ -221,7 +221,7 @@
 
 
           <label for="userName" class="font-semibold mb-1">Username</label>
-          <input id="userName" class="py-1 px-3 outline-none rounded-sm shadow-md" formControlName="userName"
+          <input id="userName" class="input-{{color}} border py-1 px-3 outline-none rounded-sm shadow-md" formControlName="userName"
             type="text" />
 
 
@@ -231,7 +231,7 @@
           </ng-container>
 
           <label for="email" class="font-semibold mb-1">Email</label>
-          <input id="email" class="py-1 px-3 outline-none rounded-sm shadow-md" formControlName="email" type="text" />
+          <input id="email" class="input-{{color}} border py-1 px-3 outline-none rounded-sm shadow-md" formControlName="email" type="text" />
 
 
           
@@ -244,7 +244,7 @@
 
 
           <label for="birthDate" class="font-semibold mb-1">Birthdate</label>
-          <input id="birthDate" class="py-1 px-3 outline-none rounded-sm shadow-md" formControlName="birthDate"
+          <input id="birthDate" class="input-{{color}} border py-1 px-3 outline-none rounded-sm shadow-md" formControlName="birthDate"
             type="date" />
 
 
@@ -279,7 +279,7 @@
 
 
           <label for="password" class="font-semibold mb-1">Password</label>
-          <input id="password" class="py-1 px-3 outline-none rounded-sm shadow-md" formControlName="password"
+          <input id="password" class="input-{{color}} border py-1 px-3 outline-none rounded-sm shadow-md" formControlName="password"
             type="password" />
 
 
@@ -289,7 +289,7 @@
 
 
           <label for="repeatPassword" class="font-semibold mb-1">Repeat Password</label>
-          <input id="repeatPassword" class="py-1 px-3 outline-none rounded-sm shadow-md"
+          <input id="repeatPassword" class="input-{{color}} border py-1 px-3 outline-none rounded-sm shadow-md"
             formControlName="repeatPassword" type="password" />
 
 
@@ -335,7 +335,7 @@
               <p class="ml-2 my-auto">{{ countries[country.value].number }}</p>
 
             </div>
-            <input id="phoneNumber" class="flex-1 py-1 px-3 outline-none rounded-sm shadow-md"
+            <input id="phoneNumber" class="input-{{color}} border flex-1 py-1 px-3 outline-none rounded-sm shadow-md"
               placeholder="489 33 28 64" formControlName="phoneNumber" type="tel" />
 
 

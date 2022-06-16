@@ -1,6 +1,13 @@
+.input-blue {
 
+  &:focus {
+    border: 0.25px solid #4cade6 !important;
+  }
 
-.hidden {
-  display: none;
 }
+.input-orange {
 
+  &:focus {
+    border: 0.25px solid #e5844c !important;
+  }
+}

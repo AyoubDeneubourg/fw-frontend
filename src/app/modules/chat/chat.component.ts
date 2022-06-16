@@ -46,12 +46,12 @@ export class ChatComponent implements OnInit {
     this.authedUser = this.authService.loggedInUser;
  
 
-    const resultA = this.angularFirestore.collection ('test2', ref => {
+    const resultA = this.angularFirestore.collection ('conversations', ref => {
       return ref.where('user_1', '==', this.authedUser.id.toString());
     });
   
    
-    const resultB = this.angularFirestore.collection('test2', ref => {
+    const resultB = this.angularFirestore.collection('conversations', ref => {
       return ref.where('user_2', '==', this.authedUser.id.toString());
     });
    
@@ -141,7 +141,7 @@ export class ChatComponent implements OnInit {
     let id;
 
       
-    this.angularFirestore.collection('test2', ref => {
+    this.angularFirestore.collection('conversations', ref => {
       ref.where('user_2', '==', this.authedUser.id.toString())
       .where('user_1', '==', this.route.snapshot.params.id.toString())
       .get()
@@ -165,7 +165,7 @@ export class ChatComponent implements OnInit {
       });
 
 
-      this.angularFirestore.collection('test2', ref => {
+      this.angularFirestore.collection('conversations', ref => {
         ref.where('user_1', '==', this.authedUser.id.toString())
         .where('user_2', '==', this.route.snapshot.params.id.toString())
         .get()

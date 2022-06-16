@@ -4,7 +4,7 @@ import { ProfileService } from 'src/app/core/services/profile/profile-service.se
 import { COUNTRIES } from 'src/app/shared/data/countries';
 import { LANGUAGES } from 'src/app/shared/data/languages';
 import { Profile, sectors } from 'src/app/shared/models/common';
-import { SocialMediaArray, SocialMediaArrayCapitalized } from 'src/app/shared/models/offers';
+import { SocialMediaArray } from 'src/app/shared/models/offers';
 
 @Component({
   selector: 'app-edit',

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { TranslocoService } from '@ngneat/transloco';
 import * as introJs from 'intro.js/intro.js';
 import { take, tap } from 'rxjs/operators';
-import { UserPreferencesService } from './user-preferences/user-preferences.service';
+import { UserPreferencesService } from './../user-preferences/user-preferences.service';
 
 
 @Injectable({

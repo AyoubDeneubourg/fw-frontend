@@ -1,14 +1,11 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { TranslocoService } from '@ngneat/transloco';
-import { loadStripe } from '@stripe/stripe-js';
 import { of } from 'rxjs';
 import { catchError, take, tap } from 'rxjs/operators';
-import { AuthService, Color } from 'src/app/core/services/auth-service/auth.service';
-import { IntrojsService } from 'src/app/core/services/introjs.service';
+import { AuthService } from 'src/app/core/services/auth-service/auth.service';
+import { IntrojsService } from 'src/app/core/services/introjs/introjs.service';
 import { OffersService } from 'src/app/core/services/offers/offers.service';
-import { StatsService } from 'src/app/core/services/stats-service/stats.service';
-import { StripeService } from 'src/app/core/services/stripe/stripe.service';
+import { StatsService } from 'src/app/core/services/stats/stats.service';
 import { UserPreferencesService } from 'src/app/core/services/user-preferences/user-preferences.service';
 import { CardData } from 'src/app/shared/components/card/card.component';
 import { User } from 'src/app/shared/models/common';

@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Event, NavigationEnd, Route, Router } from '@angular/router';
-import { tap } from 'rxjs/operators';
 import { AuthService, Color } from 'src/app/core/services/auth-service/auth.service';
-import { IntrojsService } from 'src/app/core/services/introjs.service';
 import { User } from '../../models/common';
 
 @Component({

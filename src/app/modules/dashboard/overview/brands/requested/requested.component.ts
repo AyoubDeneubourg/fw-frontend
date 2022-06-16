@@ -2,9 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@
 import { Offer, SocialMediaInformation } from 'src/app/shared/models/offers';
 import { TranslocoService } from '@ngneat/transloco';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { catchError, take, tap } from 'rxjs/operators';
 import { OffersService } from 'src/app/core/services/offers/offers.service';
-import { of } from 'rxjs';
 
 
 @Component({
