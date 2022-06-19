@@ -37,10 +37,10 @@
           <td>{{ t('orderNumber') }}</td>
           <td>{{ t('influencer') }}</td>
           <td>{{ t('socialMedia') }}</td>
-          <td>{{ t('posts') }}</td>
-          <td>{{ t('stories') }}</td>
-          <td>{{ t('highlights') }}</td>
-          <td>{{ t('dates') }}</td>
+          <td class="hide-item-md">{{ t('posts') }}</td>
+          <td class="hide-item-md">{{ t('stories') }}</td>
+          <td class="hide-item-md">{{ t('highlights') }}</td>
+          <td class="hide-item-md ">{{ t('dates') }}</td>
           <td>{{ t('files') }}</td>
           <td></td>
           <td></td>
@@ -52,10 +52,10 @@
             <td>{{ item.id }}</td>
           <td routerLink="/profile/{{item.influencerId}}">{{ item.influencerName }}</td>
           <td class="flex"><ng-container *ngFor="let socialMedia of item.socialMediaDetails"><img width="28px" src="assets/icons/socials/{{socialMedia.name | uppercase}}.svg"></ng-container></td>
-          <td>{{ item.socialMediaDetails | socialMediaCounter : 'posts' }}</td>
-          <td>{{ item.socialMediaDetails | socialMediaCounter : 'stories' }}</td>
-          <td>{{ item.socialMediaDetails | socialMediaCounter : 'highlights' }}</td>
-          <td>
+          <td class="hide-item-md">{{ item.socialMediaDetails | socialMediaCounter : 'posts' }}</td>
+          <td class="hide-item-md">{{ item.socialMediaDetails | socialMediaCounter : 'stories' }}</td>
+          <td class="hide-item-md">{{ item.socialMediaDetails | socialMediaCounter : 'highlights' }}</td>
+          <td class="hide-item-md ">
             <div class=" w-fit  bg-gray-200 rounded-md text-sm p-1 px-3 font-semibold">
               {{ item.startDate }} - {{ item.endDate }}
             </div>

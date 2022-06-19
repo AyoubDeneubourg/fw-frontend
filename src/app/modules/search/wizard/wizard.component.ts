@@ -224,7 +224,8 @@ export class WizardComponent implements OnInit {
 
   public returnBack() {
 
-    this.location.back();
+    location.href = '/dashboard';
+
 
 
   }

@@ -4,7 +4,7 @@
 
   <div class="flex m-2 ml-4 flex-wrap">
     <div class="img w-400 h-72 mr-10">
-      <img *ngIf="profile?.id" class="img max-h-72 mx-auto" src="https://fw-api-gateway.herokuapp.com/api/image/{{profile?.id}}" alt="">
+      <img *ngIf="profile?.id && user?.profilePicture" class="img max-h-72 mx-auto" src="https://fw-api-gateway.herokuapp.com/api/image/{{profile?.id}}" alt="">
 
       <ng-container *ngIf="!isOther && profile">
         <input (change)="fileChange($event)"  type="file" name="changeProfile" id="changeProfile" hidden>

@@ -25,6 +25,9 @@
   
     <ng-container *ngIf="active === 'Total'">
         <app-line-chart [data]="{statistics: statistics, active: 'Total'}" ></app-line-chart>
+        <ng-container *ngIf="(statistics?.totalEarningsGraphData | json) == '{}'">
+          {{ 'statistics.earnings.noData' | transloco }}
+        </ng-container>
     </ng-container>
   
 
@@ -33,6 +36,9 @@
   
     <ng-container *ngIf="active === 'Month'">
         <app-line-chart [data]="{statistics: statistics, active: 'Month'}"></app-line-chart>
+        <ng-container *ngIf="(statistics?.totalEarningsMonthGraphData | json) == '{}'">
+          {{ 'statistics.earnings.noData' | transloco }}
+        </ng-container>
     </ng-container>
       
       
@@ -41,6 +47,9 @@
       
     <ng-container *ngIf="active === 'Week'">
       <app-line-chart [data]="{statistics: statistics, active: 'Week'}"></app-line-chart>
+      <ng-container *ngIf="(statistics?.totalEarningsWeekGraphData | json) == '{}'">
+        {{ 'statistics.earnings.noData' | transloco }}
+      </ng-container>
     </ng-container>
   
   

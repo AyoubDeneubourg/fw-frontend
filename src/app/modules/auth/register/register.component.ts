@@ -15,6 +15,7 @@ import { matchValues } from 'src/app/shared/static/forms/password-validation';
 import { birthDate } from 'src/app/shared/static/forms/birthdate-validation';
 import { of } from 'rxjs';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 
 @Component({
@@ -62,7 +63,7 @@ export class RegisterComponent implements OnInit {
     }
   ];
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) { }
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router, private location: Location) { }
 
   ngOnInit(): void {
 
@@ -275,23 +276,27 @@ export class RegisterComponent implements OnInit {
 
       this.authService.register(REGISTRATIONDATA)
       .pipe(
-        take(1),
-        tap(data => {
-
-          this.authService.login(
-            {
-              username: this.userName.value,
-              password: this.password.value
-            }
-          ).subscribe((response) => {
-            this.router.navigate(['/dashboard']);
-          })
-
-        }),
-        catchError(err => {
-          this.clickedRegister = false;
-          return of(err);
-        })).subscribe();
+        take(1)).subscribe(
+          res => {
+            this.authService.login(
+              {
+                username: this.userName.value,
+                password: this.password.value
+              }
+            ).pipe(
+              take(1),
+              tap(data => {
+                this.router.navigate(['/dashboard']); 
+              }),
+              catchError(err => {
+                return of(err);
+              })).subscribe();
+          },
+          err => {
+            console.log("error", err);
+            this.clickedRegister = false;
+          }
+        );
 
      
 
@@ -302,6 +307,11 @@ export class RegisterComponent implements OnInit {
 
   }
 
+  public returnBack() {
+
+    this.location.back();
+    
+  }
 
   get page1(): AbstractControl {
     return this.registerFormGroup.controls.p1;

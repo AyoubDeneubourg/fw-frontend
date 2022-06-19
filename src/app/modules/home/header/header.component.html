@@ -1,18 +1,26 @@
-<div class="flex p-3 shadow-md">
-  <div class="logo py-2 flex-auto">LOGO</div>
-  <ul class="tabs py-2 flex-auto ">
+<div class="flex p-3 justify-center lg:justify-end shadow-md z-10 overflow-hidden">
+  <div class="logo flex-auto hide-item-sm"><img width="95px" src="../../../../assets/logo/logo-blue.svg"></div>
+<!--   <ul class="tabs py-2 flex-auto ">
     
     <li class="float-left mx-2 font-semibold border-b-2 border-blue text-blue">{{ "home.home" | transloco }}</li>
     <li class="float-left mx-2">{{ "home.services"  | transloco }}</li>
     <li class="float-left mx-2">{{ "home.team"  | transloco }}</li>
     <li class="float-left mx-2">{{ "home.blog"  | transloco }}</li>
     <li class="float-left mx-2">{{ "home.about"  | transloco }}</li>
-  </ul>
+  </ul> -->
 
-  <div [routerLink]="['/dashboard']" class="cursor-pointer  mx-2 py-2  px-12 rounded-md text-white bg-blue"> {{"home.portal" | transloco }}</div>
+  <div [routerLink]="['/dashboard']" 
+  class="m-auto txt-small font-semibold flex align-middle cursor-pointer  mx-2 py-1.5  px-10 rounded-md text-white bg-blue
+  shadow hover:shadow-lg ease-linear transition-all duration-150"> 
+  <p class="my-auto">  {{"home.portal" | transloco }}  </p>
+  </div>
+
   <div [routerLink]="['/register']"
-    class="cursor-pointer  bg-white text-blue mx-2 py-2 px-12 rounded-md border border-blue">
-     {{"home.register" | transloco }}</div>
+    class="m-auto txt-small font-semibold flex align-middle cursor-pointer  bg-white text-blue mx-2 py-1.5 px-10 rounded-md border border-blue
+    shadow hover:shadow-lg ease-linear transition-all duration-150">
+    <p class="my-auto">      {{"home.register" | transloco }}   </p>
+    
+  </div>
 
 
 </div>

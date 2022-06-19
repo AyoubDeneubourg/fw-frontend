@@ -69,7 +69,7 @@
         <div>    
             <p class="text-gray-600 font-semibold text-sm my-3">{{ t('budget') }}</p>
             <div>
-                <ngx-slider   (userChangeEnd)="filterAndSort()"   [(value)]="minimumBudget" [(highValue)]="maximumBudget" [options]="budgetOptions"></ngx-slider>
+                <ngx-slider  (userChangeEnd)="filterAndSort()"   [(value)]="minimumBudget" [(highValue)]="maximumBudget" [options]="budgetOptions"></ngx-slider>
             </div>
         </div>
 
@@ -133,7 +133,7 @@
 
 
 
-<div class="flex flex-wrap">
+<div class="flex flex-wrap justify-evenly">
     <ng-container *ngFor="let data of newResults ? newResults : results">
         
         <app-search-influencer-card [data]="data"></app-search-influencer-card>

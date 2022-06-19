@@ -16,7 +16,7 @@ export type User = {
     password?: string
     gender?: any,
     phoneNumber?: number
-    profilePicture?: string
+    profilePicture?: boolean
     rating?: number
     roles?: string
     userName?: string

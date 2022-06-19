@@ -26,6 +26,8 @@ export class EarningsComponent implements OnInit, AfterViewInit {
   constructor(private cdref: ChangeDetectorRef, private authService: AuthService) { }
 
   ngOnInit(): void {
+
+    console.log(this.statistics);
     this.color = this.authService.colors;
   }
 

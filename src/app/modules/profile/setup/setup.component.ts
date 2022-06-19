@@ -134,6 +134,7 @@ export class SetupProfileComponent implements OnInit {
   public languageValid = false;
   public sectorValid = false;
   public countryValid = false;
+  public socialMediaValid = false;
 
   goToPage(page: number): void {
 
@@ -201,7 +202,8 @@ export class SetupProfileComponent implements OnInit {
     }
 
     if (page === 7) {
-      if (this.page1.valid && this.languageList.length && this.sectorList.length && this.countryList.length  && this.page5.valid) {
+      this.setSocialMediaLinks();
+      if (this.page1.valid && this.languageList.length && this.sectorList.length && this.countryList.length  && this.page5.valid && this.socialMediaListWithLinks.length) {
         this.setCurrentPages(7);
 
       } else {
@@ -233,10 +235,28 @@ export class SetupProfileComponent implements OnInit {
 
 
   public returnBack() {
-    console.log(this.location.back());
-    this.location.back();
+    location.href = '/dashboard';
+
   }
 
+  public socialMediaListWithLinks = [];
+
+  setSocialMediaLinks() {
+    this.socialMediaListWithLinks = [];
+    this.socialMediaList.forEach((element: any) => {
+
+      let x = document.getElementById('link-' + element.name) as HTMLSelectElement;
+      if(x) {
+      console.log(x);
+      console.log(element);
+      this.socialMediaListWithLinks.push({
+        name: element.name.toUpperCase(),
+        link: x.value
+      });
+    }
+    }); 
+
+  }
 
 
   onSubmit(): void {
@@ -264,18 +284,7 @@ export class SetupProfileComponent implements OnInit {
       };
       
 
-    let socialMediaList = [];
 
-   
-
-    this.socialMediaList.forEach((element: any) => {
-
-      let x = document.getElementById('link-' + element.name) as HTMLSelectElement;
-      socialMediaList.push({
-        name: element.name.toUpperCase(),
-        link: x.value
-      });
-    }); 
 
     let languageList = this.languageList.map(elem => ({ language: elem, } ));
     let sectorList = this.sectorList.map(elem => ({ sector: elem, } ));
@@ -286,28 +295,37 @@ export class SetupProfileComponent implements OnInit {
 
       PROFILE.influencer = {};
       PROFILE.influencer.languages = languageList;
+      PROFILE.influencer.headTitle = this.headtitle.value;
+      PROFILE.influencer.description = this.description.value;
       PROFILE.influencer.sectors = sectorList;
       PROFILE.influencer.countries = countryList;
-      PROFILE.influencer.socialMedia = socialMediaList;
-      PROFILE.influencer.pricePerHighlight = this.pricePerHighlight.value;
-      PROFILE.influencer.pricePerPost = this.pricePerPost.value;
-      PROFILE.influencer.pricePerStory = this.pricePerStory.value;
+      PROFILE.influencer.socialMedia = this.socialMediaListWithLinks;
+      PROFILE.influencer.highlightPrice = this.pricePerHighlight.value;
+      PROFILE.influencer.postPrice = this.pricePerPost.value;
+      PROFILE.influencer.storyPrice = this.pricePerStory.value;
       PROFILE.influencer.followers = this.followers.value;
       PROFILE.influencer.ibanNumber = this.ibanNumber.value;
 
       this.profileService.updateInfluencerProfile(PROFILE, this.authedUser.id).subscribe(res => {
+        console.log(res);
+        this.router.navigateByUrl['/profile'];
       });
       
     } else {
       
       PROFILE.brand = {};
 
+      PROFILE.brand.headTitle = this.headtitle.value;
+      PROFILE.brand.description = this.description.value;
       PROFILE.brand.languages = languageList;
       PROFILE.brand.sectors = sectorList;
       PROFILE.brand.countries = countryList;
-      PROFILE.brand.socialMedia = socialMediaList;
+      PROFILE.brand.socialMedia = this.socialMediaListWithLinks;
 
       this.profileService.updateBrandProfile(PROFILE, this.authedUser.id).subscribe(res => {
+        this.router.navigateByUrl['/profile'];
+
+
       });
     }
 

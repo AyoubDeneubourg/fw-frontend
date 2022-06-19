@@ -12,3 +12,7 @@
 </ngx-charts-advanced-pie-chart>
 
 <!-- [scheme]="colorScheme" -->
+
+  <ng-container *ngIf="!single.length">
+    {{ 'statistics.earnings.noData' | transloco }}
+  </ng-container>

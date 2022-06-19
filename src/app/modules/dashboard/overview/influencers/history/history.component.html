@@ -57,18 +57,18 @@
   
   
   
-    <table class="w-100 mt-10">
+    <table class="w-100 mt-10 table-auto">
       <thead>
         <tr class="font-semibold">
           <td>{{ t('orderNumber') }}</td>
           <td>{{ t('status') }}</td>
           <td>{{ t('customer') }}</td>
           <td>{{ t('socialMedia') }}</td>
-          <td>{{ t('posts') }}</td>
-          <td>{{ t('stories') }}</td>
-          <td>{{ t('highlights') }}</td>
+          <td class="hide-item-md">{{ t('posts') }}</td>
+          <td class="hide-item-md">{{ t('stories') }}</td>
+          <td class="hide-item-md">{{ t('highlights') }}</td>
           <td>{{ t('price') }}</td>
-          <td>{{ t('deadline') }}</td>
+          <td class="hide-item-md">{{ t('deadline') }}</td>
           <td></td>
 
         </tr>
@@ -85,11 +85,11 @@
           <td><p class="select-none cursor-pointer" routerLink="/profile/{{item.brandId}}">{{ item.brandName }}</p></td>
 
           <td class="flex"><ng-container *ngFor="let socialMedia of item.socialMediaDetails"><img width="28px" src="assets/icons/socials/{{socialMedia.name | uppercase}}.svg"></ng-container></td>
-          <td>{{ item.socialMediaDetails | socialMediaCounter : 'posts' }}</td>
-          <td>{{ item.socialMediaDetails | socialMediaCounter : 'stories' }}</td>
-          <td>{{ item.socialMediaDetails | socialMediaCounter : 'highlights' }}</td>
+          <td class="hide-item-md">{{ item.socialMediaDetails | socialMediaCounter : 'posts' }}</td>
+          <td class="hide-item-md">{{ item.socialMediaDetails | socialMediaCounter : 'stories' }}</td>
+          <td class="hide-item-md">{{ item.socialMediaDetails | socialMediaCounter : 'highlights' }}</td>
           <td>€{{ item.socialMediaDetails | socialMediaPriceCounter : 'total' }}</td>
-          <td>
+          <td class="hide-item-md ">
             <div class=" w-fit  bg-gray-200 rounded-md text-sm p-1 px-3 font-semibold">
               {{ item.startDate }} - {{ item.endDate }}
             </div>

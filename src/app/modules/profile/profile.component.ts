@@ -32,7 +32,14 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.user = this.authService.loggedInUser;
+
+    this.authService.loggedInUser$.pipe(
+      tap((user) => {
+        this.user = user;
+
+      })).subscribe()
+
+   // this.user = this.authService.loggedInUser;
 
 
     
@@ -42,7 +49,7 @@ export class ProfileComponent implements OnInit {
 
       this.authService.getProfile(this.route.snapshot.params.id).subscribe(data => {
 
-        console.log(data);
+
 
         if(!data) this.location.back();
         
@@ -51,8 +58,10 @@ export class ProfileComponent implements OnInit {
         }
         if(data.user.userType == "INFLUENCER") {
           this.profile = { ...data.user, ...data.influencer};
+          console.log(this.profile);
           this.type = 'INFLUENCER';
 
+          console.log(this.profile);
           this.setInfluencerRating(this.route.snapshot.params.id);
 
           }
@@ -77,9 +86,12 @@ export class ProfileComponent implements OnInit {
     
       
       if(this.user.userType == "BRAND") {
+        console.log(this.profile)
 
-        this.profile = {...this.authService.loggedInBrand['user'], ...this.authService.loggedInBrand['brand']};
+        this.profile = {...this.user, ...this.authService.loggedInBrand['brand']};
+
         this.type = 'BRAND';
+
         if(!this.profile.headTitle && !this.profile.description ) {
           this.router.navigateByUrl('/profile/setup');
         }
@@ -90,9 +102,12 @@ export class ProfileComponent implements OnInit {
 
 
       } else {
+        console.log(this.profile)
 
-        this.profile = {...this.authService.loggedInInfluencer['user'], ...this.authService.loggedInInfluencer['influencer']};
+        this.profile = { ...this.user, ...this.authService.loggedInInfluencer['influencer'] };
+        
         this.type = "INFLUENCER"
+
         if(!this.profile.headTitle && !this.profile.description ) {
           this.router.navigateByUrl('/profile/setup');
         }

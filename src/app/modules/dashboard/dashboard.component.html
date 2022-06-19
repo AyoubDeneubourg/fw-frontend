@@ -3,20 +3,20 @@
   <div class="m-6">
 
   <div  id="step6" class="flex flex-wrap justify-between">
-    <div class="flex-1 mr-2">
+    <div class="flex-auto mx-2 my-1 ">
       <app-card [data]="data1"></app-card>
     </div>
-    <div class="flex-1 ml-2 mr-2">
+    <div class="flex-auto mx-2 my-1 ">
       <app-card [data]="data2"></app-card>
     </div>
 
     <ng-container *ngIf="user.userType == 'INFLUENCER'">
-    <div  class="flex-1 ml-2 mr-2">
+    <div  class="flex-auto mx-2 my-1 ">
       <app-card [data]="data3"></app-card>
     </div>
 
     
-    <div class="flex-1 ml-2">
+    <div class="flex-auto mx-2 my-1 ">
       <app-card [data]="data4"></app-card>
     </div>
   </ng-container>

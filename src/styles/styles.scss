@@ -13,7 +13,8 @@
 @import "introjs";
 
 body {
-  overflow-x: hidden;
+  //width: 100vw;
+ overflow-x: hidden;
   background-color: white;
 }
 
@@ -34,4 +35,18 @@ body {
       border-radius: 12px;
       border: 2px solid #ffffff;
     }
+}
+
+@media (max-width: 1024px) {
+  .hide-item-sm {
+    display: none;
+  }
+
+}
+
+@media (max-width: 1350px) {
+  .hide-item-md {
+    display: none;
+  }
+
 }

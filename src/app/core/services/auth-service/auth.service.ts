@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, of } from 'rxjs';
+import { Observable, of, Subject } from 'rxjs';
 import { switchMap, tap } from 'rxjs/operators';
 import { Brand } from 'src/app/shared/models/brand';
 import { LoginData, RegistrationData, User } from 'src/app/shared/models/common';
@@ -128,6 +128,7 @@ export class AuthService {
 
   public loggedInUser: User;
   public loggedInUser$: Observable<User> = of();
+  public profilePicture = new Subject<boolean>();
 
   public loggedInInfluencer: Influencer;
   public loggedInInfluencer$: Observable<Influencer> = of();
@@ -151,7 +152,21 @@ export class AuthService {
           switchMap((loggedInUser) =>  {
             this.loggedInUser = loggedInUser;
             this.loggedInUser$ = of(loggedInUser);
+
+            this.http.get(`${this.apiUrl}/api/image/${this.loggedInUser.id}`, {responseType: 'text', ...getHeaders()})
+            .subscribe(
+              res => {
+                this.loggedInUser.profilePicture = true;
+                this.loggedInUser$ = of(this.loggedInUser);
+                console.log("res");
+              },
+              err => {
+                console.log('No profile picture');
+              }
+            );
+
             
+
             if(this.loggedInUser.userType == "BRAND") {
               this.colors = "orange"
               return this.getBrand(this.loggedInUser.id);
@@ -186,6 +201,13 @@ export class AuthService {
         );
 
     }
+
+  }
+
+
+  public getImage(userId: number): Observable<any> {
+
+    return this.http.get(`${this.apiUrl}/api/image/${userId}`, {responseType: 'text', ...getHeaders()});
 
   }
 

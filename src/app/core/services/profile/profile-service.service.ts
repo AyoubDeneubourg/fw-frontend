@@ -19,7 +19,7 @@ export class ProfileService {
 
   public getImage(userId: number): Observable<any> {
 
-    return this.http.get(`${this.apiUrl}/api/image/${userId}`, {responseType: 'text', ...getHeaders()});
+    return this.http.get(`${this.apiUrl}/api/image/${userId}`, {responseType: 'json', ...getHeaders()});
 
 
   }

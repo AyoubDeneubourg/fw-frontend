@@ -59,6 +59,8 @@ export class IntrojsService {
             intro: '',
         }, 
     ]
+
+
     
     this.translocoService.selectTranslate('introduction.step1.content').pipe(take(1),tap(value => { steps[0].intro = value; })).subscribe();
     this.translocoService.selectTranslate('introduction.step2.content').pipe(take(1),tap(value => { steps[1].intro = value; })).subscribe();

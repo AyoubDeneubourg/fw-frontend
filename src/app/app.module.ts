@@ -4,6 +4,7 @@ import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 
 import { AppRoutingModule } from './routing/app-routing.module';
@@ -68,6 +69,8 @@ import { SearchInfluencersComponent } from './modules/search/search-influencers/
 import { SearchBrandsComponent } from './modules/search/search-brands/search.component';
 import { SearchBrandCardComponent } from './modules/search/search-brands/search-card/search-card.component';
 import { WizardSquaresComponent } from './shared/components/deco/wizard-squares/wizard-squares.component';
+import { HomeWatchVideoComponent } from './modules/home/modal/modal.component';
+import { toTwoNumbersAfterCommaPipe } from './shared/pipes/toTwoNumbersAfterComma.pipe';
 
 @NgModule({
   declarations: [
@@ -111,6 +114,7 @@ import { WizardSquaresComponent } from './shared/components/deco/wizard-squares/
     SocialMediaPriceCounterPipe,
     FirebaseTimeToNormalTimePipe,
     FirebaseTimeToNormalDatePipe,
+    toTwoNumbersAfterCommaPipe,
     AveragePricePipe,
     BrandRequestedComponent,
     BrandHistoryComponent,
@@ -122,6 +126,7 @@ import { WizardSquaresComponent } from './shared/components/deco/wizard-squares/
     LargeComponent,
     SetupProfileComponent,
     SearchInfluencersComponent,
+    HomeWatchVideoComponent,
     SearchBrandsComponent,
     WizardSquaresComponent
   ],

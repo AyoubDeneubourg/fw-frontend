@@ -1,7 +1,7 @@
 <header class="flex p-3 shadow-sm relative">
   <div class="logo py-2 flex-1 text-xl font-semibold">{{ title | transloco }}</div>
 
-  <div class="icon  mx-6 m-auto flex">
+  <div class="icon  mx-6 m-auto flex" *ngIf="user?.profilePicture">
     <img class="m-auto align-middle max-h-12" src="https://fw-api-gateway.herokuapp.com/api/image/{{user?.id}}">
   </div>
   <div class="my-auto mr-8 cursor-pointer select-none" (click)="dropdownToggle.emit()">{{user.firstName + ' ' + user.lastName}}</div>

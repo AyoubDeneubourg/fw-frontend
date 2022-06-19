@@ -49,12 +49,13 @@
 
   
 
-  <ng-container class="p-5 pt-0">
+  <ng-container class="p-5 pt-0 ">
 
     <ng-container *ngIf="color == 'blue'">
 
       <ng-container *ngIf="active === '1'">
-        <app-influencer-upcoming-events [offers]="upcoming" (refreshData)="refreshData()"></app-influencer-upcoming-events>
+
+          <app-influencer-upcoming-events [offers]="upcoming" (refreshData)="refreshData()"></app-influencer-upcoming-events>
       </ng-container>
 
       <ng-container *ngIf="active === '2'">

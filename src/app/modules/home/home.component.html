@@ -1,2 +1,39 @@
-<app-header></app-header>
-<app-change-language></app-change-language>
+<div class="z-10 overflow-hidden">
+
+    <app-header></app-header>
+</div>
+
+<div class="flex overflow-hidden relative z-10 ">
+
+
+    <div class="left-side flex-1 flex flex-col main justify-center landingAnimation ">
+
+        <div class="">
+            <h2 class="title">Welcome to</h2>
+            <h1 class="subtitle font-semibold text-blue">Plugger!</h1>
+            <p class="w-3/5">
+                Need visibility for your company or want to give 
+                visibility and make partnerships with brands? 
+                Don't worry, in both cases, we got you!
+            </p>
+        </div>
+
+        <div class="self-start flex mb-40 mt-10">
+            <div routerLink="/dashboard" class="login bg-blue font-semibold text-white py-2 px-12 m-auto text-center rounded-sm mr-6 shadow hover:shadow-lg ease-linear cursor-pointer transition-all duration-150"><p class="m-auto">Start!</p></div>
+            <div (click)="openModal()" class="cursor-pointer  hover:font-semibold video m-auto">Watch video</div>
+        </div>
+
+    </div>
+
+
+    
+    
+    
+</div>
+
+<div class=" hidden lg:block absolute w-100  xx  ">
+    <img src="../../../assets/home2.svg" alt="">
+</div>
+
+
+<app-watchvideo-modal [translate]="'home.modal'" [showModal]="showModal" (closeModal)="closeModal()"></app-watchvideo-modal>

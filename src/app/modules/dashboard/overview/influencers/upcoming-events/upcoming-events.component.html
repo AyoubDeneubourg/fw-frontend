@@ -55,20 +55,110 @@
     </div>
   </form>
 
+<!--   <div class="flex flex-wrap bg-gray-300">
+    <div class="flex-1">
+      <p class="text-xs font-semibold">{{ t('orderNumber') }}</p>
+      <p>1 </p>
+    </div>
+    <div class="flex-1">
+      <p class="text-xs font-semibold">{{ t('status') }}</p>
+    
+    </div>
+    <div>
+      <p class="text-xs font-semibold">{{ t('customer') }}</p>
 
+    </div>
+    <div>
+      <p class="text-xs font-semibold">{{ t('socialMedia') }}</p>
+    
+    </div>
+    <div>
+      <p class="text-xs font-semibold">{{ t('posts') }}</p>
+    
+    </div>
+    <div>
+      <p class="text-xs font-semibold">{{ t('stories') }}</p>
+    
+    </div>
+    <div>
+      <p class="text-xs font-semibold">{{ t('highlights') }}</p>
+    
+    </div>
+    <div>
+      <p class="text-xs font-semibold">{{ t('price') }}</p>
+    
+    </div>
+    <div>
+      <p class="text-xs font-semibold">{{ t('deadline') }}</p>
+    
+    </div>
+  </div> -->
+<!-- <div>
 
-  <table class="w-100 mt-10">
+  <div class="flex flex-col ">
+    <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+      <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+        <div class="overflow-x-auto">
+          <table class="min-w-full">
+            <thead class="border-b">
+              <tr>
+                <th class="inline-block" scope="col">{{ t('orderNumber') }}</th>
+                <th class="inline-block" scope="col">{{ t('status') }}</th>
+                <th class="inline-block" scope="col">{{ t('customer') }}</th>
+                <th class="inline-block" scope="col">{{ t('socialMedia') }}</th>
+                <th class="inline-block" scope="col">{{ t('posts') }}</th>
+                <th class="inline-block" scope="col">{{ t('stories') }}</th>
+                <th class="inline-block" scope="col">{{ t('highlights') }}</th>
+                <th class="inline-block" scope="col">{{ t('price') }}</th>
+                <th class="inline-block" scope="col">{{ t('deadline') }}</th>
+                <th class="inline-block" scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="bg-white border-b" *ngFor="let item of newEvents ? newEvents : offers as Offer">
+                <td>{{ item.id }}</td>
+                <td>
+                  <div (click)="null" class=" flex w-2/3  bg-gray-200 rounded-md text-sm p-1 font-semibold">
+                    <span class="my-auto mx-2 rounded-full status status-{{item.status}}"> </span>
+                    <span class=""> {{ t(item.status) }}</span>
+                  </div>
+                </td>        
+                <td> <p class="select-none cursor-pointer" routerLink="/profile/{{item.brandId}}">{{ item.brandName }}</p></td>
+                  <td class="flex"><ng-container *ngFor="let socialMedia of item.socialMediaDetails"><img width="28px" src="assets/icons/socials/{{socialMedia.name | uppercase}}.svg"></ng-container></td>
+                <td>{{ item.socialMediaDetails | socialMediaCounter : 'posts' }}</td>
+                <td>{{ item.socialMediaDetails | socialMediaCounter : 'stories' }}</td>
+                <td>{{ item.socialMediaDetails | socialMediaCounter : 'highlights' }}</td>
+                <td>€{{ item.socialMediaDetails | socialMediaPriceCounter : 'total' }}</td>
+                <td>
+                  <div class=" w-fit  bg-gray-200 rounded-md text-sm p-1 px-3 font-semibold">
+                    {{ item.startDate }} - {{ item.endDate }}
+                  </div>
+                </td>
+                <td *ngIf="item.status == 'IN_PROGRESS'"> <div (click)="openModal(item)" class="border  border-blue text-center rounded-sm text-blue text-sm p-1 shadow hover:shadow-lg ease-linear cursor-pointer transition-all duration-150">{{ t('finish') }}</div></td>
+                <td *ngIf="item.status != 'IN_PROGRESS'"> </td>
+                <td> <span (click)="openDetailModal(item)" class="m-0  bg-blue  text-center rounded-sm font-semibold text-white text-sm py-1.5 px-3 shadow hover:shadow-lg ease-linear cursor-pointer transition-all duration-150">{{ t('viewDetails') }}</span></td>
+            
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+   <table class="w-100 mt-10">
     <thead>
       <tr class="font-semibold">
         <td>{{ t('orderNumber') }}</td>
         <td>{{ t('status') }}</td>
         <td>{{ t('customer') }}</td>
         <td>{{ t('socialMedia') }}</td>
-        <td>{{ t('posts') }}</td>
-        <td>{{ t('stories') }}</td>
-        <td>{{ t('highlights') }}</td>
+        <td class="hide-item-md">{{ t('posts') }}</td>
+        <td class="hide-item-md">{{ t('stories') }}</td>
+        <td class="hide-item-md">{{ t('highlights') }}</td>
         <td>{{ t('price') }}</td>
-        <td>{{ t('deadline') }}</td>
+        <td class="hide-item-md">{{ t('deadline') }}</td>
         <td></td>
 
       </tr>
@@ -77,18 +167,18 @@
       <tr class="animate__animated animate__fadeIn" *ngFor="let item of newEvents ? newEvents : offers as Offer">
         <td>{{ item.id }}</td>
         <td>
-          <div (click)="null" class=" flex w-2/3  bg-gray-200 rounded-md text-sm p-1 font-semibold">
+          <div (click)="null" class=" flex w-fit pr-2 bg-gray-200 rounded-md text-sm p-1 font-semibold">
             <span class="my-auto mx-2 rounded-full status status-{{item.status}}"> </span>
             <span class=""> {{ t(item.status) }}</span>
           </div>
         </td>        
         <td> <p class="select-none cursor-pointer" routerLink="/profile/{{item.brandId}}">{{ item.brandName }}</p></td>
-          <td class="flex"><ng-container *ngFor="let socialMedia of item.socialMediaDetails"><img width="28px" src="assets/icons/socials/{{socialMedia.name | uppercase}}.svg"></ng-container></td>
-        <td>{{ item.socialMediaDetails | socialMediaCounter : 'posts' }}</td>
-        <td>{{ item.socialMediaDetails | socialMediaCounter : 'stories' }}</td>
-        <td>{{ item.socialMediaDetails | socialMediaCounter : 'highlights' }}</td>
+        <td class="flex"><ng-container *ngFor="let socialMedia of item.socialMediaDetails"><img  width="28px" src="assets/icons/socials/{{socialMedia.name | uppercase}}.svg"></ng-container></td>
+        <td class="hide-item-md">{{ item.socialMediaDetails | socialMediaCounter : 'posts' }}</td>
+        <td class="hide-item-md">{{ item.socialMediaDetails | socialMediaCounter : 'stories' }}</td>
+        <td class="hide-item-md">{{ item.socialMediaDetails | socialMediaCounter : 'highlights' }}</td>
         <td>€{{ item.socialMediaDetails | socialMediaPriceCounter : 'total' }}</td>
-        <td>
+        <td class="hide-item-md ">
           <div class=" w-fit  bg-gray-200 rounded-md text-sm p-1 px-3 font-semibold">
             {{ item.startDate }} - {{ item.endDate }}
           </div>
@@ -99,7 +189,7 @@
       </tr>
 
     </tbody>
-  </table>
+  </table> 
 
 
   <app-modal-small [translate]="'modals.finishPartnership'" (acceptModal)="acceptModal()" (closeModal)="closeModal()" [showModal]="showModal"></app-modal-small>

@@ -27,6 +27,8 @@ export class ChatComponent implements OnInit {
   public chatId: number | string;
   public bucketListArray: any = [];
 
+  public newChat;
+
   public chats = [];
 
   public color: Color;
@@ -37,8 +39,24 @@ export class ChatComponent implements OnInit {
     } catch(err) { }                 
 }
 
+
+
   ngOnInit(): void {
 
+    if(this.route.snapshot.params.id) {
+      this.routeId = this.route.snapshot.params.id;
+      this.authService.getUser(this.route.snapshot.params.id).subscribe(
+        res => {
+          this.newChat = res;
+        },
+        err => {
+          this.router.navigateByUrl('/chat');
+        }
+      )
+      console.log(this.route.snapshot.params.id);
+    }
+
+    this.authService
     this.color = this.authService.colors;
 
 
@@ -155,7 +173,10 @@ export class ChatComponent implements OnInit {
       .where('user_1', '==', this.route.snapshot.params.id.toString());
        }).valueChanges().subscribe((data: any) => {
         if(data[0]?.user_2 == this.route.snapshot.params.id.toString() || data[0]?.user_1 == this.route.snapshot.params.id.toString()) {
-          if(data[0]?.messages) this.bucketListArray = data[0];
+          if(data[0]?.messages) {
+            this.bucketListArray = data[0];
+            this.newChat = null;
+          } 
           console.log(this.bucketListArray);
           if(typeof id != 'undefined') this.chatId = id;
         }
@@ -178,7 +199,11 @@ export class ChatComponent implements OnInit {
         .where('user_2', '==', this.route.snapshot.params.id.toString());
          }).valueChanges().subscribe((data: any) => {
           if(data[0]?.user_2 == this.route.snapshot.params.id.toString() || data[0]?.user_1 == this.route.snapshot.params.id.toString()) {
-            if(data[0]?.messages) this.bucketListArray = data[0];
+            if(data[0]?.messages) {
+              this.bucketListArray = data[0];
+              this.newChat = null;
+
+            }
             console.log(this.bucketListArray);
             
 
@@ -201,6 +226,8 @@ export class ChatComponent implements OnInit {
 
 
     public sendMessage() {
+
+      this.newChat = null;
 
       let textArea = document.getElementById('textAreaId') as HTMLInputElement;
       if(textArea.value.trim().length === 0) return;

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PingService } from 'src/app/core/services/ping/ping.service';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +8,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  public showModal = false;
+
+
+  public openModal() {
+
+    this.showModal = true;
+  }
+  
+  public closeModal() {
+    
+    this.showModal = false;
+  }
+
+  constructor(private pingService: PingService) { }
 
   ngOnInit(): void {
+
+    this.pingService.pingServices();
   }
 
 }

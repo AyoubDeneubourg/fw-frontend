@@ -1,11 +1,11 @@
-<div class="flex w-300 m-2 bg-gray-100 flex-col p-2">
+<div class="flex w-300 m-2 bg-gray-100 flex-col p-2 rounded shadow-sm">
 
     <img src="zz" alt="">
 
 
     <div class="flex  font-semibold">
         <p class="flex-1">{{ this.data.user?.firstName  + " " + this.data.user?.lastName }}</p>
-        <p>{{this.data?.rate }} <i class="fa-solid fa-star text-gray-700"></i></p>
+        <p>{{this.data?.rate | toTwoNumbersAfterComma }} <i class="fa-solid fa-star text-gray-700"></i></p>
     </div>
 
     <p>{{ countries[data?.user?.country].name}}</p>

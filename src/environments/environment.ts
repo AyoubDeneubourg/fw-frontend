@@ -13,7 +13,7 @@ export const environment = {
     authDomain: 'fw-plugger.firebaseapp.com',
     messagingSenderId: '595965195709',
   },
-  baseUrl: 'http://localhost:4200',
+  baseUrl: 'https://plugger.be',
   production: false,
   stripe: 'pk_test_51L2waTAKK7UhTIYhiTAU8hs2rCGuFSA20cGTcIg1AqHjqkgXDZq76yBpOtys1UoiEOdDHluQ55rNOmtK6Kr3BRsh004nXvqHqD',
 

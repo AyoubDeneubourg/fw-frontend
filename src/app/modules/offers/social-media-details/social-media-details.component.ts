@@ -12,8 +12,16 @@ export class SocialMediaDetailsComponent implements OnInit {
   @Output()
   addOrRemoveSocialMediaDetails: EventEmitter<any> = new EventEmitter();
 
+  @Input()
+  postPrice: number = 0;
 
+  @Input()
+  storyPrice: number = 0;
 
+  @Input()
+  highlightPrice: number = 0;
+
+  
   @Input()
   color: Color;
 

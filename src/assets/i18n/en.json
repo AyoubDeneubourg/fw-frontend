@@ -9,8 +9,6 @@
     "forgot": "Forgot password?",
     "noAccount": "Don't have an account?",
     "openAccount": "Open an account"
-
-
   },
 
 
@@ -74,6 +72,11 @@
     "maximum": "Maximum",
     "total": "Total",
 
+    "deadline": "Deadline",
+    "startDate": "Start date",
+    "endDate": "End date",
+    
+
 
     "sendOffer": "Send offer",
 
@@ -111,13 +114,17 @@
   },
 
   "home": {
-    "home": "Accueil",
-    "about": "À propos",
+    "home": "Home",
+    "about": "About",
     "services": "Services",
     "blog": "Blog",
-    "team": "Équipe",
-    "portal": "Portail",
-    "register": "S'inscrire"
+    "team": "Team",
+    "portal": "Portal",
+    "register": "Register",
+    "modal": {
+      "title": "Introduction video",
+      "button": "Close"
+    }
   },
 
   "offers": {
@@ -163,7 +170,7 @@
   "dashboard": {
     "title": "Dashboard",
 
-    "toDo": "Partnership to do the next 7 days",
+    "toDo": "Partnerships to do the next 7 days",
     "earned": "Earned money this week",
     "partnerships": "Partnerships",
 
@@ -179,7 +186,7 @@
       "payMe": "Pay",
       "history": "History",
       "requestTitle": "Request",
-      "orderNumber": "Order Number",
+      "orderNumber": "Offer id",
       "client": "Client",
       "influencer": "Influencer",
       "customer": "Customer",
@@ -197,7 +204,6 @@
       "rate": "Rate",
       "download": "Download",
       "description": "Description",
-      "????": "????",
       "promotionalCode": "Promotional Code",
 
       "pending": "Pending",
@@ -249,14 +255,14 @@
       "edit": "Edit",
 
       "personalInformation": {
-        "title": "Personal Information",
+        "title": "Personal information",
         "headtitle": "Headtitle",
         "about": "About",
         "homeDetails": "Home details",
         "country": "Country",
         "city": "City",
         "gender": "Gender",
-        "socialMedia":"Social Media",
+        "socialMedia":"Social media",
         "address": "Address",
         "postalCode": "Postal code",
         "firstName": "First name",
@@ -269,12 +275,13 @@
       },
 
       "partnershipInformation": {
-        "title": "Partnership Information",
-        "socialMedia":"Social Media",
+        "title": "Partnership information",
+        "socialMedia":"Social media",
         "pricePerPost": "Price per post",
+        "followers": "Followers",
         "pricePerStory": "Price per story",
         "pricePerHighlight": "Price per highlight",
-        "paymentInformation": "Payment Information",
+        "paymentInformation": "Payment information",
         "IBANNumber": "IBAN number",
         "bankName": "Bank name"
       }
@@ -285,39 +292,39 @@
 
 
       "1" : { 
-        "title": "zzzzzzz", 
-        "description": "zzzzzzz",
+        "title": "Personal information", 
+        "description": " ",
         "headtitle": "Headtitle",
         "descriptionT": "Description"
       },
       "2" : { 
-        "title": "zzzzzzz", 
-        "description": "zzzzzzz" 
+        "title": "Languages", 
+        "description": "What language do you speak?" 
       },
       "3" : { 
-        "title": "zzzzzzz", 
-        "description": "zzzzzzz"
+        "title": "Sectors", 
+        "description": "In which sectors do you operate?"
         
       },
       "4" : { 
-        "title": "zzzzzzz", 
-        "description": "zzzzzzz" 
+        "title": "Countries", 
+        "description": "In which countries do you operate?" 
       },
       "5" : { 
-        "title": "zzzzzzz", 
-        "description": "zzzzzzz",
+        "title": "Home details", 
+        "description": "Give us more information about you.",
         "country": "Country",
         "city": "City",
         "address": "Address",
         "postalCode": "Postal code"
       },
       "6" : { 
-        "title": "zzzzzzz", 
-        "description": "zzzzzzz"
+        "title": "Social Media", 
+        "description": "Add your socials media accounts."
       },
       "7" : { 
-        "title": "zzzzzzz", 
-        "description": "zzzzzz",
+        "title": "Influencer details", 
+        "description": " ",
         "followers": "Followers",
         "pricePerPost": "Price per post",
         "pricePerStory": "Price per story",
@@ -334,16 +341,17 @@
   "statistics": {
   
     "title": "Statistics",
-    "bestMonths": "Best Months",
-    "mostUsed": "Most Used Social Media",
+    "bestMonths": "Best months",
+    "mostUsed": "Most used social media",
     "rating": "Average rating",
 
 
     "earnings": {
       "title": "Earnings",
       "total": "Total",
-      "month": "This Month",
-      "week": "This week"
+      "month": "This month",
+      "week": "This week",
+      "noData": "No data"
   }
 },
 
@@ -396,13 +404,14 @@
 
  "chat": {
    "title": "Chat",
-   "placeholder": "Type your message here..."
+   "placeholder": "Type your message here...",
+   "noConversation": "No conversation selected. Please select one or make a new one."
  },
   "wizard": {
 
     "1": {
       "title": "What is your budget?",
-      "description": "The average budget is between 150$ and 400$"
+      "description": "The average budget is between €150 and €400"
     },
     "2": {
       "title": "Choose the desired platforms.",
@@ -469,12 +478,12 @@
 
     "profile": {
       "setup": {
-        "personalInformation": "Personal Information",
+        "personalInformation": "Personal information",
         "languages": "Languages",
         "countries": "Countries",
         "sectors": "Sectors",
         "homeDetails": "Home details",
-        "socialMedia": "Social Media",
+        "socialMedia": "Social media",
         "influencerDetails": "Influencer details"
       }
     },
@@ -493,7 +502,7 @@
       "choosePlatforms": "Choose platforms",
       "amountOfFollowers": "Amount of followers",
       "amountOfViewers": "Amount of viewers",
-      "genderAndAge": "Gender and Age",
+      "genderAndAge": "Gender and age",
       "sector": "Sector",
       "localisation": "Localisation"
     },
@@ -525,11 +534,11 @@
 
     "step1": {
       "title": "Dashboard",
-      "content": "This is yo"
+      "content": "This is the dashboard. Here you can see your statistics and your offers."
     },
     "step2": {
       "title": "Search tool",
-      "content": "This is the search tool. You can search for influencers and brands."
+      "content": "This is the search tool. You can search for influencers or brands."
     },
     "step3": {
       "title": "Statistics",
@@ -537,7 +546,7 @@
     },
     "step4": {
       "title": "Messages",
-      "content": "This is the messages page. Here you can see the messages you have received."
+      "content": "This is the messages page. Here you can see the messages you have received or sent."
     },
     "step5": {
       "title": "Logout",
@@ -545,13 +554,34 @@
     },
     "step6": {
       "title": "Statistics",
-      "content": "zzzzzzzzzzzzzaaaaaaaa"
+      "content": "Little"
     },
     "step7": {
-      "title": "Partnerships",
-      "content": "zzzzzzzzzzzzzaaaaaaaa"
+      "title": "Offers",
+      "content": "This is your offers. Here you can see the offers you have made or received."
     }
 
+
+
+  },
+
+  "validations": {
+
+    "required": "This field is required",
+    "afterDate": "This date must be after {date}",
+    "fileNeeded": "A file is required",
+    "languageValid": "Please select a language",
+    "countryValid": "Please select a country",
+    "sectorValid": "Please select a sector",
+    "socialMediaValid": "Please select a social media",
+    "birthdateIsAfter": "Birthdate must be after now",
+    "dateIsAfter": "Invalid date",
+    "dateIsBefore": "Date must be before the start date",
+    "isGreather": "This value must be greater than the minimum value",
+    "minOneChecked": "Please select at least one option",
+    "isMatching": "Passwords do not match",
+    "email": "Please enter a valid email address",
+    "minlength": "The length of this field is too short"
 
 
   }
