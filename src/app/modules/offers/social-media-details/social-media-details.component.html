@@ -7,7 +7,7 @@
 
   <div class="z-0" [class.collapseItem]="collapsed" [class.collapseItemReverse]="!collapsed">
     <div class="flex">
-      <p class="flex-1 text-white">{{ 'common.posts' | transloco }} (€ {{postPrice }})</p>
+      <p class="flex-1 text-white">{{ 'common.posts' | transloco }} (€ {{ postPrice }})</p>
       <div>
         <span (click)="addOrRemoveSocialMediaDetails.emit({socialMedia: socialMediaDetails.name, type: 'posts', action: '-'})"
           class="bg-light-{{color}} m-auto justify-center px-2 rounded-sm font-bold text-sm cursor-pointer hover:shadow-md">-</span>

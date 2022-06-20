@@ -53,7 +53,6 @@ export class BrandRequestedComponent implements OnInit {
   
 
   openDetailModal(partnership){
-    console.log(partnership);
     this.partnership = partnership;
     this.showDetailModal = true;
   }

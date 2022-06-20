@@ -53,7 +53,6 @@ export class ChatComponent implements OnInit {
           this.router.navigateByUrl('/chat');
         }
       )
-      console.log(this.route.snapshot.params.id);
     }
 
     this.authService
@@ -97,12 +96,10 @@ export class ChatComponent implements OnInit {
            
             this.authService.getUser(userId).pipe(
               tap(user => {
-                console.log("Hello");
 
                 element2 = {...element2, ...user };
                 this.chats.push(element2)
 
-                console.log(this.chats);
                 
                 this.chats = this.chats.sort((a, b) => {
                   return a?.messages[a?.messages?.length - 1]?.timestamp?.seconds > b?.messages[b?.messages?.length - 1]?.timestamp?.seconds ? -1 : 1;
@@ -164,8 +161,6 @@ export class ChatComponent implements OnInit {
       .where('user_1', '==', this.route.snapshot.params.id.toString())
       .get()
       .then(function(querySnapshot) {
-        console.log("Hello");
-
         if(typeof querySnapshot?.docs[0]?.id != 'undefined') id = querySnapshot.docs[0].id;
 
 
@@ -177,7 +172,6 @@ export class ChatComponent implements OnInit {
             this.bucketListArray = data[0];
             this.newChat = null;
           } 
-          console.log(this.bucketListArray);
           if(typeof id != 'undefined') this.chatId = id;
         }
          setTimeout(() => {
@@ -191,7 +185,6 @@ export class ChatComponent implements OnInit {
         .where('user_2', '==', this.route.snapshot.params.id.toString())
         .get()
         .then(function(querySnapshot) {
-          console.log("Hello");
 
           if(typeof querySnapshot?.docs[0]?.id != 'undefined') id = querySnapshot.docs[0].id;
 
@@ -204,7 +197,6 @@ export class ChatComponent implements OnInit {
               this.newChat = null;
 
             }
-            console.log(this.bucketListArray);
             
 
             if(typeof id != 'undefined') this.chatId = id;

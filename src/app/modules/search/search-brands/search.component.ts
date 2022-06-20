@@ -60,7 +60,6 @@ export class SearchBrandsComponent implements OnInit {
     this.searchService.getBrands().subscribe(
       (data) => {
         this.results = data;
-        console.log(data);
         this.setPreferences();
         this.filterAndSort();
 

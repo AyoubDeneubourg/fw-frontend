@@ -48,7 +48,6 @@ export class DashboardComponent implements OnInit {
   setTimeout(() => {
     
     if(!this.userPreferencesService.currentPreferences.introduction) {
-      console.log(this.user.userType)
       this.introService.startIntroduction(this.user.userType);
       window.resizeTo(window.innerWidth, window.innerHeight);
     }
@@ -97,10 +96,8 @@ export class DashboardComponent implements OnInit {
         this.statsService.getTotalEarnings(this.user.id).pipe(
           take(1),
           tap(data => {
-            console.log(this.user.id);
             this.data2.title = data.totalPartnerships.toString();
             this.data3.title = '€' + data.totalMoneyEarnedWeek.toString();
-            console.log(data);
           })
           ).subscribe()
           

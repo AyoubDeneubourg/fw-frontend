@@ -64,6 +64,9 @@
         <ng-container *ngFor="let item of socialMediaDetails">
           <app-social-media-details
             [color]="color"
+            [postPrice]="item.postPrice"
+            [storyPrice]="item.storyPrice"
+            [highlightPrice]="item.highlightPrice"
             (addOrRemoveSocialMediaDetails)='addOrRemoveSocialMediaDetails($event)'
             [socialMediaDetails]='item'>
           </app-social-media-details>
@@ -326,7 +329,7 @@
                 {{ description.value }}
               </p>
             </div>
-
+            <p class="font-semibold">{{ "common.total" | transloco }} : € {{ socialMediaDetails | socialMediaPriceCounter : 'total'}}</p>
 
           </div>
 

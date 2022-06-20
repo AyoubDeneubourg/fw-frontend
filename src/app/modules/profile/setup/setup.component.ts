@@ -247,8 +247,6 @@ export class SetupProfileComponent implements OnInit {
 
       let x = document.getElementById('link-' + element.name) as HTMLSelectElement;
       if(x) {
-      console.log(x);
-      console.log(element);
       this.socialMediaListWithLinks.push({
         name: element.name.toUpperCase(),
         link: x.value
@@ -261,17 +259,11 @@ export class SetupProfileComponent implements OnInit {
 
   onSubmit(): void {
 
-
-    console.log('here')
-    
-    
     if (this.wizardFormGroup.invalid) {
-      console.log('here')
       
       this.wizardFormGroup.markAllAsTouched()
       
     } else {
-      console.log('here')
 
       let PROFILE: any = {
         "user": {
@@ -307,7 +299,6 @@ export class SetupProfileComponent implements OnInit {
       PROFILE.influencer.ibanNumber = this.ibanNumber.value;
 
       this.profileService.updateInfluencerProfile(PROFILE, this.authedUser.id).subscribe(res => {
-        console.log(res);
         this.router.navigateByUrl['/profile'];
       });
       
@@ -385,7 +376,7 @@ export class SetupProfileComponent implements OnInit {
 
   public removeSocialMedia(item: any) {
     if(this.socialMediaList.length === 1) {
-      console.log("minimum 1")
+
     } else {
 
       var index = this.socialMediaList.findIndex(e => e.name === item.name);

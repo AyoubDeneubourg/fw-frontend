@@ -56,7 +56,7 @@ export class TranslocoRootModule {
     const preferredLanguage = userPreferences.currentPreferences?.language;
 
     if (!Object.values(SUPPORTED_LANGUAGES).some(supportedLang => supportedLang === preferredLanguage)) {
-      console.log(`Preferred language (${preferredLanguage}) is not supported.`);
+
     } else {
 
       translocoService.setDefaultLang(preferredLanguage);

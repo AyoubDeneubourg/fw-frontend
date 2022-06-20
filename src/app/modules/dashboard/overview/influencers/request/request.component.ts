@@ -56,7 +56,6 @@ export class InfluencerRequestComponent implements OnInit {
   
 
   openDetailModal(partnership){
-    console.log(partnership);
     this.partnership = partnership;
     this.showDetailModal = true;
   }
@@ -95,7 +94,6 @@ export class InfluencerRequestComponent implements OnInit {
         this.refreshData.emit();
       }),
       catchError(err => {
-        console.log(err)
         return of(err)
       })).subscribe();
   }
@@ -111,7 +109,6 @@ export class InfluencerRequestComponent implements OnInit {
         this.refreshData.emit();
       }),
       catchError(err => {
-        console.log(err)
         return of(err)
       })).subscribe();
 

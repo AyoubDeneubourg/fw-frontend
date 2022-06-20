@@ -58,7 +58,7 @@ export class StripeService {
       });
 
     }), catchError(err => {
-      console.log(err);
+
       return of(err)
     })}
 

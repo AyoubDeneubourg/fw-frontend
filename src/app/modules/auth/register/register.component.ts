@@ -293,7 +293,6 @@ export class RegisterComponent implements OnInit {
               })).subscribe();
           },
           err => {
-            console.log("error", err);
             this.clickedRegister = false;
           }
         );

@@ -84,7 +84,6 @@ export class OffersComponent implements OnInit {
     this.influencerId = this.route.snapshot.params.id;
 
      this.authService.loggedInUser$.subscribe(data => {
-      console.log(data);
       if(data.userType == 'INFLUENCER') {
         console.log('Influencers are not authorized to send offers.')
 
@@ -96,13 +95,10 @@ export class OffersComponent implements OnInit {
     this.buildForm();
 
 
-    console.log(this.influencerId);
     this.authService.getInfluencer(this.influencerId).pipe(
       tap(data => {
-        console.table(data);
       this.influencerProfile = {...data.user, ...data.influencer};
 
-      console.log(this.influencerProfile);
       if(!this.influencerProfile.socialMedia?.length || (!this.influencerProfile.postPrice && !this.influencerProfile.highlightPrice && !this.influencerProfile.storyPrice)) {
         console.log('This influencer has no social media or no prices.')
         this.router.navigateByUrl('/dashboard');
@@ -240,7 +236,6 @@ export class OffersComponent implements OnInit {
 
 
     if (page === 6) {
-      console.log(this.formData.getAll('file'));
 
       if (this.page1.valid && this.checkSocialMediaDetailsValid() && this.page3.valid && this.page4.valid && this.page5.valid && this.formData.getAll('file').length) {
         this.setCurrentPages(6);
@@ -299,11 +294,9 @@ export class OffersComponent implements OnInit {
 
       this.offerService.createOffer(OFFER).subscribe(
         (response: any) => {
-          console.log(response);
 
           this.offerService.postFile(this.formData, response).subscribe(
             (response: any) => {
-              console.log(response);
 
             }
           );
@@ -312,7 +305,6 @@ export class OffersComponent implements OnInit {
          this.router.navigate(['/dashboard']);
         },
         (error: HttpErrorResponse) => {
-          console.log(error);
         }
       );
 

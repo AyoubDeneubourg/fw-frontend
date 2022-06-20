@@ -58,7 +58,6 @@ export class BrandHistoryComponent implements OnInit {
           data.forEach(data => {
 
             if(offer.id === data.partnershipId){
-              console.log(offer.id);
               this.offers[index]['toRate'] = false;
             } else {
               //this.offers[index]['toRate'] = true;
@@ -66,8 +65,7 @@ export class BrandHistoryComponent implements OnInit {
           });
           
         });
-        console.log(this.offers);
-        console.log(data);      
+    
       
       }
       )).subscribe();
@@ -77,7 +75,6 @@ export class BrandHistoryComponent implements OnInit {
 
 
     this.filterAndSort();
-    console.log('here');
   } 
 
 
@@ -131,7 +128,6 @@ export class BrandHistoryComponent implements OnInit {
   
 
   openRateModal(rate){
-    console.log(rate);
     this.rate = rate;
     this.showRateModal = true;
   }
@@ -193,7 +189,6 @@ export class BrandHistoryComponent implements OnInit {
   
 
   openDetailModal(partnership){
-    console.log(partnership);
     this.partnership = partnership;
     this.showDetailModal = true;
   }

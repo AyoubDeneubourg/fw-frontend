@@ -143,7 +143,6 @@ export class SearchInfluencersComponent implements OnInit {
               } else {
                 this.results[index].rate = 0;
               }
-              console.log(this.results);
             }
           )).subscribe()
         });
@@ -215,8 +214,6 @@ export class SearchInfluencersComponent implements OnInit {
 
 
   public filterAndSort() {
-
-    console.log("here");
 
     let input = document.getElementById('searchInput') as HTMLInputElement;
     
@@ -361,9 +358,7 @@ export class SearchInfluencersComponent implements OnInit {
     this.hoverStars = 0;
     this.clickedStars = 0;
     this.minimumBudget = 0;
-    console.log(this.budgetOptions.ceil);
     this.maximumBudget = this.budgetOptions.ceil;
-    console.log(this.maximumBudget);
     this.minimumFollowers = 0;
     this.maximumFollowers = this.followersOptions.ceil;
     this.gender.setValue('any');
@@ -387,7 +382,6 @@ export class SearchInfluencersComponent implements OnInit {
     // followers
     // views
 
-    console.log(searchPreferences);
 
 
     if(fetched) {

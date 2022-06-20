@@ -58,10 +58,8 @@ export class ProfileComponent implements OnInit {
         }
         if(data.user.userType == "INFLUENCER") {
           this.profile = { ...data.user, ...data.influencer};
-          console.log(this.profile);
           this.type = 'INFLUENCER';
 
-          console.log(this.profile);
           this.setInfluencerRating(this.route.snapshot.params.id);
 
           }
@@ -86,7 +84,6 @@ export class ProfileComponent implements OnInit {
     
       
       if(this.user.userType == "BRAND") {
-        console.log(this.profile)
 
         this.profile = {...this.user, ...this.authService.loggedInBrand['brand']};
 
@@ -102,7 +99,6 @@ export class ProfileComponent implements OnInit {
 
 
       } else {
-        console.log(this.profile)
 
         this.profile = { ...this.user, ...this.authService.loggedInInfluencer['influencer'] };
         
@@ -115,7 +111,6 @@ export class ProfileComponent implements OnInit {
 
 
         this.rateService.getAverageInfluencerRating(this.profile.id).subscribe(data => {
-          console.log(data);
            
          })
       
@@ -135,7 +130,6 @@ export class ProfileComponent implements OnInit {
   public setInfluencerRating(id) {
 
     this.rateService.getInfluencerRating(id).subscribe(data => {
-      console.log(data);
       this.ratings = data;
 
       data.forEach((element, index) => {
@@ -143,13 +137,9 @@ export class ProfileComponent implements OnInit {
        this.authService.getUser(element.brandId.toString()).pipe(
          take(1),
          tap(user => {
-           console.log(user);
            this.ratings[index].user = user;
 
-           console.log(this.ratings);
-         }
-         )
-         ).subscribe()
+         })).subscribe()
        }
       );
        
@@ -162,7 +152,6 @@ export class ProfileComponent implements OnInit {
     
 
     this.rateService.getBrandRating(id).subscribe(data => {
-      console.log(data);
       this.ratings = data;
 
       data.forEach((element, index) => {
@@ -170,10 +159,8 @@ export class ProfileComponent implements OnInit {
        this.authService.getUser(element.influencerId.toString()).pipe(
          take(1),
          tap(user => {
-           console.log(user);
            this.ratings[index].user = user;
 
-           console.log(this.ratings);
          }
          )
          ).subscribe()

@@ -50,11 +50,9 @@ export class AuthService {
   public getUser(id: string): Observable<any> {
     if(this.cache?.getUser[id]) {
 
-      console.log("no http call");
      return of(this.cache.getUser[id]);
 
     } else {
-      console.log("http call");
       return this.http.get<User>(`${this.apiUrl}/api/user/${id}`, getHeaders()).pipe(
         tap((user) => {
           this.cache.getUser[id] = user;
@@ -77,8 +75,6 @@ export class AuthService {
       .pipe(
         tap((response) => {
           
-          console.log(response.headers.get('Authorization'));
-          console.log(response);
           if (response.headers.get('Authorization')) {
             setToken(response.headers.get('Authorization'));
           } else {
@@ -141,11 +137,9 @@ export class AuthService {
 
     if (this.loggedInUser && this.loggedInBrand || this.loggedInInfluencer) {
 
-      console.log('no http call')
       return this.loggedInUser$ as Observable<User>;
     } else {
       
-      console.log('http call')
       return this.http
         .get<User>(`${this.apiUrl}/api/user/current `, getHeaders())
         .pipe(
@@ -158,7 +152,6 @@ export class AuthService {
               res => {
                 this.loggedInUser.profilePicture = true;
                 this.loggedInUser$ = of(this.loggedInUser);
-                console.log("res");
               },
               err => {
                 console.log('No profile picture');

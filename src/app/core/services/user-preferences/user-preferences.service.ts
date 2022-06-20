@@ -20,12 +20,8 @@ export class UserPreferencesService {
       const localStorageContent = injectedDocument.defaultView.localStorage.getItem(this.SESSION_STORAGE_KEY);
       if (localStorageContent) {
         preferences = JSON.parse(localStorageContent);
-      } else {
-        // console.log('No user preferences found, defaults will be used');
       }
-    } else {
-      // console.log('No access to document object, preferences won\'t be stored');
-    }
+    } 
 
     this._preferencesTemp = Object.assign(this.defaultPreferences(), preferences || {});
     this.store();

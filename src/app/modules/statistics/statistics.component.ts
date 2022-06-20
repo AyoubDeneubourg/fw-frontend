@@ -35,7 +35,6 @@ export class StatisticsComponent implements OnInit  {
     });
 
     this.rateService.getAverageInfluencerRating(user.id).subscribe(data => {
-      console.log(data);
       this.data1.title = (Math.round(data * 100) / 100).toString();
     });
 

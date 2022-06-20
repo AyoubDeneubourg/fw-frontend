@@ -71,7 +71,6 @@ export class OverviewComponent implements OnInit {
 
       }),
       catchError(err => {
-        console.log(err);
         return of(err)
       })).subscribe();
 
@@ -104,7 +103,6 @@ export class OverviewComponent implements OnInit {
   
         }),
         catchError(err => {
-          console.log(err);
           return of(err)
         })).subscribe();
 

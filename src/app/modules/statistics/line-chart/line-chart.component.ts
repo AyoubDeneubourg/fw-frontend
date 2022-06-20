@@ -20,11 +20,9 @@ export class LineChartComponent implements AfterViewInit{
   @Input() set data(value: any) {
   
 
-    console.log(value);
     
     if(value.statistics !== undefined || typeof value.statistics !== 'undefined') {
       
-      console.log(value);
 
       if(value.active == 'Total') {
         for (const key in value?.statistics?.totalEarningsGraphData) {
@@ -121,14 +119,14 @@ export class LineChartComponent implements AfterViewInit{
 
 
   onSelect(data): void {
-   // console.log('Item clicked', JSON.parse(JSON.stringify(data)));
+
   }
 
   onActivate(data): void {
-   // console.log('Activate', JSON.parse(JSON.stringify(data)));
+
   }
 
   onDeactivate(data): void {
-   // console.log('Deactivate', JSON.parse(JSON.stringify(data)));
+
   }
 }

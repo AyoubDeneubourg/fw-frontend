@@ -58,14 +58,12 @@ export class EditProfileComponent implements OnInit {
 
     if(user.userType == "BRAND") {
 
-      console.log(this.authService.loggedInBrand['user'], this.authService.loggedInBrand['brand'])
       
       this.profile = {...this.authService.loggedInBrand['user'], ...this.authService.loggedInBrand['brand']};
       this.type = 'BRAND';
       
     } else {
       
-      console.log(this.authService.loggedInInfluencer['user'], this.authService.loggedInInfluencer['influencer'])
       this.profile = {...this.authService.loggedInInfluencer['user'], ...this.authService.loggedInInfluencer['influencer']};
       this.type = "INFLUENCER"
     }
@@ -112,7 +110,6 @@ export class EditProfileComponent implements OnInit {
 
   public removeLanguage(item: string) {
     if(this.languageList.length === 1) {
-      console.log("minimum 1")
     } else {
       this.languageList.splice(this.languageList.indexOf(item), 1);
     }
@@ -133,7 +130,6 @@ export class EditProfileComponent implements OnInit {
 
   public removeSector(item: string) {
     if(this.sectorList.length === 1) {
-      console.log("minimum 1")
     } else {
       this.sectorList.splice(this.sectorList.indexOf(item), 1);
     }
@@ -152,7 +148,6 @@ export class EditProfileComponent implements OnInit {
 
   public removeSocialMedia(item: any) {
     if(this.socialMediaList.length === 1) {
-      console.log("minimum 1")
     } else {
 
       var index = this.socialMediaList.findIndex(e => e.name === item.name);
@@ -181,7 +176,6 @@ export class EditProfileComponent implements OnInit {
 
   public removeCountry(item: string) {
     if(this.countryList.length === 1) {
-      console.log("minimum 1")
     } else {
       this.countryList.splice(this.countryList.indexOf(item), 1);
     }

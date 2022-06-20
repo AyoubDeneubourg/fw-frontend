@@ -92,15 +92,9 @@ export class IntrojsService {
 
               
    } else {
-
-
-  
     let value = "#step3";
 
-
-     steps = steps.filter(item => item.element !== value)
-    console.log(steps);
-
+    steps = steps.filter(item => item.element !== value)
 
     this.introJS
         .setOptions({
