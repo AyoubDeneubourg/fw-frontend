@@ -36,6 +36,11 @@ body {
       border: 2px solid #ffffff;
     }
 }
+@media (min-width: 1024px) {
+  .not-hide-item-sm {
+    display: none;
+  }
+}
 
 @media (max-width: 1024px) {
   .hide-item-sm {
@@ -44,6 +49,18 @@ body {
 
   .w-500 {
     width:100% !important;
+  }
+
+  .margin-sm {
+    margin: 0 20px ;
+  }
+
+  .padding-sm {
+    padding: 0 20px ;
+  }
+
+  .w-100-sm {
+    width: 100% !important;
   }
 }
 

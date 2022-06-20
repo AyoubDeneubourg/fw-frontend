@@ -2,11 +2,10 @@
 
 <div class="flex flex-row h-screen">
   <div class="flex m-auto items-center"> 
-    <div class="m-auto items-center">
+    <div class="m-auto items-center margin-sm">
 
 
-
-      <form class="m-auto w-max" [formGroup]="loginFormGroup" (ngSubmit)="onSubmit()">
+      <form class="m-auto w-100" [formGroup]="loginFormGroup" (ngSubmit)="onSubmit()">
         <div formGroupName="p1" class="flex flex-col w-500">
 
           <div class="mb-5">
@@ -59,11 +58,10 @@
       </form>
 
 
-      <hr class="border-black my-8">
 
 
 
-      <p class="text-center">{{ t('noAccount') }}
+      <p class="">{{ t('noAccount') }}
         <span class="font-bold cursor-pointer hover:border-b border-black" [routerLink]="['/register']">
           {{ t('openAccount') }}
         </span>

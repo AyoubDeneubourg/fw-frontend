@@ -1,9 +1,9 @@
-<div class="main-grid relative">
+<div class="main-grid relative hide-item-sm">
   <div class="main-grid-left-item">
-    <app-left-navigation></app-left-navigation>
+  <app-left-navigation></app-left-navigation>
   </div>
   <div class="main-grid-top-item">
-    <app-top-navigation (dropdownToggle)='dropdownToggle()' [title]="title"></app-top-navigation>
+  <app-top-navigation (dropdownToggle)='dropdownToggle()' [title]="title"></app-top-navigation>
 
     <div class="dropdown-menu w-40 p-2 z-10 bg-white rounded-sm shadow-md border" [class.hidden]="!dropdownActive" [class.slide-bottom]="dropdownActive">
       <ul>
@@ -17,4 +17,19 @@
   <div class="main-grid-content ">
     <ng-content></ng-content>
   </div>
+</div>
+
+
+<div class="not-hide-item-sm">
+  <app-top-navigation (dropdownToggle)='dropdownToggle()' [title]="title"></app-top-navigation>
+
+  <div class="dropdown-menu w-40 p-2 z-10 bg-white rounded-sm shadow-md border" [class.hidden]="!dropdownActive" [class.slide-bottom]="dropdownActive">
+    <ul>
+      <li (click)="dropdownToggle()" [routerLink]="['/profile']" class="select-none my-2 text-black-animation cursor-pointer">{{ 'nav.myAccount' | transloco }}</li>
+      <li (click)="logout()" class="select-none my-2 text-black-animation cursor-pointer">{{ 'nav.logout' | transloco }}</li>
+      <li class="my-2 select-none"><app-change-language></app-change-language></li>
+    </ul>
+  </div>
+
+  <ng-content></ng-content>
 </div>
