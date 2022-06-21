@@ -26,10 +26,38 @@
     </div>
   </form>
 
+  <div class="hide-item-not-sm mt-6">
+    <div class="flex flex-col flex-wrap bg-white  rounded shadow-md p-3 border mb-3" *ngFor="let item of newEvents ? newEvents : offers as Offer">
 
- 
+      <div class=" mb-4">
+        <div class=" flex rounded-md text-sm  font-semibold">
+          <span class="">{{ t(item.status) }}</span>
+        </div>
+        <div class="flex-1"> Order id: {{ item.id }} </div>
+  
+        <span class="flex-1"> <p class="select-none cursor-pointer font-semibold" routerLink="/profile/{{item.influencerId}}">{{ item.influencerName }}</p></span>
+        <span class="">€{{ item.socialMediaDetails | socialMediaPriceCounter : 'total' }}</span>
+  
+  
+        
+      </div>
+      <div class="flex">
+        <div (click)="openAcceptModal(item)" class="my-auto icon-accept bg-blue mx-1 shadow hover:shadow-lg ease-linear cursor-pointer transition-all duration-150">
+          <i  class="m-auto align-middle text-white rounded-md fa-solid fa-check"></i>
+        </div>
+        <div (click)="openDeclineModal(item)" class="my-auto icon-decline bg-red-500 mx-1 shadow hover:shadow-lg ease-linear cursor-pointer transition-all duration-150 ">
+          <i  class=" m-auto align-middle text-white rounded-md fa-solid fa-xmark"></i>
+        </div>
+          
+        <div class="flex-1 mx-4 ">
+          <div (click)="openDetailModal(item)" class="m-0  bg-blue  text-center rounded-sm font-semibold text-white text-sm py-1.5 px-3 shadow hover:shadow-lg ease-linear cursor-pointer transition-all duration-150">{{ t('viewDetails') }}</div>
+        </div>
+      </div>
+    </div> 
+  </div>
 
-  <table class="w-100 mt-10">
+
+   <table class="w-100 mt-10 hide-item-sm">
     <thead>
       <tr class="font-semibold">
         <td>{{ t('orderNumber') }}</td>
@@ -62,7 +90,7 @@
             {{ item.startDate }} - {{ item.endDate }}
           </div>
         </td>
-        <td> <a class="hover:border-b-2 " href="https://fw-file-service.herokuapp.com/api/file/{{item.id}}" target="_blank">{{ t('download') }}</a></td>
+        <td> <a class="hover:border-b-2 " href="https://fw-file-service.azurewebsites.net/api/file/{{item.id}}" target="_blank">{{ t('download') }}</a></td>
         <td></td>
         <td> 
           <div class="flex">

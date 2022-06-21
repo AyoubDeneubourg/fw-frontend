@@ -207,13 +207,7 @@ export class AuthService {
 
   public logout(): void {
     removeToken();
-    this.router.navigateByUrl('/').then(() => {
-      window.location.reload();
-    });
-    
-    //window.location.href = window.location.protocol + '//' + window.location.host + '/path/to';
-    //location.href = '/admin/dashboard';
-
+    window.location.href = "/";
   }
 
 

@@ -8,15 +8,15 @@
     <div id="step7" class="mt-25-sm" *ngIf="color == 'blue'">
         
         
-        <p class="my-auto mr-2 text-black-animation cursor-pointer" (click)="changeActiveTab('1')" [ngClass]="active == '1' ? 'active-' + color: ''">
+        <p class="my-auto mr-4 mb-1-sm text-black-animation cursor-pointer" (click)="changeActiveTab('1')" [ngClass]="active == '1' ? 'active-' + color: ''">
           {{ 'dashboard.overview.upcomingEvents' | transloco }}
         </p>
         
-        <p class="my-auto mx-2 text-black-animation cursor-pointer" (click)="changeActiveTab('2')" [ngClass]="active == '2' ? 'active-' + color: ''" >
+        <p class="my-auto mr-4 mb-1-sm text-black-animation cursor-pointer" (click)="changeActiveTab('2')" [ngClass]="active == '2' ? 'active-' + color: ''" >
       {{ 'dashboard.overview.requests' | transloco }}
     </p>
 
-    <p class="my-auto mx-2  text-black-animation cursor-pointer" (click)="changeActiveTab('3')" [ngClass]="active == '3' ? 'active-' + color: ''">
+    <p class="my-auto mr-4 mb-1-sm  text-black-animation cursor-pointer" (click)="changeActiveTab('3')" [ngClass]="active == '3' ? 'active-' + color: ''">
       {{ 'dashboard.overview.history' | transloco }}
     </p>
     
@@ -25,19 +25,19 @@
 
   <div id="step7" class="mt-25-sm" *ngIf="color == 'orange'">
 
-      <p class="my-auto mr-2 text-black-animation cursor-pointer " (click)="changeActiveTab('1')" [ngClass]="active == '1' ? 'active-' + color: ''">
+      <p class="my-auto mr-4 mb-1-sm  text-black-animation cursor-pointer " (click)="changeActiveTab('1')" [ngClass]="active == '1' ? 'active-' + color: ''">
         {{ 'dashboard.overview.progress'  | transloco }}
       </p>
-      <p class="my-auto mx-2 text-black-animation cursor-pointer" (click)="changeActiveTab('2')" [ngClass]="active == '2' ? 'active-' + color: ''" >
+      <p class="my-auto mr-4 mb-1-sm  text-black-animation cursor-pointer" (click)="changeActiveTab('2')" [ngClass]="active == '2' ? 'active-' + color: ''" >
         {{ 'dashboard.overview.requested'  | transloco }}
       </p>
 
-      <p class="my-auto mx-2 text-black-animation cursor-pointer" (click)="changeActiveTab('3')" [ngClass]="active == '3' ? 'active-' + color: ''">
+      <p class="my-auto mr-4 mb-1-sm text-black-animation cursor-pointer" (click)="changeActiveTab('3')" [ngClass]="active == '3' ? 'active-' + color: ''">
         {{ 'dashboard.overview.pay' | transloco  }}
       </p>
   
   
-      <p class="my-auto mx-2 text-black-animation cursor-pointer" (click)="changeActiveTab('4')" [ngClass]="active == '4' ? 'active-' + color: ''">
+      <p class="my-auto mr-4 mb-1-sm text-black-animation cursor-pointer" (click)="changeActiveTab('4')" [ngClass]="active == '4' ? 'active-' + color: ''">
         {{ 'dashboard.overview.history' | transloco  }}
       </p>
   

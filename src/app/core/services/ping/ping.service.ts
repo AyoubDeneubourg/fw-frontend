@@ -63,7 +63,7 @@ export class PingService {
     
 
   public profileService(): void {
-    this.http.get(`https://fw-profile-service.herokuapp.com/api/profile/ping`, getHeaders()).pipe(
+    this.http.get(`https://fw-profile-service.azurewebsites.net/api/profile/ping`, getHeaders()).pipe(
       take(1),
       catchError(err => {
         console.clear();

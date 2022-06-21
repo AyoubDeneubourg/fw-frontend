@@ -1,9 +1,11 @@
-<ngx-charts-advanced-pie-chart *ngIf="single.length"
+<div class="flex w-4/5 m-auto" #containerRef  >
+<ngx-charts-advanced-pie-chart  *ngIf="single.length"
+(window:resize)="resizeChart(containerRef.offsetWidth)"
 
   
   [results]="single"
   [gradient]="gradient"
-  [view]="[undefined, 250]"
+  [view]="view"
   (select)="onSelect($event)"
   (activate)="onActivate($event)"
     
@@ -16,3 +18,5 @@
   <ng-container *ngIf="!single.length">
     {{ 'statistics.earnings.noData' | transloco }}
   </ng-container>
+
+</div>

@@ -1,4 +1,4 @@
-import { Input, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectorRef, ElementRef, Input, ViewChild, ViewEncapsulation } from '@angular/core';
 import { Component } from '@angular/core';
 import { Statistics } from 'src/app/shared/models/common';
 import { socialMediaConverter } from 'src/app/shared/models/offers';
@@ -45,7 +45,7 @@ export class PieChartComponent  {
 
 
   single: any[] = [];
-  view: any[] = [];
+  view: any[] = [undefined, 250];
 
   // options
   gradient: boolean = false;
@@ -56,9 +56,24 @@ export class PieChartComponent  {
     domain: ['#4CADE6', '#AAAAAA', '#AZZZZZ']
   };
 
-  constructor() {
 
+
+  ngAfterViewInit(): void {
+    this.view = [this.containerRef.nativeElement.offsetWidth, 250];
+    this.cdref.detectChanges();
   }
+
+  public resizeChart(width: any): void {
+    this.view = [width, 250]
+  }
+
+  
+  constructor( private cdref: ChangeDetectorRef) {
+  }
+
+  
+  @ViewChild('containerRef') containerRef : ElementRef;
+
 
   onSelect(data): void {
 

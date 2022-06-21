@@ -28,8 +28,8 @@ export class SearchInfluencersComponent implements OnInit {
   public sectorsArray = sectors;
 
 
-  minimumBudget: number = 100;
-  maximumBudget: number = 400;
+  minimumBudget: number = 0;
+  maximumBudget: number = 2500;
   budgetOptions: Options = {
     getSelectionBarColor: (percentage: number) => {
       return '#4cade6';
@@ -49,7 +49,7 @@ export class SearchInfluencersComponent implements OnInit {
   };
 
   minimumFollowers: number = 0;
-  maximumFollowers: number = 100000;
+  maximumFollowers: number = 500000;
   followersOptions: Options = {
     getSelectionBarColor: (percentage: number) => {
       return '#4cade6';

@@ -1,4 +1,4 @@
-import { Input, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectorRef, ElementRef, Input, ViewChild, ViewEncapsulation } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { Statistics } from 'src/app/shared/models/common';
 
@@ -11,6 +11,7 @@ import { Statistics } from 'src/app/shared/models/common';
 export class BarVerticalComponent implements OnInit {
 
 
+  @ViewChild('containerRef') containerRef : ElementRef;
 
   
   private _statistics: any;
@@ -70,7 +71,16 @@ export class BarVerticalComponent implements OnInit {
 
 
 
+  public resizeChart(width: any): void {
+    this.view = [width, 500]
+  }
+
   
+  ngAfterViewInit(): void {
+    this.view = [this.containerRef.nativeElement.offsetWidth, 500];
+    this.cdref.detectChanges();
+  }
+
 
 
   public single: any[];
@@ -91,7 +101,7 @@ export class BarVerticalComponent implements OnInit {
     domain: ['#4CADE6']
   };
 
-  constructor() {
+  constructor(private cdref: ChangeDetectorRef) {
     Object.assign(this, this.single )
   }
 

@@ -1,13 +1,7 @@
 <ng-container *transloco="let t; read: 'dashboard.overview'">
 
     <form class="flex mb-2" [formGroup]="sortingFormGroup">
-      <div class="flex-1" formGroupName="status">
-  
-  
-  
-  
-  
-      </div>
+      <div class="flex-1 hide-item-sm"></div>
   
       <div formGroupName="sortTypes">
   
@@ -28,10 +22,27 @@
       </div>
     </form>
   
+  <div class="hide-item-not-sm mt-6">
+    <div class="flex flex-col flex-wrap bg-white  rounded shadow-md p-3 border mb-3" *ngFor="let item of newEvents ? newEvents : offers as Offer">
+
+      <div class=" mb-4">
+        <div class=" flex rounded-md text-sm  font-semibold">
+          <span class="my-auto mx-2 rounded-full status status-{{item.status}}"> </span>
+          <span class="">{{ t(item.status) }}</span>
+        </div>
+        <div class="flex-1"> Order id: {{ item.id }} </div>
   
-   
+        <span class="flex-1"> <p class="select-none cursor-pointer font-semibold" routerLink="/profile/{{item.influencerId}}">{{ item.influencerName }}</p></span>
+        <span class="">€{{ item.socialMediaDetails | socialMediaPriceCounter : 'total' }}</span>
   
-    <table class="w-100 mt-10">
+  
+        
+      </div>
+       <span (click)="openDetailModal(item)" class="m-0  bg-orange  text-center rounded-sm font-semibold text-white text-sm py-1.5 px-3 shadow hover:shadow-lg ease-linear cursor-pointer transition-all duration-150">{{ t('viewDetails') }}</span>
+    </div> 
+  </div>
+
+    <table class="w-100 mt-10 hide-item-sm">
       <thead>
         <tr class="font-semibold">
           <td>{{ t('orderNumber') }}</td>

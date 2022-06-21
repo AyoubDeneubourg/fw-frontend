@@ -55,20 +55,33 @@
     </div>
   </form>
 
-  <div class="flex flex-col flex-wrap bg-gray-300 hide-item-not-sm rounded shadow-sm " *ngFor="let item of newEvents ? newEvents : offers as Offer">
+  <div class="hide-item-not-sm mt-6">
+    <div class="flex flex-col flex-wrap bg-white  rounded shadow-md p-3 border mb-3" *ngFor="let item of newEvents ? newEvents : offers as Offer">
 
-    <div class="flex">
-      <span class="my-auto mx-2 rounded-full status status-{{item.status}}"> </span>
-
-      <td> <p class="select-none cursor-pointer" routerLink="/profile/{{item.brandId}}">{{ item.brandName }}</p></td>
-      <td>€{{ item.socialMediaDetails | socialMediaPriceCounter : 'total' }}</td>
-
-      <td *ngIf="item.status == 'IN_PROGRESS'"> <div (click)="openModal(item)" class="border  border-blue text-center rounded-sm text-blue text-sm p-1 shadow hover:shadow-lg ease-linear cursor-pointer transition-all duration-150">{{ t('finish') }}</div></td>
-
-      <td> <span (click)="openDetailModal(item)" class="m-0  bg-blue  text-center rounded-sm font-semibold text-white text-sm py-1.5 px-3 shadow hover:shadow-lg ease-linear cursor-pointer transition-all duration-150">{{ t('viewDetails') }}</span></td>
-
-    </div>
-  </div> 
+      <div class=" mb-4">
+        <div class=" flex rounded-md text-sm  font-semibold">
+          <span class="my-auto mx-2 rounded-full status status-{{item.status}}"> </span>
+          <span class="">{{ t(item.status) }}</span>
+        </div>
+        <div class="flex-1"> Order id: {{ item.id }} </div>
+  
+        <span class="flex-1"> <p class="select-none cursor-pointer font-semibold" routerLink="/profile/{{item.influencerId}}">{{ item.influencerName }}</p></span>
+        <span class="">€{{ item.socialMediaDetails | socialMediaPriceCounter : 'total' }}</span>
+  
+  
+        
+      </div>
+      <div class="flex">
+        <div  *ngIf="item.status == 'IN_PROGRESS'" class="flex-1 mx-4 ">
+         <div (click)="openModal(item)" class="border  border-blue text-center rounded-sm text-blue text-sm p-1 shadow hover:shadow-lg ease-linear cursor-pointer transition-all duration-150">{{ t('finish') }}</div>
+        </div>
+          
+        <div class="flex-1 mx-4 ">
+          <div (click)="openDetailModal(item)" class="m-0  bg-blue  text-center rounded-sm font-semibold text-white text-sm py-1.5 px-3 shadow hover:shadow-lg ease-linear cursor-pointer transition-all duration-150">{{ t('viewDetails') }}</div>
+        </div>
+      </div>
+    </div> 
+  </div>
 
 
    <table class="w-100 mt-10 hide-item-sm">
