@@ -10,6 +10,7 @@ import { Firestore } from '@angular/fire/firestore';
 import { AuthService, Color } from 'src/app/core/services/auth-service/auth.service';
 import { User } from 'src/app/shared/models/common';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 
 @Component({
@@ -20,6 +21,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class ChatComponent implements OnInit {
 
   @ViewChild('autoScroll') private myScrollContainer: ElementRef;
+  @ViewChild('autoScroll2') private myScrollContainer2: ElementRef;
 
   public authedUser: User;
   public routeId: number | string;
@@ -36,9 +38,16 @@ export class ChatComponent implements OnInit {
   scrollToBottom(): void {
     try {
         this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
+        this.myScrollContainer2.nativeElement.scrollTop = this.myScrollContainer2.nativeElement.scrollHeight;
     } catch(err) { }                 
 }
 
+
+public returnBack() {
+
+  this.location.back();
+  
+}
 
 
   ngOnInit(): void {
@@ -213,6 +222,7 @@ export class ChatComponent implements OnInit {
     private chatService: ChatService, 
     private authService: AuthService,
     private router: Router, 
+    private location: Location,
     private route: ActivatedRoute) {}
 
 
@@ -222,8 +232,12 @@ export class ChatComponent implements OnInit {
       this.newChat = null;
 
       let textArea = document.getElementById('textAreaId') as HTMLInputElement;
-      if(textArea.value.trim().length === 0) return;
-      let newChat = this.chatService.sendMessage(textArea.value, this.bucketListArray, this.chatId, this.authedUser.id, this.route.snapshot.params.id);
+      let textArea2 = document.getElementById('textAreaId2') as HTMLInputElement;
+      console.log(textArea.value);
+      console.log(textArea2.value);
+      if(textArea.value.trim().length === 0 && textArea2.value.trim().length) return;
+
+      let newChat = this.chatService.sendMessage(textArea.value ? textArea.value : textArea2.value, this.bucketListArray, this.chatId, this.authedUser.id, this.route.snapshot.params.id);
     
    
       textArea.value = "";

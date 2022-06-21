@@ -26,6 +26,8 @@
   }
 }
 
+
+
 .right-chat {
 
     height: calc(100vh - 68px - 100px - 28px - 16px);
@@ -60,4 +62,17 @@
 .bg-orange-50 {
 
   background-color: #fef5e9;
+}
+
+@media (max-width: 1024px) {
+
+  .flex-row-sm {
+    display: flex;
+    flex-direction: row;
+    overflow-y: scroll;
+  }
+
+  .h-inherit-sm {
+    height: inherit;
+  }
 }

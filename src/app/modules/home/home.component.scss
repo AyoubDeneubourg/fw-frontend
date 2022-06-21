@@ -54,7 +54,23 @@
 @media (max-width: 1024px) {
 
   .left-side {
- padding: 0 10vw;
+  padding: 0 10vw;
+  }
+
+  .w-80-sm {
+    width: 80%;
+  }
+}
+
+
+@media (max-width: 340px) {
+
+  .title {
+    font-size: 38px;
+    line-height: 5px;
+  }
+  .subtitle {
+    font-size: 62px;
   }
 }
 
