@@ -14,7 +14,7 @@
 
 body {
   //width: 100vw;
- overflow-x: hidden;
+  overflow-x: hidden;
   background-color: white;
 }
 
@@ -36,18 +36,91 @@ body {
       border: 2px solid #ffffff;
     }
 }
+
+
+
 @media (min-width: 1024px) {
-  .not-hide-item-sm {
+  .hide-item-not-sm {
     display: none;
   }
+
+
 }
 
+@media (max-width: 768px) { 
+
+  .hide-item-xsm {
+    display: none;
+  }
+
+}
+
+
 @media (max-width: 1024px) {
+
+
+  .mr-6-sm {
+    margin-right: 1.5rem;
+  }
+
+  .w-150-sm {
+    width: 150px !important;
+  }
+
+  .bottom-navigation-responsive {
+
+    display: block !important;
+    position: initial !important;
+    margin-top: 35px;
+
+  }
+
+  .py-5-sm {
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+  }
+
+  .px-none-sm {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+
+  .border-none-sm {
+    border: none;
+  }
+
+
+  .m-auto-sm {
+    margin: auto;
+  }
+
+  .mt-25-sm {
+    margin-top: 25px;
+  }
+
+  .mb-100-sm {
+    margin-bottom: 100px;
+  }
+  .mx-8-sm {
+    margin: 0 8px;
+  }
+
+  .w-100-sm {
+    width: 100% !important;
+  }
+  .display-block-sm {
+    display: block;
+  }
+
   .hide-item-sm {
     display: none;
   }
 
   .w-500 {
+    width:100% !important;
+  }
+
+  .w-400 {
     width:100% !important;
   }
 
@@ -63,6 +136,7 @@ body {
     width: 100% !important;
   }
 }
+
 
 @media (max-width: 1350px) {
   .hide-item-md {

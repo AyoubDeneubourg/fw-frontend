@@ -71,6 +71,7 @@ import { SearchBrandCardComponent } from './modules/search/search-brands/search-
 import { WizardSquaresComponent } from './shared/components/deco/wizard-squares/wizard-squares.component';
 import { HomeWatchVideoComponent } from './modules/home/modal/modal.component';
 import { toTwoNumbersAfterCommaPipe } from './shared/pipes/toTwoNumbersAfterComma.pipe';
+import { BottomNavigationSmComponent } from './shared/components/bottom-navigation-sm/bottom-navigation-sm.component';
 
 @NgModule({
   declarations: [
@@ -128,7 +129,8 @@ import { toTwoNumbersAfterCommaPipe } from './shared/pipes/toTwoNumbersAfterComm
     SearchInfluencersComponent,
     HomeWatchVideoComponent,
     SearchBrandsComponent,
-    WizardSquaresComponent
+    WizardSquaresComponent,
+    BottomNavigationSmComponent
   ],
 
   imports: [

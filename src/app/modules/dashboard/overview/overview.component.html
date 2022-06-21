@@ -2,13 +2,13 @@
 
 
 
-  <div class="flex m-2 pt-6 border-{{color}}">
+  <div class="flex m-2 pt-6 border-{{color}} display-block-sm">
     <p id="" class=" text-xl flex-1">{{ 'dashboard.overview.overviewTitle' | transloco }}</p>
 
-    <div id="step7" *ngIf="color == 'blue'">
+    <div id="step7" class="mt-25-sm" *ngIf="color == 'blue'">
         
         
-        <p class="my-auto mx-2 text-black-animation cursor-pointer" (click)="changeActiveTab('1')" [ngClass]="active == '1' ? 'active-' + color: ''">
+        <p class="my-auto mr-2 text-black-animation cursor-pointer" (click)="changeActiveTab('1')" [ngClass]="active == '1' ? 'active-' + color: ''">
           {{ 'dashboard.overview.upcomingEvents' | transloco }}
         </p>
         
@@ -23,9 +23,9 @@
   </div>
   
 
-  <div id="step7" *ngIf="color == 'orange'">
+  <div id="step7" class="mt-25-sm" *ngIf="color == 'orange'">
 
-      <p class="my-auto mx-2 text-black-animation cursor-pointer " (click)="changeActiveTab('1')" [ngClass]="active == '1' ? 'active-' + color: ''">
+      <p class="my-auto mr-2 text-black-animation cursor-pointer " (click)="changeActiveTab('1')" [ngClass]="active == '1' ? 'active-' + color: ''">
         {{ 'dashboard.overview.progress'  | transloco }}
       </p>
       <p class="my-auto mx-2 text-black-animation cursor-pointer" (click)="changeActiveTab('2')" [ngClass]="active == '2' ? 'active-' + color: ''" >

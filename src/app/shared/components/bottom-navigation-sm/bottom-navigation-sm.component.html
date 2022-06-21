@@ -1,0 +1,34 @@
+<div class="bottom-navigation-sm shadow-md border ">
+
+<div class="flex">
+
+    
+    <div [routerLinkActive]="'cursor-default'" [routerLink]="['/dashboard']"  [routerLinkActive]="'active-' + color" class="cursor-pointer flex flex-1  flex-row py-3">
+        <i  id="step1" class="fa-light fa-home my-auto ml-auto"></i>
+        <div class="ml-auto inactive py-5"></div>
+      </div>
+  
+      <div [routerLinkActive]="'cursor-default'" [routerLink]="['/search']"  [routerLinkActive]="'active-' + color" class="cursor-pointer flex  flex-1 flex-row py-3">
+        <i id="step2" class="fa-light fa-magnifying-glass my-auto ml-auto"></i>
+        <div class="ml-auto inactive py-5"></div>
+      </div>
+  
+    <ng-container *ngIf="user.userType != 'BRAND'">
+  
+      <div [routerLinkActive]="'cursor-default'" [routerLink]="['/statistics']"  [routerLinkActive]="'active-' + color" class="cursor-pointer flex  flex-1 flex-row py-3">
+        <i id="step3"  class="fa-light fa-chart-column my-auto ml-auto"></i>
+        <div class="ml-auto inactive py-5"></div>
+      </div>
+    </ng-container>
+  
+  
+      <div [routerLinkActive]="'cursor-default'" [routerLink]="['/chat']" [routerLinkActive]="'active-' + color" class="-blue cursor-pointer flex  flex-1 flex-row py-3">
+        <i id="step4" class="fa-light fa-comment my-auto ml-auto"></i>
+        <div  class="ml-auto inactive py-5"></div>
+      </div>
+
+</div>
+
+
+
+</div>

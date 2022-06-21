@@ -1,0 +1,32 @@
+@import "../../../../styles/variables";
+
+
+.bottom-navigation-sm {
+
+    z-index: 99999;
+    position: fixed;
+    bottom:0;
+    width: 100%;
+
+    background-color: white;
+}
+
+
+i {
+    color: $gray;
+    font-size: 1.3rem;
+  }
+  
+  .active-blue {
+    border-top: 5px solid $blue !important;
+
+  }
+  
+  .active-orange {
+    border-top: 5px solid $orange !important;
+  }
+  
+  .inactive {
+    border-top: 5px solid white;
+  }
+  

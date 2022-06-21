@@ -11,7 +11,7 @@ import { getHeaders } from '../authorization/authorization';
 })
 export class StripeService {
 
-  readonly apiUrl = "https://fw-api-gateway.herokuapp.com";
+  readonly apiUrl = "https://fw-api-gateway.azurewebsites.net";
 
   stripePromise = loadStripe(environment.stripe);
 

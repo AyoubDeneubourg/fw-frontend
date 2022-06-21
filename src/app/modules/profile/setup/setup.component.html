@@ -1,6 +1,9 @@
 <ng-container *transloco="let t; read: 'profile.setup'">
+
+  <i (click)="returnBack()" class="absolute top-7 left-7 fa-solid fa-arrow-left text-xl cursor-pointer text-black hide-item-sm" ></i>
+  <i (click)="returnBack()" class="ml-5 mt-5 mb-5 fa-solid fa-arrow-left text-xl cursor-pointer text-black hide-item-not-sm" ></i>
+
     <div class="flex flex-row h-screen">
-      <i (click)="returnBack()" class="absolute top-7 left-7 fa-solid fa-arrow-left text-xl cursor-pointer text-black" ></i>
 
       <div class="w-1/3  flex items-center bg-{{color}} relative hide-item-sm">
 
@@ -23,10 +26,12 @@
         </div>
       </div>
   
-      <div class="flex m-auto items-center">
+      <div class="flex m-auto items-center w-100-sm padding-sm">
+
+      <div class="items-center w-100">
   
   
-        <form class="m-auto w-max" [formGroup]="wizardFormGroup" (ngSubmit)="onSubmit()">
+        <form class="m-auto w-100" [formGroup]="wizardFormGroup" (ngSubmit)="onSubmit()">
           <div formGroupName="p1" class="flex flex-col w-500" *ngIf="actualPage === 1">
   
             <div class="mb-5">
@@ -84,11 +89,11 @@
                         <option value="{{availableLanguage}}">{{availableLanguage }}</option>
                     </ng-container>
                 </select>
-                <span (click)="addLanguage()" class="ml-2 addBtn rounded-sm my-auto text-lg text-center bg-{{color}} text-white font-semibold">+</span>
+                <span (click)="addLanguage()" class="ml-2 addBtn rounded-sm my-auto text-lg text-center bg-{{color}} text-white font-semibold cursor-pointer">+</span>
             </span>
 
           
-            <span class="flex">
+            <span class="flex flex-wrap">
                 <span *ngFor="let item of languageList" class="language border-2 mr-1 my-2 py-1 px-2 border-{{color}} rounded-md">      
                     <span class="my-auto">{{ item }}</span>
                     <span (click)="removeLanguage(item)" class="my-auto ml-2">
@@ -140,10 +145,10 @@
                             <option value="{{availableSector}}">{{availableSector }}</option>
                         </ng-container>
                     </select>
-                    <span (click)="addSector()" class="ml-2 addBtn rounded-sm my-auto text-lg text-center bg-{{color}} text-white font-semibold">+</span>
+                    <span (click)="addSector()" class="ml-2 addBtn rounded-sm my-auto text-lg text-center bg-{{color}} text-white font-semibold cursor-pointer">+</span>
                 </span>
 
-                <span class="flex">
+                <span class="flex flex-wrap">
                     <span *ngFor="let item of sectorList" class="language border-2 mr-1 my-2 py-1 px-2 border-{{color}} rounded-md">      
                         <span class="my-auto">{{ item }}</span>
                         <span (click)="removeSector(item)" class="my-auto ml-2">
@@ -194,12 +199,12 @@
             <div class="flex flex-col">
   
                 <span class="flex my-auto mr-auto">
-                    <select class="shadow-md py-1  px-3 select-{{color}}" name="country" id="selectCountries">
+                    <select class="shadow-md py-1  px-3 select-{{color}} w-150-sm" name="country" id="selectCountries">
                         <ng-container *ngFor="let availableCountry of availableCountries | keyvalue">
                             <option value="{{availableCountry.key}}">{{availableCountry.value.name }}</option>
                         </ng-container>
                     </select>
-                    <span (click)="addCountry()" class="ml-2 addBtn rounded-sm my-auto text-lg text-center bg-{{color}} text-white font-semibold">+</span>
+                    <span (click)="addCountry()" class="ml-2 addBtn rounded-sm my-auto text-lg text-center bg-{{color}} text-white font-semibold cursor-pointer">+</span>
                 </span>
 
                 <span class="flex">
@@ -247,7 +252,7 @@
   
             <div class="mb-5">
               <h2 class="flex flex-col text-4xl font-semibold">{{ t('5.title') }}</h2>
-              <h3 class="flex flex-col text-lg">{{ t('6.description') }}</h3>
+              <h3 class="flex flex-col text-lg">{{ t('5.description') }}</h3>
             </div>
   
   
@@ -258,7 +263,7 @@
   
                     <label for="country" class="font-semibold">{{ t('5.country') }}</label>
 
-                    <select formControlName="country" class="shadow-md py-1 mt-2 px-3 border-b flex w-200 select-{{color}}" name="country">
+                    <select formControlName="country" class="shadow-md py-1 mt-2 px-3 border-b  w-200 w-100-sm select-{{color}} display-block-sm" name="country">
                         <ng-container *ngFor="let country of availableCountries | keyvalue">
                             <option value="{{ country.key }}">
                             {{ country.value.name }}</option>
@@ -276,7 +281,7 @@
                   <div class="flex-1">
   
                     <label for="city" class="font-semibold">{{ t('5.city') }}</label>
-                    <input id="city" class="mt-2 input-{{color}} py-1 w-11/12 px-3 outline-none rounded-sm shadow-md border"
+                    <input id="city" class="mt-2 input-{{color}} py-1 w-11/12 px-3 outline-none rounded-sm shadow-md border display-block-sm"
                       formControlName="city" placeholder="Brussels" type="text" />
                     <app-input-validation-error [control]="city"></app-input-validation-error>
                   </div>
@@ -341,7 +346,7 @@
   
             <div class="flex flex-col">
               
-              <label for="country" class="font-semibold">{{ t('6.country') }}</label>
+              <label for="country" class="font-semibold">{{ t('5.country') }}</label>
   
   
               <span class="flex my-auto mr-auto">
@@ -350,7 +355,7 @@
                         <option value="{{availableSocialMedia}}">{{availableSocialMedia }}</option>
                     </ng-container>
                 </select>
-                <span (click)="addSocialMedia()" class="ml-2 addBtn rounded-sm my-auto text-lg text-center bg-{{color}} text-white font-semibold">+</span>
+                <span (click)="addSocialMedia()" class="ml-2 addBtn rounded-sm my-auto text-lg text-center bg-{{color}} text-white font-semibold cursor-pointer">+</span>
             </span>
 
             <span *ngFor="let item of socialMediaList"  class="flex">
@@ -375,7 +380,7 @@
             <ng-container *ngIf="authedUser.userType == 'INFLUENCER'">
 
                 <button (click)="goToPage(7)" type="button" 
-                  class="mt-5 text-white py-1 font-semibold px-3 rounded-sm shadow-sm bg-{{color}}">{{ 'common.search' | transloco }}</button>
+                  class="mt-5 text-white py-1 font-semibold px-3 rounded-sm shadow-sm bg-{{color}}">{{ 'common.continue' | transloco }}</button>
 
             </ng-container>
 
@@ -383,7 +388,7 @@
             <ng-container *ngIf="authedUser.userType == 'BRAND'">
 
                 <button type="submit"
-                  class="mt-5 text-white py-1 font-semibold px-3 rounded-sm shadow-sm bg-{{color}}">{{ 'common.search' | transloco }}</button>
+                  class="mt-5 text-white py-1 font-semibold px-3 rounded-sm shadow-sm bg-{{color}}">{{ 'common.continue' | transloco }}</button>
                 
             </ng-container>
 
@@ -419,7 +424,7 @@
                 <div class="flex-1">
   
                     <label for="followers" class="font-semibold">{{ t('7.followers') }}</label>
-                    <input id="followers" class="mt-2 input-{{color}} py-1 px-3 outline-none rounded-sm shadow-md border"
+                    <input id="followers" class="mt-2 input-{{color}} py-1 px-3 outline-none rounded-sm shadow-md border w-100-sm"
                       formControlName="followers" step="1000" placeholder="50.000" type="number" />
                     <app-input-validation-error [control]="followers"></app-input-validation-error>
 
@@ -430,7 +435,7 @@
                   <div class="flex-1">
   
                     <label for="pricePerPost" class="font-semibold">{{ t('7.pricePerPost') }}</label>
-                    <input id="pricePerPost" class="mt-2 input-{{color}} py-1 px-3 outline-none rounded-sm shadow-md border"
+                    <input id="pricePerPost" class="mt-2 input-{{color}} py-1 px-3 outline-none rounded-sm shadow-md border w-100-sm"
                       formControlName="pricePerPost" step="10" placeholder="€150" type="text" />
                     <app-input-validation-error [control]="pricePerPost"></app-input-validation-error>
                   </div>
@@ -440,7 +445,7 @@
                   <div class="flex-1">
   
                     <label for="pricePerStory" class="font-semibold">{{ t('7.pricePerStory') }}</label>
-                    <input id="pricePerStory" class="mt-2 input-{{color}} py-1 px-3 outline-none rounded-sm shadow-md border"
+                    <input id="pricePerStory" class="mt-2 input-{{color}} py-1 px-3 outline-none rounded-sm shadow-md border w-100-sm"
                       formControlName="pricePerStory" step="10" placeholder="€150" type="number" />
                     <app-input-validation-error [control]="pricePerStory"></app-input-validation-error>
                   </div>
@@ -451,7 +456,7 @@
                   <div class="flex-1">
   
                     <label for="pricePerHighlight" class="font-semibold">{{ t('7.pricePerHighlight') }}</label>
-                    <input id="pricePerHighlight" class="mt-2 input-{{color}} py-1 px-3 outline-none rounded-sm shadow-md border"
+                    <input id="pricePerHighlight" class="mt-2 input-{{color}} py-1 px-3 outline-none rounded-sm shadow-md border w-100-sm"
                       formControlName="pricePerHighlight"  step="10" placeholder="€200" type="number" />
                     <app-input-validation-error [control]="pricePerHighlight"></app-input-validation-error>
                   </div>
@@ -468,7 +473,7 @@
 
   
             <button type="submit"
-              class="mt-5 text-white py-1 font-semibold px-3 rounded-sm shadow-sm bg-{{color}}">{{ 'common.search' | transloco }}</button>
+              class="mt-5 text-white py-1 font-semibold px-3 rounded-sm shadow-sm bg-{{color}}">{{ 'Confirm' | transloco }}</button>
   
   
             <div class="flex">
@@ -481,10 +486,11 @@
           </div>
   
         </form>
-        <div class="absolute bottom-10 w-500">
+        <div class="absolute bottom-10 w-500  bottom-navigation-responsive">
   
           <app-pages-bottom-navigation [allPages]="allPages" [color]="color"></app-pages-bottom-navigation>
         </div>
+      </div>
       </div>
     </div>
   </ng-container>

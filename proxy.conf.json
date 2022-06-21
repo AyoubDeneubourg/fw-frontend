@@ -1,6 +1,6 @@
 {
     "/api/**": {
-    "target": "https://fw-api-gateway.herokuapp.com",
+    "target": "https://fw-api-gateway.azurewebsites.net",
     "secure": false,
     "logLevel": "debug",
     "changeOrigin": true

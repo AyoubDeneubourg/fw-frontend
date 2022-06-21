@@ -51,33 +51,33 @@
     </div>
 
 
-    <div class="grid m-2">
+    <div class="grid m-2 display-block-sm">
 
 
-        <p class="font-medium border-b">{{ t('personalInformation.firstName') }}</p>
-        <p class="font-medium border-b text-gray-600">{{this.profile?.firstName}}</p>
+        <p class="font-medium border-b border-none-sm py-5-sm">{{ t('personalInformation.firstName') }}</p>
+        <p class="font-medium border-b text-gray-600 py-5-sm">{{this.profile?.firstName}}</p>
 
 
-        <p class="font-medium border-b">{{ t('personalInformation.lastName') }}</p>
-        <p class="font-medium border-b text-gray-600">{{this.profile?.lastName}}</p>
+        <p class="font-medium border-b border-none-sm py-5-sm">{{ t('personalInformation.lastName') }}</p>
+        <p class="font-medium border-b text-gray-600 py-5-sm">{{this.profile?.lastName}}</p>
 
 
-        <p class="font-medium border-b mt-2">{{ t('personalInformation.username') }}</p>
-        <p class="font-medium border-b text-gray-600">{{this.profile?.userName}}</p>
+        <p class="font-medium border-b border-none-sm mt-2 py-5-sm">{{ t('personalInformation.username') }}</p>
+        <p class="font-medium border-b text-gray-600 py-5-sm">{{this.profile?.userName}}</p>
 
-        <p class="font-medium border-b mt-2">{{ t('personalInformation.gender') }}</p>
-        <p class="font-medium border-b text-gray-600">{{this.profile?.gender}}</p>
+        <p class="font-medium border-b border-none-sm mt-2 py-5-sm">{{ t('personalInformation.gender') }}</p>
+        <p class="font-medium border-b text-gray-600 py-5-sm">{{this.profile?.gender}}</p>
 
 
-        <p class="font-medium border-b ">{{ t('personalInformation.headtitle') }}</p>
-        <p *ngIf="!personalInformationEditMode" class="font-medium border-b text-gray-600">{{this.profile?.headTitle}}</p>
-        <span *ngIf="personalInformationEditMode" class="font-medium border-b text-gray-600">        
+        <p class="font-medium border-b border-none-sm  mt-2 py-5-sm">{{ t('personalInformation.headtitle') }}</p>
+        <p *ngIf="!personalInformationEditMode" class="font-medium border-b text-gray-600 border-none-sm py-5-sm">{{this.profile?.headTitle}}</p>
+        <span *ngIf="personalInformationEditMode" class="font-medium border-b text-gray-600 border-none-sm py-5-sm">        
             <input type="text" #headtitle class="p-1  w-max border rounded-md border-gray-500 input-{{color}}" value="{{this.profile?.headTitle}}">
         </span>
 
-        <p class="font-medium border-b ">{{ t('personalInformation.about') }}</p>
-        <p *ngIf="!personalInformationEditMode" class="font-medium border-b text-gray-600 break-all">{{this.profile?.description}}</p>
-        <span *ngIf="personalInformationEditMode" class="font-medium border-b text-gray-600">       
+        <p class="font-medium border-b border-none-sm py-5-sm">{{ t('personalInformation.about') }}</p>
+        <p *ngIf="!personalInformationEditMode" class="font-medium border-b text-gray-600  border-none-sm py-5-sm break-all">{{this.profile?.description}}</p>
+        <span *ngIf="personalInformationEditMode" class="font-medium border-b text-gray-600 border-none-sm py-5-sm">       
             <textarea rows="5" #description class="w-100 p-1 border rounded-md border-gray-500 textarea-{{color}}">{{this.profile?.description}}</textarea> 
         </span>
 
@@ -98,17 +98,17 @@
     </div>
 
 
-    <div class="grid m-2">
+    <div class="grid m-2 display-block-sm">
 
 
-        <p class="font-medium border-b">{{ t('personalInformation.languages') }}</p>
+        <p class="font-medium border-b border-none-sm">{{ t('personalInformation.languages') }}</p>
         <p *ngIf="!languagesEditMode" class="font-medium border-b text-gray-600">
             <ng-container *ngFor="let language of profile?.languages; let i = index">{{language.language}}<span *ngIf="profile?.languages?.length != 1 + i">, </span>
              </ng-container>
         </p>
         <span *ngIf="languagesEditMode" id="languages" class=" border-b text-gray-600 flex flex-col">
      
-                <span class="flex my-auto mr-auto">
+                <span class="flex my-auto mr-auto flex-wrap">
                     <select class="shadow-md select-{{color}}" name="languages" id="selectLanguages">
                         <ng-container *ngFor="let availableLanguage of availableLanguages">
                             <option value="{{availableLanguage}}">{{availableLanguage }}</option>
@@ -117,7 +117,7 @@
                     <span (click)="addLanguage()" class="ml-2 addBtn rounded-sm my-auto text-lg text-center bg-{{color}} text-white font-semibold">+</span>
                 </span>
 
-                <span class="flex">
+                <span class="flex flex-wrap">
                     <span *ngFor="let item of languageList" class="language border-2 mr-1 my-2 py-1 px-2 border-{{color}} rounded-md">      
                         <span class="my-auto">{{ item }}</span>
                         <span (click)="removeLanguage(item)" class="my-auto ml-2">
@@ -145,16 +145,16 @@
     </div>
 
 
-    <div class="grid m-2">
+    <div class="grid m-2 display-block-sm">
 
 
-        <p class="font-medium border-b">{{ t('partnershipInformation.socialMedia') }}</p>
+        <p class="font-medium border-b border-none-sm">{{ t('partnershipInformation.socialMedia') }}</p>
         <p *ngIf="!socialMediaEditMode" class="font-medium border-b text-gray-600">
             <ng-container *ngFor="let socialMedia of profile.socialMedia; let i = index">{{socialMedia.name}}<span *ngIf="profile.socialMedia.length != 1 + i">, </span></ng-container>
         </p>
         <span *ngIf="socialMediaEditMode" id="socialMedia" class=" border-b text-gray-600 flex flex-col">
      
-                <span class="flex my-auto mr-auto">
+                <span class="flex my-auto mr-auto flex-wrap">
                     <select class="shadow-md select-{{color}}" name="socialMedia" id="selectSocialMedia">
                         <ng-container *ngFor="let availableSocialMedia of availableSocialMedias">
                             <option value="{{availableSocialMedia}}">{{availableSocialMedia }}</option>
@@ -163,7 +163,7 @@
                     <span (click)="addSocialMedia()" class="ml-2 addBtn rounded-sm my-auto text-lg text-center bg-{{color}} text-white font-semibold">+</span>
                 </span>
 
-                <span *ngFor="let item of socialMediaList"  class="flex">
+                <span *ngFor="let item of socialMediaList"  class="flex flex-wrap">
                     <span class="language mr-1 my-2 py-1  rounded-md">      
                         <span class="my-auto  font-semibold">{{ item.name }}</span>
                         <span (click)="removeSocialMedia(item)" class="my-auto ml-2">
@@ -199,16 +199,16 @@
     </div>
 
 
-    <div class="grid m-2">
+    <div class="grid m-2 display-block-sm">
 
 
-        <p class="font-medium border-b">{{ t('personalInformation.sectors') }}</p>
+        <p class="font-medium border-b border-none-sm">{{ t('personalInformation.sectors') }}</p>
         <p *ngIf="!sectorsEditMode" class="font-medium border-b text-gray-600">
             <ng-container *ngFor="let sector of profile?.sectors; let i = index">{{sector.sector}}<span *ngIf="profile?.sectors.length != 1 + i">, </span></ng-container>
         </p>
         <span *ngIf="sectorsEditMode" id="sectors" class=" border-b text-gray-600 flex flex-col">
      
-                <span class="flex my-auto mr-auto">
+                <span class="flex my-auto mr-auto ">
                     <select class="shadow-md select-{{color}}" name="sectors" id="selectSectors">
                         <ng-container *ngFor="let availableSector of availableSectors">
                             <option value="{{availableSector}}">{{availableSector }}</option>
@@ -217,7 +217,7 @@
                     <span (click)="addSector()" class="ml-2 addBtn rounded-sm my-auto text-lg text-center bg-{{color}} text-white font-semibold">+</span>
                 </span>
 
-                <span class="flex">
+                <span class="flex flex-wrap">
                     <span *ngFor="let item of sectorList" class="language border-2 mr-1 my-2 py-1 px-2 border-{{color}} rounded-md">      
                         <span class="my-auto">{{ item }}</span>
                         <span (click)="removeSector(item)" class="my-auto ml-2">
@@ -247,7 +247,7 @@
     </div>
 
 
-    <div class="grid m-2">
+    <div class="grid m-2 display-block-sm">
 
 
         <p class="font-medium border-b">{{ t('personalInformation.country') }}</p>
@@ -257,7 +257,7 @@
         <span *ngIf="countryEditMode" id="country" class=" border-b text-gray-600 flex flex-col">
      
                 <span class="flex my-auto mr-auto">
-                    <select class="shadow-md select-{{color}}" name="country" id="selectCountries">
+                    <select class="shadow-md select-{{color}} w-200" name="country" id="selectCountries">
                         <ng-container *ngFor="let availableCountry of availableCountries | keyvalue">
                             <option value="{{availableCountry.key}}">{{availableCountry.value.name }}</option>
                         </ng-container>
@@ -265,7 +265,7 @@
                     <span (click)="addCountry()" class="ml-2 addBtn rounded-sm my-auto text-lg text-center bg-{{color}} text-white font-semibold">+</span>
                 </span>
 
-                <span class="flex">
+                <span class="flex flex-wrap">
                     <span *ngFor="let item of countryList" class="language border-2 mr-1 my-2 py-1 px-2 border-{{color}} rounded-md">      
                         <span class="my-auto">{{ availableCountries[item].name  }}</span>
                         <span (click)="removeCountry(item)" class="my-auto ml-2">
@@ -306,7 +306,7 @@
     </div>
 
 
-    <div class="grid m-2">
+    <div class="grid m-2 display-block-sm">
 
 
         <p class="font-medium border-b">{{ t('personalInformation.country') }}</p>
@@ -380,7 +380,7 @@
 
 
 
-    <div class="grid m-2">
+    <div class="grid m-2 display-block-sm">
 
 
         <p class="font-medium border-b">{{ t('partnershipInformation.socialMedia') }}</p>
@@ -398,7 +398,7 @@
                     <span (click)="addSocialMedia()" class="ml-2 addBtn rounded-sm my-auto text-lg text-center bg-{{color}} text-white font-semibold">+</span>
                 </span>
 
-                <span *ngFor="let item of socialMediaList"  class="flex">
+                <span *ngFor="let item of socialMediaList"  class="flex flex-wrap">
                     <span class="language mr-1 my-2 py-1  rounded-md">      
                         <span class="my-auto  font-semibold">{{ item.name }}</span>
                         <span (click)="removeSocialMedia(item)" class="my-auto ml-2">
@@ -422,7 +422,7 @@
 
 
 
-    <div class="grid m-2">
+    <div class="grid m-2 display-block-sm">
 
         <p class="font-medium border-b">{{ t('partnershipInformation.followers') }}</p>
         <p *ngIf="!socialMediaEditMode" class="font-medium border-b text-gray-600">{{this.profile?.followers}}</p>
@@ -450,6 +450,7 @@
 
     </div>
 
+    <div *ngIf="socialMediaEditMode" class="m-auto bg-{{color}} px-2 py-1 font-semibold text-white w-fit rounded-sm shadow-sm" (click)="updateUser('socialMediaEditMode')">{{ t('confirm') }}</div>
 
 
     <div class="flex mt-10">
@@ -458,9 +459,8 @@
 
     </div>
 
-    <div *ngIf="socialMediaEditMode" class="m-auto bg-{{color}} px-2 py-1 font-semibold text-white w-fit rounded-sm shadow-sm" (click)="updateUser('socialMediaEditMode')">{{ t('confirm') }}</div>
 
-    <div class="grid m-2">
+    <div class="grid m-2 display-block-sm">
 
 
         <p class="font-medium border-b">{{ t('partnershipInformation.IBANNumber') }}</p>

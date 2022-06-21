@@ -299,7 +299,7 @@ export class SetupProfileComponent implements OnInit {
       PROFILE.influencer.ibanNumber = this.ibanNumber.value;
 
       this.profileService.updateInfluencerProfile(PROFILE, this.authedUser.id).subscribe(res => {
-        this.router.navigateByUrl['/profile'];
+        this.router.navigateByUrl('/profile');
       });
       
     } else {
@@ -314,7 +314,7 @@ export class SetupProfileComponent implements OnInit {
       PROFILE.brand.socialMedia = this.socialMediaListWithLinks;
 
       this.profileService.updateBrandProfile(PROFILE, this.authedUser.id).subscribe(res => {
-        this.router.navigateByUrl['/profile'];
+        this.router.navigateByUrl('/profile');
 
 
       });

@@ -1,7 +1,10 @@
 <ng-container *transloco="let t; read: 'wizard'">
+
+  <i (click)="returnBack()" class="absolute top-7 left-7 fa-solid fa-arrow-left text-xl cursor-pointer text-black hide-item-sm" ></i>
+  <i (click)="returnBack()" class="ml-5 mt-5 mb-5 fa-solid fa-arrow-left text-xl cursor-pointer text-black hide-item-not-sm" ></i>
+
   <div class="flex flex-row h-screen">
     
-    <i (click)="returnBack()" class="absolute top-7 left-7 fa-solid fa-arrow-left text-xl cursor-pointer text-black" ></i>
 
     <div class="w-1/3 flex items-center bg-{{color}} relative hide-item-sm">
 
@@ -23,11 +26,12 @@
 
       </div>
     </div>
+    <div class="flex m-auto items-center w-100-sm padding-sm">
 
-    <div class="flex m-auto items-center">
+    <div class=" items-center w-100">
 
 
-      <form class="m-auto w-max" [formGroup]="wizardFormGroup" (ngSubmit)="onSubmit()">
+      <form class="m-auto w-100" [formGroup]="wizardFormGroup" (ngSubmit)="onSubmit()">
         <div formGroupName="p1" class="flex flex-col w-500" *ngIf="actualPage === 1">
 
           <div class="mb-5">
@@ -162,8 +166,6 @@
           <button type="button" (click)="goToPage(4)"
             class="mt-5 text-white py-1 font-semibold px-3 rounded-sm shadow-sm bg-{{color}}">{{ 'common.continue' | transloco }}</button>
 
-
-
           <div class="flex">
             <div  class="flex-1 mt-2 flex">
               <i (click)="goToPage(2)" class="fa-solid fa-arrow-left-long my-auto cursor-pointer"></i>
@@ -175,31 +177,21 @@
             </div>
           </div>
 
-
         </div>
 
-
-
-
-
         <div formGroupName="p4" class="flex flex-col w-500" *ngIf="actualPage === 4">
-
-
 
           <div class="mb-5">
             <h2 class="flex flex-col text-4xl font-semibold">{{ t('5.title') }}</h2>
             <h3 class="flex flex-col text-lg">{{ t('5.description') }}</h3>
           </div>
 
-
-
-
           <div class="flex">
 
-            <div class="flex-1">
+            <div>
               <label for="gender" class="font-semibold ">{{ t('5.gender') }}</label>
 
-              <select formControlName="gender" class="w-228 mt-2 py-1 px-3 outline-none rounded-sm shadow-md bg-{{color}}">
+              <select formControlName="gender" class="w-228 mt-2 py-1 px-3 outline-none rounded-sm shadow-md bg-{{color}} w-150-sm display-block-sm mr-6-sm">
                   <option value="any">{{ 'common.genders.any' | transloco }}</option>
                   <option value="male">{{ 'common.genders.male' | transloco }}</option>
                   <option value="female">{{ 'common.genders.female' | transloco }}</option>
@@ -209,7 +201,7 @@
             </div>
 
 
-            <div class="flex-1">
+            <div>
 
               <label for="age" class="font-semibold">{{ t('5.age') }}</label>
               <input id="age" class="input-{{color}} mt-2 py-1 w-11/12 px-3 outline-none rounded-sm shadow-md border"
@@ -365,10 +357,12 @@
 
 
       </form>
-      <div class="absolute bottom-10 w-500">
+
+      <div class="absolute bottom-10 w-500 bottom-navigation-responsive">
 
         <app-pages-bottom-navigation [allPages]="allPages" [color]="color"></app-pages-bottom-navigation>
       </div>
+    </div>
     </div>
   </div>
 </ng-container>

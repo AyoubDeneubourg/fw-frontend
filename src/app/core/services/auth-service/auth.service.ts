@@ -14,7 +14,7 @@ import { getHeaders, removeToken, setToken } from '../authorization/authorizatio
 })
 export class AuthService {
 
-  readonly apiUrl = "https://fw-api-gateway.herokuapp.com";
+  readonly apiUrl = "https://fw-api-gateway.azurewebsites.net";
 
 
   constructor(private http: HttpClient, private router: Router) {

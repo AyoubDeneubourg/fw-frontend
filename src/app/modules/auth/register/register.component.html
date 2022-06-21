@@ -1,7 +1,7 @@
 <ng-container *transloco="let t; read: 'register'">
 
   <i (click)="returnBack()" class="absolute top-7 left-7 fa-solid fa-arrow-left text-xl cursor-pointer text-black hide-item-sm" ></i>
-  <i (click)="returnBack()" class="ml-5 mt-5 mb-5 fa-solid fa-arrow-left text-xl cursor-pointer text-black not-hide-item-sm" ></i>
+  <i (click)="returnBack()" class="ml-5 mt-5 mb-5 fa-solid fa-arrow-left text-xl cursor-pointer text-black hide-item-not-sm" ></i>
 
 
   <div class="flex flex-row h-screen">
@@ -353,13 +353,13 @@
 
         </div>
       </form>
-    </div>
-<!--       <div class="absolute bottom-10 w-500">
-
+      <div class="absolute bottom-10 w-500 bottom-navigation-responsive">
+    
         <app-pages-bottom-navigation [allPages]="allPages" [color]="actualPage === 1 ? 'gray' 
         : accountType.value === 'INFLUENCER' ? 'blue' 
         : accountType.value === 'BRAND' ? 'orange' : 'gray'"></app-pages-bottom-navigation>
-      </div> -->
+      </div> 
+    </div>
     </div>
   </div>
 </ng-container>

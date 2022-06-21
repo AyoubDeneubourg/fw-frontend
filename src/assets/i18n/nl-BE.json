@@ -330,10 +330,13 @@
         "pricePerStory": "Price per story",
         "pricePerHighlight": "Price per highlight",
         "ibanNumber": "IBAN number"
-      }
-
-
-      
+      },
+      "validations": {
+        "languageValid": "Please select at least one language",
+        "sectorValid": "Please select at least one sector",
+        "countryValid": "Please select at least one country",
+        "socialMediaValid": "Please select at least one social media"
+      }  
 
     }
   },

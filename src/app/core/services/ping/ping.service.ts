@@ -12,7 +12,7 @@ import { getHeaders } from '../authorization/authorization';
 })
 export class PingService {
 
-  readonly apiUrl = "https://fw-api-gateway.herokuapp.com";
+  readonly apiUrl = "https://fw-api-gateway.azurewebsites.net";
 
   constructor(private http: HttpClient) {  
 
@@ -20,7 +20,7 @@ export class PingService {
 
 
   public userService(): void {
-    this.http.get(`https://fw-api-gateway.herokuapp.com/api/user/ping`, getHeaders()).pipe(
+    this.http.get(`https://fw-api-gateway.azurewebsites.net/api/user/ping`, getHeaders()).pipe(
       take(1),
       catchError(err => {
         console.clear();
@@ -30,7 +30,7 @@ export class PingService {
     }
 
   public fileService(): void {
-    this.http.get(`https://fw-api-gateway.herokuapp.com/api/file/ping`, getHeaders()).pipe(
+    this.http.get(`https://fw-api-gateway.azurewebsites.net/api/file/ping`, getHeaders()).pipe(
       take(1),
       catchError(err => {
         console.clear();
@@ -40,7 +40,7 @@ export class PingService {
     }
 
   public partnershipService(): void {
-    this.http.get(`https://fw-api-gateway.herokuapp.com/api/partnership/ping`, getHeaders()).pipe(
+    this.http.get(`https://fw-api-gateway.azurewebsites.net/api/partnership/ping`, getHeaders()).pipe(
       take(1),
       catchError(err => {
         console.clear();
@@ -50,7 +50,7 @@ export class PingService {
     }
 
   public paymentService(): void {
-    this.http.get(`https://fw-api-gateway.herokuapp.com/api/payment/ping`, getHeaders()).pipe(
+    this.http.get(`https://fw-api-gateway.azurewebsites.net/api/payment/ping`, getHeaders()).pipe(
       take(1),
       catchError(err => {
         console.clear();
@@ -72,7 +72,7 @@ export class PingService {
       .subscribe();
     }
   public ratingService(): void {
-    this.http.get(`https://fw-api-gateway.herokuapp.com/api/rating/ping`, getHeaders()).pipe(
+    this.http.get(`https://fw-api-gateway.azurewebsites.net/api/rating/ping`, getHeaders()).pipe(
       take(1),
       catchError(err => {
         console.clear();
@@ -82,7 +82,7 @@ export class PingService {
     }
 
   public gateway(): void {
-    this.http.get(`https://fw-api-gateway.herokuapp.com/ping`, getHeaders()).pipe(
+    this.http.get(`https://fw-api-gateway.azurewebsites.net/ping`, getHeaders()).pipe(
       take(1),
       catchError(err => {
         console.clear();

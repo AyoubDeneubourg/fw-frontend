@@ -1,9 +1,11 @@
-<div class="main-grid relative hide-item-sm">
-  <div class="main-grid-left-item">
-  <app-left-navigation></app-left-navigation>
+<div class="main-grid relative  display-block-sm">
+
+  <div class="main-grid-left-item hide-item-sm">
+    <app-left-navigation></app-left-navigation>
   </div>
+
   <div class="main-grid-top-item">
-  <app-top-navigation (dropdownToggle)='dropdownToggle()' [title]="title"></app-top-navigation>
+    <app-top-navigation (dropdownToggle)='dropdownToggle()' [title]="title"></app-top-navigation>
 
     <div class="dropdown-menu w-40 p-2 z-10 bg-white rounded-sm shadow-md border" [class.hidden]="!dropdownActive" [class.slide-bottom]="dropdownActive">
       <ul>
@@ -14,13 +16,20 @@
     </div>
   </div>
   
-  <div class="main-grid-content ">
+  <div class="main-grid-content w-100-sm mb-100-sm">
     <ng-content></ng-content>
+  </div>
+
+
+  <div class="hide-item-not-sm">
+    <app-bottom-navigation-sm></app-bottom-navigation-sm>
   </div>
 </div>
 
 
-<div class="not-hide-item-sm">
+<!-- 
+  <div class="hide-item-not-sm">
+
   <app-top-navigation (dropdownToggle)='dropdownToggle()' [title]="title"></app-top-navigation>
 
   <div class="dropdown-menu w-40 p-2 z-10 bg-white rounded-sm shadow-md border" [class.hidden]="!dropdownActive" [class.slide-bottom]="dropdownActive">
@@ -31,5 +40,7 @@
     </ul>
   </div>
 
-  <ng-content></ng-content>
-</div>
+  
+</div> 
+
+-->

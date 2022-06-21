@@ -11,7 +11,7 @@ import { getHeaders } from '../authorization/authorization';
 })
 export class StatsService {
 
-  readonly apiUrl = "https://fw-api-gateway.herokuapp.com";
+  readonly apiUrl = "https://fw-api-gateway.azurewebsites.net";
 
   constructor(private http: HttpClient, private router: Router, private authService: AuthService) { }
 
