@@ -6,16 +6,16 @@
       <div formGroupName="sortTypes">
   
         <select (change)="this.filterAndSort()" formControlName="type" class="border px-2 py-1 rounded mr-2">
-          <option value="new">Newest</option>
-          <option value="time">Time</option>
-          <option value="client">Client</option>
-          <option value="amount">Amount</option>
+          <option value="new">{{ t('newest') }}</option>
+          <option value="time">{{ t('time') }}</option>
+          <option value="client">{{ t('client') }}</option>
+          <option value="amount">{{ t('amount') }}</option>
         </select>
   
   
         <select (change)="this.filterAndSort()" formControlName="order" class="border px-2 py-1 rounded mr-2">
-          <option value="ascending">Ascending</option>
-          <option value="descending">Descending</option>
+          <option value="ascending">{{ t('ascending') }}</option>
+          <option value="descending">{{ t('descending') }}</option>
         </select>
   
       </div>
@@ -69,7 +69,7 @@
             </div>
           </td>
           <td> <a class="hover:border-b-2 " href="https://fw-file-service.azurewebsites.net/api/file/{{item.id}}" target="_blank">{{ t('download') }}</a></td>
-          <td> <span (click)="openDetailModal(item)" class="float-right m-0  bg-orange  text-center rounded-sm font-semibold text-white text-sm py-1.5 px-3 shadow hover:shadow-lg ease-linear cursor-pointer transition-all duration-150">View Details</span></td>
+          <td> <span (click)="openDetailModal(item)" class="float-right m-0  bg-orange  text-center rounded-sm font-semibold text-white text-sm py-1.5 px-3 shadow hover:shadow-lg ease-linear cursor-pointer transition-all duration-150"> {{ 'dashboard.overview.viewDetails' | transloco }}</span></td>
 
         </tr>
 

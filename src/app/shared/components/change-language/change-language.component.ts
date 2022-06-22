@@ -32,7 +32,8 @@ export class ChangeLanguageComponent implements OnInit {
   }
 
   public proceedInDutch(): void {
-    this.proceedUsing(SUPPORTED_LANGUAGES.nl)
+    alert('Dutch coming soon!');
+    // this.proceedUsing(SUPPORTED_LANGUAGES.nl)
   }
 
   public proceedInEnglish(): void {

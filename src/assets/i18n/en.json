@@ -1,6 +1,7 @@
 {
   "title": "Bonjour",
 
+
   "login": {
     "title": "Welcome",
     "username": "Username",
@@ -11,14 +12,12 @@
     "openAccount": "Open an account"
   },
 
-
   "nav": {
     "myAccount": "My account",
     "settings": "Settings",
     "logout": "Logout"
 
   },
-
 
   "search": {
     "title": "Search",
@@ -34,8 +33,8 @@
     "amountViewers": "Amount of viewers",
     "gender": "Gender",
     "any": "Any",
-    "man": "Man",
-    "girl": "Girl",
+    "man": "Male",
+    "girl": "Female",
     "age": "Age",
     "type": "Type",
     "socialMedia": "Social Media",
@@ -75,8 +74,6 @@
     "deadline": "Deadline",
     "startDate": "Start date",
     "endDate": "End date",
-    
-
 
     "sendOffer": "Send offer",
 
@@ -98,7 +95,6 @@
       "both": "Any"
     },
 
-
     "filters": {
 
       "ascending": "Ascending",
@@ -106,14 +102,18 @@
       "newest": "Newest",
       "time": "Time",
       "amount": "Amount",
-      "client": "Client",
+      "client": "Customer",
       "status":"Status"
     }
-    
 
   },
 
   "home": {
+    "title": "Home",
+    "welcome": "Welcome to",
+    "description": "Need visibility for your company or want to give visibility and make partnerships with brands? Don't worry, in both cases, we got you!",
+    "watchVideo": "Watch video",
+    "start": "Start",
     "home": "Home",
     "about": "About",
     "services": "Services",
@@ -139,11 +139,11 @@
     },
     "p3": {
       "title":"Dates",
-      "description": "What is the date range you want the influence to advertise?"
+      "description": "What is the date range you want the influencer to promote your product/service?"
     },
     "p4": {
       "title":"Description",
-      "description": "Please give a description of what you expect from the the influencer."
+      "description": "Please give a description of what you expect from the influencer."
     },
     "p5": {
       "title":"Upload",
@@ -163,7 +163,6 @@
     "download": "Download",
     "submit": "Send offer"
 
-
   },
 
 
@@ -180,13 +179,13 @@
       "overviewTitle": "Overview",
       "progress": "In Progress",
       "upcomingEvents": "Upcoming",
-      "requests": "Request",
+      "requests": "Requests",
       "requested": "Requested",
       "pay": "To pay",
       "payMe": "Pay",
       "history": "History",
       "requestTitle": "Request",
-      "orderNumber": "Offer id",
+      "orderNumber": "Order nr.",
       "client": "Client",
       "influencer": "Influencer",
       "customer": "Customer",
@@ -231,7 +230,6 @@
 
   "profile": {
     "title": "Profile",
-
     "profile": "Profile",
     "changeProfile": "Change profile",
     "sendMessage": "Send message",
@@ -258,7 +256,7 @@
         "title": "Personal information",
         "headtitle": "Headtitle",
         "about": "About",
-        "homeDetails": "Home details",
+        "homeDetails": "Location details",
         "country": "Country",
         "city": "City",
         "gender": "Gender",
@@ -275,13 +273,13 @@
       },
 
       "partnershipInformation": {
-        "title": "Partnership information",
+        "title": "Partnership details",
         "socialMedia":"Social media",
         "pricePerPost": "Price per post",
         "followers": "Followers",
         "pricePerStory": "Price per story",
         "pricePerHighlight": "Price per highlight",
-        "paymentInformation": "Payment information",
+        "paymentInformation": "Payment details",
         "IBANNumber": "IBAN number",
         "bankName": "Bank name"
       }
@@ -299,12 +297,11 @@
       },
       "2" : { 
         "title": "Languages", 
-        "description": "What language do you speak?" 
+        "description": "Which languages do you speak?"
       },
       "3" : { 
         "title": "Sectors", 
         "description": "In which sectors do you operate?"
-        
       },
       "4" : { 
         "title": "Countries", 
@@ -375,24 +372,24 @@
       "description": "Brand or influencer? Depending on the account type, you will have access to different tools specially designed for you.",
       "influencer": {
         "title": "Influencer",
-        "description": "This is text"
+        "description": "Influencers promote brands to give them more visibility"
       },
       "brand": {
         "title": "Brand",
-        "description": "This is text"
+        "description": "Brands ask influencers to promote their brand and increase their sales."
       }
     },
     "p2": {
       "title": "Tell us where you are.",
-      "description": "Tell us where you live to have better performance with our algorithm."
+      "description": "Please select your country to improve the performances of our algorithm."
     },
     "p3": {
       "title": "Tell us where you are.",
-      "description": "Tell us where you live to have better performance with our algorithm."
+      "description": "Fill in your address, city, and postal code."
     },
     "p4": {
-      "title": "Tell us where you are.",
-      "description": "We need a little more information from you. You would need your username to login."
+      "title": "Who are you?",
+      "description": "We need more information about you. Please fill in all the fields, you will need your username to login."
     },
     "p5": {
       "title": "Enter your password",
@@ -414,18 +411,18 @@
 
     "1": {
       "title": "What is your budget?",
-      "description": "The average budget is between €150 and €400"
+      "description": "The average budget is between 1000€ and 5000€"
     },
     "2": {
       "title": "Choose the desired platforms.",
       "description": " "
     },
     "3": {
-      "title": "Amount of followers you want to reach?",
+      "title": "Please select the amount of followers",
       "description": "The average followers is between 15k and 200k."
     },
     "4": {
-      "title": "Amount of viewers you want to reach?",
+      "title": "Please select the amount of views",
       "description": "The average viewers is between 15k and 200k."
     },
     "5": {
@@ -449,19 +446,19 @@
 
     "rate": {
       "title": "Rate",
-      "description": "Please rate the influencer",
+      "description": "How were the influencer services? Tell us everything!",
       "button": "Rate",
       "close": "Close"
       
     },
 
     "details": {
-      "title": "Details",
+      "title": "Partnership details",
       "button": "Close"
     },
     "finishPartnership": {
       "title": "End partnership",
-      "message": "Are you sure you want to finish this partnership? ",
+      "message": "Are you sure you want to end this partnership? Please make sure you did everything the brand asked before confirming.",
       "button": "Confirm"
     },
     "acceptPartnership": {
@@ -537,31 +534,31 @@
 
     "step1": {
       "title": "Dashboard",
-      "content": "This is the dashboard. Here you can see your statistics and your offers."
+      "content": "This is the dashboard, the place you will be able to see an overview of all your partnerships."
     },
     "step2": {
       "title": "Search tool",
-      "content": "This is the search tool. You can search for influencers or brands."
+      "content": "This is the search tool, you will have to go to this place to search for your best match."
     },
     "step3": {
       "title": "Statistics",
-      "content": "This is the statistics page. Here you can see the statistics of your account."
+      "content": "This is the statistics page, it is always useful to have an overview of what you did."
     },
     "step4": {
       "title": "Messages",
-      "content": "This is the messages page. Here you can see the messages you have received or sent."
+      "content": "Need to chat with someone? This is the place you will be looking for."
     },
     "step5": {
       "title": "Logout",
-      "content": "Here you can logout."
+      "content": "Click here when you will need to logout"
     },
     "step6": {
       "title": "Statistics",
-      "content": "Little"
+      "content": "This is also a place where you can see some useful statistics!"
     },
     "step7": {
       "title": "Offers",
-      "content": "This is your offers. Here you can see the offers you have made or received."
+      "content": "Change this tabs to have an overview of your upcoming and requested offers and your history."
     }
 
 
@@ -577,9 +574,9 @@
     "countryValid": "Please select a country",
     "sectorValid": "Please select a sector",
     "socialMediaValid": "Please select a social media",
-    "birthdateIsAfter": "Birthdate must be after now",
+    "birthdateIsAfter": "Your birthdate must be before today",
     "dateIsAfter": "Invalid date",
-    "dateIsBefore": "Date must be before the start date",
+    "dateIsBefore": "Invalid date",
     "isGreather": "This value must be greater than the minimum value",
     "minOneChecked": "Please select at least one option",
     "isMatching": "Passwords do not match",

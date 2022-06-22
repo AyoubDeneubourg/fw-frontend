@@ -9,18 +9,16 @@
     <div class="left-side  flex-1 flex flex-col main justify-center landingAnimation ">
 
         <div class="">
-            <h2 class="title">Welcome to</h2>
+            <h2 class="title">{{ 'home.welcome' | transloco }}</h2>
             <h1 class="subtitle font-semibold text-blue">Plugger!</h1>
             <p class="w-3/5 w-80-sm">
-                Need visibility for your company or want to give 
-                visibility and make partnerships with brands? 
-                Don't worry, in both cases, we got you!
+                {{ 'home.description' | transloco }}
             </p>
         </div>
 
         <div class="self-start flex mb-40 mt-10">
-            <div routerLink="/register" class="login bg-blue font-semibold text-white py-2 px-12 m-auto text-center rounded-sm mr-6 shadow hover:shadow-lg ease-linear cursor-pointer transition-all duration-150"><p class="m-auto">Start!</p></div>
-            <div (click)="openModal()" class="cursor-pointer  hover:font-semibold video m-auto">Watch video</div>
+            <div routerLink="/register" class="login bg-blue font-semibold text-white py-2 px-12 m-auto text-center rounded-sm mr-6 shadow hover:shadow-lg ease-linear cursor-pointer transition-all duration-150"><p class="m-auto">{{ 'home.start' | transloco }}!</p></div>
+            <div (click)="openModal()" class="cursor-pointer  hover:font-semibold video m-auto">{{ 'home.watchVideo' | transloco }}</div>
         </div>
 
     </div>

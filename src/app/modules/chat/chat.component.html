@@ -130,7 +130,14 @@
         <span class="animate__animated  flex flex-col">
           <div class="flex">
             <span class="my-auto font-semibold text-sm">   
-              <h1>{{ authedUser.firstName }}</h1>
+              <div *ngIf="bucketListArray['messages'][i - 1]?.sender_id != item.sender_id">
+  
+                <span class="flex">
+                  <span class="my-auto font-semibold text-sm">        
+                      <h1>{{ authedUser.firstName }} {{ authedUser.lastName }}</h1>
+                  </span>
+                </span>
+              </div>
             </span>
 <!--             <img src="../../../assets/icons/socials/FACEBOOK.svg" alt="">
  -->          </div>
@@ -250,7 +257,17 @@
           <span class="animate__animated  flex flex-col">
             <div class="flex">
               <span class="my-auto font-semibold text-sm">   
-                <h1>{{ authedUser.firstName }}</h1>
+
+                <div *ngIf="bucketListArray['messages'][i - 1]?.sender_id != item.sender_id">
+  
+                  <span class="flex">
+                    <span class="my-auto font-semibold text-sm">        
+                        <h1>{{ authedUser.firstName }} {{ authedUser.lastName }}</h1>
+                    </span>
+                  </span>
+                </div>
+
+
               </span>
 <!--               <img src="../../../assets/icons/socials/FACEBOOK.svg" alt="">
  -->            </div>

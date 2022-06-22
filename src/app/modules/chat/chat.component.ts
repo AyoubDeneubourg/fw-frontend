@@ -233,14 +233,14 @@ public returnBack() {
 
       let textArea = document.getElementById('textAreaId') as HTMLInputElement;
       let textArea2 = document.getElementById('textAreaId2') as HTMLInputElement;
-      console.log(textArea.value);
-      console.log(textArea2.value);
-      if(textArea.value.trim().length === 0 && textArea2.value.trim().length) return;
 
-      let newChat = this.chatService.sendMessage(textArea.value ? textArea.value : textArea2.value, this.bucketListArray, this.chatId, this.authedUser.id, this.route.snapshot.params.id);
+      if(textArea.value.trim().length === 0 && textArea2.value.trim().length === 0) return;
+
+      let newChat = this.chatService.sendMessage(textArea.value.trim().length ? textArea.value : textArea2.value, this.bucketListArray, this.chatId, this.authedUser.id, this.route.snapshot.params.id);
     
    
       textArea.value = "";
+      textArea2.value = "";
       if(newChat) this.getFirebaseChat();
 
 

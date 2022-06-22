@@ -2,10 +2,10 @@
 
 <app-main-navbars [title]="'Search'">
 
-<div class="flex">
+<div class="flex display-block-sm">
 
 
-<div class="search-tool w-300 bg-gray-50">
+<div class="search-tool w-300 bg-gray-50 display-block-sm w-100-sm">
 
     <div [routerLink]="'/wizard'" class="flex bg-{{color}} px-6 py-8 text-white shadow hover:shadow-lg ease-linear cursor-pointer transition-all duration-150">
         <p class="font-bold m-auto">{{ t('launchWizard') }}</p>
@@ -83,7 +83,7 @@
 
 
 
-<div class="flex flex-wrap">
+<div class="search-tool-results">
     <ng-container *ngFor="let data of newResults ? newResults : results">
         
         <app-search-brand-card [data]="data"></app-search-brand-card>

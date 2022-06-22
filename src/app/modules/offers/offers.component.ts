@@ -24,7 +24,7 @@ import { minOneChecked } from 'src/app/shared/static/forms/min-one-true-validati
 export class OffersComponent implements OnInit {
 
   public offerFormGroup: FormGroup;
-  public actualPage: number = 1;
+  public actualPage: number = 6;
   public allowToGo: number = 1;
 
 

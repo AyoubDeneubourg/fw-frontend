@@ -2,84 +2,76 @@
   "title": "Bonjour",
 
   "login": {
-    "title": "Welcome",
-    "username": "Username",
-    "password": "Password",
-    "login": "Login",
-    "forgot": "Forgot password?",
-    "noAccount": "Don't have an account?",
-    "openAccount": "Open an account"
+    "title": "Bienvenue",
+    "username": "Nom d'utilisateur",
+    "password": "Mot de passe",
+    "login": "Connexion",
+    "forgot": "Mot de passe oublié?",
+    "noAccount": "Vous n'avez pas de compte?",
+    "openAccount": "Ouvrez un compte!"
   },
-
 
   "nav": {
-    "myAccount": "My account",
-    "settings": "Settings",
-    "logout": "Logout"
+    "myAccount": "Mon compte",
+    "settings": "Paramètres",
+    "logout": "Déconnexion"
 
   },
 
-
   "search": {
-    "title": "Search",
-    "launchWizard": "Launch Wizard",
-    "resetFilters": "Reset filters",
-    "filterBy": "Filter by",
+    "title": "Chercher",
+    "launchWizard": "Lancer le Wizard",
+    "resetFilters": "Réinitialiser les filtres",
+    "filterBy": "Filtrer par",
     "post": "Post",
     "story": "Story",
     "highlight": "Highlight",
     "notes": "Notes",
     "budget": "Budget",
-    "amountFollowers": "Amount of followers",
-    "amountViewers": "Amount of viewers",
-    "gender": "Gender",
-    "any": "Any",
-    "man": "Man",
-    "girl": "Girl",
-    "age": "Age",
+    "amountFollowers": "Nombre d'abonnés",
+    "amountViewers": "Nombre de vues",
+    "gender": "Genre",
+    "any": "Peu importe",
+    "man": "Homme",
+    "girl": "Femme",
+    "age": "Âge",
     "type": "Type",
-    "socialMedia": "Social Media",
-    "search": "Search",
-    "goToProfile": "Go to profile",
+    "socialMedia": "Réseaux sociaux",
+    "search": "Chercher",
+    "goToProfile": "Aller sur le profil",
 
     "sectors": {
-      "title": "Sectors",
-      "Automotive": "Automotive",
+      "title": "Secteurs",
+      "Automotive": "Automobile",
       "Lifestyle": "Lifestyle",
-      "Science": "Science",
-      "Music": "Music",
-      "Pets and Animals": "Pets and Animals",
+      "Science": "Sciences",
+      "Music": "Musique",
+      "Pets and Animals": "Animaux",
       "Sports": "Sports",
-      "Gym and Fitness": "Gym and Fitness",
+      "Gym and Fitness": "Gym et Fitness",
       "Gaming": "Gaming",
-      "Food and Drink": "Food and Drink",
-      "Fashion": "Fashion",
-      "Travel": "Travel",
-      "Beauty": "Beauty",
+      "Food and Drink": "Nourritures et boissons",
+      "Fashion": "Mode",
+      "Travel": "Voyages",
+      "Beauty": "Beauté",
       "Art": "Art",
-      "IT": "IT",
-      "Finance": "Finance"
+      "IT": "Informatique",
+      "Finance": "Finances"
     }
   },
 
   "common": {
-
-    "continue": "Continue",
-    "back": "Back",
-    "skip": "Skip",
-    "search": "Search",
+    "continue": "Continuer",
+    "back": "Retour",
+    "skip": "Ignorer",
+    "search": "Chercher",
     "minimum": "Minimum",
     "maximum": "Maximum",
     "total": "Total",
-
-    "deadline": "Deadline",
-    "startDate": "Start date",
-    "endDate": "End date",
-    
-
-
-    "sendOffer": "Send offer",
-
+    "deadline": "Dates",
+    "startDate": "Date de début",
+    "endDate": "Date de fin",
+    "sendOffer": "Envoyer l'offre",
     "post": "Post",
     "story": "Story",
     "highlight": "Highlight",
@@ -88,138 +80,133 @@
     "stories": "Stories",
     "highlights": "Highlights",
 
-    "socialMedia": "Social Media",
+    "socialMedia": "Réseaux sociaux",
     "description": "Description",
     
     "genders": {
-      "male": "Male",
-      "female" : "Female",
-      "any": "Any",
-      "both": "Any"
+      "male": "Homme",
+      "female" : "Femme",
+      "any": "Peu importe",
+      "both": "Peu importe"
     },
 
-
     "filters": {
-
-      "ascending": "Ascending",
-      "descending": "Descending",
-      "newest": "Newest",
-      "time": "Time",
-      "amount": "Amount",
+      "ascending": "Ascendant",
+      "descending": "Descendant",
+      "newest": "Les plus récents",
+      "time": "Temps",
+      "amount": "Montant",
       "client": "Client",
-      "status":"Status"
+      "status":"Statut"
     }
-    
-
   },
 
   "home": {
-    "home": "Home",
-    "about": "About",
+    "title": "Home",
+    "welcome": "Bienvenue chez",
+    "description": "Besoin de visibilité pour votre entreprise ou envie de donner de la visibilité et nouer des partenariats avec des marques ? Ne vous inquiétez pas, dans les deux cas, vous êtes au bon endroit!",
+    "watchVideo": "Regarder la vidéo",
+    "start": "Commencer",
+    "home": "Accueil",
+    "about": "À propos",
     "services": "Services",
     "blog": "Blog",
-    "team": "Team",
-    "portal": "Portal",
-    "register": "Register",
+    "team": "Équipe",
+    "portal": "Portail",
+    "register": "S'inscrire",
     "modal": {
-      "title": "Introduction video",
-      "button": "Close"
+      "title": "Vidéo d'introduction",
+      "button": "Fermer"
     }
   },
 
   "offers": {
 
     "p1": {
-      "title":"Social Media",
-      "description": "In which social media do you want the influencer to promote you?"
+      "title":"Réseaux sociaux",
+      "description": "Sur quels réseaux sociaux souhaitez-vous que l'influenceur vous fasse une pub?"
     },
     "p2": {
       "title":"Social Media",
-      "description": "How many posts, stories and/or highlights do you want the influencer to do?"
+      "description": "Combien de publications, stories et/ou de highlights voulez-vous que l'influenceur fasse?"
     },
     "p3": {
       "title":"Dates",
-      "description": "What is the date range you want the influence to advertise?"
+      "description": "Quelle sont les dates auxquelles vous souhaitez que l'influenceur fasse la promotion de votre produit/service?"
     },
     "p4": {
       "title":"Description",
-      "description": "Please give a description of what you expect from the the influencer."
+      "description": "Veuillez décrire ce que vous attendez de l'influenceur."
     },
     "p5": {
       "title":"Upload",
-      "description": "It is time to upload the file(s) the influencer will need to promote your product."
+      "description": "Il est temps de télécharger le(s) fichier(s) dont l'influenceur aura besoin pour promouvoir votre produit."
     },
     "p6": {
-      "title":"Offer Summary",
+      "title":"Résumé de l'offre",
       "description": ""
     },
     
     "dates": "Dates",
     "description": "Description",
-    "uploadFile": "Upload file",
-    "order": "Order",
-    "startDate" :"Start Date",
-    "endDate" :"End Date",
-    "download": "Download",
-    "submit": "Send offer"
-
-
+    "uploadFile": "Télécharger le fichier",
+    "order": "Commande",
+    "startDate" :"Date de début",
+    "endDate" :"Date de fin",
+    "download": "Télécharger",
+    "submit": "Envoyer l'offre"
   },
-
 
   "dashboard": {
     "title": "Dashboard",
 
-    "toDo": "Partnerships to do the next 7 days",
-    "earned": "Earned money this week",
-    "partnerships": "Partnerships",
-
-
+    "toDo": "Partenariats à faire les 7 prochains jours",
+    "earned": "Argent gagné cette semaine",
+    "partnerships": "Partenariats",
 
     "overview": {
-      "overviewTitle": "Overview",
-      "progress": "In Progress",
-      "upcomingEvents": "Upcoming",
-      "requests": "Request",
-      "requested": "Requested",
-      "pay": "To pay",
-      "payMe": "Pay",
-      "history": "History",
-      "requestTitle": "Request",
-      "orderNumber": "Offer id",
+      "overviewTitle": "Aperçu",
+      "progress": "En cours",
+      "upcomingEvents": "À venir",
+      "requests": "Demandes",
+      "requested": "Demandé",
+      "pay": "À payer",
+      "payMe": "Payer",
+      "history": "Historique",
+      "requestTitle": "Demande",
+      "orderNumber": "N° commande",
       "client": "Client",
-      "influencer": "Influencer",
-      "customer": "Customer",
-      "socialMedia": "Social Media",
-      "status": "Status",
-      "price": "Price",
-      "deadline": "Deadline",
+      "influencer": "Influenceur",
+      "customer": "Client",
+      "socialMedia": "Réseaux sociaux",
+      "status": "Statut",
+      "price": "Prix",
+      "deadline": "Date limite",
       "posts": "Posts",
       "stories": "Stories",
       "highlights": "Highlights",
       "dates": "Dates",
-      "files": "Files",
-      "viewDetails": "View Details",
+      "files": "Fichiers",
+      "viewDetails": "Afficher détails",
       "notes": "Notes",
-      "rate": "Rate",
-      "download": "Download",
+      "rate": "Noter",
+      "download": "Télécharger",
       "description": "Description",
-      "promotionalCode": "Promotional Code",
+      "promotionalCode": "Code promotionnel",
 
-      "pending": "Pending",
-      "finish": "Finish",
-      "done": "Done",
-      "declined": "Declined",
-      "upcoming": "Upcoming",
+      "pending": "En attente",
+      "finish": "Terminer",
+      "done": "Terminé",
+      "declined": "Refusé",
+      "upcoming": "À venir",
 
-      "DONE": "DONE",
-      "PENDING": "PENDING",
-      "IN_PROGRESS": "IN PROGRESS",
-      "REQUESTED": "REQUESTED",
-      "DECLINED": "DECLINED",
-      "UPCOMING": "UPCOMING",
+      "DONE": "TERMINÉ",
+      "PENDING": "EN ATTENTE",
+      "IN_PROGRESS": "EN COURS",
+      "REQUESTED": "DEMANDÉ",
+      "DECLINED": "REFUSÉ",
+      "UPCOMING": "À VENIR",
 
-      
       "ascending": "{{ common.filters.ascending }}",
       "descending": "{{ common.filters.descending }}",
       "newest": "{{ common.filters.newest }}",
@@ -228,340 +215,329 @@
     }
   },
 
-
   "profile": {
-    "title": "Profile",
+    "title": "Profil",
 
-    "profile": "Profile",
-    "changeProfile": "Change profile",
-    "sendMessage": "Send message",
-    "sendOffer": "Send offer",
-    "editProfile": "Edit profile",
-    "socialMedia": "Social Media",
-    "languages": "Languages",
-    "countries": "Countries",
-    "sectors": "Sectors",
-    "contact": "Contact",
-    "about": "About",
+    "profile": "Profil",
+    "changeProfile": "Changer le profil",
+    "sendMessage": "Envoyer un message",
+    "sendOffer": "Envoyer une offre",
+    "editProfile": "Modifier le profil",
+    "socialMedia": "Réseaux sociaux",
+    "languages": "Langues",
+    "countries": "Pays",
+    "sectors": "Secteurs",
+    "contact": "contacter",
+    "about": "À propos",
 
     "notes": {
-      "received": "Last received ratings",
-      "sended": "Last sent ratings"
+      "received": "Dernières notes reçues",
+      "sended": "Dernières notes envoyées"
     },
 
     "edit": {
-      "title":"Edit profile",
-      "confirm": "Confirm",
-      "edit": "Edit",
+      "title":"Modifier le profil",
+      "confirm": "Confirmer",
+      "edit": "Modifier",
 
       "personalInformation": {
-        "title": "Personal information",
-        "headtitle": "Headtitle",
-        "about": "About",
-        "homeDetails": "Home details",
-        "country": "Country",
-        "city": "City",
-        "gender": "Gender",
-        "socialMedia":"Social media",
-        "address": "Address",
-        "postalCode": "Postal code",
-        "firstName": "First name",
-        "lastName": "Last name",
-        "username": "Username",
-        "languages": "Languages",
-        "countries": "Countries",
-        "sectors": "Sectors"
+        "title": "Informations personnelles",
+        "headtitle": "Titre principal",
+        "about": "À propos",
+        "homeDetails": "Location",
+        "country": "Pays",
+        "city": "Ville",
+        "gender": "Genre",
+        "socialMedia":"Réseaux sociaux",
+        "address": "Adresse",
+        "postalCode": "Code postal",
+        "firstName": "Prénom",
+        "lastName": "Nom de famille",
+        "username": "Pseudo",
+        "languages": "Langues",
+        "countries": "Pays",
+        "sectors": "Secteurs"
         
       },
 
       "partnershipInformation": {
-        "title": "Partnership information",
-        "socialMedia":"Social media",
-        "pricePerPost": "Price per post",
-        "followers": "Followers",
-        "pricePerStory": "Price per story",
-        "pricePerHighlight": "Price per highlight",
-        "paymentInformation": "Payment information",
-        "IBANNumber": "IBAN number",
-        "bankName": "Bank name"
+        "title": "Détails du partenariat",
+        "socialMedia":"Réseaux sociaux",
+        "pricePerPost": "Prix par post",
+        "followers": "Abonnés",
+        "pricePerStory": "Prix par story",
+        "pricePerHighlight": "Prix par highlight",
+        "paymentInformation": "Détails de paiement",
+        "IBANNumber": "Numéro IBAN",
+        "bankName": "Nom de la banque"
       }
     },
 
 
     "setup": {
 
-
       "1" : { 
-        "title": "Personal information", 
+        "title": "Informations personnelles",
         "description": " ",
-        "headtitle": "Headtitle",
+        "headtitle": "Titre principal",
         "descriptionT": "Description"
       },
       "2" : { 
-        "title": "Languages", 
-        "description": "What language do you speak?" 
+        "title": "Langues",
+        "description": "Quelles langues parlez-vous?"
       },
       "3" : { 
         "title": "Sectors", 
-        "description": "In which sectors do you operate?"
-        
+        "description": "Dans quels secteurs opérez-vous?"
       },
       "4" : { 
         "title": "Countries", 
-        "description": "In which countries do you operate?" 
+        "description": "Dans quels pays opérez-vous?"
       },
       "5" : { 
-        "title": "Home details", 
-        "description": "Give us more information about you.",
-        "country": "Country",
-        "city": "City",
-        "address": "Address",
-        "postalCode": "Postal code"
+        "title": "Location",
+        "description": "Donnez-nous plus d'informations sur vous.",
+        "country": "Pays",
+        "city": "Ville",
+        "address": "Adresse",
+        "postalCode": "Code postal"
       },
       "6" : { 
-        "title": "Social Media", 
-        "description": "Add your socials media accounts."
+        "title": "Réseaux sociaux",
+        "description": "Ajoutez vos réseaux sociaux."
       },
       "7" : { 
-        "title": "Influencer details", 
+        "title": "Détails de l'influenceur",
         "description": " ",
-        "followers": "Followers",
-        "pricePerPost": "Price per post",
-        "pricePerStory": "Price per story",
-        "pricePerHighlight": "Price per highlight",
-        "ibanNumber": "IBAN number"
+        "followers": "Abonnés",
+        "pricePerPost": "Prix par post",
+        "pricePerStory": "Prix par story",
+        "pricePerHighlight": "Prix par highlight",
+        "ibanNumber": "Numéro IBAN"
       },
       "validations": {
-        "languageValid": "Please select at least one language",
-        "sectorValid": "Please select at least one sector",
-        "countryValid": "Please select at least one country",
-        "socialMediaValid": "Please select at least one social media"
+        "languageValid": "Veuillez sélectionner au moins une langue",
+        "sectorValid": "Veuillez sélectionner au moins un secteur",
+        "countryValid": "Veuillez sélectionner au moins un pays",
+        "socialMediaValid": "Veuillez sélectionner au moins un réseau social"
       }
-      
     }
   },
 
   "statistics": {
   
-    "title": "Statistics",
-    "bestMonths": "Best months",
-    "mostUsed": "Most used social media",
-    "rating": "Average rating",
-
+    "title": "Statistiques",
+    "bestMonths": "Meilleurs mois",
+    "mostUsed": "Réseaux sociaux les plus utilisés",
+    "rating": "Note moyenne",
 
     "earnings": {
-      "title": "Earnings",
+      "title": "Revenus",
       "total": "Total",
-      "month": "This month",
-      "week": "This week",
-      "noData": "No data"
+      "month": "Ce mois",
+      "week": "Cette semaine",
+      "noData": "Aucune donnée"
   }
 },
 
 "slideCard": {
-  "month": "Earned this month",
-  "week": "Earned this week",
-  "total": "Total earnings",
-  "rating": "Average rating"
+  "month": "Gagné ce mois",
+  "week": "Gagné cette semaine",
+  "total": "Gains totaux",
+  "rating": "Note moyenne"
 },
-
 "card": {
-
 },
 
   "register": {
     "p1": {
-      "title": "Select account type",
-      "description": "Brand or influencer? Depending on the account type, you will have access to different tools specially designed for you.",
+      "title": "Sélectionnez le type de compte.",
+      "description": "Marque ou influenceur? Selon le type de compte, vous aurez accès à différents outils spécialement conçus pour vous.",
       "influencer": {
-        "title": "Influencer",
-        "description": "This is text"
+        "title": "Influenceur",
+        "description": "Les influenceurs font la promotion des marques afin de leur donner plus de visibilité."
       },
       "brand": {
-        "title": "Brand",
-        "description": "This is text"
+        "title": "Marque",
+        "description": "Les marques demandent aux influenceurs de promouvoir leur marque afin d'augmenter leurs ventes."
       }
     },
     "p2": {
-      "title": "Tell us where you are.",
-      "description": "Tell us where you live to have better performance with our algorithm."
+      "title": "Dites-nous où vous êtes.",
+      "description": "Veuillez sélectionner votre pays afin d'améliorer les performances de notre algorithme."
     },
     "p3": {
-      "title": "Tell us where you are.",
-      "description": "Tell us where you live to have better performance with our algorithm."
+      "title": "Dites-nous où vous êtes.",
+      "description": "Completez votre adresse, votre ville et votre code postal."
     },
     "p4": {
-      "title": "Tell us where you are.",
-      "description": "We need a little more information from you. You would need your username to login."
+      "title": "Dites-nous en un peu plus sur vous.",
+      "description": "Nous avons besoin de plus d'informations sur vous. Veuillez remplir tous les champs, vous aurez besoin de votre nom d'utilisateur pour vous connecter."
     },
     "p5": {
-      "title": "Enter your password",
-      "description": "Enter a password of at least 6 characters."
+      "title": "Entrez votre mot de passe",
+      "description": "Entrez un mot de passe d'au moins 6 caractères."
     },
     "p6": {
-      "title": "Last step!",
-      "description": "Please enter your phone number. After this, you'll be all set."
+      "title": "Dernière étape !",
+      "description": "Veuillez entrer votre numéro de téléphone. Après cela, vous serez prêt."
     }
   },
 
-
  "chat": {
    "title": "Chat",
-   "placeholder": "Type your message here...",
-   "noConversation": "No conversation selected. Please select one or make a new one."
+   "placeholder": "Tapez votre message ici...",
+   "noConversation": "Aucune conversation sélectionnée. Veuillez en sélectionner une ou en créer une nouvelle."
  },
   "wizard": {
 
     "1": {
-      "title": "What is your budget?",
-      "description": "The average budget is between €150 and €400"
+      "title": "Quel est votre budget?",
+      "description": "Le budget moyen est compris entre 1000€ et 5000€"
     },
     "2": {
-      "title": "Choose the desired platforms.",
+      "title": "Choisissez les plateformes souhaitées.",
       "description": " "
     },
     "3": {
-      "title": "Amount of followers you want to reach?",
-      "description": "The average followers is between 15k and 200k."
+      "title": "Veuillez sélectionner le nombre d'abonnés.",
+      "description": "Le nombre moyen d'abonnés est compris entre 15 000 et 200 000."
     },
     "4": {
-      "title": "Amount of viewers you want to reach?",
-      "description": "The average viewers is between 15k and 200k."
+      "title": "Veuillez sélectionner le nombre de vues.",
+      "description": "Le nombre moyen de spectateurs est compris entre 15 000 et 200 000."
     },
     "5": {
-      "title": "Are you looking for a particular gender or age?",
+      "title": "Recherchez-vous un genre ou un âge en particulier?",
       "description": " ",
-      "gender": "Gender",
-      "age": "Age"
+      "gender": "Genre",
+      "age": "Âge"
     },
     "6": {
-      "title": "Are you looking for a particular sector?",
+      "title": "Recherchez-vous un secteur en particulier?",
       "description": " "
     },
     "7": {
-      "title": "In which country are you looking to make yourself known?",
+      "title": "Dans quel pays cherchez-vous à vous faire connaître?",
       "description": " ",
-      "country": "Country"
+      "country": "Pays"
     }
   },
 
   "modals": {
 
     "rate": {
-      "title": "Rate",
-      "description": "Please rate the influencer",
-      "button": "Rate",
-      "close": "Close"
+      "title": "Notes",
+      "description": "Comment étaient les services de l'influenceur? Dites-nous tout!",
+      "button": "Noter",
+      "close": "Fermer"
       
     },
 
     "details": {
-      "title": "Details",
-      "button": "Close"
+      "title": "Détails du partenariat",
+      "button": "Fermer"
     },
     "finishPartnership": {
-      "title": "End partnership",
-      "message": "Are you sure you want to finish this partnership? ",
-      "button": "Confirm"
+      "title": "Mettre fin au partenariat",
+      "message": "Êtes-vous sûr de vouloir mettre fin à ce partenariat? Assurez-vous d'avoir fait tout ce que la marque vous a demandé avant de confirmer.",
+      "button": "Confirmer"
     },
     "acceptPartnership": {
-      "title": "Accept partnership",
-      "message": "Are you sure you want to accept this partnership? ",
-      "button": "Confirm"
+      "title": "Accepter le partenariat",
+      "message": "Êtes-vous sûr de vouloir accepter ce partenariat?",
+      "button": "Confirmer"
     },
     "declinePartnership": {
-      "title": "Decline partnership",
-      "message": "Are you sure you want to decline this partnership? ",
-      "button": "Confirm"
+      "title": "Refuser le partenariat",
+      "message": "Êtes-vous sûr de vouloir refuser ce partenariat?",
+      "button": "Confirmer"
     }
   },
-
 
   "sideNavigation": {
 
     "profile": {
       "setup": {
-        "personalInformation": "Personal information",
-        "languages": "Languages",
-        "countries": "Countries",
-        "sectors": "Sectors",
-        "homeDetails": "Home details",
+        "personalInformation": "Informations personnelles",
+        "languages": "Langues",
+        "countries": "Pays",
+        "sectors": "Secteurs",
+        "homeDetails": "Location",
         "socialMedia": "Social media",
-        "influencerDetails": "Influencer details"
+        "influencerDetails": "Détails de l'influenceur"
       }
     },
 
     "register": {
-      "accountType": "Account type",
-      "country": "Country",
-      "address": "Address",
-      "details": "Details",
-      "password": "Password",
-      "phoneNumber": "Phone number"
+      "accountType": "Type de compte",
+      "country": "Pays",
+      "address": "Adresse ",
+      "details": "Détails",
+      "password": "Mot de passe",
+      "phoneNumber": "Numéro de téléphone"
     },
 
     "wizard": {
       "budget": "Budget",
-      "choosePlatforms": "Choose platforms",
-      "amountOfFollowers": "Amount of followers",
-      "amountOfViewers": "Amount of viewers",
-      "genderAndAge": "Gender and age",
-      "sector": "Sector",
+      "choosePlatforms": "Choisissez les plateformes",
+      "amountOfFollowers": "Nombre d'abonnés",
+      "amountOfViewers": "Nombre de vues",
+      "genderAndAge": "Genre et âge",
+      "sector": "Secteur",
       "localisation": "Localisation"
     },
     "offers": {
-      "socialMedia":"Social Media",
-      "amounts": "Amounts",
+      "socialMedia":"Réseaux sociaux",
+      "amounts": "Montants",
       "dates": "Dates",
       "description": "Description",
-      "upload": "Upload",
-      "confirm": "Confirm"
+      "upload": "Télécharger",
+      "confirm": "Confirmer"
     }
 
   },
-
 
   "payment": {
-    "title": "Payment",
+    "title": "Paiement",
 
     "success": {
-      "title": "Payment successful",
-      "text": "Payment successful! Thank you for using Plugger.",
-      "goBack": "Go back"
+      "title": "Paiement réussi",
+      "text": "Paiement réussi! Merci d'utiliser Plugger.",
+      "goBack": "Revenir en arrière"
 
     }
   },
-
 
   "introduction": {
 
     "step1": {
       "title": "Dashboard",
-      "content": "This is the dashboard. Here you can see your statistics and your offers."
+      "content": "Voici le dashboard, l'endroit où vous pourrez voir un aperçu de tous vos partenariats."
     },
     "step2": {
-      "title": "Search tool",
-      "content": "This is the search tool. You can search for influencers or brands."
+      "title": "Outil de recherche",
+      "content": "Ceci est l'outil de recherche, vous devrez vous rendre à cet endroit pour rechercher le match parfait."
     },
     "step3": {
-      "title": "Statistics",
-      "content": "This is the statistics page. Here you can see the statistics of your account."
+      "title": "Statistiques",
+      "content": "Voici la page des statistiques, c'est toujours utile d'avoir un aperçu de ce que vous avez fait."
     },
     "step4": {
       "title": "Messages",
-      "content": "This is the messages page. Here you can see the messages you have received or sent."
+      "content": "Besoin de discuter avec quelqu'un? C'est l'endroit que vous recherchez."
     },
     "step5": {
-      "title": "Logout",
-      "content": "Here you can logout."
+      "title": "Déconnexion",
+      "content": "Cliquez ici lorsque vous devrez vous déconnecter"
     },
     "step6": {
-      "title": "Statistics",
-      "content": "Little"
+      "title": "Statistiques",
+      "content": "Voici un autre endroit où vous pouvez voir des statistiques utiles !"
     },
     "step7": {
       "title": "Offers",
-      "content": "This is your offers. Here you can see the offers you have made or received."
+      "content": "Changez ces onglets pour avoir un aperçu de vos offres à venir et demandées ainsi que votre historique."
     }
 
 
@@ -570,22 +546,21 @@
 
   "validations": {
 
-    "required": "This field is required",
-    "afterDate": "This date must be after {date}",
-    "fileNeeded": "A file is required",
-    "languageValid": "Please select a language",
-    "countryValid": "Please select a country",
-    "sectorValid": "Please select a sector",
-    "socialMediaValid": "Please select a social media",
-    "birthdateIsAfter": "Birthdate must be after now",
-    "dateIsAfter": "Invalid date",
-    "dateIsBefore": "Date must be before the start date",
-    "isGreather": "This value must be greater than the minimum value",
-    "minOneChecked": "Please select at least one option",
-    "isMatching": "Passwords do not match",
-    "email": "Please enter a valid email address",
-    "minlength": "The length of this field is too short"
-
+    "required": "Ce champ est obligatoire",
+    "afterDate": "Cette date doit être après le {date}",
+    "fileNeeded": "Un fichier est requis",
+    "languageValid": "Veuillez sélectionner une langue",
+    "countryValid": "Veuillez sélectionner un pays",
+    "sectorValid": "Veuillez sélectionner un secteur",
+    "socialMediaValid": "Veuillez sélectionner un réseau social",
+    "birthdateIsAfter": "Votre date de naissance doit être antérieure à aujourd'hui",
+    "dateIsAfter": "Date invalide",
+    "dateIsBefore": "Date invalide",
+    "isGreather": "Cette valeur doit être supérieure à la valeur minimale",
+    "minOneChecked": "Veuillez sélectionner au moins une option",
+    "isMatching": "Les mots de passe ne correspondent pas",
+    "email": "Veuillez saisir une adresse e-mail valide",
+    "minlength": "La longueur de ce champ est trop courte"
 
   }
 }

@@ -103,19 +103,19 @@ export class DashboardComponent implements OnInit {
           
         }
 
-      this.translocoService.selectTranslate('dashboard.partnerships').pipe(take(1),
+      this.translocoService.selectTranslate('dashboard.partnerships').pipe(
         tap(value => {
           this.data2.content = value;
       })).subscribe();
 
 
-      this.translocoService.selectTranslate('dashboard.earned').pipe(take(1),
+      this.translocoService.selectTranslate('dashboard.earned').pipe(
         tap(value => {
           this.data3.content = value;
       })).subscribe();
 
 
-      this.translocoService.selectTranslate('dashboard.toDo').pipe(take(1),
+      this.translocoService.selectTranslate('dashboard.toDo').pipe(
         tap(value => {
           this.data4.content = value;
       })).subscribe();

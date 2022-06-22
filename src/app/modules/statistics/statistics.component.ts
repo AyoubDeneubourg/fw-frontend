@@ -42,7 +42,6 @@ export class StatisticsComponent implements OnInit  {
     
     this.translocoService.selectTranslate('statistics.rating')
     .pipe(
-      take(1),
       tap(value => {
         this.data1.content = value;
     })).subscribe();
