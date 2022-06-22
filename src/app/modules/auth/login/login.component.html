@@ -1,5 +1,7 @@
 <ng-container *transloco="let t; read: 'login'">
 
+  <i (click)="returnBack()" class="absolute top-7 left-7 fa-solid fa-arrow-left text-xl cursor-pointer text-black hide-item-sm" ></i>
+
 <div class="flex flex-row h-screen">
   <div class="flex m-auto items-center"> 
     <div class="m-auto items-center margin-sm">
@@ -47,7 +49,7 @@
 
           <div class="flex my-4">
             <button type="submit"
-              class="shadow-md cursor-pointer py-2  px-12 rounded-md text-white bg-gray-800">{{ t('login') }}</button>
+              class="shadow-md cursor-pointer py-2  px-12 rounded-md text-white bg-gray">{{ t('login') }}</button>
             <div class="flex-1"></div>
           </div>
 
@@ -83,11 +85,20 @@
   </div>
 
 
-  <div class="bg-gray-800 w-1/3 flex items-center hide-item-sm">
-    <div class="flex flex-col ml-14">
+  <div class="bg-gray w-1/3 flex flex-col  hide-item-sm relative">
+    <div class="flex-1"></div>
 
 
-    </div>
+    <div class="absolute">
+<!--       <app-deco-wizard-squares [color]="'blue'" [position]="'top-left'"></app-deco-wizard-squares>
+ -->      
+</div>
+<div class="logo m-auto hide-item-sm"><img width="300px" src="../../../../assets/logo/logo_plugger_big_white.png"></div>
+<div class="flex-1"></div>
+
+<!--     <img class="m-auto" src="../../../../assets/img/register.svg" alt="" srcset="" width="45%">
+ -->
+    <div class="mb-5"></div>
   </div>
 
 

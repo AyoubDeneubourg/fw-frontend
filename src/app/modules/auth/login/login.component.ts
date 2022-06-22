@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -19,7 +20,7 @@ export class LoginComponent implements OnInit {
   public loginFormGroup: FormGroup;
   public invalidCredentials: boolean = false;
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) { }
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router, private location: Location) { }
 
   ngOnInit(): void {
 
@@ -61,6 +62,12 @@ export class LoginComponent implements OnInit {
         })).subscribe();
 
     }
+  }
+
+  public returnBack() {
+
+    this.location.back();
+    
   }
 
 

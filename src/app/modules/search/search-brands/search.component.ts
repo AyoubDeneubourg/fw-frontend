@@ -236,7 +236,7 @@ export class SearchBrandsComponent implements OnInit {
     this.gender?.setValue(searchPreferences?.gender);
     this.location?.setValue(searchPreferences?.location);
 
-    searchPreferences.sectors.forEach((element, index) => {
+    searchPreferences?.sectors?.forEach((element, index) => {
       this.sectorsArray.forEach((element2, index2) => {
         if (element === element2) {
           this.sectors.controls[index2].setValue(true);
@@ -247,7 +247,7 @@ export class SearchBrandsComponent implements OnInit {
     });
 
 
-    searchPreferences.socialMedia.forEach((element, index) => {
+    searchPreferences?.socialMedia?.forEach((element, index) => {
       this.socialMediaArrayCapitalized.forEach((element2, index2) => {
         if (element === element2) {
           this.socialMedia.controls[index2].setValue(true);

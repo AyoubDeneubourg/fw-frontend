@@ -231,6 +231,29 @@ export class WizardComponent implements OnInit {
   }
 
 
+  notNow(): void {
+
+    const search: Filters = {
+
+      budget: {
+        min: null,
+        max: null
+      },
+      followers: {
+        min: null,
+        max: null
+      },
+      gender: null,
+      age: null,
+      location: null,
+      sectors: null,
+      socialMedia: null
+    
+  };
+
+    this.userPreferencesService.update({search})
+    this.router.navigate(['/search']);
+  }
 
   onSubmit(): void {
 
